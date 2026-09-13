@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: убираем прокрутку, настраиваем стили
+# Применяем CSS: отступы сверху, убираем скролл и настраиваем стили
 st.markdown(
     """
     <style>
@@ -24,7 +24,7 @@ st.markdown(
         max-width: 1200px !important;
         margin-left: 2rem !important;
         margin-right: auto !important;
-        padding-top: 2rem !important;
+        padding-top: 4rem !important; /* Отступ сверху от шапки браузера */
         padding-bottom: 0rem !important;
         padding-left: 0rem !important;
     }
@@ -114,14 +114,14 @@ if "step" not in st.session_state:
 # Уникальный контейнер для анимации смены слайдов
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: Приветствие от 10 "А" (Текст слева, фото справа, кнопка справа)
+    # Шаг 0: Приветствие от 10 "А" (Текст слева, фото справа с отступом сверху, кнопка под фото справа)
     if st.session_state.step == 0:
         col_left, col_right = st.columns([1.1, 1], gap="large")
         
         with col_left:
             st.markdown(
                 """
-                <div style="margin-top: 20px;">
+                <div style="margin-top: 10px;">
                     <div style="font-size: 36px; font-weight: 800; color: #111111; margin-bottom: 20px; line-height: 1.2;">
                         Вітаємо вас!<br>Проект підготовлено учнями 10 «А» класу.
                     </div>
@@ -136,10 +136,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         with col_right:
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=520)
             
-        # Кнопка "Далі" справа на первом листе
-        st.write("")
-        col_btn1, col_btn2 = st.columns([4, 1])
-        with col_btn2:
+            # Кнопка "Далі" строго под фото на первом листе
+            st.write("")
             if st.button("Далі ➔", key="next_btn_0"):
                 st.session_state.step += 1
                 st.rerun()
