@@ -188,9 +188,14 @@ elif st.session_state.step == 9:
 # Шаг 10: Завершающий слайд
 elif st.session_state.step == 10:
     st.markdown('<div class="slide-title" style="text-align: center;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
-    st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 600; margin-top: 40px; color: #111111;">Презентацію підготували учениці та учні 10 «А» класу</div>', unsafe_allow_html=True)
-    st.write("")
-    st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 20px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
+    
+    # Центрируем картинку с помощью колонки Streamlit
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col2:
+        st.image("https://i.ibb.co/6y18J3B/image.png", width=300)  # или локальная ссылка / прямая ссылка на загруженную картинку
+        
+    st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 600; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 15px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
 
 # Кнопка переключения шагов (Далі)
 st.write("")
