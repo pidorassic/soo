@@ -80,7 +80,7 @@ if "step" not in st.session_state:
 # Шаг 0: Приветствие от 10 "А"
 if st.session_state.step == 0:
     st.markdown('<div align="center" style="font-size: 34px; font-weight: 700; color: #111111; margin-bottom: 20px; line-height: 1.3;">Вітаємо вас! Проект підготовлено учнями 10 «А» класу.</div>', unsafe_allow_html=True)
-    st.write("Запрошуємо вас здійснити захоплюючу подорож на кілька десятиліть назад. Ми пропонуємо поринути в атмосферу минулого століття та на власні очі побачити, яким було повсякденне життя, турботи, мрії та захоплення звичайних підлітків у 1960-х роках.")
+    st.write("Запрошуємо вас здійснити захоплюючу подорож на кілька десятиліть назад. Ми пропонуємо поринути в атмосферу минулого століття та на власні очі побачити, яким було повсякденне життя, турботи, мрії та захоплення звичайних підлітків у 60-х роках.")
     st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=700)
 
 # Шаг 1: Утро
@@ -189,18 +189,10 @@ elif st.session_state.step == 9:
 elif st.session_state.step == 10:
     st.markdown('<div style="text-align: center; font-size: 36px; font-weight: 700; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
     
+    # Центрируем картинку с помощью колонок
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
-        # ЗАМЕНИТЕ "minion.jpg" НА ТОЧНОЕ ИМЯ ВАШЕГО ФАЙЛА НА GITHUB
-        st.image("st.image("215f34834c5e2fae0d891ce97c512dc.jpg", width=250)", width=250) 
+        # ----> ВОТ ЗДЕСЬ ПРОПИСАНО ИМЯ ВАШЕГО ФАЙЛА <----
+        st.image("215f34834c5e2fae0d891ce97c512dc.jpg", width=250)
         
-    st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 600; margin-top: 25px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
-    st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 15px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
-
-# Кнопка переключения шагов (Далі)
-st.write("")
-if st.button("Далі"):
-    st.session_state.step += 1
-    if st.session_state.step > 10:
-        st.session_state.step = 0  # Возврат на начало презентации
-    st.rerun()
+    st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 600; margin-top: 25px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_
