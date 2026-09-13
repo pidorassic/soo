@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: стили, кастомные кнопки и красивый эффект смены слайдов (слайдер-анимация)
+# Применяем CSS: уникальный и мягкий эффект "Scale & Fade Up" при смене слайдов
 st.markdown(
     """
     <style>
@@ -21,21 +21,23 @@ st.markdown(
         padding-left: 0rem !important;
     }
 
-    /* Эффектная плавная анимация смены слайдов (плавное скольжение и появление) */
-    @keyframes slideTransition {
+    /* Элегантный плавный эффект: мягкое увеличение масштаба (zoom) и проявление */
+    @keyframes scaleFadeTransition {
         0% {
             opacity: 0;
-            transform: translateX(30px);
+            transform: scale(0.95);
+            filter: blur(4px);
         }
         100% {
             opacity: 1;
-            transform: translateX(0);
+            transform: scale(1);
+            filter: blur(0px);
         }
     }
 
-    /* Применяем анимацию смены слайдов ко всем элементам контейнера */
+    /* Применяем этот эффект ко всем элементам нового слайда */
     .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
-        animation: slideTransition 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation: scaleFadeTransition 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .slide-title {
@@ -101,8 +103,8 @@ st.markdown(
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# Создаем уникальный контейнер, который перезапускает анимацию скольжения при каждом изменении шага
-with st.container(key=f"slide_transition_box_{st.session_state.step}"):
+# Уникальный контейнер, который перезапускает анимацию приближения при каждом клике "Далі"
+with st.container(key=f"scale_box_{st.session_state.step}"):
 
     # Шаг 0: Приветствие от 10 "А"
     if st.session_state.step == 0:
