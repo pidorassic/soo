@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: стили для заголовков, текста, аккуратных карточек теста и кастомных кнопок
+# Применяем CSS: стили, кастомные кнопки и анимацию появления
 st.markdown(
     """
     <style>
@@ -19,6 +19,23 @@ st.markdown(
         margin-left: 2rem !important;
         margin-right: auto !important;
         padding-left: 0rem !important;
+    }
+
+    /* Анимация появления контента при переключении шагов */
+    @keyframes fadeInSlide {
+        0% {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Применяем анимацию ко всем основным блокам и слайдам */
+    .element-container, .stMarkdown, .stRadio, .stImage {
+        animation: fadeInSlide 0.5s ease-out forwards;
     }
 
     .slide-title {
@@ -60,6 +77,7 @@ st.markdown(
         border: 1px solid #ced4da !important;
         border-radius: 6px !important;
         padding: 0.5rem 1rem !important;
+        transition: all 0.2s ease-in-out;
     }
     
     /* Эффект при наведении мыши на кнопку */
@@ -67,6 +85,7 @@ st.markdown(
         background-color: #d8dadf !important;
         color: #000000 !important;
         border-color: #adb5bd !important;
+        transform: scale(1.02);
     }
     </style>
     """,
@@ -185,7 +204,7 @@ elif st.session_state.step == 9:
             st.error("❌ Невірно. Правильна відповідь: Відвідували гуртки та спілкувалися у дворах")
         st.info("💡 **Пояснення:** За відсутності інтернету та смартфонів соціальне життя підлітків проходило в живій командній роботі, гуртках та активних іграх на вулиці.")
 
-# Шаг 10: Завершающий слайд (картинка миньона по ссылке)
+# Шаг 10: Завершающий слайд
 elif st.session_state.step == 10:
     st.markdown('<div style="text-align: center; font-size: 36px; font-weight: 700; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
     
