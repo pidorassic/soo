@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: отступы сверху, убираем скролл и настраиваем стили
+# Применяем CSS: отступы сверху, убираем скролл и настраиваем базовые стили
 st.markdown(
     """
     <style>
@@ -109,10 +109,28 @@ st.markdown(
 if "step" not in st.session_state:
     st.session_state.step = 0
 
+# ДИНАМИЧЕСКИЙ КАСТОМ ДЛЯ ШИРИНЫ ЭКРАНА:
+# Если шаг 0 или 10 — расширяем главный контейнер на весь экран (max-width: 98%), иначе возвращаем 1300px
+if st.session_state.step in [0, 10]:
+    st.markdown(
+        """
+        <style>
+        div.block-container {
+            max-width: 98% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
 # Уникальный контейнер для анимации смены слайдов
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: ПЕРВЫЙ ЛИСТ — БОЛЬШОЙ (Широкое фото вправо и отступ сверху)
+    # Шаг 0: ПЕРВЫЙ ЛИСТ — РАСТЯНУТ НА ВЕСЬ ЭКРАН
     if st.session_state.step == 0:
         col_left, col_right = st.columns([1, 1.4], gap="large")
         
@@ -154,7 +172,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
     else:
-        # Промежуточные слайды (1–9) — МАЛЕНЬКИЕ (с компактными фото)
+        # Промежуточные слайды (1–9) — стандартные (компактные)
         if st.session_state.step == 1:
             st.markdown('<div class="slide-title">Ранок</div>', unsafe_allow_html=True)
             st.write("Кожен день радянського школяра у 60-х роках розпочинався дуже рано. Ще до того, як зійде сонце або лунала шкільна дзвінка пора, у квартирах лунала радіотрансляція з обов'язковою ранковою зарядкою. Одяг — виключно випрасувана форма, білі комірці та манжети, які пришивали окремо. Портфелі з цупкої шкіри збиралися суворо з вечора, а взуття ретельно начищалося до блиску.")
@@ -243,7 +261,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.info("💡 **Пояснення:** За відсутності інтернету та смартфонів соціальне життя підлітків проходило в живій командній роботі, гуртках та активних іграх на вулиці.")
 
         elif st.session_state.step == 10:
-            # Шаг 10: ПОСЛЕДНИЙ ЛИСТ — БОЛЬШОЙ (Широкий формат, развернутый на весь екран блок благодарности)
+            # Шаг 10: ПОСЛЕДНИЙ ЛИСТ — РАСТЯНУТ НА ВЕСЬ ЭКРАН
             st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
             
             col_l, col_c, col_r = st.columns([1, 1.5, 1])
