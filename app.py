@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: стили, кастомные кнопки и анимацию появления
+# Применяем CSS: полная анимация для каждого элемента и нажатия кнопки "Далі"
 st.markdown(
     """
     <style>
@@ -21,21 +21,21 @@ st.markdown(
         padding-left: 0rem !important;
     }
 
-    /* Анимация появления контента при переключении шагов */
-    @keyframes fadeInSlide {
+    /* Мощная плавная анимация появления для каждого шага и элемента */
+    @keyframes smoothAppear {
         0% {
             opacity: 0;
-            transform: translateY(15px);
+            transform: translateY(20px) scale(0.98);
         }
         100% {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
     }
 
-    /* Применяем анимацию ко всем основным блокам и слайдам */
-    .element-container, .stMarkdown, .stRadio, .stImage {
-        animation: fadeInSlide 0.5s ease-out forwards;
+    /* Применяем анимацию ко всему содержимому страницы и блокам */
+    .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
+        animation: smoothAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .slide-title {
@@ -68,7 +68,7 @@ st.markdown(
         color: #1a1a1a !important;
     }
 
-    /* Стиль для ВСЕХ кнопок Streamlit: слегка серый фон и черный текст */
+    /* Стиль для ВСЕХ кнопок Streamlit с анимацией нажатия */
     .stButton > button {
         background-color: #e4e6eb !important;
         color: #000000 !important;
@@ -77,7 +77,7 @@ st.markdown(
         border: 1px solid #ced4da !important;
         border-radius: 6px !important;
         padding: 0.5rem 1rem !important;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     /* Эффект при наведении мыши на кнопку */
@@ -85,7 +85,12 @@ st.markdown(
         background-color: #d8dadf !important;
         color: #000000 !important;
         border-color: #adb5bd !important;
-        transform: scale(1.02);
+        transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Эффект при клике на кнопку */
+    .stButton > button:active {
+        transform: translateY(1px) scale(0.97);
     }
     </style>
     """,
