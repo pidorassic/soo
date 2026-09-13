@@ -24,7 +24,7 @@ st.markdown(
         max-width: 1200px !important;
         margin-left: 2rem !important;
         margin-right: auto !important;
-        padding-top: 4rem !important; /* Отступ сверху от шапки браузера */
+        padding-top: 3rem !important; /* Отступ сверху от шапки браузера */
         padding-bottom: 0rem !important;
         padding-left: 0rem !important;
     }
@@ -114,19 +114,34 @@ if "step" not in st.session_state:
 # Уникальный контейнер для анимации смены слайдов
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: Приветствие от 10 "А" (Текст слева, фото справа с отступом сверху, кнопка под фото справа)
+    # Шаг 0: Приветствие от 10 "А" (Заполнено верх и низ экрана)
     if st.session_state.step == 0:
         col_left, col_right = st.columns([1.1, 1], gap="large")
         
         with col_left:
             st.markdown(
                 """
-                <div style="margin-top: 10px;">
-                    <div style="font-size: 36px; font-weight: 800; color: #111111; margin-bottom: 20px; line-height: 1.2;">
+                <div>
+                    <div style="font-size: 34px; font-weight: 800; color: #111111; margin-bottom: 12px; line-height: 1.2;">
                         Вітаємо вас!<br>Проект підготовлено учнями 10 «А» класу.
                     </div>
-                    <div style="font-size: 19px; font-weight: 500; color: #444444; line-height: 1.6;">
-                        Запрошуємо вас здійснити захоплюючу подорож на кілька десятиліть назад. Ми пропонуємо поринути в атмосферу минулого століття та на власні очі побачити, яким було повсякденне життя, турботи, мрії та захоплення звичайних підлітків у 60-х роках.
+                    <div style="font-size: 18px; font-weight: 500; color: #444444; line-height: 1.5;">
+                        Запрошуємо вас здійснити захоплюючу подорож на кілька десятиліть назад. Ми пропонуємо поринути в атмосферу минулого століття та на власні очі побачити, яким було повсякденне життя підлітків у 60-х роках.
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
+            # Заполняем нижнюю левую половину экрана дополнительным интересным блоком
+            st.markdown(
+                """
+                <div style="margin-top: 25px; padding: 15px 20px; background-color: #f8f9fa; border-left: 5px solid #555; border-radius: 4px;">
+                    <div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 5px;">📌 Що на вас чекає у цій подорожі:</div>
+                    <div style="font-size: 16px; color: #555; line-height: 1.4;">
+                        • Ранкові звички та шкільна форма<br>
+                        • Особливості навчання за чорнильницями<br>
+                        • Інтерактивний тест на знання побуту 60-х років
                     </div>
                 </div>
                 """,
