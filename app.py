@@ -1,35 +1,41 @@
 import streamlit as st
 
-# Настройка страницы обратно на узкую (centered), как в самом начале
-st.set_page_config(page_title="День школяра 60-х", layout="centered")
+# Настройка страницы с выравниванием по левому краю через стили
+st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем компактные стили без огромных блоков и выравнивания по центру блоков
+# Применяем CSS: сдвигаем весь контент влево, убираем дублирующийся заголовок, делаем приветствие крупнее
 st.markdown(
     """
     <style>
-    /* Общий белый фон */
+    /* Общий белый фон и выравнивание по левому краю */
     .stApp {
         background-color: #ffffff;
         color: #000000;
+        text-align: left !important;
     }
     
-    /* Уменьшенный и поднятый заголовок */
-    h1 {
-        font-size: 22px !important;
-        margin-top: -30px !important;
-        margin-bottom: 5px !important;
-        color: #333333;
-        font-weight: 600;
+    /* Сдвигаем основной контейнер влево и задаем комфортную ширину */
+    div.block-container {
+        background-color: #ffffff;
+        max-width: 1000px !important;
+        margin-left: 2rem !important;
+        margin-right: auto !important;
+        padding-left: 0rem !important;
+    }
+
+    /* Увеличиваем заголовок-приветствие */
+    .welcome-title {
+        font-size: 32px !important;
+        font-weight: 700 !important;
+        color: #111111 !important;
+        margin-bottom: 15px !important;
+        line-height: 1.3 !important;
     }
 
     /* Обычный текст */
     p, label, span, .stMarkdown {
-        font-size: 18px !important;
-    }
-
-    /* Белый фон контейнера */
-    div.block-container {
-        background-color: #ffffff;
+        font-size: 19px !important;
+        text-align: left !important;
     }
     </style>
     """,
@@ -40,10 +46,9 @@ st.markdown(
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# Шаг 0: Приветствие от 10 "А" (обычный текст слева, как раньше)
+# Шаг 0: Приветствие от 10 "А" (без верхнего дубля, крупный текст слева)
 if st.session_state.step == 0:
-    st.markdown("<h1>День школяра 60-х</h1>", unsafe_allow_html=True)
-    st.write("Приветствуем вас! Проект подготовлен учениками 10 «А» класса.")
+    st.markdown('<div class="welcome-title">Приветствуем вас! Проект подготовлен учениками 10 «А» класса.</div>', unsafe_allow_html=True)
     st.write("Приглашаем вас совершить путешествие на несколько десятилетий назад и узнать, чем жили, о чем мечтали и как учились школьники в 1960-х годах.")
     st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="Школьная атмосфера 1960-х")
 
