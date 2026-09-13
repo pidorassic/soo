@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: центрируем именно заголовок приветствия (.welcome-title), а остальной текст оставляем слева
+# Применяем CSS
 st.markdown(
     """
     <style>
@@ -19,15 +19,6 @@ st.markdown(
         margin-left: 2rem !important;
         margin-right: auto !important;
         padding-left: 0rem !important;
-    }
-
-    .welcome-title {
-        font-size: 32px !important;
-        font-weight: 700 !important;
-        color: #111111 !important;
-        margin-bottom: 15px !important;
-        line-height: 1.3 !important;
-        text-align: center !important;
     }
 
     .slide-title {
@@ -52,9 +43,9 @@ st.markdown(
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# Шаг 0: Приветствие от 10 "А" (заголовок по центру, описание слева)
+# Шаг 0: Приветствие от 10 "А" (заголовок по центру экрана)
 if st.session_state.step == 0:
-    st.markdown('<div class="welcome-title">Вітаємо вас! Проект підготовлено учнями 10 «А» класу.</div>', unsafe_allow_html=True)
+    st.markdown('<div align="center" style="font-size: 32px; font-weight: 700; color: #111111; margin-bottom: 15px; line-height: 1.3;">Вітаємо вас! Проект підготовлено учнями 10 «А» класу.</div>', unsafe_allow_html=True)
     st.write("Запрошуємо вас здійснити подорож на кілька десятиліть назад і дізнатися, чим жили, про що мріяли та як вчилися школярі у 1960-х роках.")
     st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop")
 
