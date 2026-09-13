@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: общий текст слева, а класс .welcome-center выравнивает заголовок по центру
+# Применяем CSS: центрируем именно заголовок приветствия (.welcome-title), а остальной текст оставляем слева
 st.markdown(
     """
     <style>
@@ -52,7 +52,7 @@ st.markdown(
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# Шаг 0: Приветствие от 10 "А" (заголовок по центру)
+# Шаг 0: Приветствие от 10 "А" (заголовок по центру, описание слева)
 if st.session_state.step == 0:
     st.markdown('<div class="welcome-title">Вітаємо вас! Проект підготовлено учнями 10 «А» класу.</div>', unsafe_allow_html=True)
     st.write("Запрошуємо вас здійснити подорож на кілька десятиліть назад і дізнатися, чим жили, про що мріяли та як вчилися школярі у 1960-х роках.")
