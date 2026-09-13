@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: уникальный и мягкий эффект "Scale & Fade Up" при смене слайдов
+# Применяем CSS: стили, кастомные кнопки, эффект смены слайдов и центрирование первого слайда
 st.markdown(
     """
     <style>
@@ -99,18 +99,33 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Инициализация шагов (0-3: слайды презентации, 4-9: 6 вопросов теста, 10: завершающий слайд)
+# Инициализация шагов (0: приветствие, 1-3: слайды презентации, 4-9: 6 вопросов теста, 10: завершающий слайд)
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# Уникальный контейнер, который перезапускает анимацию приближения при каждом клике "Далі"
+# Уникальный контейнер, который перезапускает анимацию при каждом клике "Далі"
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: Приветствие от 10 "А"
+    # Шаг 0: Приветствие от 10 "А" (Отцентровано по середине экрана)
     if st.session_state.step == 0:
-        st.markdown('<div align="center" style="font-size: 34px; font-weight: 700; color: #111111; margin-bottom: 20px; line-height: 1.3;">Вітаємо вас! Проект підготовлено учнями 10 «А» класу.</div>', unsafe_allow_html=True)
-        st.write("Запрошуємо вас здійснити захоплюючу подорож на кілька десятиліть назад. Ми пропонуємо поринути в атмосферу минулого століття та на власні очі побачити, яким було повсякденне життя, турботи, мрії та захоплення звичайних підлітків у 60-х роках.")
-        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=700)
+        st.markdown(
+            """
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; text-align: center; margin-top: 2rem;">
+                <div style="font-size: 40px; font-weight: 800; color: #111111; margin-bottom: 25px; line-height: 1.2; max-width: 800px;">
+                    Вітаємо вас!<br>Проект підготовлено учнями 10 «А» класу.
+                </div>
+                <div style="font-size: 22px; font-weight: 500; color: #444444; margin-bottom: 35px; max-width: 750px; line-height: 1.6;">
+                    Запрошуємо вас здійснити захоплюючу подорож на кілька десятиліть назад. Ми пропонуємо поринути в атмосферу минулого століття та на власні очі побачити, яким було повсякденне життя, турботи, мрії та захоплення звичайних підлітків у 60-х роках.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        
+        # Центрирование картинки на первом слайде с помощью колонок
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=700)
 
     # Шаг 1: Утро
     elif st.session_state.step == 1:
