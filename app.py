@@ -1,69 +1,68 @@
 import streamlit as st
 
-# Настройка страницы на всю ширину экрана (wide)
-st.set_page_config(page_title="День школяра 60-х", layout="wide")
+# Настройка страницы (возвращаем центрированный макет с комфортной шириной блоков, как на вашем скриншоте)
+st.set_page_config(page_title="День школяра 60-х", layout="centered")
 
-# Применяем стили: растягиваем на весь экран, делаем огромный заголовок и приветствие
+# Применяем стили: белый фон, крупное приветствие и аккуратные отступы
 st.markdown(
     """
     <style>
-    /* Общий фон */
+    /* Общий белый фон */
     .stApp {
         background-color: #ffffff;
         color: #1a1a1a;
     }
     
-    /* Растягиваем главный контейнер на всю ширину экрана */
+    /* Основной контейнер с правильной шириной */
     div.block-container {
         background-color: #ffffff;
-        max-width: 100% !important;
-        padding-left: 5rem;
-        padding-right: 5rem;
+        max-width: 900px !important;
+        padding-top: 2rem;
     }
     
-    /* Огромный главный заголовок */
+    /* Заголовок */
     h1 {
-        font-size: 42px !important;
-        margin-top: -20px !important;
-        margin-bottom: 10px !important;
+        font-size: 38px !important;
+        margin-top: -10px !important;
+        margin-bottom: 8px !important;
         color: #111111;
         font-weight: 800;
     }
 
-    /* Подзаголовки */
+    /* Подзаголовок */
     h3 {
-        font-size: 26px !important;
-        color: #444444;
+        font-size: 22px !important;
+        color: #555555;
         font-weight: 600;
         margin-bottom: 25px !important;
     }
 
-    /* Крупный текст */
+    /* Обычный текст */
     p, .stMarkdown {
-        font-size: 22px !important;
+        font-size: 20px !important;
         line-height: 1.6 !important;
         color: #222222;
     }
 
-    /* Большой блок приветствия */
+    /* Большой и заметный блок приветствия */
     .welcome-box {
-        background-color: #f4f6f8;
+        background-color: #f8f9fa;
         border-left: 8px solid #222222;
-        padding: 25px 30px;
+        padding: 30px 35px;
         border-radius: 6px;
         margin-bottom: 30px;
-        font-size: 24px !important;
+        font-size: 22px !important;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Инициализация шагов
+# Инициализация шагов презентации
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# Шаг 0: Титульный лист (Приветствие от 10 "А")
+# Шаг 0: Титульный лист (Приветствие от 10 "А", крупный и солидный вид)
 if st.session_state.step == 0:
     st.markdown("<h1>День школяра 60-х</h1>", unsafe_allow_html=True)
     st.markdown("<h3>Интерактивная презентация о буднях подростков эпохи</h3>", unsafe_allow_html=True)
@@ -71,8 +70,8 @@ if st.session_state.step == 0:
     st.markdown(
         """
         <div class="welcome-box">
-            <b>Приветствуем вас!</b><br><br>
-            Проект подготовлен учениками <b>10 «А» класса</b>.<br>
+            <span style="font-size: 26px; font-weight: bold; color: #111;">Приветствуем вас!</span><br><br>
+            Проект подготовлен учениками <b>10 «А» класса</b>.<br><br>
             Приглашаем вас совершить увлекательное путешествие на несколько десятилетий назад и узнать, чем жили, о чем мечтали и как учились школьники в 1960-х годах.
         </div>
         """, 
