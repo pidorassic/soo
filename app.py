@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: отступы сверху, убираем скролл и настраиваем стили
+# Применяем CSS: отступы сверху, убираем скролл и прижимаем правую колонку к краю
 st.markdown(
     """
     <style>
@@ -21,12 +21,17 @@ st.markdown(
     
     div.block-container {
         background-color: #ffffff;
-        max-width: 1300px !important;
-        margin-left: 1.5rem !important;
-        margin-right: auto !important;
-        padding-top: 3rem !important; /* Отступ сверху от шапки браузера */
+        max-width: 100% !important;
+        padding-left: 3rem !important;
+        padding-right: 0rem !important; /* Убираем правый отступ контейнера, чтобы упереться в край */
+        padding-top: 3rem !important;
         padding-bottom: 0rem !important;
-        padding-left: 0rem !important;
+    }
+
+    /* Прижимаем правую колонку (где фото) абсолютно к правому краю экрана */
+    div[data-testid="column"]:nth-of-type(2) {
+        padding-right: 0rem !important;
+        margin-right: 0rem !important;
     }
 
     /* Элегантный плавный эффект: мягкое увеличение масштаба (zoom) и проявление */
@@ -112,14 +117,14 @@ if "step" not in st.session_state:
 # Уникальный контейнер для анимации смены слайдов
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: Приветствие от 10 "А" (Фото максимальное и сдвинуто под правый край)
+    # Шаг 0: Приветствие от 10 "А" (Фото гигантское и прижато вплотную к правому краю)
     if st.session_state.step == 0:
-        col_left, col_right = st.columns([0.9, 1.4], gap="large")
+        col_left, col_right = st.columns([0.8, 1.5], gap="small")
         
         with col_left:
             st.markdown(
                 """
-                <div>
+                <div style="padding-right: 20px;">
                     <div style="font-size: 34px; font-weight: 800; color: #111111; margin-bottom: 12px; line-height: 1.2;">
                         Вітаємо вас!<br>Проект підготовлено учнями 10 «А» класу.
                     </div>
@@ -146,8 +151,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             )
             
         with col_right:
-            # Фото еще крупнее (680px) и сдвинуто к самому краю
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1000&auto=format&fit=crop", width=680)
+            # Картинка максимального размера, упирающаяся в правый край
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop", width=750)
             
             st.write("")
             if st.button("Далі ➔", key="next_btn_0"):
