@@ -1,20 +1,18 @@
 import streamlit as st
 
-# Настройка страницы с выравниванием по левому краю через стили
+# Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: сдвигаем весь контент влево, убираем дублирующийся заголовок, делаем приветствие крупнее
+# Применяем CSS: сдвигаем весь контент влево
 st.markdown(
     """
     <style>
-    /* Общий белый фон и выравнивание по левому краю */
     .stApp {
         background-color: #ffffff;
         color: #000000;
         text-align: left !important;
     }
     
-    /* Сдвигаем основной контейнер влево и задаем комфортную ширину */
     div.block-container {
         background-color: #ffffff;
         max-width: 1000px !important;
@@ -23,7 +21,6 @@ st.markdown(
         padding-left: 0rem !important;
     }
 
-    /* Увеличиваем заголовок-приветствие */
     .welcome-title {
         font-size: 32px !important;
         font-weight: 700 !important;
@@ -32,7 +29,6 @@ st.markdown(
         line-height: 1.3 !important;
     }
 
-    /* Обычный текст */
     p, label, span, .stMarkdown {
         font-size: 19px !important;
         text-align: left !important;
@@ -46,33 +42,33 @@ st.markdown(
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# Шаг 0: Приветствие от 10 "А" (без верхнего дубля, крупный текст слева)
+# Шаг 0: Приветствие от 10 "А" (на украинском)
 if st.session_state.step == 0:
-    st.markdown('<div class="welcome-title">Приветствуем вас! Проект подготовлен учениками 10 «А» класса.</div>', unsafe_allow_html=True)
-    st.write("Приглашаем вас совершить путешествие на несколько десятилетий назад и узнать, чем жили, о чем мечтали и как учились школьники в 1960-х годах.")
-    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="Школьная атмосфера 1960-х")
+    st.markdown('<div class="welcome-title">Вітаємо вас! Проект підготовлено учнями 10 «А» класу.</div>', unsafe_allow_html=True)
+    st.write("Запрошуємо вас здійснити подорож на кілька десятиліть назад і дізнатися, чим жили, про що мріяли та як вчилися школярі у 1960-х роках.")
+    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="Шкільна атмосфера 1960-х")
 
-# Шаг 1: Утро
+# Шаг 1: Утро (на украинском)
 elif st.session_state.step == 1:
-    st.markdown("<h1>День школяра 60-х</h1>", unsafe_allow_html=True)
-    st.write("Утро школьника: подъем, утренняя зарядка под радио и сборы на учебу.")
-    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="Сборы на учебу")
+    st.markdown('<div class="welcome-title">День школяра 60-х: Ранок</div>', unsafe_allow_html=True)
+    st.write("Ранок школяра: підйом, ранкова зарядка під радіоприймач та збори на навчання.")
+    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="Збори до школи")
 
-# Шаг 2: Уроки
+# Шаг 2: Уроки (на украинском)
 elif st.session_state.step == 2:
-    st.markdown("<h1>День школяра 60-х</h1>", unsafe_allow_html=True)
-    st.write("Уроки в классе: письмо перьевыми ручками, тетради в клетку и живое общение.")
-    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="В классе")
+    st.markdown('<div class="welcome-title">День школяра 60-х: Уроки</div>', unsafe_allow_html=True)
+    st.write("Уроки в класі: письмо пір'яними ручками, зошити в клітинку та живе спілкування на перервах.")
+    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="У класі")
 
-# Шаг 3: Продленка
+# Шаг 3: Внеклассная жизнь (на украинском)
 elif st.session_state.step == 3:
-    st.markdown("<h1>День школяра 60-х</h1>", unsafe_allow_html=True)
-    st.write("После уроков: пионерские сборы, кружки и стенгазеты.")
-    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="Внеклассная жизнь")
+    st.markdown('<div class="welcome-title">День школяра 60-х: Позаурочний час</div>', unsafe_allow_html=True)
+    st.write("Після уроків: піонерські збори, гуртки за інтересами та випуск стінгазет.")
+    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="Позакласне життя")
 
-# Кнопка «Сделать ход»
+# Кнопка «Слід.» вместо старой подписи
 st.write("")
-if st.button("Сделать ход"):
+if st.button("Слід."):
     st.session_state.step += 1
     if st.session_state.step > 3:
         st.session_state.step = 0
