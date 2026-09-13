@@ -189,10 +189,17 @@ elif st.session_state.step == 9:
 elif st.session_state.step == 10:
     st.markdown('<div style="text-align: center; font-size: 36px; font-weight: 700; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
     
-    # Центрируем картинку с помощью колонок
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
-        # ----> ВОТ ЗДЕСЬ ПРОПИСАНО ИМЯ ВАШЕГО ФАЙЛА <----
         st.image("215f34834c5e2fae0d891ce97c512dc.jpg", width=250)
         
-    st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 600; margin-top: 25px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_\
+    st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 600; margin-top: 25px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 15px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
+
+# Кнопка переключения шагов (Далі)
+st.write("")
+if st.button("Далі"):
+    st.session_state.step += 1
+    if st.session_state.step > 10:
+        st.session_state.step = 0  # Возврат на начало презентации
+    st.rerun()
