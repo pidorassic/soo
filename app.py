@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: отступы сверху, убираем скролл и растягиваем на весь экран
+# Применяем CSS: отступы сверху, убираем скролл и настраиваем стили
 st.markdown(
     """
     <style>
@@ -21,11 +21,12 @@ st.markdown(
     
     div.block-container {
         background-color: #ffffff;
-        max-width: 100% !important;
-        padding-left: 4rem !important;
-        padding-right: 4rem !important; /* Растягиваем на весь экран, оставляя аккуратные отступы по бокам */
-        padding-top: 4rem !important;  /* Хороший отступ сверху от шапки браузера */
+        max-width: 1300px !important;
+        margin-left: 1.5rem !important;
+        margin-right: auto !important;
+        padding-top: 3rem !important; /* Отступ сверху от шапки браузера */
         padding-bottom: 0rem !important;
+        padding-left: 0rem !important;
     }
 
     /* Элегантный плавный эффект: мягкое увеличение масштаба (zoom) и проявление */
@@ -111,7 +112,7 @@ if "step" not in st.session_state:
 # Уникальный контейнер для анимации смены слайдов
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: Приветствие от 10 "А" (Широкий экран, отступ сверху, фото на всю правую колонку)
+    # Шаг 0: Приветствие от 10 "А" (Широкое фото вправо и отступ сверху)
     if st.session_state.step == 0:
         col_left, col_right = st.columns([1, 1.4], gap="large")
         
@@ -145,7 +146,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             )
             
         with col_right:
-            # Большая широкая картинка на всю правую часть экрана с автоматическим растягиванием
+            # Широкая картинка как просили
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop", use_container_width=True)
             
             st.write("")
@@ -158,17 +159,17 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         if st.session_state.step == 1:
             st.markdown('<div class="slide-title">Ранок</div>', unsafe_allow_html=True)
             st.write("Кожен день радянського школяра у 60-х роках розпочинався дуже рано. Ще до того, як зійде сонце або лунала шкільна дзвінка пора, у квартирах лунала радіотрансляція з обов'язковою ранковою зарядкою. Одяг — виключно випрасувана форма, білі комірці та манжети, які пришивали окремо. Портфелі з цупкої шкіри збиралися суворо з вечора, а взуття ретельно начищалося до блиску.")
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop", use_container_width=True)
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=650)
 
         elif st.session_state.step == 2:
             st.markdown('<div class="slide-title">Уроки</div>', unsafe_allow_html=True)
             st.write("У навчальному процесі панувала сувора дисципліна та порядок. Школярі писали справжніми чорнильницами-непроливайками та дерев'яними ручками з металевими пером, що вимагало неабиякої акуратності, адже за помарочку в зошиті могли знизити оцінку. Жодних гаджетів чи калькуляторів — лише таблиця множення, логарифмічні лінійки, живі дискусії на перервах та дружні розмови біля стінгазет у коридорах.")
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop", use_container_width=True)
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=650)
 
         elif st.session_state.step == 3:
             st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
             st.write("Після завершення уроків життя школярів не зупинялося. Позаурочний час був сповнений колективної праці та творчості: піонерські та комсомольські збори, збір макулатури та металобрухту цілими класами, активна участь у різноманітних гуртках (авіамоделювання, драма, спортивні секції). Підлітки 60-х щиро вірили в майбутнє, захоплювалися космосом після польоту Гагаріна та завжди трималися разом.")
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop", use_container_width=True)
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=650)
 
         elif st.session_state.step == 4:
             st.markdown('<div class="slide-title">Тест: Запитання 1 з 6</div>', unsafe_allow_html=True)
@@ -246,7 +247,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             st.markdown('<div style="text-align: center; font-size: 34px; font-weight: 700; color: #111111; margin-bottom: 15px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
             col1, col2, col3 = st.columns([1, 1, 1])
             with col2:
-                st.image("https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=500&auto=format&fit=crop", use_container_width=True)
+                st.image("https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=500&auto=format&fit=crop", width=220)
             st.markdown('<div style="text-align: center; font-size: 24px; font-weight: 600; margin-top: 15px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
             st.markdown('<div style="text-align: center; font-size: 18px; color: #555555; margin-top: 10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
 
