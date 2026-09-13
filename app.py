@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: максимально плавные и мягкие анимации
+# Применяем CSS: стили, кастомные кнопки и красивый эффект смены слайдов (слайдер-анимация)
 st.markdown(
     """
     <style>
@@ -21,21 +21,21 @@ st.markdown(
         padding-left: 0rem !important;
     }
 
-    /* Супер плавная и мягкая анимация смены листов */
-    @keyframes pageTransition {
+    /* Эффектная плавная анимация смены слайдов (плавное скольжение и появление) */
+    @keyframes slideTransition {
         0% {
             opacity: 0;
-            transform: translateY(15px);
+            transform: translateX(30px);
         }
         100% {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
         }
     }
 
-    /* Применяем мягкую анимацию длительностью 0.8с */
+    /* Применяем анимацию смены слайдов ко всем элементам контейнера */
     .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
-        animation: pageTransition 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        animation: slideTransition 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .slide-title {
@@ -101,8 +101,8 @@ st.markdown(
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# Создаем контейнер с уникальным ключом для каждого шага, чтобы срабатывала плавная анимация смены листов
-with st.container(key=f"slide_container_{st.session_state.step}"):
+# Создаем уникальный контейнер, который перезапускает анимацию скольжения при каждом изменении шага
+with st.container(key=f"slide_transition_box_{st.session_state.step}"):
 
     # Шаг 0: Приветствие от 10 "А"
     if st.session_state.step == 0:
