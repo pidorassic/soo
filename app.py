@@ -185,17 +185,21 @@ elif st.session_state.step == 9:
             st.error("❌ Невірно. Правильна відповідь: Відвідували гуртки та спілкувалися у дворах")
         st.info("💡 **Пояснення:** За відсутності інтернету та смартфонів соціальне життя підлітків проходило в живій командній роботі, гуртках та активних іграх на вулиці.")
 
-# Шаг 10: Завершающий слайд
+# Шаг 10: Завершающий слайд (все по центру + ваша картинка)
 elif st.session_state.step == 10:
-    st.markdown('<div class="slide-title" style="text-align: center;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
-    
-    # Центрируем картинку с помощью колонки Streamlit
-    col1, col2, col3 = st.columns([1, 1, 1])
-    with col2:
-        st.image("https://i.ibb.co/6y18J3B/image.png", width=300)  # или локальная ссылка / прямая ссылка на загруженную картинку
-        
-    st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 600; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
-    st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 15px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div style="text-align: center;">
+            <div style="font-size: 36px; font-weight: 700; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>
+            <div style="margin: 20px 0;">
+                <img src="https://i.ibb.co/hK526v5/emoji.png" width="220" style="display: block; margin: 0 auto;"/>
+            </div>
+            <div style="font-size: 26px; font-weight: 600; color: #111111; margin-top: 25px;">Презентацію підготували учні та учениці 10 «А» класу</div>
+            <div style="font-size: 20px; color: #555555; margin-top: 15px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # Кнопка переключения шагов (Далі)
 st.write("")
