@@ -3,10 +3,16 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: стили, кастомные кнопки, эффект смены слайдов и центрирование первого слайда
+# Применяем CSS: убираем прокрутку, настраиваем стили и центрирование первого слайда
 st.markdown(
     """
     <style>
+    /* Принудительно убираем скроллбар, чтобы контент строго умещался на одном экране */
+    html, body, [data-testid="stAppViewContainer"] {
+        overflow: hidden !important;
+        height: 100vh !important;
+    }
+
     .stApp {
         background-color: #ffffff;
         color: #000000;
@@ -17,7 +23,9 @@ st.markdown(
         background-color: #ffffff;
         max-width: 1000px !important;
         margin-left: 2rem !important;
-        margin-right: auto !important;
+        margin-right: auto !important.
+        padding-top: 1rem !important;
+        padding-bottom: 0rem !important;
         padding-left: 0rem !important;
     }
 
@@ -78,7 +86,7 @@ st.markdown(
         font-weight: 600 !important;
         border: 1px solid #ced4da !important;
         border-radius: 6px !important;
-        padding: 0.5rem 1rem !important;
+        padding: 0.4rem 1rem !important;
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
     
@@ -106,15 +114,15 @@ if "step" not in st.session_state:
 # Уникальный контейнер, который перезапускает анимацию при каждом клике "Далі"
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: Приветствие от 10 "А" (Отцентровано по середине экрана)
+    # Шаг 0: Приветствие от 10 "А" (Идеально компактно для одного экрана)
     if st.session_state.step == 0:
         st.markdown(
             """
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; text-align: center; margin-top: 2rem;">
-                <div style="font-size: 40px; font-weight: 800; color: #111111; margin-bottom: 25px; line-height: 1.2; max-width: 800px;">
-                    Вітаємо вас!<br>Проект підготовлено учнями 10 «А» класу.
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-top: 10px;">
+                <div style="font-size: 34px; font-weight: 800; color: #111111; margin-bottom: 12px; line-height: 1.2; max-width: 800px;">
+                    Вітаємо вас! Проект підготовлено учнями 10 «А» класу.
                 </div>
-                <div style="font-size: 22px; font-weight: 500; color: #444444; margin-bottom: 35px; max-width: 750px; line-height: 1.6;">
+                <div style="font-size: 18px; font-weight: 500; color: #444444; margin-bottom: 20px; max-width: 750px; line-height: 1.5;">
                     Запрошуємо вас здійснити захоплюючу подорож на кілька десятиліть назад. Ми пропонуємо поринути в атмосферу минулого століття та на власні очі побачити, яким було повсякденне життя, турботи, мрії та захоплення звичайних підлітків у 60-х роках.
                 </div>
             </div>
@@ -122,28 +130,28 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             unsafe_allow_html=True
         )
         
-        # Центрирование картинки на первом слайде с помощью колонок
-        col1, col2, col3 = st.columns([1, 2, 1])
+        # Компактное центрирование картинки на первом слайде
+        col1, col2, col3 = st.columns([1, 1.6, 1])
         with col2:
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=700)
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
 
     # Шаг 1: Утро
     elif st.session_state.step == 1:
         st.markdown('<div class="slide-title">Ранок</div>', unsafe_allow_html=True)
         st.write("Кожен день радянського школяра у 60-х роках розпочинався дуже рано. Ще до того, як зійде сонце або лунала шкільна дзвінка пора, у квартирах лунала радіотрансляція з обов'язковою ранковою зарядкою. Одяг — виключно випрасувана форма, білі комірці та манжети, які пришивали окремо. Портфелі з цупкої шкіри збиралися суворо з вечора, а взуття ретельно начищалося до блиску.")
-        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=700)
+        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=650)
 
     # Шаг 2: Уроки
     elif st.session_state.step == 2:
         st.markdown('<div class="slide-title">Уроки</div>', unsafe_allow_html=True)
         st.write("У навчальному процесі панувала сувора дисципліна та порядок. Школярі писали справжніми чорнильницами-непроливайками та дерев'яними ручками з металевими пером, що вимагало неабиякої акуратності, адже за помарочку в зошиті могли знизити оцінку. Жодних гаджетів чи калькуляторів — лише таблиця множення, логарифмічні лінійки, живі дискусії на перервах та дружні розмови біля стінгазет у коридорах.")
-        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=700)
+        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=650)
 
     # Шаг 3: Внеклассная жизнь
     elif st.session_state.step == 3:
         st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
         st.write("Після завершення уроків життя школярів не зупинялося. Позаурочний час був сповнений колективної праці та творчості: піонерські та комсомольські збори, збір макулатури та металобрухту цілими класами, активна участь у різноманітних гуртках (авіамоделювання, драма, спортивні секції). Підлітки 60-х щиро вірили в майбутнє, захоплювалися космосом після польоту Гагаріна та завжди трималися разом.")
-        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=700)
+        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=650)
 
     # Шаг 4: Тест - Питання 1
     elif st.session_state.step == 4:
@@ -231,14 +239,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     # Шаг 10: Завершающий слайд
     elif st.session_state.step == 10:
-        st.markdown('<div style="text-align: center; font-size: 36px; font-weight: 700; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
+        st.markdown('<div style="text-align: center; font-size: 34px; font-weight: 700; color: #111111; margin-bottom: 15px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
         
         col1, col2, col3 = st.columns([1, 1, 1])
         with col2:
-            st.image("https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=600&auto=format&fit=crop", width=250)
+            st.image("https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=500&auto=format&fit=crop", width=220)
             
-        st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 600; margin-top: 25px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
-        st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 15px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
+        st.markdown('<div style="text-align: center; font-size: 24px; font-weight: 600; margin-top: 15px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
+        st.markdown('<div style="text-align: center; font-size: 18px; color: #555555; margin-top: 10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
 
 # Кнопка переключения шагов (Далі)
 st.write("")
