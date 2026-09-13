@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: полная анимация для каждого шага, элементов и смены листов (страниц)
+# Применяем CSS: максимально плавные и мягкие анимации
 st.markdown(
     """
     <style>
@@ -21,21 +21,21 @@ st.markdown(
         padding-left: 0rem !important;
     }
 
-    /* Мощная плавная анимация появления для смены листов и контента */
+    /* Супер плавная и мягкая анимация смены листов */
     @keyframes pageTransition {
         0% {
             opacity: 0;
-            transform: translateY(25px) scale(0.97);
+            transform: translateY(15px);
         }
         100% {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
     }
 
-    /* Применяем анимацию ко всему содержимому при переключении шагов */
+    /* Применяем мягкую анимацию длительностью 0.8с */
     .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
-        animation: pageTransition 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation: pageTransition 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
     .slide-title {
@@ -68,7 +68,7 @@ st.markdown(
         color: #1a1a1a !important;
     }
 
-    /* Стиль для ВСЕХ кнопок Streamlit с анимацией нажатия */
+    /* Стиль для ВСЕХ кнопок Streamlit с мягким откликом */
     .stButton > button {
         background-color: #e4e6eb !important;
         color: #000000 !important;
@@ -77,7 +77,7 @@ st.markdown(
         border: 1px solid #ced4da !important;
         border-radius: 6px !important;
         padding: 0.5rem 1rem !important;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
     
     /* Эффект при наведении мыши на кнопку */
@@ -85,12 +85,12 @@ st.markdown(
         background-color: #d8dadf !important;
         color: #000000 !important;
         border-color: #adb5bd !important;
-        transform: translateY(-2px) scale(1.02);
+        transform: translateY(-2px);
     }
 
     /* Эффект при клике на кнопку */
     .stButton > button:active {
-        transform: translateY(1px) scale(0.97);
+        transform: translateY(1px);
     }
     </style>
     """,
@@ -101,7 +101,7 @@ st.markdown(
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# Создаем контейнер с уникальным ключом для каждого шага, чтобы срабатывала анимация смены листов
+# Создаем контейнер с уникальным ключом для каждого шага, чтобы срабатывала плавная анимация смены листов
 with st.container(key=f"slide_container_{st.session_state.step}"):
 
     # Шаг 0: Приветствие от 10 "А"
