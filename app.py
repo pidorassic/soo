@@ -195,4 +195,4 @@ elif st.session_state.step == 10:
         # ----> ВОТ ЗДЕСЬ ПРОПИСАНО ИМЯ ВАШЕГО ФАЙЛА <----
         st.image("215f34834c5e2fae0d891ce97c512dc.jpg", width=250)
         
-    st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 600; margin-top: 25px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_
+    st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 600; margin-top: 25px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_\
