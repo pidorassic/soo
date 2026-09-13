@@ -21,8 +21,8 @@ st.markdown(
     
     div.block-container {
         background-color: #ffffff;
-        max-width: 1250px !important;
-        margin-left: 2rem !important;
+        max-width: 1300px !important;
+        margin-left: 1.5rem !important;
         margin-right: auto !important;
         padding-top: 3rem !important; /* Отступ сверху от шапки браузера */
         padding-bottom: 0rem !important;
@@ -112,9 +112,9 @@ if "step" not in st.session_state:
 # Уникальный контейнер для анимации смены слайдов
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: Приветствие от 10 "А" (Большое фото справа, текст слева, заполнено всё)
+    # Шаг 0: Приветствие от 10 "А" (Фото максимальное и сдвинуто под правый край)
     if st.session_state.step == 0:
-        col_left, col_right = st.columns([1, 1.2], gap="large")
+        col_left, col_right = st.columns([0.9, 1.4], gap="large")
         
         with col_left:
             st.markdown(
@@ -146,8 +146,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             )
             
         with col_right:
-            # Увеличено фото и смещено правее за счет пропорций колонок
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=900&auto=format&fit=crop", width=620)
+            # Фото еще крупнее (680px) и сдвинуто к самому краю
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1000&auto=format&fit=crop", width=680)
             
             st.write("")
             if st.button("Далі ➔", key="next_btn_0"):
