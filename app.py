@@ -21,7 +21,7 @@ st.markdown(
     
     div.block-container {
         background-color: #ffffff;
-        max-width: 1200px !important;
+        max-width: 1250px !important;
         margin-left: 2rem !important;
         margin-right: auto !important;
         padding-top: 3rem !important; /* Отступ сверху от шапки браузера */
@@ -90,7 +90,6 @@ st.markdown(
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
     
-    /* Эффект при наведении мыши на кнопку */
     .stButton > button:hover {
         background-color: #d8dadf !important;
         color: #000000 !important;
@@ -98,7 +97,6 @@ st.markdown(
         transform: translateY(-2px);
     }
 
-    /* Эффект при клике на кнопку */
     .stButton > button:active {
         transform: translateY(1px);
     }
@@ -114,9 +112,9 @@ if "step" not in st.session_state:
 # Уникальный контейнер для анимации смены слайдов
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: Приветствие от 10 "А" (Заполнено верх и низ экрана)
+    # Шаг 0: Приветствие от 10 "А" (Большое фото справа, текст слева, заполнено всё)
     if st.session_state.step == 0:
-        col_left, col_right = st.columns([1.1, 1], gap="large")
+        col_left, col_right = st.columns([1, 1.2], gap="large")
         
         with col_left:
             st.markdown(
@@ -133,7 +131,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Заполняем нижнюю левую половину экрана дополнительным интересным блоком
             st.markdown(
                 """
                 <div style="margin-top: 25px; padding: 15px 20px; background-color: #f8f9fa; border-left: 5px solid #555; border-radius: 4px;">
@@ -149,9 +146,9 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             )
             
         with col_right:
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=520)
+            # Увеличено фото и смещено правее за счет пропорций колонок
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=900&auto=format&fit=crop", width=620)
             
-            # Кнопка "Далі" строго под фото на первом листе
             st.write("")
             if st.button("Далі ➔", key="next_btn_0"):
                 st.session_state.step += 1
