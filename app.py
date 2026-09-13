@@ -112,7 +112,7 @@ if "step" not in st.session_state:
 # Уникальный контейнер для анимации смены слайдов
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: Приветствие от 10 "А" (Широкое фото вправо и отступ сверху)
+    # Шаг 0: ПЕРВЫЙ ЛИСТ — БОЛЬШОЙ (Широкое фото вправо и отступ сверху)
     if st.session_state.step == 0:
         col_left, col_right = st.columns([1, 1.4], gap="large")
         
@@ -146,7 +146,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             )
             
         with col_right:
-            # Широкая картинка как просили
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop", use_container_width=True)
             
             st.write("")
@@ -155,21 +154,21 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
     else:
-        # Шаги 1-10 (Обычные слайды и тесты)
+        # Промежуточные слайды (1–9) — МАЛЕНЬКИЕ (с компактными фото)
         if st.session_state.step == 1:
             st.markdown('<div class="slide-title">Ранок</div>', unsafe_allow_html=True)
             st.write("Кожен день радянського школяра у 60-х роках розпочинався дуже рано. Ще до того, як зійде сонце або лунала шкільна дзвінка пора, у квартирах лунала радіотрансляція з обов'язковою ранковою зарядкою. Одяг — виключно випрасувана форма, білі комірці та манжети, які пришивали окремо. Портфелі з цупкої шкіри збиралися суворо з вечора, а взуття ретельно начищалося до блиску.")
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=650)
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
 
         elif st.session_state.step == 2:
             st.markdown('<div class="slide-title">Уроки</div>', unsafe_allow_html=True)
             st.write("У навчальному процесі панувала сувора дисципліна та порядок. Школярі писали справжніми чорнильницами-непроливайками та дерев'яними ручками з металевими пером, що вимагало неабиякої акуратності, адже за помарочку в зошиті могли знизити оцінку. Жодних гаджетів чи калькуляторів — лише таблиця множення, логарифмічні лінійки, живі дискусії на перервах та дружні розмови біля стінгазет у коридорах.")
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=650)
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
 
         elif st.session_state.step == 3:
             st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
             st.write("Після завершення уроків життя школярів не зупинялося. Позаурочний час був сповнений колективної праці та творчості: піонерські та комсомольські збори, збір макулатури та металобрухту цілими класами, активна участь у різноманітних гуртках (авіамоделювання, драма, спортивні секції). Підлітки 60-х щиро вірили в майбутнє, захоплювалися космосом після польоту Гагаріна та завжди трималися разом.")
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", width=650)
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
 
         elif st.session_state.step == 4:
             st.markdown('<div class="slide-title">Тест: Запитання 1 з 6</div>', unsafe_allow_html=True)
@@ -244,14 +243,17 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.info("💡 **Пояснення:** За відсутності інтернету та смартфонів соціальне життя підлітків проходило в живій командній роботі, гуртках та активних іграх на вулиці.")
 
         elif st.session_state.step == 10:
-            st.markdown('<div style="text-align: center; font-size: 34px; font-weight: 700; color: #111111; margin-bottom: 15px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
-            col1, col2, col3 = st.columns([1, 1, 1])
-            with col2:
-                st.image("https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=500&auto=format&fit=crop", width=220)
-            st.markdown('<div style="text-align: center; font-size: 24px; font-weight: 600; margin-top: 15px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
-            st.markdown('<div style="text-align: center; font-size: 18px; color: #555555; margin-top: 10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
+            # Шаг 10: ПОСЛЕДНИЙ ЛИСТ — БОЛЬШОЙ (Широкий формат, развернутый на весь екран блок благодарности)
+            st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
+            
+            col_l, col_c, col_r = st.columns([1, 1.5, 1])
+            with col_c:
+                st.image("https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
+                
+            st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 700; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
+            st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
 
-        # Стандартная кнопка "Далі" для всех остальных слайдов (кроме первого)
+        # Стандартная кнопка "Далі" для всех остальных слайдов
         st.write("")
         if st.button("Далі ➔"):
             st.session_state.step += 1
