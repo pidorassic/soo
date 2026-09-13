@@ -3,7 +3,7 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: стили для заголовков, текста и аккуратных карточек теста
+# Применяем CSS: стили для заголовков, текста, аккуратных карточек теста и кастомных кнопок
 st.markdown(
     """
     <style>
@@ -49,6 +49,24 @@ st.markdown(
         line-height: 1.6 !important;
         text-align: left !important;
         color: #1a1a1a !important;
+    }
+
+    /* Стиль для ВСЕХ кнопок Streamlit: слегка серый фон и черный текст */
+    .stButton > button {
+        background-color: #e4e6eb !important;
+        color: #000000 !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 6px !important;
+        padding: 0.5rem 1rem !important;
+    }
+    
+    /* Эффект при наведении мыши на кнопку */
+    .stButton > button:hover {
+        background-color: #d8dadf !important;
+        color: #000000 !important;
+        border-color: #adb5bd !important;
     }
     </style>
     """,
