@@ -51,19 +51,19 @@ if st.session_state.step == 0:
 
 # Шаг 1: Утро
 elif st.session_state.step == 1:
-    st.markdown('<div class="slide-title">День школяра 60-х: Ранок</div>', unsafe_allow_html=True)
+    st.markdown('<div class="slide-title">Ранок</div>', unsafe_allow_html=True)
     st.write("Ранок школяра: підйом, ранкова зарядка під радіоприймач та збори на навчання.")
     st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop")
 
 # Шаг 2: Уроки
 elif st.session_state.step == 2:
-    st.markdown('<div class="slide-title">День школяра 60-х: Уроки</div>', unsafe_allow_html=True)
+    st.markdown('<div class="slide-title">Уроки</div>', unsafe_allow_html=True)
     st.write("Уроки в класі: письмо пір'яними ручками, зошити в клітинку та живе спілкування на перервах.")
     st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop")
 
 # Шаг 3: Внеклассная жизнь
 elif st.session_state.step == 3:
-    st.markdown('<div class="slide-title">День школяра 60-х: Позаурочний час</div>', unsafe_allow_html=True)
+    st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
     st.write("Після уроків: піонерські збори, гуртки за інтересами та випуск стінгазет.")
     st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop")
 
