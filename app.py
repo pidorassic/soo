@@ -42,31 +42,31 @@ st.markdown(
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# Шаг 0: Приветствие от 10 "А" (на украинском)
+# Шаг 0: Приветствие от 10 "А" (на украинском, без подписи под картинкой)
 if st.session_state.step == 0:
     st.markdown('<div class="welcome-title">Вітаємо вас! Проект підготовлено учнями 10 «А» класу.</div>', unsafe_allow_html=True)
     st.write("Запрошуємо вас здійснити подорож на кілька десятиліть назад і дізнатися, чим жили, про що мріяли та як вчилися школярі у 1960-х роках.")
-    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="Шкільна атмосфера 1960-х")
+    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop")
 
 # Шаг 1: Утро (на украинском)
 elif st.session_state.step == 1:
     st.markdown('<div class="welcome-title">День школяра 60-х: Ранок</div>', unsafe_allow_html=True)
     st.write("Ранок школяра: підйом, ранкова зарядка під радіоприймач та збори на навчання.")
-    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="Збори до школи")
+    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop")
 
 # Шаг 2: Уроки (на украинском)
 elif st.session_state.step == 2:
     st.markdown('<div class="welcome-title">День школяра 60-х: Уроки</div>', unsafe_allow_html=True)
     st.write("Уроки в класі: письмо пір'яними ручками, зошити в клітинку та живе спілкування на перервах.")
-    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="У класі")
+    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop")
 
 # Шаг 3: Внеклассная жизнь (на украинском)
 elif st.session_state.step == 3:
     st.markdown('<div class="welcome-title">День школяра 60-х: Позаурочний час</div>', unsafe_allow_html=True)
     st.write("Після уроків: піонерські збори, гуртки за інтересами та випуск стінгазет.")
-    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", caption="Позакласне життя")
+    st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop")
 
-# Кнопка «Слід.» вместо старой подписи
+# Кнопка «Слід.»
 st.write("")
 if st.button("Слід."):
     st.session_state.step += 1
