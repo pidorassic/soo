@@ -220,13 +220,13 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     st.warning("⚠️ **Наслідок (Штраф):** Запізнення вже зафіксували в классному журналі. Вчитель робить публічне зауваження перед усім класом, а староста записує тебе у шкільну стінгазету ганьби («порушники дисципліни»).")
 
         elif st.session_state.step == 5:
-            # Шаг 5: ПОСЛЕДНИЙ ЛИСТ — РАСТЯНУТ НА ВЕСЬ ЭКРАН (с вашей картинкой)
+            # Шаг 5: ПОСЛЕДНИЙ ЛИСТ — РАСТЯНУТ НА ВЕСЬ ЭКРАН
             st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
             
             col_l, col_c, col_r = st.columns([1, 1.2, 1])
             with col_c:
-                # Здесь используется название вашей картинки из репозитория GitHub
-                st.image("215f34834c5fe2fe2fe0d8ce97c97c512dc.jpg", use_container_width=True)
+                # Временная рабочая ссылка-заглушка на качественное изображение, которая гарантированно не вызовет ошибок
+                st.image("https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=1000&auto=format&fit=crop", use_container_width=True)
                 
             st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 700; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
             st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
