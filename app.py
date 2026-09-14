@@ -8,7 +8,6 @@ st.set_page_config(page_title="День школяра 60-х", layout="wide")
 st.markdown(
     """
     <style>
-    /* Принудительно убираем скроллбар, чтобы контент строго умещался на одном экране */
     html, body, [data-testid="stAppViewContainer"] {
         overflow: hidden !important;
         height: 100vh !important;
@@ -25,12 +24,11 @@ st.markdown(
         max-width: 1300px !important;
         margin-left: 1.5rem !important;
         margin-right: auto !important;
-        padding-top: 3rem !important; /* Отступ сверху от шапки браузера */
+        padding-top: 3rem !important;
         padding-bottom: 0rem !important;
         padding-left: 0rem !important;
     }
 
-    /* Элегантный плавный эффект: мягкое увеличение масштаба (zoom) и проявление */
     @keyframes scaleFadeTransition {
         0% {
             opacity: 0;
@@ -44,7 +42,6 @@ st.markdown(
         }
     }
 
-    /* Применяем этот эффект ко всем элементам нового слайда */
     .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
         animation: scaleFadeTransition 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -58,7 +55,6 @@ st.markdown(
         text-align: left !important;
     }
 
-    /* Карточка для вопроса */
     .question-card {
         background-color: #f8f9fa;
         border-left: 6px solid #333333;
@@ -70,7 +66,6 @@ st.markdown(
         color: #111111 !important;
     }
 
-    /* Увеличиваем размер и жирность основного текста */
     p, label, span, .stMarkdown {
         font-size: 20px !important;
         font-weight: 500 !important;
@@ -79,7 +74,6 @@ st.markdown(
         color: #1a1a1a !important;
     }
 
-    /* Стиль для ВСЕХ кнопок Streamlit с мягким откликом */
     .stButton > button {
         background-color: #e4e6eb !important;
         color: #000000 !important;
@@ -106,12 +100,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Инициализация шагов
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# ДИНАМИЧЕСКИЙ КАСТОМ ДЛЯ ШИРИНЫ ЭКРАНА:
-# Если шаг 0 или 5 (последний) — расширяем главный контейнер на весь экран, иначе возвращаем 1300px
 if st.session_state.step in [0, 5]:
     st.markdown(
         """
@@ -128,10 +119,8 @@ if st.session_state.step in [0, 5]:
         unsafe_allow_html=True
     )
 
-# Уникальный контейнер для анимации смены слайдов
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # Шаг 0: ПЕРВЫЙ ЛИСТ — РАСТЯНУТ НА ВЕСЬ ЭКРАН
     if st.session_state.step == 0:
         col_left, col_right = st.columns([1, 1.4], gap="large")
         
@@ -173,7 +162,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
     else:
-        # Промежуточные слайды (1–4) — стандартные (компактные)
         if st.session_state.step == 1:
             st.markdown('<div class="slide-title">Ранок</div>', unsafe_allow_html=True)
             st.write("Кожен день радянського школяра у 60-х роках розпочинався дуже рано. Ще до того, як зійде сонце або лунала шкільна дзвінка пора, у квартирах лунала радіотрансляція з обов'язковою ранковою зарядкою. Одяг — виключно випрасувана форма, білі комірці та манжети, які пришивали окремо. Портфелі з цупкої шкіри збиралися суворо з вечора, а взуття ретельно начищалося до блиску.")
@@ -221,24 +209,22 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     st.warning("⚠️ **Наслідок (Штраф):** Запізнення вже зафіксували в классному журналі. Вчитель робить публічне зауваження перед усім класом, а староста записує тебе у шкільну стінгазету ганьби («порушники дисципліни»).")
 
         elif st.session_state.step == 5:
-            # Шаг 5: ПОСЛЕДНИЙ ЛИСТ — РАСТЯНУТ НА ВЕСЬ ЭКРАН (загрузка вашего файла через PIL)
             st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
             
             col_l, col_c, col_r = st.columns([1, 1.2, 1])
             with col_c:
                 try:
-                    img = Image.open("215f34834c5fe2fe2fe0d8ce97c97c512dc.jpg")
+                    img = Image.open("end.jpg")
                     st.image(img, use_container_width=True)
                 except Exception:
-                    st.error("Не вдалося завантажити локальне зображення. Перевірте назву файлу в репозиторії.")
+                    st.error("Файл 'end.jpg' не знайдено. Перейменуйте картинку в репозиторії на 'end.jpg'.")
                 
             st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 700; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
             st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
 
-        # Стандартная кнопка "Далі" для всех остальных слайдов
         st.write("")
         if st.button("Далі ➔"):
             st.session_state.step += 1
             if st.session_state.step > 5:
-                st.session_state.step = 0  # Возврат на начало презентации
+                st.session_state.step = 0
             st.rerun()
