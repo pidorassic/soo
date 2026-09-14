@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
@@ -220,13 +221,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     st.warning("⚠️ **Наслідок (Штраф):** Запізнення вже зафіксували в классному журналі. Вчитель робить публічне зауваження перед усім класом, а староста записує тебе у шкільну стінгазету ганьби («порушники дисципліни»).")
 
         elif st.session_state.step == 5:
-            # Шаг 5: ПОСЛЕДНИЙ ЛИСТ — РАСТЯНУТ НА ВЕСЬ ЭКРАН (с вашей реальной картинкой)
+            # Шаг 5: ПОСЛЕДНИЙ ЛИСТ — РАСТЯНУТ НА ВЕСЬ ЭКРАН (загрузка вашего файла через PIL)
             st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
             
             col_l, col_c, col_r = st.columns([1, 1.2, 1])
             with col_c:
-                # Прямая ссылка на вашу картинку из GitHub репозитория
-                st.image("https://raw.githubusercontent.com/pidorassic/soo/main/215f34834c5fe2fe2fe0d8ce97c97c512dc.jpg", width=400)
+                try:
+                    img = Image.open("215f34834c5fe2fe2fe0d8ce97c97c512dc.jpg")
+                    st.image(img, use_container_width=True)
+                except Exception:
+                    st.error("Не вдалося завантажити локальне зображення. Перевірте назву файлу в репозиторії.")
                 
             st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 700; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
             st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
