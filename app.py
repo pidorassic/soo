@@ -212,34 +212,46 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
         elif st.session_state.step == 5:
-            # Увеличили центральную колонку и подняли max-height картинки до 60vh (в 1.5 раза больше от 40vh)
-            col_l, col_c, col_r = st.columns([0.5, 3, 0.5])
-            with col_c:
-                st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
-                
-                st.markdown(
-                    """
-                    <style>
-                    img {
-                        max-height: 60vh !important;
-                        width: auto !important;
-                        display: block !important;
-                        margin: 0 auto !important;
-                        border-radius: 12px;
-                    }
-                    </style>
-                    """,
-                    unsafe_allow_html=True
-                )
-                try:
-                    img = Image.open("end.jpg")
-                    st.image(img)
-                except Exception:
-                    st.error("Файл 'end.jpg' не знайдено.")
-                
-                st.markdown('<div style="text-align: center; font-size: 24px; font-weight: 700; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
-                st.markdown('<div style="text-align: center; font-size: 17px; color: #555555; margin-top: 5px; margin-bottom: 20px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
+            # Оборачиваем весь контент последнего слайда в блок с flex-выравниванием по центру
+            st.markdown(
+                """
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+                    <div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px; width: 100%;">Дякуємо за увагу!</div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
+            st.markdown(
+                """
+                <style>
+                img {
+                    max-height: 60vh !important;
+                    width: auto !important;
+                    display: block !important;
+                    margin: 0 auto !important;
+                    border-radius: 12px;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
+            try:
+                img = Image.open("end.jpg")
+                st.image(img)
+            except Exception:
+                st.error("Файл 'end.jpg' не знайдено.")
+            
+            st.markdown(
+                """
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+                    <div style="text-align: center; font-size: 24px; font-weight: 700; margin-top: 20px; color: #111111; width: 100%;">Презентацію підготували учні та учениці 10 «А» класу</div>
+                    <div style="text-align: center; font-size: 17px; color: #555555; margin-top: 5px; margin-bottom: 20px; width: 100%;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 
-                if st.button("На початок ➔", key="restart_btn"):
-                    st.session_state.step = 0
-                    st.rerun()
+            if st.button("На початок ➔", key="restart_btn"):
+                st.session_state.step = 0
+                st.rerun()
