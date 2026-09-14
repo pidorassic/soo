@@ -4,7 +4,7 @@ from PIL import Image
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: растягиваем на весь экран и выравниваем всё по центру
+# Применяем CSS: добавляем отступ сверху для всех страниц
 st.markdown(
     """
     <style>
@@ -19,13 +19,13 @@ st.markdown(
         text-align: left !important;
     }
     
-    /* Растягиваем контейнер на всю ширину и центрируем */
+    /* Растягиваем контейнер на всю ширину и делаем отступ сверху */
     div.block-container {
         background-color: #ffffff;
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding-top: 2rem !important;
+        padding-top: 5rem !important; /* Увеличили отступ сверху */
         padding-bottom: 2rem !important;
         padding-left: 4rem !important;
         padding-right: 4rem !important;
@@ -212,18 +212,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
         elif st.session_state.step == 5:
-            # Используем встроенный обход Streamlit для центрирования через container с выравниванием
+            # Последний лист не трогаем, он остается строго по центру
             st.markdown(
                 """
                 <style>
-                /* Центрируем обертку изображения и текста внутри главного контейнера */
                 div[data-testid="stVerticalBlock"] {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     width: 100%;
                 }
-                /* Точное центрирование самой картинки */
                 .stImage {
                     display: flex;
                     justify-content: center;
