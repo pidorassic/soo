@@ -4,12 +4,12 @@ from PIL import Image
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: фиксируем высоту экрана и растягиваем интерфейс
+# Применяем CSS: растягиваем на весь экран и выравниваем всё по центру
 st.markdown(
     """
     <style>
     html, body, [data-testid="stAppViewContainer"] {
-        overflow-x: hidden !important; /* Убираем горизонтальную прокрутку */
+        overflow-x: hidden !important;
         height: 100vh !important;
     }
 
@@ -19,15 +19,16 @@ st.markdown(
         text-align: left !important;
     }
     
-    /* Растягиваем контейнер на весь экран */
+    /* Растягиваем контейнер на всю ширину и центрируем */
     div.block-container {
         background-color: #ffffff;
-        max-width: 100% !important; /* Изменено с 1300px на 100% */
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 auto !important;
         padding-top: 2rem !important;
         padding-bottom: 2rem !important;
-        padding-left: 3rem !important;
-        padding-right: 3rem !important;
-        margin: 0 !important;
+        padding-left: 4rem !important;
+        padding-right: 4rem !important;
     }
 
     @keyframes scaleFadeTransition {
@@ -211,15 +212,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
         elif st.session_state.step == 5:
-            st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
-            
+            # Используем колонки с пустыми боковыми отступами, чтобы центр всегда был по середине экрана
             col_l, col_c, col_r = st.columns([1, 2, 1])
             with col_c:
+                st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
+                
                 st.markdown(
                     """
                     <style>
                     img {
-                        max-height: 45vh !important;
+                        max-height: 40vh !important;
                         width: auto !important;
                         display: block !important;
                         margin: 0 auto !important;
@@ -235,12 +237,9 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 except Exception:
                     st.error("Файл 'end.jpg' не знайдено.")
                 
-            st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 700; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
-            st.markdown('<div style="text-align: center; font-size: 18px; color: #555555; margin-top: 5px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
+                st.markdown('<div style="text-align: center; font-size: 24px; font-weight: 700; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
+                st.markdown('<div style="text-align: center; font-size: 17px; color: #555555; margin-top: 5px; margin-bottom: 20px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
 
-            st.write("")
-            col1, col2, col3 = st.columns([1, 1, 1])
-            with col1:
-                if st.button("На початок ➔"):
+                if st.button("На початок ➔", key="restart_btn"):
                     st.session_state.step = 0
                     st.rerun()
