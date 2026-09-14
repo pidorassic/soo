@@ -4,12 +4,12 @@ from PIL import Image
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: фиксируем высоту экрана и компактно ужимаем элементы последнего слайда
+# Применяем CSS: фиксируем высоту экрана и растягиваем интерфейс
 st.markdown(
     """
     <style>
     html, body, [data-testid="stAppViewContainer"] {
-        overflow: hidden !important;
+        overflow-x: hidden !important; /* Убираем горизонтальную прокрутку */
         height: 100vh !important;
     }
 
@@ -19,14 +19,15 @@ st.markdown(
         text-align: left !important;
     }
     
+    /* Растягиваем контейнер на весь экран */
     div.block-container {
         background-color: #ffffff;
-        max-width: 1300px !important;
-        margin-left: 1.5rem !important;
-        margin-right: auto !important;
-        padding-top: 1.5rem !important;
-        padding-bottom: 0rem !important;
-        padding-left: 0rem !important;
+        max-width: 100% !important; /* Изменено с 1300px на 100% */
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+        padding-left: 3rem !important;
+        padding-right: 3rem !important;
+        margin: 0 !important;
     }
 
     @keyframes scaleFadeTransition {
@@ -81,7 +82,7 @@ st.markdown(
         font-weight: 600 !important;
         border: 1px solid #ced4da !important;
         border-radius: 6px !important;
-        padding: 0.3rem 1rem !important;
+        padding: 0.5rem 1.5rem !important;
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
     
@@ -102,22 +103,6 @@ st.markdown(
 
 if "step" not in st.session_state:
     st.session_state.step = 0
-
-if st.session_state.step in [0, 5]:
-    st.markdown(
-        """
-        <style>
-        div.block-container {
-            max-width: 98% !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            padding-left: 2rem !important;
-            padding-right: 2rem !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
@@ -166,16 +151,28 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             st.markdown('<div class="slide-title">Ранок</div>', unsafe_allow_html=True)
             st.write("Кожен день радянського школяра у 60-х роках розпочинався дуже рано. Ще до того, як зійде сонце або лунала шкільна дзвінка пора, у квартирах лунала радіотрансляція з обов'язковою ранковою зарядкою. Одяг — виключно випрасувана форма, білі комірці та манжети, які пришивали окремо. Портфелі з цупкої шкіри збиралися суворо з вечора, а взуття ретельно начищалося до блиску.")
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+            st.write("")
+            if st.button("Далі ➔", key="next_btn_1"):
+                st.session_state.step += 1
+                st.rerun()
 
         elif st.session_state.step == 2:
             st.markdown('<div class="slide-title">Уроки</div>', unsafe_allow_html=True)
             st.write("У навчальному процесі панувала сувора дисципліна та порядок. Школярі писали справжніми чорнильницами-непроливайками та дерев'яними ручками з металевими пером, що вимагало неабиякої акуратності, адже за помарочку в зошиті могли знизити оцінку. Жодних гаджетів чи калькуляторів — лише таблиця множення, логарифмічні лінійки, живі дискусії на перервах та дружні розмови біля стінгазет у коридорах.")
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+            st.write("")
+            if st.button("Далі ➔", key="next_btn_2"):
+                st.session_state.step += 1
+                st.rerun()
 
         elif st.session_state.step == 3:
             st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
             st.write("Після завершення уроків життя школярів не зупинялося. Позаурочний час був сповнений колективної праці та творчості: піонерські та комсомольські збори, збір макулатури та металобрухту цілими класами, активна участь у різноманітних гуртках (авіамоделювання, драма, спортивні секції). Підлітки 60-х щиро вірили в майбутнє, захоплювалися космосом після польоту Гагаріна та завжди трималися разом.")
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+            st.write("")
+            if st.button("Далі ➔", key="next_btn_3"):
+                st.session_state.step += 1
+                st.rerun()
 
         elif st.session_state.step == 4:
             st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
@@ -208,22 +205,25 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     st.error("❌ **07:40.** Ти приходиш після дзвінка.")
                     st.warning("⚠️ **Наслідок (Штраф):** Запізнення вже зафіксували в классному журналі. Вчитель робить публічне зауваження перед усім класом, а староста записує тебе у шкільну стінгазету ганьби («порушники дисципліни»).")
 
+            st.write("")
+            if st.button("Далі ➔", key="next_btn_4"):
+                st.session_state.step += 1
+                st.rerun()
+
         elif st.session_state.step == 5:
-            # Сжимаем последний слайд строго под размеры экрана с ограничением высоты картинки через CSS
-            st.markdown('<div style="text-align: center; font-size: 32px; font-weight: 800; color: #111111; margin-bottom: 8px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
+            st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
             
-            col_l, col_c, col_r = st.columns([1, 1, 1])
+            col_l, col_c, col_r = st.columns([1, 2, 1])
             with col_c:
                 st.markdown(
                     """
                     <style>
-                    /* Ограничиваем максимальную высоту картинки, чтобы она не растягивала экран */
                     img {
-                        max-height: 38vh !important;
+                        max-height: 45vh !important;
                         width: auto !important;
                         display: block !important;
                         margin: 0 auto !important;
-                        border-radius: 8px;
+                        border-radius: 12px;
                     }
                     </style>
                     """,
@@ -235,12 +235,12 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 except Exception:
                     st.error("Файл 'end.jpg' не знайдено.")
                 
-            st.markdown('<div style="text-align: center; font-size: 22px; font-weight: 700; margin-top: 10px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
-            st.markdown('<div style="text-align: center; font-size: 16px; color: #555555; margin-top: 4px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
+            st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 700; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
+            st.markdown('<div style="text-align: center; font-size: 18px; color: #555555; margin-top: 5px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
 
-        st.write("")
-        if st.button("Далі ➔"):
-            st.session_state.step += 1
-            if st.session_state.step > 5:
-                st.session_state.step = 0
-            st.rerun()
+            st.write("")
+            col1, col2, col3 = st.columns([1, 1, 1])
+            with col1:
+                if st.button("На початок ➔"):
+                    st.session_state.step = 0
+                    st.rerun()
