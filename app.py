@@ -212,8 +212,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
         elif st.session_state.step == 5:
-            # Используем колонки с пустыми боковыми отступами, чтобы центр всегда был по середине экрана
-            col_l, col_c, col_r = st.columns([1, 2, 1])
+            # Увеличили центральную колонку и подняли max-height картинки до 60vh (в 1.5 раза больше от 40vh)
+            col_l, col_c, col_r = st.columns([0.5, 3, 0.5])
             with col_c:
                 st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
                 
@@ -221,7 +221,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     """
                     <style>
                     img {
-                        max-height: 40vh !important;
+                        max-height: 60vh !important;
                         width: auto !important;
                         display: block !important;
                         margin: 0 auto !important;
