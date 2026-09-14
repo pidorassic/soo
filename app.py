@@ -25,7 +25,7 @@ st.markdown(
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding-top: 5rem !important; /* Увеличили отступ сверху */
+        padding-top: 5rem !important;
         padding-bottom: 2rem !important;
         padding-left: 4rem !important;
         padding-right: 4rem !important;
@@ -212,7 +212,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
         elif st.session_state.step == 5:
-            # Последний лист не трогаем, он остается строго по центру
             st.markdown(
                 """
                 <style>
@@ -247,8 +246,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             except Exception:
                 st.error("Файл 'end.jpg' не знайдено.")
             
-            st.markdown('<div style="text-align: center; font-size: 24px; font-weight: 700; margin-top: 20px; color: #111111; width: 100%;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
-            st.markdown('<div style="text-align: center; font-size: 17px; color: #555555; margin-top: 5px; margin-bottom: 20px; width: 100%;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
+            st.markdown('<div style="text-align: center; font-size: 24px; font-weight: 700; margin-top: 20px; color: #111111; width: 100%;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
 
             if st.button("На початок ➔", key="restart_btn"):
                 st.session_state.step = 0
