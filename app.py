@@ -4,7 +4,7 @@ from PIL import Image
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: отступы сверху, убираем скролл и настраиваем базовые стили
+# Применяем CSS: фиксируем высоту экрана и компактно ужимаем элементы последнего слайда
 st.markdown(
     """
     <style>
@@ -24,7 +24,7 @@ st.markdown(
         max-width: 1300px !important;
         margin-left: 1.5rem !important;
         margin-right: auto !important;
-        padding-top: 3rem !important;
+        padding-top: 1.5rem !important;
         padding-bottom: 0rem !important;
         padding-left: 0rem !important;
     }
@@ -47,29 +47,29 @@ st.markdown(
     }
 
     .slide-title {
-        font-size: 32px !important;
+        font-size: 30px !important;
         font-weight: 700 !important;
         color: #111111 !important;
-        margin-bottom: 15px !important;
-        line-height: 1.3 !important;
+        margin-bottom: 10px !important;
+        line-height: 1.2 !important;
         text-align: left !important;
     }
 
     .question-card {
         background-color: #f8f9fa;
         border-left: 6px solid #333333;
-        padding: 20px 25px;
+        padding: 15px 20px;
         border-radius: 6px;
-        margin-bottom: 20px;
-        font-size: 22px !important;
+        margin-bottom: 15px;
+        font-size: 20px !important;
         font-weight: 600 !important;
         color: #111111 !important;
     }
 
     p, label, span, .stMarkdown {
-        font-size: 20px !important;
+        font-size: 18px !important;
         font-weight: 500 !important;
-        line-height: 1.6 !important;
+        line-height: 1.5 !important;
         text-align: left !important;
         color: #1a1a1a !important;
     }
@@ -77,11 +77,11 @@ st.markdown(
     .stButton > button {
         background-color: #e4e6eb !important;
         color: #000000 !important;
-        font-size: 18px !important;
+        font-size: 16px !important;
         font-weight: 600 !important;
         border: 1px solid #ced4da !important;
         border-radius: 6px !important;
-        padding: 0.4rem 1.2rem !important;
+        padding: 0.3rem 1rem !important;
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
     
@@ -128,10 +128,10 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             st.markdown(
                 """
                 <div style="padding-right: 15px;">
-                    <div style="font-size: 34px; font-weight: 800; color: #111111; margin-bottom: 12px; line-height: 1.2;">
+                    <div style="font-size: 32px; font-weight: 800; color: #111111; margin-bottom: 10px; line-height: 1.2;">
                         Вітаємо вас!<br>Проект підготовлено учнями 10 «А» класу.
                     </div>
-                    <div style="font-size: 18px; font-weight: 500; color: #444444; line-height: 1.5;">
+                    <div style="font-size: 17px; font-weight: 500; color: #444444; line-height: 1.4;">
                         Запрошуємо вас здійснити захоплюючу подорож на кілька десятиліть назад. Ми пропонуємо поринути в атмосферу минулого століття та на власні очі побачити, яким було повсякденне життя підлітків у 60-х роках.
                     </div>
                 </div>
@@ -141,9 +141,9 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             
             st.markdown(
                 """
-                <div style="margin-top: 25px; padding: 15px 20px; background-color: #f8f9fa; border-left: 5px solid #555; border-radius: 4px;">
-                    <div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 5px;">📌 Що на вас чекає у цій подорожі:</div>
-                    <div style="font-size: 16px; color: #555; line-height: 1.4;">
+                <div style="margin-top: 15px; padding: 12px 18px; background-color: #f8f9fa; border-left: 5px solid #555; border-radius: 4px;">
+                    <div style="font-size: 16px; font-weight: 700; color: #222; margin-bottom: 4px;">📌 Що на вас чекає у цій подорожі:</div>
+                    <div style="font-size: 15px; color: #555; line-height: 1.3;">
                         • Ранкові звички та шкільна форма<br>
                         • Особливості навчання за чорнильницями<br>
                         • Інтерактивний вибір життєвої ситуації 60-х років
@@ -209,18 +209,34 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     st.warning("⚠️ **Наслідок (Штраф):** Запізнення вже зафіксували в классному журналі. Вчитель робить публічне зауваження перед усім класом, а староста записує тебе у шкільну стінгазету ганьби («порушники дисципліни»).")
 
         elif st.session_state.step == 5:
-            st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
+            # Сжимаем последний слайд строго под размеры экрана с ограничением высоты картинки через CSS
+            st.markdown('<div style="text-align: center; font-size: 32px; font-weight: 800; color: #111111; margin-bottom: 8px;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
             
-            col_l, col_c, col_r = st.columns([1, 1.2, 1])
+            col_l, col_c, col_r = st.columns([1, 1, 1])
             with col_c:
+                st.markdown(
+                    """
+                    <style>
+                    /* Ограничиваем максимальную высоту картинки, чтобы она не растягивала экран */
+                    img {
+                        max-height: 38vh !important;
+                        width: auto !important;
+                        display: block !important;
+                        margin: 0 auto !important;
+                        border-radius: 8px;
+                    }
+                    </style>
+                    """,
+                    unsafe_allow_html=True
+                )
                 try:
                     img = Image.open("end.jpg")
-                    st.image(img, use_container_width=True)
+                    st.image(img)
                 except Exception:
-                    st.error("Файл 'end.jpg' не знайдено. Перейменуйте картинку в репозиторії на 'end.jpg'.")
+                    st.error("Файл 'end.jpg' не знайдено.")
                 
-            st.markdown('<div style="text-align: center; font-size: 26px; font-weight: 700; margin-top: 20px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
-            st.markdown('<div style="text-align: center; font-size: 20px; color: #555555; margin-top: 10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
+            st.markdown('<div style="text-align: center; font-size: 22px; font-weight: 700; margin-top: 10px; color: #111111;">Презентацію підготували учні та учениці 10 «А» класу</div>', unsafe_allow_html=True)
+            st.markdown('<div style="text-align: center; font-size: 16px; color: #555555; margin-top: 4px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
 
         st.write("")
         if st.button("Далі ➔"):
