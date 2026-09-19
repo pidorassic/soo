@@ -284,6 +284,7 @@ def show_extra_dialog():
 
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
+    # ===== STEP 0 — ГЛАВНАЯ =====
     if st.session_state.step == 0:
         st.markdown(
             '<div class="hero-full">'
@@ -298,27 +299,31 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '</a>'
             '<a class="hero-card-link" href="?page=2" target="_self">'
             '<span class="hc-icon">🌅</span>'
-            '<div class="hc-title">РАНОК</div>'
-            '<div class="hc-desc">Пробудження, сніданок та форма</div>'
+            '<div class="hc-title">ДЕНЬ ПІОНЕРА</div>'
+            '<div class="hc-desc">Ранок та школа очима піонера</div>'
             '</a>'
-            '<a class="hero-card-link" href="?page=3" target="_self">'
-            '<span class="hc-icon">📚</span>'
-            '<div class="hc-title">УРОКИ</div>'
-            '<div class="hc-desc">Школа, чорнильниці та дисципліна</div>'
-            '</a>'
-            '</div>'
-            '<div class="hero-cards-bottom">'
             '<a class="hero-card-link" href="?page=4" target="_self">'
             '<span class="hc-icon">🎒</span>'
             '<div class="hc-title">ПОЗАУРОЧНИЙ ЧАС</div>'
             '<div class="hc-desc">Гуртки, піонери та колектив</div>'
             '</a>'
+            '</div>'
+            '<div class="hero-cards-bottom">'
             '<a class="hero-card-link" href="?page=5" target="_self">'
             '<span class="hc-icon">🎯</span>'
             '<div class="hc-title">ІНТЕРАКТИВ</div>'
             '<div class="hc-desc">Спробуй себе у ситуації 60-х років</div>'
             '</a>'
-            '<div style="visibility: hidden;"></div>'
+            '<a class="hero-card-link" href="?page=6" target="_self">'
+            '<span class="hc-icon">📚</span>'
+            '<div class="hc-title">ДЖЕРЕЛА</div>'
+            '<div class="hc-desc">Матеріали та посилання</div>'
+            '</a>'
+            '<a class="hero-card-link" href="?page=7" target="_self">'
+            '<span class="hc-icon">🏁</span>'
+            '<div class="hc-title">ЗАВЕРШЕННЯ</div>'
+            '<div class="hc-desc">Подяка та фінальне слово</div>'
+            '</a>'
             '</div>'
             '</div>'
             '<div class="hero-footer">Проект учнів 10-А класу</div>'
@@ -332,6 +337,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 1
                 st.rerun()
 
+    # ===== STEP 1 — ІСТОРИЧНА ЗГАДКА (1 слайд) =====
     elif st.session_state.step == 1:
         st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
         st.markdown(
@@ -373,18 +379,19 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             unsafe_allow_html=True
         )
         st.write("")
-        col_home, col_next, _ = st.columns([1, 1, 4])
+        col_back, col_home, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_1"):
+                st.session_state.step = 0
+                st.rerun()
         with col_home:
             if st.button("🏠 На головну", key="home_btn_1"):
                 st.session_state.step = 0
                 st.rerun()
-        with col_next:
-            if st.button("Далі ➔", key="next_btn_1"):
-                st.session_state.step = 2
-                st.rerun()
 
+    # ===== STEP 2 — ДЕНЬ ПІОНЕРА · РАНОК (промежуточный) =====
     elif st.session_state.step == 2:
-        st.markdown('<div class="slide-title">РАНОК — ПОЧАТОК ДНЯ</div>', unsafe_allow_html=True)
+        st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА — РАНОК</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">⏰ 07:00. дзвенить будильник</div>',
             unsafe_allow_html=True
@@ -407,17 +414,11 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '</div>',
             unsafe_allow_html=True
         )
-        st.markdown(
-            '<div style="font-size: 16px; font-weight: 500; color: #555; line-height: 1.5; margin-bottom: 20px;">'
-            '💡 У різних родинах сніданок залежав від того, які продукти були вдома і скільки часу залишилось до виходу.'
-            '</div>',
-            unsafe_allow_html=True
-        )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
         st.write("")
-        col_home, col_next, _ = st.columns([1, 1, 4])
-        with col_home:
-            if st.button("🏠 На головну", key="home_btn_2"):
+        col_back, col_next, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_2"):
                 st.session_state.step = 0
                 st.rerun()
         with col_next:
@@ -425,8 +426,9 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 3
                 st.rerun()
 
+    # ===== STEP 3 — ДЕНЬ ПІОНЕРА · У ШКОЛІ (конец темы) =====
     elif st.session_state.step == 3:
-        st.markdown('<div class="slide-title">У ШКОЛІ</div>', unsafe_allow_html=True)
+        st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА — У ШКОЛІ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size: 20px; font-weight: 700; color: #111111; margin-bottom: 8px;">🔔 08:00. Лунає дзвоник</div>',
             unsafe_allow_html=True
@@ -468,19 +470,20 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 use_container_width=True
             )
         st.write("")
-        col_home, col_next, col_extra, _ = st.columns([1, 1, 1, 3])
+        col_back, col_home, col_extra, _ = st.columns([1, 1, 1, 3])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_3"):
+                st.session_state.step = 2
+                st.rerun()
         with col_home:
             if st.button("🏠 На головну", key="home_btn_3"):
                 st.session_state.step = 0
-                st.rerun()
-        with col_next:
-            if st.button("Далі ➔", key="next_btn_3"):
-                st.session_state.step = 4
                 st.rerun()
         with col_extra:
             if st.button("📖 Доп. інфо", key="extra_btn_3"):
                 show_extra_dialog()
 
+    # ===== STEP 4 — ПОЗАУРОЧНИЙ ЧАС (1 слайд) =====
     elif st.session_state.step == 4:
         st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
         st.write(
@@ -492,16 +495,17 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
         st.write("")
-        col_home, col_next, _ = st.columns([1, 1, 4])
+        col_back, col_home, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_4"):
+                st.session_state.step = 0
+                st.rerun()
         with col_home:
             if st.button("🏠 На головну", key="home_btn_4"):
                 st.session_state.step = 0
                 st.rerun()
-        with col_next:
-            if st.button("Далі ➔", key="next_btn_4"):
-                st.session_state.step = 5
-                st.rerun()
 
+    # ===== STEP 5 — ІНТЕРАКТИВ (1 слайд) =====
     elif st.session_state.step == 5:
         st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
         st.markdown('<div class="question-card">До початку першого уроку залишилося зовсім мало часу. Що робитимеш?</div>', unsafe_allow_html=True)
@@ -531,16 +535,17 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.error("❌ **07:40.** Ти приходиш після дзвінка.")
                 st.warning("⚠️ **Штраф:** Запізнення зафіксували в журналі, вчитель робить зауваження перед класом.")
         st.write("")
-        col_home, col_next, _ = st.columns([1, 1, 4])
+        col_back, col_home, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_5"):
+                st.session_state.step = 0
+                st.rerun()
         with col_home:
             if st.button("🏠 На головну", key="home_btn_5"):
                 st.session_state.step = 0
                 st.rerun()
-        with col_next:
-            if st.button("Далі ➔", key="next_btn_5"):
-                st.session_state.step = 6
-                st.rerun()
 
+    # ===== STEP 6 — ДЖЕРЕЛА (1 слайд) =====
     elif st.session_state.step == 6:
         st.markdown(
             '<div class="sources-hero">'
@@ -573,12 +578,17 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             unsafe_allow_html=True
         )
         st.write("")
-        col_l, col_c, col_r = st.columns([1, 1, 1])
-        with col_c:
-            if st.button("Завершити ➔", key="next_btn_6", use_container_width=True):
-                st.session_state.step = 7
+        col_back, col_home, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_6"):
+                st.session_state.step = 0
+                st.rerun()
+        with col_home:
+            if st.button("🏠 На головну", key="home_btn_6"):
+                st.session_state.step = 0
                 st.rerun()
 
+    # ===== STEP 7 — ЗАВЕРШЕННЯ (1 слайд) =====
     elif st.session_state.step == 7:
         st.markdown(
             '<div style="text-align: center; font-size: 42px; font-weight: 900; color: #111111; '
@@ -603,6 +613,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.write("")
         col_l, col_c, col_r = st.columns([1, 1, 1])
         with col_c:
-            if st.button("На початок ➔", key="restart_btn", use_container_width=True):
+            if st.button("🏠 На головну", key="home_btn_7", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
