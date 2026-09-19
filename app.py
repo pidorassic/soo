@@ -105,30 +105,30 @@ st.markdown(
         transform: translateY(1px);
     }
 
-    /* Карточки на слайде У ШКОЛІ */
+    /* Карточки на слайде У ШКОЛІ — компактные */
     .lesson-card {
         background-color: #f8f9fa;
         border-left: 6px solid #333333;
-        padding: 30px 35px;
+        padding: 22px 24px;
         border-radius: 8px;
         width: 100% !important;
-        min-height: 340px !important;
+        min-height: 200px !important;
         display: block;
     }
     .lesson-card .lesson-title {
-        font-size: 24px !important;
+        font-size: 20px !important;
         font-weight: 700 !important;
         color: #222 !important;
-        margin: 0 0 18px 0 !important;
+        margin: 0 0 12px 0 !important;
         padding: 0 !important;
         line-height: 1.3 !important;
         display: block !important;
     }
     .lesson-card .lesson-text {
-        font-size: 20px !important;
+        font-size: 17px !important;
         font-weight: 500 !important;
         color: #333 !important;
-        line-height: 1.8 !important;
+        line-height: 1.6 !important;
         margin: 0 !important;
         padding: 0 !important;
         display: block !important;
@@ -261,18 +261,18 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Две колонки: слева — форма, справа — уроки
+            # Две колонки: СЛЕВА — Уроки, СПРАВА — Форма
             col_left, col_right = st.columns([1, 1], gap="large")
             
             with col_left:
                 st.markdown(
                     """
                     <div class="no-anim lesson-card">
-                        <div class="lesson-title">👔 Обовʼязкова шкільна форма</div>
+                        <div class="lesson-title">📚 Уроки</div>
                         <div class="lesson-text">
-                            Для дівчат типовою була сукня коричневого кольору з білим 
-                            або чорним фартухом.<br><br>
-                            Для хлопців — сорочка, брюки та піджак.
+                            Вони проходили приблизно так само, як ти можеш уявити звичайний 
+                            урок сьогодні, тривало одне заняття 45 хвилин, були перерви, 
+                            контрольні та домашнє завдання.
                         </div>
                     </div>
                     """,
@@ -283,11 +283,11 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.markdown(
                     """
                     <div class="no-anim lesson-card">
-                        <div class="lesson-title">📚 Уроки</div>
+                        <div class="lesson-title">👔 Обовʼязкова шкільна форма</div>
                         <div class="lesson-text">
-                            Вони проходили приблизно так само, як ти можеш уявити звичайний 
-                            урок сьогодні, тривало одне заняття 45 хвилин, були перерви, 
-                            контрольні та домашнє завдання.
+                            Для дівчат типовою була сукня коричневого кольору з білим 
+                            або чорним фартухом.<br><br>
+                            Для хлопців — сорочка, брюки та піджак.
                         </div>
                     </div>
                     """,
