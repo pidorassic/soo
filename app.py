@@ -109,21 +109,25 @@ st.markdown(
     .lesson-card {
         background-color: #f8f9fa;
         border-left: 6px solid #333333;
-        padding: 24px 30px;
+        padding: 40px 35px;
         border-radius: 8px;
         width: 100% !important;
+        min-height: 320px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .lesson-card .lesson-title {
         font-size: 24px !important;
         font-weight: 700 !important;
         color: #222 !important;
-        margin-bottom: 14px !important;
+        margin-bottom: 18px !important;
     }
     .lesson-card .lesson-text {
-        font-size: 19px !important;
+        font-size: 20px !important;
         font-weight: 500 !important;
         color: #333 !important;
-        line-height: 1.6 !important;
+        line-height: 1.8 !important;
     }
     </style>
     """,
@@ -253,8 +257,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Две колонки: слева пусто, справа — карточка на всю ширину колонки
-            col_left, col_right = st.columns([1, 2], gap="large")
+            # Колонки: слева пусто (широкая), справа — карточка (узкая, но высокая)
+            col_left, col_right = st.columns([1.5, 1], gap="large")
             
             with col_left:
                 st.write("")  # пусто
