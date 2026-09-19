@@ -133,13 +133,63 @@ st.markdown(
         padding: 0 !important;
         display: block !important;
     }
+
+    /* ===== МОДАЛЬНОЕ ОКНО "Доп. інфо" ===== */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.55);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        animation: modalFadeIn 0.3s ease-out forwards;
+    }
+    @keyframes modalFadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    .modal-box {
+        background-color: #ffffff;
+        border-radius: 14px;
+        padding: 38px 42px;
+        max-width: 640px;
+        width: 90%;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        border-left: 8px solid #333333;
+        animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes modalPopIn {
+        from { opacity: 0; transform: scale(0.9) translateY(20px); }
+        to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-box .modal-title {
+        font-size: 26px !important;
+        font-weight: 800 !important;
+        color: #111 !important;
+        margin: 0 0 18px 0 !important;
+        line-height: 1.3 !important;
+    }
+    .modal-box .modal-text {
+        font-size: 18px !important;
+        font-weight: 500 !important;
+        color: #333 !important;
+        line-height: 1.7 !important;
+        margin: 0 0 14px 0 !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
 
+# Инициализация состояния
 if "step" not in st.session_state:
     st.session_state.step = 0
+if "show_extra" not in st.session_state:
+    st.session_state.show_extra = False
 
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
@@ -294,10 +344,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     unsafe_allow_html=True
                 )
             
-            st.write("")
-            if st.button("Далі ➔", key="next_btn_2"):
-                st.session_state.step += 1
-                st.rerun()
+            # Нижний ряд кнопок: Далі + Доп. інфо
+            col_btn1, col_btn2, _ = st.columns([1, 1, 4])
+            with col_btn1:
+                if st.button("Далі ➔", key="next_btn_2"):
+                    st.session_state.step += 1
+                    st.rerun()
+            with col_btn2:
+                if st.button("📖 Доп. інфо", key="extra_btn_2"):
+                    st.session_state.show_extra = True
+                    st.rerun()
 
         elif st.session_state.step == 3:
             st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
@@ -384,3 +440,32 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("На початок ➔", key="restart_btn"):
                 st.session_state.step = 0
                 st.rerun()
+
+# ===== МОДАЛЬНОЕ ОКНО "Доп. інфо" (поверх всего) =====
+if st.session_state.show_extra:
+    st.markdown(
+        """
+        <div class="modal-overlay">
+            <div class="modal-box">
+                <div class="modal-title">📖 Доп. факт</div>
+                <div class="modal-text">
+                    У школах діяла п’ятибальна система оцінювання.
+                </div>
+                <div class="modal-text">
+                    Формально шкала передбачала оцінки від 1 до 5, але на практиці 
+                    одиницю майже не ставили. Вона вважалася надзвичайно низькою 
+                    оцінкою, яка означала не просто помилку, а повну відсутність 
+                    знань або підготовки.
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # Кнопка закрытия (в отдельной колонке по центру, поверх окна)
+    col_close_l, col_close_c, col_close_r = st.columns([2, 1, 2])
+    with col_close_c:
+        if st.button("✖ Закрити", key="close_extra_btn"):
+            st.session_state.show_extra = False
+            st.rerun()
