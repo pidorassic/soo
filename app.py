@@ -80,6 +80,11 @@ st.markdown(
         font-size: 15px !important; font-weight: 500 !important; color: #333 !important;
         line-height: 1.55 !important; margin: 0 !important; display: block !important;
     }
+    div[data-testid="stImage"] {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
     div[data-testid="stImage"] img {
         max-height: 42vh !important; width: auto !important; max-width: 100% !important;
         object-fit: contain !important; border-radius: 12px !important;
@@ -331,7 +336,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         with cl:
             st.markdown(
                 '<div class="no-anim lesson-card"><div class="lesson-title">📌 Піонерські справи після уроків</div>'
-                '<div class="lesson-text">• Збори загону та піонерські лінійки<br>• Збір макулатури та металобрухту<br>• Допомога старшим (суботники)<br>• Спортивні секції<br>• Творчі гуртки</div></div>'
+                '<div class="lesson-text">• Збори загону та піонерські лінійки<br>• Збір макулатури та металобрухту<br>• Допомога старшим<br>• Спортивні секції<br>• Творчі гуртки</div></div>'
                 '<div style="font-size:16px;font-weight:500;color:#555;line-height:1.5;margin-top:18px;">💡 У 60-х після школи дитина майже ніколи не сиділа вдома.</div>',
                 unsafe_allow_html=True
             )
@@ -515,17 +520,15 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             'margin:60px 0 30px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
             unsafe_allow_html=True
         )
-        col_l, col_c, col_r = st.columns([1, 2, 1])
-        with col_c:
-            try:
-                img = Image.open("end.jpg")
-                st.image(img, use_container_width=True)
-            except Exception:
-                st.markdown(
-                    '<div style="text-align:center;font-size:20px;color:#888;'
-                    'margin:40px 0;">Файл end.jpg не знайдено</div>',
-                    unsafe_allow_html=True
-                )
+        try:
+            img = Image.open("end.jpg")
+            st.image(img, width=500)
+        except Exception:
+            st.markdown(
+                '<div style="text-align:center;font-size:20px;color:#888;'
+                'margin:40px 0;">Файл end.jpg не знайдено</div>',
+                unsafe_allow_html=True
+            )
         st.markdown(
             '<div style="text-align:center;font-size:22px;font-weight:600;color:#333;'
             'margin-top:30px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
