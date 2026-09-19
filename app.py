@@ -25,10 +25,10 @@ st.markdown(
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding-top: 5rem !important;
-        padding-bottom: 2rem !important;
-        padding-left: 4rem !important;
-        padding-right: 4rem !important;
+        padding-top: 2rem !important;
+        padding-bottom: 1rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
     }
 
     @keyframes scaleFadeTransition {
@@ -36,7 +36,6 @@ st.markdown(
         100% { opacity: 1; transform: scale(1); filter: blur(0px); }
     }
 
-    /* Каскадное появление карточек на стартовом слайде */
     @keyframes slideUpFade {
         0% { opacity: 0; transform: translateY(30px); }
         100% { opacity: 1; transform: translateY(0); }
@@ -107,7 +106,6 @@ st.markdown(
         transform: translateY(1px);
     }
 
-    /* Карточки на слайде У ШКОЛІ */
     .lesson-card {
         background-color: rgba(255, 255, 255, 0.92);
         border-left: 6px solid #333333;
@@ -136,7 +134,6 @@ st.markdown(
         display: block !important;
     }
 
-    /* Фото — ограничиваем по высоте */
     div[data-testid="stImage"] img {
         max-height: 42vh !important;
         width: auto !important;
@@ -148,23 +145,23 @@ st.markdown(
     }
 
     /* ============================================================ */
-    /* ===== СТАРТОВЫЙ СЛАЙД В ТЁМНОМ КИНЕМАТОГРАФИЧНОМ СТИЛЕ ===== */
+    /* ===== СТАРТОВЫЙ СЛАЙД — ТЁМНЫЙ КИНЕМАТОГРАФИЧНЫЙ ГЕРОЙ ===== */
     /* ============================================================ */
 
     .hero-wrapper {
         position: relative;
         width: 100%;
-        min-height: 78vh;
+        max-width: 1400px;
+        margin: 0 auto;
+        min-height: 82vh;
         border-radius: 18px;
         overflow: hidden;
         background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
         background-size: cover;
         background-position: center;
         box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-        margin-top: -20px;
     }
 
-    /* Тёмный градиент поверх фото */
     .hero-overlay {
         position: absolute;
         top: 0;
@@ -173,20 +170,19 @@ st.markdown(
         height: 100%;
         background: linear-gradient(
             135deg,
-            rgba(10, 10, 15, 0.88) 0%,
-            rgba(20, 20, 30, 0.75) 40%,
-            rgba(30, 25, 20, 0.7) 70%,
-            rgba(10, 10, 15, 0.85) 100%
+            rgba(10, 10, 15, 0.9) 0%,
+            rgba(20, 20, 30, 0.78) 40%,
+            rgba(30, 25, 20, 0.72) 70%,
+            rgba(10, 10, 15, 0.88) 100%
         );
         display: flex;
         flex-direction: column;
-        padding: 60px 70px;
+        padding: 50px 60px;
         box-sizing: border-box;
     }
 
-    /* Заголовок */
     .hero-title {
-        font-size: 62px !important;
+        font-size: 58px !important;
         font-weight: 900 !important;
         color: #ffffff !important;
         letter-spacing: 2px !important;
@@ -197,37 +193,33 @@ st.markdown(
     }
 
     .hero-subtitle {
-        font-size: 20px !important;
+        font-size: 18px !important;
         font-weight: 400 !important;
         color: #d4c5a0 !important;
         letter-spacing: 6px !important;
         text-transform: uppercase !important;
-        margin: 0 0 40px 0 !important;
+        margin: 0 0 30px 0 !important;
         animation: titleFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
         opacity: 0;
     }
 
-    /* Контейнер карточек */
     .cards-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        max-width: 720px;
+        gap: 14px;
+        max-width: 620px;
         margin-top: auto;
-        margin-bottom: 0;
     }
 
-    /* Карточка */
     .hero-card {
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(212, 197, 160, 0.35);
         border-radius: 12px;
-        padding: 18px 20px;
+        padding: 16px 18px;
         backdrop-filter: blur(8px);
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         opacity: 0;
-        cursor: default;
     }
 
     .hero-card:hover {
@@ -243,41 +235,35 @@ st.markdown(
     .hero-card:nth-child(4) { animation-delay: 1.1s; }
 
     .hero-card .card-icon {
-        font-size: 24px !important;
-        margin-bottom: 6px !important;
+        font-size: 22px !important;
+        margin-bottom: 4px !important;
         display: block !important;
     }
 
     .hero-card .card-title {
-        font-size: 18px !important;
+        font-size: 17px !important;
         font-weight: 700 !important;
         color: #ffffff !important;
-        margin: 0 0 4px 0 !important;
+        margin: 0 0 3px 0 !important;
         letter-spacing: 0.5px !important;
     }
 
     .hero-card .card-desc {
-        font-size: 13px !important;
+        font-size: 12.5px !important;
         font-weight: 400 !important;
         color: #b8ac8f !important;
         line-height: 1.4 !important;
         margin: 0 !important;
     }
 
-    /* Строка "проект учнів 10-А" снизу */
     .hero-footer {
         position: absolute;
-        bottom: 30px;
-        right: 40px;
-        font-size: 13px !important;
+        bottom: 25px;
+        right: 35px;
+        font-size: 12px !important;
         color: #8a8270 !important;
         letter-spacing: 1px !important;
         font-weight: 400 !important;
-    }
-
-    /* Отключаем глобальный padding на старте */
-    div[data-testid="stAppViewContainer"] .block-container {
-        padding-top: 3rem !important;
     }
 
     /* ===== Стилизация нативного st.dialog ===== */
@@ -361,41 +347,38 @@ if "step" not in st.session_state:
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
     if st.session_state.step == 0:
-        # === СТАРТОВЫЙ СЛАЙД В ТЁМНОМ СТИЛЕ ===
+        # === СТАРТОВЫЙ СЛАЙД — ТЁМНЫЙ ГЕРОЙ ===
+        # ВАЖНО: HTML без отступов слева, иначе Streamlit воспримет как код!
         st.markdown(
-            """
-            <div class="hero-wrapper">
-                <div class="hero-overlay">
-                    <div class="hero-title">ДЕНЬ<br>ШКОЛЯРА 60-Х</div>
-                    <div class="hero-subtitle">Подорож у минуле</div>
-                    
-                    <div class="cards-grid">
-                        <div class="hero-card">
-                            <span class="card-icon">🌅</span>
-                            <div class="card-title">Ранок</div>
-                            <div class="card-desc">Початок дня, сніданок та форма</div>
-                        </div>
-                        <div class="hero-card">
-                            <span class="card-icon">📚</span>
-                            <div class="card-title">Уроки</div>
-                            <div class="card-desc">Школа, чорнильниці та дисципліна</div>
-                        </div>
-                        <div class="hero-card">
-                            <span class="card-icon">🎒</span>
-                            <div class="card-title">Позаурочний час</div>
-                            <div class="card-desc">Гуртки, піонери та колектив</div>
-                        </div>
-                        <div class="hero-card">
-                            <span class="card-icon">🎯</span>
-                            <div class="card-title">Інтерактив</div>
-                            <div class="card-desc">Спробуй себе у ситуації 60-х</div>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-footer">Проект учнів 10-А класу</div>
-                </div>
-            </div>
-            """,
+            '<div class="hero-wrapper">'
+            '<div class="hero-overlay">'
+            '<div class="hero-title">ДЕНЬ<br>ШКОЛЯРА 60-Х</div>'
+            '<div class="hero-subtitle">Подорож у минуле</div>'
+            '<div class="cards-grid">'
+            '<div class="hero-card">'
+            '<span class="card-icon">🌅</span>'
+            '<div class="card-title">Ранок</div>'
+            '<div class="card-desc">Початок дня, сніданок та форма</div>'
+            '</div>'
+            '<div class="hero-card">'
+            '<span class="card-icon">📚</span>'
+            '<div class="card-title">Уроки</div>'
+            '<div class="card-desc">Школа, чорнильниці та дисципліна</div>'
+            '</div>'
+            '<div class="hero-card">'
+            '<span class="card-icon">🎒</span>'
+            '<div class="card-title">Позаурочний час</div>'
+            '<div class="card-desc">Гуртки, піонери та колектив</div>'
+            '</div>'
+            '<div class="hero-card">'
+            '<span class="card-icon">🎯</span>'
+            '<div class="card-title">Інтерактив</div>'
+            '<div class="card-desc">Спробуй себе у ситуації 60-х</div>'
+            '</div>'
+            '</div>'
+            '<div class="hero-footer">Проект учнів 10-А класу</div>'
+            '</div>'
+            '</div>',
             unsafe_allow_html=True
         )
         
