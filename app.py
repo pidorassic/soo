@@ -632,4 +632,3 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         col_l, col_c, col_r = st.columns([1, 1, 1])
         with col_c:
             if st.button("🏠 На головну", key="home_btn_11", use_container_width=True
-                         
