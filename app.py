@@ -436,27 +436,37 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '</div>',
             unsafe_allow_html=True
         )
-        st.markdown(
-            '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
-            '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">📌 Піонерські справи після уроків</div>'
-            '<div style="font-size: 16px; color: #333; line-height: 1.6;">'
-            '• Збори загону та піонерські лінійки<br>'
-            '• Збір макулатури та металобрухту<br>'
-            '• Допомога старшим (суботники, шефство над молодшими)<br>'
-            '• Спортивні секції — футбол, легка атлетика<br>'
-            '• Творчі гуртки — драма, музика, малювання'
-            '</div>'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            '<div style="font-size: 16px; font-weight: 500; color: #555; line-height: 1.5; margin-bottom: 20px;">'
-            '💡 У 60-х після школи дитина майже ніколи не сиділа вдома. '
-            'Гуртки, збори, секції — усе це було безкоштовним і доступним у школі або при будинку піонерів.'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+
+        col_left, col_right = st.columns([2, 1], gap="large")
+
+        with col_left:
+            st.markdown(
+                '<div class="no-anim lesson-card">'
+                '<div class="lesson-title">📌 Піонерські справи після уроків</div>'
+                '<div class="lesson-text">'
+                '• Збори загону та піонерські лінійки<br>'
+                '• Збір макулатури та металобрухту<br>'
+                '• Допомога старшим (суботники, шефство над молодшими)<br>'
+                '• Спортивні секції — футбол, легка атлетика<br>'
+                '• Творчі гуртки — драма, музика, малювання'
+                '</div>'
+                '</div>',
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                '<div style="font-size: 16px; font-weight: 500; color: #555; line-height: 1.5; margin-top: 18px;">'
+                '💡 У 60-х після школи дитина майже ніколи не сиділа вдома. '
+                'Гуртки, збори, секції — усе це було безкоштовним і доступним у школі або при будинку піонерів.'
+                '</div>',
+                unsafe_allow_html=True
+            )
+
+        with col_right:
+            st.image(
+                "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop",
+                use_container_width=True
+            )
+
         st.write("")
         col_back, col_next, _ = st.columns([1, 1, 4])
         with col_back:
