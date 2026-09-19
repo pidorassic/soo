@@ -15,13 +15,30 @@ st.markdown(
     }
 
     .stApp {
-        background-color: #f5efe6 !important;
+        background-image: url('https://images.unsplash.com/photo-1528459105426-b9548367069b?q=80&w=2000&auto=format&fit=crop');
+        background-size: cover !important;
+        background-position: center !important;
+        background-attachment: fixed !important;
+        background-repeat: no-repeat !important;
         color: #000000;
         text-align: left !important;
     }
     
+    /* Полупрозрачный слой поверх фона, чтобы текст читался */
+    .stApp::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(245, 239, 230, 0.88);
+        z-index: 0;
+        pointer-events: none;
+    }
+    
     div.block-container {
-        background-color: #f5efe6 !important;
+        background-color: transparent !important;
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
@@ -29,6 +46,8 @@ st.markdown(
         padding-bottom: 2rem !important;
         padding-left: 4rem !important;
         padding-right: 4rem !important;
+        position: relative !important;
+        z-index: 1 !important;
     }
 
     @keyframes scaleFadeTransition {
@@ -56,7 +75,7 @@ st.markdown(
     }
 
     .question-card {
-        background-color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.92);
         border-left: 6px solid #333333;
         padding: 15px 20px;
         border-radius: 6px;
@@ -96,9 +115,9 @@ st.markdown(
         transform: translateY(1px);
     }
 
-    /* Карточки на слайде У ШКОЛІ — компактнее */
+    /* Карточки на слайде У ШКОЛІ */
     .lesson-card {
-        background-color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.92);
         border-left: 6px solid #333333;
         padding: 18px 20px;
         border-radius: 8px;
@@ -236,7 +255,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             
             st.markdown(
                 """
-                <div style="margin-top: 15px; padding: 12px 18px; background-color: #ffffff; border-left: 5px solid #555; border-radius: 4px;">
+                <div style="margin-top: 15px; padding: 12px 18px; background-color: rgba(255, 255, 255, 0.92); border-left: 5px solid #555; border-radius: 4px;">
                     <div style="font-size: 16px; font-weight: 700; color: #222; margin-bottom: 4px;">📌 Що на вас чекає у цій подорожі:</div>
                     <div style="font-size: 15px; color: #555; line-height: 1.3;">
                         • Ранкові звички та шкільна форма<br>
@@ -347,7 +366,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             
             st.markdown(
                 """
-                <div style="background-color: #ffffff; border-left: 6px solid #333333; 
+                <div style="background-color: rgba(255, 255, 255, 0.92); border-left: 6px solid #333333; 
                             padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">
                     <div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">
                         📌 Ранкова рутина та шкільна форма
