@@ -220,7 +220,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# === ФОНОВАЯ МУЗЫКА + ПЛАВАЮЩАЯ КНОПКА 🔊 ===
+# === ФОНОВАЯ МУЗЫКА + ПЛАВАЮЩАЯ КНОПКА 🔊 (правый нижний угол) ===
 try:
     with open("bg_music.mp3", "rb") as f:
         music_b64 = base64.b64encode(f.read()).decode()
@@ -230,16 +230,30 @@ try:
             <source src="data:audio/mpeg;base64,{music_b64}" type="audio/mpeg">
         </audio>
         <button id="musicBtn" onclick="toggleMusic()" style="
-            position: fixed; bottom: 24px; right: 24px; z-index: 9999999;
-            width: 56px; height: 56px; border-radius: 50%;
-            background: linear-gradient(135deg, #d4af6a 0%, #b8935a 100%);
-            border: 2px solid rgba(255,255,255,0.35);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 20px rgba(212,175,106,0.4);
-            color: #ffffff; font-size: 24px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s ease; padding: 0; line-height: 1;
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
+            top: auto !important;
+            left: auto !important;
+            z-index: 2147483647 !important;
+            width: 60px !important;
+            height: 60px !important;
+            border-radius: 50% !important;
+            background: linear-gradient(135deg, #d4af6a 0%, #b8935a 100%) !important;
+            border: 3px solid #ffffff !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 25px rgba(212,175,106,0.6) !important;
+            color: #ffffff !important;
+            font-size: 26px !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+            padding: 0 !important;
+            line-height: 1 !important;
+            margin: 0 !important;
         "
-        onmouseover="this.style.transform='scale(1.08)';"
+        onmouseover="this.style.transform='scale(1.1)';"
         onmouseout="this.style.transform='scale(1)';">
             🔇
         </button>
@@ -648,7 +662,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 12 — ТЕСТ 1: РАНОК ПІОНЕРА =====
     elif st.session_state.step == 12:
         st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 1</div>', unsafe_allow_html=True)
         st.markdown(
@@ -691,7 +704,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 13
                 st.rerun()
 
-    # ===== STEP 13 — ТЕСТ 2: У ШКОЛІ =====
     elif st.session_state.step == 13:
         st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 2</div>', unsafe_allow_html=True)
         st.markdown(
@@ -734,7 +746,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 14
                 st.rerun()
 
-    # ===== STEP 14 — ТЕСТ 3: ПІСЛЯ УРОКІВ =====
     elif st.session_state.step == 14:
         st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 3</div>', unsafe_allow_html=True)
         st.markdown(
@@ -777,7 +788,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 15 — ЗАВЕРШЕННЯ =====
     elif st.session_state.step == 15:
         st.markdown(
             '<div style="text-align:center;font-size:42px;font-weight:900;color:#111;'
