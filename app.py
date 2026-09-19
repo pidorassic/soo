@@ -220,6 +220,48 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# === ФОНОВАЯ МУЗЫКА + ПЛАВАЮЩАЯ КНОПКА 🔊 ===
+try:
+    with open("bg_music.mp3", "rb") as f:
+        music_b64 = base64.b64encode(f.read()).decode()
+    st.markdown(
+        f'''
+        <audio id="bgMusic" loop preload="auto" style="display:none;">
+            <source src="data:audio/mpeg;base64,{music_b64}" type="audio/mpeg">
+        </audio>
+        <button id="musicBtn" onclick="toggleMusic()" style="
+            position: fixed; bottom: 24px; right: 24px; z-index: 9999999;
+            width: 56px; height: 56px; border-radius: 50%;
+            background: linear-gradient(135deg, #d4af6a 0%, #b8935a 100%);
+            border: 2px solid rgba(255,255,255,0.35);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 20px rgba(212,175,106,0.4);
+            color: #ffffff; font-size: 24px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; padding: 0; line-height: 1;
+        "
+        onmouseover="this.style.transform='scale(1.08)';"
+        onmouseout="this.style.transform='scale(1)';">
+            🔇
+        </button>
+        <script>
+            var audio = document.getElementById("bgMusic");
+            var btn = document.getElementById("musicBtn");
+            function toggleMusic() {{
+                if (audio.paused) {{
+                    audio.play();
+                    btn.innerHTML = "🔊";
+                }} else {{
+                    audio.pause();
+                    btn.innerHTML = "🔇";
+                }}
+            }}
+        </script>
+        ''',
+        unsafe_allow_html=True
+    )
+except Exception:
+    pass
+
 @st.dialog("📖 Доп. факт")
 def show_extra_dialog():
     st.markdown(
