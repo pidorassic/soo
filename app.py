@@ -7,7 +7,7 @@ qp = st.query_params
 if "page" in qp:
     try:
         target = int(qp.get("page"))
-        if 0 <= target <= 7:
+        if 0 <= target <= 8:
             st.session_state.step = target
         st.query_params.clear()
     except Exception:
@@ -88,125 +88,68 @@ st.markdown(
         margin: 0 auto !important; display: block !important;
     }
     .hero-full {
-        position: relative;
-        width: 100%;
-        min-height: 82vh;
-        border-radius: 20px;
-        overflow: hidden;
+        position: relative; width: 100%; min-height: 82vh; border-radius: 20px; overflow: hidden;
         background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
-        background-size: cover;
-        background-position: center;
+        background-size: cover; background-position: center;
         box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: flex; align-items: center; justify-content: center;
     }
     .hero-full::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
+        content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(20,20,30,0.78) 40%, rgba(30,25,20,0.75) 70%, rgba(10,10,15,0.9) 100%);
         z-index: 1;
     }
     .hero-content {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        padding: 40px 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 82vh;
-        box-sizing: border-box;
+        position: relative; z-index: 2; width: 100%; padding: 40px 50px;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        min-height: 82vh; box-sizing: border-box;
     }
     .hero-title {
-        font-size: 54px !important;
-        font-weight: 900 !important;
-        color: #ffffff !important;
-        letter-spacing: 4px !important;
-        line-height: 1.05 !important;
-        margin: 0 0 8px 0 !important;
-        text-align: center !important;
-        text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+        font-size: 54px !important; font-weight: 900 !important; color: #ffffff !important;
+        letter-spacing: 4px !important; line-height: 1.05 !important; margin: 0 0 8px 0 !important;
+        text-align: center !important; text-shadow: 0 4px 30px rgba(0,0,0,0.6);
     }
     .hero-subtitle {
-        font-size: 15px !important;
-        font-weight: 400 !important;
-        color: #d4c5a0 !important;
-        letter-spacing: 6px !important;
-        text-transform: uppercase !important;
-        margin: 0 0 40px 0 !important;
-        text-align: center !important;
+        font-size: 15px !important; font-weight: 400 !important; color: #d4c5a0 !important;
+        letter-spacing: 6px !important; text-transform: uppercase !important;
+        margin: 0 0 40px 0 !important; text-align: center !important;
     }
     .hero-cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        max-width: 900px;
-        width: 100%;
-        margin-bottom: 16px;
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+        max-width: 900px; width: 100%; margin-bottom: 16px;
     }
     .hero-cards-bottom {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        max-width: 900px;
-        width: 100%;
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+        max-width: 900px; width: 100%;
     }
     .hero-card-link {
-        display: block;
-        background: rgba(255,255,255,0.07);
+        display: block; background: rgba(255,255,255,0.07);
         border: 1px solid rgba(212,197,160,0.42);
-        border-radius: 14px;
-        padding: 20px 22px;
-        text-decoration: none !important;
-        color: inherit !important;
+        border-radius: 14px; padding: 20px 22px;
+        text-decoration: none !important; color: inherit !important;
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        opacity: 0;
-        cursor: pointer;
-        min-height: 140px;
-        box-sizing: border-box;
+        opacity: 0; cursor: pointer; min-height: 140px; box-sizing: border-box;
     }
     .hero-card-link:nth-child(1) { animation-delay: 0.4s; }
     .hero-card-link:nth-child(2) { animation-delay: 0.6s; }
     .hero-card-link:hover {
-        background: rgba(255,255,255,0.16);
-        border-color: rgba(212,197,160,0.9);
-        transform: translateY(-5px);
-        box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+        background: rgba(255,255,255,0.16); border-color: rgba(212,197,160,0.9);
+        transform: translateY(-5px); box-shadow: 0 18px 40px rgba(0,0,0,0.5);
         text-decoration: none !important;
     }
-    .hero-card-link .hc-icon {
-        font-size: 30px !important;
-        margin-bottom: 10px !important;
-        display: block !important;
-        line-height: 1 !important;
-    }
+    .hero-card-link .hc-icon { font-size: 30px !important; margin-bottom: 10px !important; display: block !important; line-height: 1 !important; }
     .hero-card-link .hc-title {
-        font-size: 18px !important;
-        font-weight: 800 !important;
-        color: #ffffff !important;
-        margin: 0 0 6px 0 !important;
-        letter-spacing: 0.5px !important;
-        line-height: 1.25 !important;
+        font-size: 18px !important; font-weight: 800 !important; color: #ffffff !important;
+        margin: 0 0 6px 0 !important; letter-spacing: 0.5px !important; line-height: 1.25 !important;
     }
     .hero-card-link .hc-desc {
-        font-size: 13px !important;
-        font-weight: 400 !important;
-        color: #b8ac8f !important;
-        line-height: 1.5 !important;
-        margin: 0 !important;
+        font-size: 13px !important; font-weight: 400 !important; color: #b8ac8f !important;
+        line-height: 1.5 !important; margin: 0 !important;
     }
     .hero-footer {
-        position: absolute;
-        bottom: 20px;
-        right: 30px;
-        z-index: 2;
-        font-size: 11px !important;
-        color: #8a8270 !important;
-        letter-spacing: 2px !important;
+        position: absolute; bottom: 20px; right: 30px; z-index: 2;
+        font-size: 11px !important; color: #8a8270 !important; letter-spacing: 2px !important;
     }
     div[data-testid="stDialog"] > div {
         background-color: #ffffff !important; border-radius: 14px !important;
@@ -267,16 +210,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<a class="hero-card-link" href="?page=2" target="_self">'
             '<span class="hc-icon">🌅</span>'
             '<div class="hc-title">ДЕНЬ ПІОНЕРА</div>'
-            '<div class="hc-desc">Ранок та школа очима піонера</div>'
+            '<div class="hc-desc">Повний день від ранку до вечора</div>'
             '</a>'
             '</div>'
             '<div class="hero-cards-bottom">'
-            '<a class="hero-card-link" href="?page=5" target="_self">'
+            '<a class="hero-card-link" href="?page=7" target="_self">'
             '<span class="hc-icon">🎯</span>'
             '<div class="hc-title">ІНТЕРАКТИВ</div>'
             '<div class="hc-desc">Спробуй себе у ситуації 60-х років</div>'
             '</a>'
-            '<a class="hero-card-link" href="?page=7" target="_self">'
+            '<a class="hero-card-link" href="?page=8" target="_self">'
             '<span class="hc-icon">🏁</span>'
             '<div class="hc-title">ЗАВЕРШЕННЯ</div>'
             '<div class="hc-desc">Подяка та фінальне слово</div>'
@@ -346,27 +289,27 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 2 — ДЕНЬ ПІОНЕРА · РАНОК (промежуточный) =====
+    # ===== STEP 2 — РАНОК =====
     elif st.session_state.step == 2:
-        st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА — РАНОК</div>', unsafe_allow_html=True)
+        st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · РАНОК</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">⏰ 07:00. дзвенить будильник</div>',
+            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">⏰ 07:00. Підйом та зарядка</div>',
             unsafe_allow_html=True
         )
         st.markdown(
             '<div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">'
-            'Зазвичай сніданок був простим і швидким. Уранці потрібно було просто встигнути поїсти до виходу, '
-            'тому ніхто не накривав святковий стіл і не готував складних страв. На столі могли бути: '
-            'каша, яйця, сир, хліб із маслом, бутерброди, чай, молоко або какао.'
+            'У 60-х роках ранок школяра починався о 7-й годині. Спочатку — ранкова гігієна, '
+            'потім — обов’язкова зарядка під радіо. Радіоточка була майже в кожній оселі, '
+            'і рівно о 07:10 лунала мелодія, під яку вся родина робила вправи.'
             '</div>',
             unsafe_allow_html=True
         )
         st.markdown(
             '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
-            '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">📌 Ранкова рутина та шкільна форма</div>'
+            '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">📌 Сніданок</div>'
             '<div style="font-size: 16px; color: #333; line-height: 1.5;">'
-            'Після пробудження — вмитися, одягнутися, поснідати й зібратися на уроки. '
-            'Багато школярів носили шкільну форму: хлопці — брюки та піджак, дівчата — сукню з фартухом.'
+            'Зазвичай простій: каша, яйця, сир, хліб із маслом, чай або молоко. '
+            'Ніяких довгих сніданків — усе швидко, щоб встигнути до школи.'
             '</div>'
             '</div>',
             unsafe_allow_html=True
@@ -383,11 +326,49 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 3
                 st.rerun()
 
-    # ===== STEP 3 — ДЕНЬ ПІОНЕРА · У ШКОЛІ (конец темы) =====
+    # ===== STEP 3 — ДОРОГА ДО ШКОЛИ =====
     elif st.session_state.step == 3:
-        st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА — У ШКОЛІ</div>', unsafe_allow_html=True)
+        st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ДОРОГА ДО ШКОЛИ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 20px; font-weight: 700; color: #111111; margin-bottom: 8px;">🔔 08:00. Лунає дзвоник</div>',
+            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">🎒 07:40. Форма та портфель</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">'
+            'Школяр 60-х виходив з дому приблизно о 07:40. Усі були однаково вдягнені: '
+            'хлопці — у темних брюках і піджаку, дівчата — у коричневій сукні з білим або '
+            'чорним фартухом. На плечі — шкіряний портфель, у якому зошити, підручники '
+            'та пенал із ручкою-пером.'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
+            '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">🚶 Шлях до школи</div>'
+            '<div style="font-size: 16px; color: #333; line-height: 1.5;">'
+            'Більшість дітей ходили до школи пішки — часто по кілька кварталів. '
+            'Дорогою зустрічалися з друзями, обговорювали новини, готувалися до уроків.'
+            '</div>'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+        st.write("")
+        col_back, col_next, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_3"):
+                st.session_state.step = 2
+                st.rerun()
+        with col_next:
+            if st.button("Далі ➔", key="next_btn_3"):
+                st.session_state.step = 4
+                st.rerun()
+
+    # ===== STEP 4 — У ШКОЛІ =====
+    elif st.session_state.step == 4:
+        st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · У ШКОЛІ</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size: 20px; font-weight: 700; color: #111111; margin-bottom: 8px;">🔔 08:00. Уроки почалися</div>',
             unsafe_allow_html=True
         )
         st.markdown(
@@ -402,8 +383,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 '<div class="no-anim lesson-card">'
                 '<div class="lesson-title">📚 Уроки</div>'
                 '<div class="lesson-text">'
-                'Вони проходили приблизно так само, як ти можеш уявити звичайний урок сьогодні, '
-                'тривало одне заняття 45 хвилин, були перерви, контрольні та домашнє завдання.'
+                'Одне заняття тривало 45 хвилин. Писали чорнильницями-непроливайками та '
+                'ручками з металевим пером. За помарочку в зошиті могли знизити оцінку.'
                 '</div>'
                 '</div>',
                 unsafe_allow_html=True
@@ -411,10 +392,10 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         with col_right:
             st.markdown(
                 '<div class="no-anim lesson-card">'
-                '<div class="lesson-title">👔 Обовʼязкова шкільна форма</div>'
+                '<div class="lesson-title">👔 Шкільна форма</div>'
                 '<div class="lesson-text">'
-                'Для дівчат типовою була сукня коричневого кольору з білим або чорним фартухом.<br><br>'
-                'Для хлопців — сорочка, брюки та піджак.'
+                'Дівчата — коричнева сукня з білим або чорним фартухом. '
+                'Хлопці — сорочка, брюки та піджак. Форма була обов’язковою.'
                 '</div>'
                 '</div>',
                 unsafe_allow_html=True
@@ -427,21 +408,105 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 use_container_width=True
             )
         st.write("")
-        col_back, col_home, col_extra, _ = st.columns([1, 1, 1, 3])
+        col_back, col_next, col_extra, _ = st.columns([1, 1, 1, 3])
         with col_back:
-            if st.button("⬅ Назад", key="back_btn_3"):
-                st.session_state.step = 2
+            if st.button("⬅ Назад", key="back_btn_4"):
+                st.session_state.step = 3
                 st.rerun()
-        with col_home:
-            if st.button("🏠 На головну", key="home_btn_3"):
-                st.session_state.step = 0
+        with col_next:
+            if st.button("Далі ➔", key="next_btn_4"):
+                st.session_state.step = 5
                 st.rerun()
         with col_extra:
-            if st.button("📖 Доп. інфо", key="extra_btn_3"):
+            if st.button("📖 Доп. інфо", key="extra_btn_4"):
                 show_extra_dialog()
 
-    # ===== STEP 5 — ІНТЕРАКТИВ =====
+    # ===== STEP 5 — ОБІД І ГУРТКИ =====
     elif st.session_state.step == 5:
+        st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ОБІД І ГУРТКИ</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">🍽 14:00. Обід та позаурочні справи</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">'
+            'Після занять школярі поверталися додому на обід. У 60-х обід був простою, '
+            'але ситною стравою — борщ, суп, картопля з котлетою або каша. Потім — '
+            'короткий відпочинок, і знову до справ.'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
+            '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">📌 Піонерські справи після уроків</div>'
+            '<div style="font-size: 16px; color: #333; line-height: 1.6;">'
+            '• Збори загону та піонерські лінійки<br>'
+            '• Збір макулатури та металобрухту<br>'
+            '• Допомога старшим (суботники, шефство над молодшими)<br>'
+            '• Спортивні секції — футбол, легка атлетика<br>'
+            '• Творчі гуртки — драма, музика, малювання'
+            '</div>'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="font-size: 16px; font-weight: 500; color: #555; line-height: 1.5; margin-bottom: 20px;">'
+            '💡 У 60-х після школи дитина майже ніколи не сиділа вдома. '
+            'Гуртки, збори, секції — усе це було безкоштовним і доступним у школі або при будинку піонерів.'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+        st.write("")
+        col_back, col_next, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_5"):
+                st.session_state.step = 4
+                st.rerun()
+        with col_next:
+            if st.button("Далі ➔", key="next_btn_5"):
+                st.session_state.step = 6
+                st.rerun()
+
+    # ===== STEP 6 — ВЕЧІР =====
+    elif st.session_state.step == 6:
+        st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ВЕЧІР</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">🌙 19:00. Домашні завдання та відпочинок</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">'
+            'Увечері після вечері — час на домашнє завдання. Потім читання книжок, '
+            'радіопередачі або настільні ігри з родиною. Телевізор був не в кожній оселі, '
+            'тому вечори часто проводили разом — слухали радіо, читали вголос, обговорювали новини.'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
+            '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">🌙 Відбій</div>'
+            '<div style="font-size: 16px; color: #333; line-height: 1.5;">'
+            'Спати лягали рано — о 21:00–22:00. Наступного дня знову підйом о 7-й, '
+            'зарядка під радіо, і все по колу.'
+            '</div>'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+        st.write("")
+        col_back, col_home, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_6"):
+                st.session_state.step = 5
+                st.rerun()
+        with col_home:
+            if st.button("🏠 На головну", key="home_btn_6"):
+                st.session_state.step = 0
+                st.rerun()
+
+    # ===== STEP 7 — ІНТЕРАКТИВ =====
+    elif st.session_state.step == 7:
         st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
         st.markdown('<div class="question-card">До початку першого уроку залишилося зовсім мало часу. Що робитимеш?</div>', unsafe_allow_html=True)
         choice = st.radio(
@@ -472,16 +537,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.write("")
         col_back, col_home, _ = st.columns([1, 1, 4])
         with col_back:
-            if st.button("⬅ Назад", key="back_btn_5"):
+            if st.button("⬅ Назад", key="back_btn_7"):
                 st.session_state.step = 0
                 st.rerun()
         with col_home:
-            if st.button("🏠 На головну", key="home_btn_5"):
+            if st.button("🏠 На головну", key="home_btn_7"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 7 — ЗАВЕРШЕННЯ =====
-    elif st.session_state.step == 7:
+    # ===== STEP 8 — ЗАВЕРШЕННЯ =====
+    elif st.session_state.step == 8:
         st.markdown(
             '<div style="text-align: center; font-size: 42px; font-weight: 900; color: #111111; '
             'margin: 60px 0 20px 0; letter-spacing: 4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
@@ -505,7 +570,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.write("")
         col_l, col_c, col_r = st.columns([1, 1, 1])
         with col_c:
-            if st.button("🏠 На головну", key="home_btn_7", use_container_width=True):
+            if st.button("🏠 На головну", key="home_btn_8", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
-                
