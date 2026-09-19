@@ -256,7 +256,54 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
     else:
+        # === НОВЫЙ СЛАЙД: ІСТОРИЧНА ЗГАДКА ===
         if st.session_state.step == 1:
+            st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
+            st.markdown(
+                """
+                <div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 18px; line-height: 1.3;">
+                    ХТО ТАКІ ПІОНЕРИ?
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
+            st.markdown(
+                """
+                <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6; margin-bottom: 14px;">
+                    У СРСР існувала Всесоюзна піонерська організація імені В. І. Леніна — 
+                    дитяча організація для школярів приблизно від 9 до 14 років.
+                </div>
+                
+                <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6; margin-bottom: 14px;">
+                    Піонери об’єднувалися у загони, зазвичай за класами. Вони брали участь 
+                    у походах, змаганнях, концертах, роботі гуртків і громадських заходах. 
+                    Часто це були організовані школою або місцевими установами активності, 
+                    у яких школярі мали брати участь.
+                </div>
+                
+                <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6; margin-bottom: 14px;">
+                    Організація мала власну символіку та ритуали: червоний галстук, 
+                    урочисті лінійки, салют і церемонію вступу з піонерською присягою. 
+                    Для багатьох дітей це було обов’язковою частиною шкільного життя, 
+                    а не особистим вибором.
+                </div>
+                
+                <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6; margin-bottom: 20px;">
+                    Піонерство було частиною радянської системи виховання. Через організацію 
+                    дітям прищеплювали офіційні радянські цінності, знайомили їх із 
+                    державною символікою та героями й залучали до ідеологічних заходів.
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
+            st.write("")
+            if st.button("Далі ➔", key="next_btn_1"):
+                st.session_state.step += 1
+                st.rerun()
+
+        elif st.session_state.step == 2:
             st.markdown('<div class="slide-title">РАНОК — ПОЧАТОК ДНЯ</div>', unsafe_allow_html=True)
             
             st.markdown(
@@ -309,11 +356,11 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
             st.write("")
-            if st.button("Далі ➔", key="next_btn_1"):
+            if st.button("Далі ➔", key="next_btn_2"):
                 st.session_state.step += 1
                 st.rerun()
 
-        elif st.session_state.step == 2:
+        elif st.session_state.step == 3:
             st.markdown('<div class="slide-title">У ШКОЛІ</div>', unsafe_allow_html=True)
             st.markdown(
                 """
@@ -364,7 +411,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     unsafe_allow_html=True
                 )
             
-            # Фото по центру (посередине)
             st.write("")
             col_photo_l, col_photo_c, col_photo_r = st.columns([1, 2, 1])
             with col_photo_c:
@@ -373,27 +419,26 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     use_container_width=True
                 )
             
-            # КНОПКИ — теперь ПОД фото
             st.write("")
             col_btn1, col_btn2, _ = st.columns([1, 1, 4])
             with col_btn1:
-                if st.button("Далі ➔", key="next_btn_2"):
+                if st.button("Далі ➔", key="next_btn_3"):
                     st.session_state.step += 1
                     st.rerun()
             with col_btn2:
-                if st.button("📖 Доп. інфо", key="extra_btn_2"):
+                if st.button("📖 Доп. інфо", key="extra_btn_3"):
                     show_extra_dialog()
 
-        elif st.session_state.step == 3:
+        elif st.session_state.step == 4:
             st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
             st.write("Після завершення уроків життя школярів не зупинялося. Позаурочний час був сповнений колективної праці та творчості: піонерські та комсомольські збори, збір макулатури та металобрухту цілими класами, активна участь у різноманітних гуртках (авіамоделювання, драма, спортивні секції). Підлітки 60-х щиро вірили в майбутнє, захоплювалися космосом після польоту Гагаріна та завжди трималися разом.")
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
             st.write("")
-            if st.button("Далі ➔", key="next_btn_3"):
+            if st.button("Далі ➔", key="next_btn_4"):
                 st.session_state.step += 1
                 st.rerun()
 
-        elif st.session_state.step == 4:
+        elif st.session_state.step == 5:
             st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
             st.markdown('<div class="question-card">До початку першого уроку залишилося зовсім мало часу. Що робитимеш?</div>', unsafe_allow_html=True)
             
@@ -425,11 +470,11 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     st.warning("⚠️ **Наслідок (Штраф):** Запізнення вже зафіксували в классному журналі. Вчитель робить публічне зауваження перед усім класом, а староста записує тебе у шкільну стінгазету ганьби («порушники дисципліни»).")
 
             st.write("")
-            if st.button("Далі ➔", key="next_btn_4"):
+            if st.button("Далі ➔", key="next_btn_5"):
                 st.session_state.step += 1
                 st.rerun()
 
-        elif st.session_state.step == 5:
+        elif st.session_state.step == 6:
             st.markdown(
                 """
                 <style>
