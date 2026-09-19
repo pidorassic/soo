@@ -161,35 +161,32 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Отдельный факт про сніданок (теперь ВЫШЕ)
+            # Обычный текст (теперь здесь текст про СНІДАНОК)
             st.markdown(
                 """
-                <div style="background-color: #f8f9fa; border-left: 6px solid #333333; 
-                            padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">
-                    <div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">
-                        📌 Сніданок у будній день
-                    </div>
-                    <div style="font-size: 16px; color: #333; line-height: 1.5; margin-bottom: 10px;">
-                        Зазвичай був простим і швидким. Уранці потрібно було просто встигнути 
-                        поїсти до виходу, тому ніхто не накривав святковий стіл і не готував 
-                        складних страв.
-                    </div>
-                    <div style="font-size: 16px; color: #333; line-height: 1.5;">
-                        На столі могли бути: каша, яйця, сир, хліб із маслом, бутерброди, 
-                        чай, молоко або какао.
-                    </div>
+                <div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">
+                    Зазвичай сніданок був простим і швидким. Уранці потрібно було просто 
+                    встигнути поїсти до виходу, тому ніхто не накривав святковий стіл 
+                    і не готував складних страв. На столі могли бути: каша, яйця, сир, 
+                    хліб із маслом, бутерброди, чай, молоко або какао.
                 </div>
                 """,
                 unsafe_allow_html=True
             )
             
-            # Основной текст (теперь НИЖЕ)
+            # Рамка (теперь здесь текст про ПРОБУДЖЕННЯ та ФОРМУ)
             st.markdown(
                 """
-                <div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">
-                    Після пробудження — вмитися, одягнутися, поснідати й зібратися на уроки. 
-                    Багато школярів носили шкільну форму: хлопці — брюки та піджак, 
-                    дівчата — сукню з фартухом.
+                <div style="background-color: #f8f9fa; border-left: 6px solid #333333; 
+                            padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">
+                    <div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">
+                        📌 Ранкова рутина та шкільна форма
+                    </div>
+                    <div style="font-size: 16px; color: #333; line-height: 1.5;">
+                        Після пробудження — вмитися, одягнутися, поснідати й зібратися 
+                        на уроки. Багато школярів носили шкільну форму: хлопці — брюки 
+                        та піджак, дівчата — сукню з фартухом.
+                    </div>
                 </div>
                 """,
                 unsafe_allow_html=True
