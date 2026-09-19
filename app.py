@@ -17,7 +17,6 @@ if "page" in qp:
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-# === ПРОГРЕСС-БАР СВЕРХУ ===
 total_steps = 13
 progress_pct = int((st.session_state.step / total_steps) * 100)
 
@@ -36,16 +35,9 @@ st.markdown(
         margin: 0 auto !important;
         padding: 5rem 3rem 2rem 3rem !important;
     }
-
-    /* === ПРОГРЕСС-БАР === */
     .progress-bar-fixed {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: rgba(255,255,255,0.15);
-        z-index: 999999;
+        position: fixed; top: 0; left: 0; width: 100%; height: 5px;
+        background: rgba(255,255,255,0.15); z-index: 999999;
     }
     .progress-bar-fill {
         height: 100%;
@@ -54,7 +46,6 @@ st.markdown(
         transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         border-radius: 0 3px 3px 0;
     }
-
     @keyframes scaleFadeTransition {
         0% { opacity: 0; transform: scale(0.95); filter: blur(4px); }
         100% { opacity: 1; transform: scale(1); filter: blur(0px); }
@@ -145,8 +136,6 @@ st.markdown(
         display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
         max-width: 1050px; width: 100%;
     }
-
-    /* === КАРТОЧКИ С HOVER-ПОДСВЕТКОЙ И PRESS-ЭФФЕКТОМ === */
     .hero-card-link {
         display: block; background: rgba(255,255,255,0.07);
         border: 1px solid rgba(212,197,160,0.42);
@@ -164,22 +153,17 @@ st.markdown(
     }
     .hero-card-link:hover::before { opacity: 1; }
     .hero-card-link > * { position: relative; z-index: 1; }
-
-    /* Индивидуальные цвета подсветки для каждой карточки */
     .hero-card-link:nth-child(1) { --glow: rgba(212, 175, 106, 0.35); }
     .hero-card-link:nth-child(2) { --glow: rgba(220, 53, 69, 0.35); }
     .hero-card-link:nth-child(3) { --glow: rgba(13, 110, 253, 0.35); }
     .hero-card-link:nth-child(4) { --glow: rgba(255, 193, 7, 0.35); }
     .hero-card-link:nth-child(5) { --glow: rgba(25, 135, 84, 0.35); }
     .hero-card-link:nth-child(6) { --glow: rgba(111, 66, 193, 0.35); }
-
     .hero-card-link:nth-child(1) { animation-delay: 0.3s; }
     .hero-card-link:nth-child(2) { animation-delay: 0.45s; }
     .hero-card-link:nth-child(3) { animation-delay: 0.6s; }
     .hero-card-link:nth-child(4) { animation-delay: 0.75s; }
     .hero-card-link:nth-child(5) { animation-delay: 0.9s; }
-
-    /* Hover — подсветка + подъём */
     .hero-card-link:hover {
         background: rgba(255,255,255,0.18);
         border-color: rgba(212,197,160,0.95);
@@ -187,13 +171,11 @@ st.markdown(
         box-shadow: 0 20px 45px rgba(0,0,0,0.55), 0 0 30px var(--glow, transparent);
         text-decoration: none !important;
     }
-    /* Press-эффект при клике */
     .hero-card-link:active {
         transform: translateY(-1px) scale(0.98);
         box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 20px var(--glow, transparent);
         transition: all 0.1s ease;
     }
-
     .hero-card-link .hc-icon { font-size: 26px !important; margin-bottom: 8px !important; display: block !important; line-height: 1 !important; }
     .hero-card-link .hc-title {
         font-size: 15px !important; font-weight: 800 !important; color: #ffffff !important;
@@ -232,11 +214,11 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# === Отрисовка прогресс-бара ===
 st.markdown(
     f'<div class="progress-bar-fixed"><div class="progress-bar-fill" style="width:{progress_pct}%;"></div></div>',
     unsafe_allow_html=True
 )
+
 @st.dialog("📖 Доп. факт")
 def show_extra_dialog():
     st.markdown(
@@ -275,7 +257,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("Почати подорож ➔", key="next_btn_0", use_container_width=True):
                 st.session_state.step = 1
                 st.rerun()
-
     elif st.session_state.step == 1:
         st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
         st.markdown(
@@ -308,7 +289,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">У 60-х роках ранок школяра починався о 7-й годині. Спочатку — ранкова гігієна, потім — обов’язкова зарядка під радіо.</div>'
             '<div style="background:rgba(255,255,255,0.92);border-left:6px solid #333;padding:16px 22px;border-radius:6px;margin-bottom:20px;">'
             '<div style="font-size:17px;font-weight:700;color:#222;margin-bottom:8px;">📌 Сніданок</div>'
-            '<div style="font-size:16px;color:#333;line-height:1.5;">Каша, яйця, сир, хліб із маслом, чай або молоко. Ніяких довгих сніданків — усе швидко.</div></div>',
+            '<div style="font-size:16px;color:#333;line-height:1.5;">Каша, яйця, сир, хліб із маслом, чай або молоко.</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
@@ -330,7 +311,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">Школяр 60-х виходив з дому приблизно о 07:40. Усі поспішали — попереду був день, сповнений уроків, гуртків та піонерських справ.</div>'
             '<div style="background:rgba(255,255,255,0.92);border-left:6px solid #333;padding:16px 22px;border-radius:6px;margin-bottom:20px;">'
             '<div style="font-size:17px;font-weight:700;color:#222;margin-bottom:8px;">🚶 Шлях до школи</div>'
-            '<div style="font-size:16px;color:#333;line-height:1.5;">Більшість дітей ходили до школи пішки — часто по кілька кварталів. Дорогою зустрічалися з друзями, обговорювали новини.</div></div>',
+            '<div style="font-size:16px;color:#333;line-height:1.5;">Більшість дітей ходили до школи пішки — часто по кілька кварталів. Дорогою зустрічалися з друзями.</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
@@ -432,7 +413,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("🏠 На головну", key="home_btn_6"):
                 st.session_state.step = 0
                 st.rerun()
-
     elif st.session_state.step == 7:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -534,7 +514,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 10 — МОДА ТА КУЛЬТУРА · МУЗИКА, КІНО, ІГРИ =====
     elif st.session_state.step == 10:
         st.markdown('<div class="slide-title">МОДА ТА КУЛЬТУРА · МУЗИКА, КІНО, ІГРИ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -544,29 +523,27 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         cl, cr = st.columns([1.3, 1], gap="large")
         with cl:
             st.markdown(
-                '<div class="no-anim lesson-card" style="min-height:auto;padding:22px 26px;margin-bottom:16px;">'
-                '<div class="lesson-title" style="font-size:19px;">🎸 Музика</div>'
+                '<div class="no-anim lesson-card" style="min-height:auto;padding:20px 24px;margin-bottom:14px;">'
+                '<div class="lesson-title" style="font-size:18px;">🎸 Музика</div>'
                 '<div class="lesson-text" style="font-size:15px;line-height:1.7;">'
                 '• The Beatles, The Rolling Stones — світові хіти<br>'
                 '• Радянська естрада — Муслим Магомаєв, Едіта П\'єха<br>'
                 '• Пісні під гітару у дворі<br>'
                 '• Радіо та вінілові платівки'
                 '</div></div>'
-                '<div class="no-anim lesson-card" style="min-height:auto;padding:22px 26px;margin-bottom:16px;">'
-                '<div class="lesson-title" style="font-size:19px;">🎬 Кіно</div>'
+                '<div class="no-anim lesson-card" style="min-height:auto;padding:20px 24px;margin-bottom:14px;">'
+                '<div class="lesson-title" style="font-size:18px;">🎬 Кіно</div>'
                 '<div class="lesson-text" style="font-size:15px;line-height:1.7;">'
                 '• «Я шагаю по Москве», «Операция Ы»<br>'
                 '• «Кавказька полонянка», «Діамантова рука»<br>'
-                '• Кінотеатри та літні майданчики<br>'
-                '• Перші телевізори в оселях'
+                '• Кінотеатри та літні майданчики'
                 '</div></div>'
-                '<div class="no-anim lesson-card" style="min-height:auto;padding:22px 26px;">'
-                '<div class="lesson-title" style="font-size:19px;">🎲 Ігри</div>'
+                '<div class="no-anim lesson-card" style="min-height:auto;padding:20px 24px;">'
+                '<div class="lesson-title" style="font-size:18px;">🎲 Ігри</div>'
                 '<div class="lesson-text" style="font-size:15px;line-height:1.7;">'
                 '• Класики, гумовий стрибок, піжмурки<br>'
                 '• Футбол у дворі, велосипеди<br>'
-                '• Шахи та шашки<br>'
-                '• Настільні ігри з родиною'
+                '• Шахи, шашки, настільні ігри'
                 '</div></div>',
                 unsafe_allow_html=True
             )
@@ -583,7 +560,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 11
                 st.rerun()
 
-    # ===== STEP 11 — МОДА ТА КУЛЬТУРА · ОДЕЖА =====
     elif st.session_state.step == 11:
         st.markdown('<div class="slide-title">МОДА ТА КУЛЬТУРА · ОДЕЖА</div>', unsafe_allow_html=True)
         st.markdown(
@@ -595,29 +571,26 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", use_container_width=True)
         with cr:
             st.markdown(
-                '<div class="no-anim lesson-card" style="min-height:auto;padding:22px 26px;margin-bottom:16px;">'
-                '<div class="lesson-title" style="font-size:19px;">👔 Шкільна форма</div>'
+                '<div class="no-anim lesson-card" style="min-height:auto;padding:20px 24px;margin-bottom:14px;">'
+                '<div class="lesson-title" style="font-size:18px;">👔 Шкільна форма</div>'
                 '<div class="lesson-text" style="font-size:15px;line-height:1.7;">'
                 '• Дівчата — коричнева сукня з білим або чорним фартухом<br>'
                 '• Хлопці — сорочка, брюки та піджак<br>'
-                '• Білі комірці та манжети пришивали окремо<br>'
-                '• Форма — обов\'язкова щодня'
+                '• Білі комірці та манжети пришивали окремо'
                 '</div></div>'
-                '<div class="no-anim lesson-card" style="min-height:auto;padding:22px 26px;margin-bottom:16px;">'
-                '<div class="lesson-title" style="font-size:19px;">👖 Повсякденний одяг</div>'
+                '<div class="no-anim lesson-card" style="min-height:auto;padding:20px 24px;margin-bottom:14px;">'
+                '<div class="lesson-title" style="font-size:18px;">👖 Повсякденний одяг</div>'
                 '<div class="lesson-text" style="font-size:15px;line-height:1.7;">'
                 '• Прості сукні та спідниці для дівчат<br>'
                 '• Сорочки, светри, штани для хлопців<br>'
-                '• Одяг шили або перешивали вдома<br>'
-                '• Цінувалася охайність та акуратність'
+                '• Одяг шили або перешивали вдома'
                 '</div></div>'
-                '<div class="no-anim lesson-card" style="min-height:auto;padding:22px 26px;">'
-                '<div class="lesson-title" style="font-size:19px;">✂️ Стиль епохи</div>'
+                '<div class="no-anim lesson-card" style="min-height:auto;padding:20px 24px;">'
+                '<div class="lesson-title" style="font-size:18px;">✂️ Стиль епохи</div>'
                 '<div class="lesson-text" style="font-size:15px;line-height:1.7;">'
-                '• У 60-х з\'явилися яскраві принти та міні-спідниці<br>'
+                '• Яскраві принти та міні-спідниці<br>'
                 '• Молодь наслідувала західних зірок<br>'
-                '• Зачіски — чубчики, начоси, коси<br>'
-                '• Головні убори — кепки, капелюхи, берети'
+                '• Зачіски — чубчики, начоси, коси'
                 '</div></div>',
                 unsafe_allow_html=True
             )
@@ -632,7 +605,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 12 — ІНТЕРАКТИВ =====
     elif st.session_state.step == 12:
         st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
         st.markdown('<div class="question-card">До початку першого уроку залишилося зовсім мало часу. Що робитимеш?</div>', unsafe_allow_html=True)
@@ -659,4 +631,48 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.warning("⚠️ **Штраф:** Довелося все одно йти до школи.")
             elif choice.startswith("Г"):
                 st.error("❌ **07:40.** Ти приходиш після дзвінка.")
-                st.warning("⚠️ **Штраф:** Запізнення зафік
+                st.warning("⚠️ **Штраф:** Запізнення зафіксували в журналі.")
+        st.write("")
+        c1, c2, _ = st.columns([1, 1, 4])
+        with c1:
+            if st.button("⬅ Назад", key="back_btn_12"):
+                st.session_state.step = 0
+                st.rerun()
+        with c2:
+            if st.button("🏠 На головну", key="home_btn_12"):
+                st.session_state.step = 0
+                st.rerun()
+
+    elif st.session_state.step == 13:
+        st.markdown(
+            '<div style="text-align:center;font-size:42px;font-weight:900;color:#111;'
+            'margin:30px 0 20px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
+            unsafe_allow_html=True
+        )
+        try:
+            with open("end.jpg", "rb") as f:
+                img_b64 = base64.b64encode(f.read()).decode()
+            st.markdown(
+                '<div style="width:100%;display:flex;justify-content:center;align-items:center;margin:10px 0 20px 0;">'
+                '<img src="data:image/jpeg;base64,' + img_b64 + '" '
+                'style="max-height:50vh;max-width:100%;width:auto;border-radius:12px;display:block;">'
+                '</div>',
+                unsafe_allow_html=True
+            )
+        except Exception:
+            st.markdown(
+                '<div style="text-align:center;font-size:20px;color:#888;'
+                'margin:40px 0;">Файл end.jpg не знайдено</div>',
+                unsafe_allow_html=True
+            )
+        st.markdown(
+            '<div style="text-align:center;font-size:20px;font-weight:600;color:#333;'
+            'margin-top:10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
+            unsafe_allow_html=True
+        )
+        st.write("")
+        c1, c2, c3 = st.columns([1, 1, 1])
+        with c2:
+            if st.button("🏠 На головну", key="home_btn_13", use_container_width=True):
+                st.session_state.step = 0
+                st.rerun()
