@@ -78,9 +78,11 @@ st.markdown(
         object-fit: contain !important; border-radius: 12px !important;
         margin: 0 auto !important; display: block !important;
     }
+
+    /* ====== ОБЗОР ТЕМ (step 0) ====== */
     .overview-hero {
         position: relative; width: 100%; max-width: 1400px; margin: 0 auto;
-        min-height: 85vh; border-radius: 18px; overflow: hidden;
+        min-height: 82vh; border-radius: 18px; overflow: hidden;
         background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
         background-size: cover; background-position: center;
         box-shadow: 0 30px 80px rgba(0,0,0,0.35);
@@ -89,49 +91,108 @@ st.markdown(
         position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(20,20,30,0.78) 40%, rgba(30,25,20,0.75) 70%, rgba(10,10,15,0.9) 100%);
         display: flex; flex-direction: column; align-items: center; justify-content: center;
-        padding: 50px 40px; box-sizing: border-box;
+        padding: 40px 40px; box-sizing: border-box;
     }
     .overview-title {
-        font-size: 56px !important; font-weight: 900 !important; color: #ffffff !important;
-        letter-spacing: 4px !important; line-height: 1.05 !important; margin: 0 0 10px 0 !important;
+        font-size: 52px !important; font-weight: 900 !important; color: #ffffff !important;
+        letter-spacing: 4px !important; line-height: 1.05 !important; margin: 0 0 8px 0 !important;
         text-align: center !important; text-shadow: 0 4px 30px rgba(0,0,0,0.6);
         animation: titleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .overview-subtitle {
-        font-size: 17px !important; font-weight: 400 !important; color: #d4c5a0 !important;
+        font-size: 15px !important; font-weight: 400 !important; color: #d4c5a0 !important;
         letter-spacing: 6px !important; text-transform: uppercase !important;
-        margin: 0 0 50px 0 !important; text-align: center !important;
+        margin: 0 0 35px 0 !important; text-align: center !important;
         animation: titleFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; opacity: 0;
     }
-    .overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1180px; width: 100%; }
-    .overview-card {
-        background: rgba(255,255,255,0.06); border: 1px solid rgba(212,197,160,0.4);
-        border-radius: 14px; padding: 22px 20px; backdrop-filter: blur(8px);
+
+    /* Сетка карточек: 3 сверху + 2 снизу */
+    .ov-grid-top {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+        max-width: 1100px; width: 100%; margin-bottom: 16px;
+    }
+    .ov-grid-bot {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+        max-width: 1100px; width: 100%;
+    }
+
+    .ov-card {
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(212,197,160,0.42);
+        border-radius: 14px;
+        padding: 18px 20px;
+        backdrop-filter: blur(8px);
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        opacity: 0; text-align: left;
+        opacity: 0;
+        text-align: left;
+        cursor: pointer;
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
-    .overview-card:hover {
-        background: rgba(255,255,255,0.14); border-color: rgba(212,197,160,0.85);
-        transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+    .ov-card:hover {
+        background: rgba(255,255,255,0.16);
+        border-color: rgba(212,197,160,0.9);
+        transform: translateY(-5px);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.5);
     }
-    .overview-card:nth-child(1) { animation-delay: 0.5s; }
-    .overview-card:nth-child(2) { animation-delay: 0.75s; }
-    .overview-card:nth-child(3) { animation-delay: 1.0s; }
-    .overview-card:nth-child(4) { animation-delay: 1.25s; }
-    .overview-card .ov-icon { font-size: 34px !important; margin-bottom: 12px !important; display: block !important; }
-    .overview-card .ov-title {
-        font-size: 19px !important; font-weight: 800 !important; color: #ffffff !important;
-        margin: 0 0 8px 0 !important; letter-spacing: 0.5px !important; line-height: 1.25 !important;
+    .ov-card:nth-child(1) { animation-delay: 0.4s; }
+    .ov-card:nth-child(2) { animation-delay: 0.6s; }
+    .ov-card:nth-child(3) { animation-delay: 0.8s; }
+    .ov-card:nth-child(4) { animation-delay: 1.0s; }
+    .ov-card:nth-child(5) { animation-delay: 1.2s; }
+
+    .ov-icon { font-size: 30px !important; margin-bottom: 10px !important; display: block !important; line-height: 1 !important; }
+    .ov-title {
+        font-size: 17px !important; font-weight: 800 !important; color: #ffffff !important;
+        margin: 0 0 6px 0 !important; letter-spacing: 0.5px !important; line-height: 1.25 !important;
     }
-    .overview-card .ov-desc {
-        font-size: 13px !important; font-weight: 400 !important; color: #b8ac8f !important;
+    .ov-desc {
+        font-size: 12.5px !important; font-weight: 400 !important; color: #b8ac8f !important;
         line-height: 1.5 !important; margin: 0 !important;
     }
-    .overview-footer {
-        position: absolute; bottom: 25px; right: 35px;
-        font-size: 12px !important; color: #8a8270 !important; letter-spacing: 2px !important;
+
+    /* Кнопки-наложения на карточки */
+    .overlay-btn-wrap {
+        position: relative;
+        z-index: 20;
+        margin-top: -108px;
+        margin-bottom: 20px;
+        pointer-events: none;
     }
+    .overlay-btn-wrap .stButton > button {
+        background: transparent !important;
+        color: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        height: 130px !important;
+        width: 100% !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    .overlay-btn-wrap .stButton > button:hover {
+        background: rgba(255,255,255,0.05) !important;
+        transform: none !important;
+        border: none !important;
+    }
+    .overlay-btn-wrap .stButton > button:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    .overlay-btn-wrap .stButton > button p {
+        display: none !important;
+    }
+
+    .overview-footer {
+        position: absolute; bottom: 20px; right: 30px;
+        font-size: 11px !important; color: #8a8270 !important; letter-spacing: 2px !important;
+    }
+
+    /* ====== ДЖЕРЕЛА (step 6) ====== */
     .sources-hero {
         position: relative; width: 100%; max-width: 1400px; margin: 0 auto;
         min-height: 82vh; border-radius: 18px; overflow: hidden;
@@ -172,6 +233,8 @@ st.markdown(
         font-size: 12px !important; font-weight: 400 !important; color: #d4c5a0 !important;
         line-height: 1.5 !important; margin: 0 !important; word-break: break-word !important;
     }
+
+    /* ====== ДИАЛОГ ====== */
     div[data-testid="stDialog"] > div {
         background-color: #ffffff !important; border-radius: 14px !important;
         border-left: 6px solid #333333 !important; padding: 10px 16px !important;
@@ -224,33 +287,81 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div class="overview-overlay">'
             '<div class="overview-title">ДЕНЬ ШКОЛЯРА 60-Х</div>'
             '<div class="overview-subtitle">Подорож у минуле</div>'
-            '<div class="overview-grid">'
-            '<div class="overview-card">'
+
+            '<div class="ov-grid-top">'
+            '<div class="ov-card">'
+            '<span class="ov-icon">📜</span>'
+            '<div class="ov-title">ІСТОРИЧНА ЗГАДКА</div>'
+            '<div class="ov-desc">Хто такі піонери та чим займались</div>'
+            '</div>'
+            '<div class="ov-card">'
             '<span class="ov-icon">🌅</span>'
             '<div class="ov-title">РАНОК</div>'
-            '<div class="ov-desc">Пробудження, сніданок та шкільна форма</div>'
+            '<div class="ov-desc">Пробудження, сніданок та форма</div>'
             '</div>'
-            '<div class="overview-card">'
+            '<div class="ov-card">'
             '<span class="ov-icon">📚</span>'
             '<div class="ov-title">УРОКИ</div>'
             '<div class="ov-desc">Школа, чорнильниці та дисципліна</div>'
             '</div>'
-            '<div class="overview-card">'
+            '</div>'
+
+            '<div class="ov-grid-bot">'
+            '<div class="ov-card">'
             '<span class="ov-icon">🎒</span>'
             '<div class="ov-title">ПОЗАУРОЧНИЙ ЧАС</div>'
             '<div class="ov-desc">Гуртки, піонери та колектив</div>'
             '</div>'
-            '<div class="overview-card">'
+            '<div class="ov-card">'
             '<span class="ov-icon">🎯</span>'
             '<div class="ov-title">ІНТЕРАКТИВ</div>'
             '<div class="ov-desc">Спробуй себе у ситуації 60-х років</div>'
             '</div>'
+            '<div class="ov-card" style="visibility: hidden;">'
+            '<span class="ov-icon"> </span>'
+            '<div class="ov-title"> </div>'
+            '<div class="ov-desc"> </div>'
             '</div>'
+            '</div>'
+
             '<div class="overview-footer">Проект учнів 10-А класу</div>'
             '</div>'
             '</div>',
             unsafe_allow_html=True
         )
+
+        st.markdown('<div class="overlay-btn-wrap">', unsafe_allow_html=True)
+
+        # Верхний ряд — 3 кнопки
+        cols_top = st.columns(3, gap="medium")
+        with cols_top[0]:
+            if st.button("card1", key="card_btn_1", use_container_width=True):
+                st.session_state.step = 1
+                st.rerun()
+        with cols_top[1]:
+            if st.button("card2", key="card_btn_2", use_container_width=True):
+                st.session_state.step = 2
+                st.rerun()
+        with cols_top[2]:
+            if st.button("card3", key="card_btn_3", use_container_width=True):
+                st.session_state.step = 3
+                st.rerun()
+
+        # Нижний ряд — 2 кнопки + пусто
+        cols_bot = st.columns(3, gap="medium")
+        with cols_bot[0]:
+            if st.button("card4", key="card_btn_4", use_container_width=True):
+                st.session_state.step = 4
+                st.rerun()
+        with cols_bot[1]:
+            if st.button("card5", key="card_btn_5", use_container_width=True):
+                st.session_state.step = 5
+                st.rerun()
+        with cols_bot[2]:
+            st.write("")
+
+        st.markdown('</div>', unsafe_allow_html=True)
+
         st.write("")
         col_l, col_c, col_r = st.columns([1, 1, 1])
         with col_c:
@@ -504,3 +615,4 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("На початок ➔", key="restart_btn", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
+                
