@@ -4,7 +4,7 @@ from PIL import Image
 # Настройка страницы
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Применяем CSS: добавляем отступ сверху для всех страниц
+# Применяем CSS
 st.markdown(
     """
     <style>
@@ -19,7 +19,6 @@ st.markdown(
         text-align: left !important;
     }
     
-    /* Растягиваем контейнер на всю ширину и делаем отступ сверху */
     div.block-container {
         background-color: #ffffff;
         max-width: 100% !important;
@@ -32,23 +31,14 @@ st.markdown(
     }
 
     @keyframes scaleFadeTransition {
-        0% {
-            opacity: 0;
-            transform: scale(0.95);
-            filter: blur(4px);
-        }
-        100% {
-            opacity: 1;
-            transform: scale(1);
-            filter: blur(0px);
-        }
+        0% { opacity: 0; transform: scale(0.95); filter: blur(4px); }
+        100% { opacity: 1; transform: scale(1); filter: blur(0px); }
     }
 
     .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
         animation: scaleFadeTransition 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* Отключаем анимацию у карточек с классом .no-anim */
     .no-anim, .no-anim * {
         animation: none !important;
         transform: none !important;
@@ -105,7 +95,7 @@ st.markdown(
         transform: translateY(1px);
     }
 
-    /* Карточки на слайде У ШКОЛІ — компактные */
+    /* Карточки на слайде У ШКОЛІ */
     .lesson-card {
         background-color: #f8f9fa;
         border-left: 6px solid #333333;
@@ -134,51 +124,78 @@ st.markdown(
         display: block !important;
     }
 
-    /* ===== МОДАЛЬНОЕ ОКНО "Доп. інфо" ===== */
+    /* ===== МОДАЛЬНОЕ ОКНО "Доп. інфо" (компактное, поверх листа) ===== */
     .modal-overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.55);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 99999;
+        background-color: rgba(0, 0, 0, 0.45);
+        z-index: 99998;
         animation: modalFadeIn 0.3s ease-out forwards;
     }
     @keyframes modalFadeIn {
         from { opacity: 0; }
         to   { opacity: 1; }
     }
+
+    /* Само окно — уменьшено примерно в 4 раза */
     .modal-box {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         background-color: #ffffff;
-        border-radius: 14px;
-        padding: 38px 42px;
-        max-width: 640px;
-        width: 90%;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-        border-left: 8px solid #333333;
-        animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        border-radius: 10px;
+        padding: 18px 22px;
+        max-width: 340px;
+        width: 80%;
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.3);
+        border-left: 5px solid #333333;
+        z-index: 99999;
+        animation: modalPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     @keyframes modalPopIn {
-        from { opacity: 0; transform: scale(0.9) translateY(20px); }
-        to   { opacity: 1; transform: scale(1) translateY(0); }
+        from { opacity: 0; transform: translate(-50%, -50%) scale(0.92); }
+        to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
     .modal-box .modal-title {
-        font-size: 26px !important;
+        font-size: 16px !important;
         font-weight: 800 !important;
         color: #111 !important;
-        margin: 0 0 18px 0 !important;
+        margin: 0 0 8px 0 !important;
         line-height: 1.3 !important;
     }
     .modal-box .modal-text {
-        font-size: 18px !important;
+        font-size: 13px !important;
         font-weight: 500 !important;
         color: #333 !important;
-        line-height: 1.7 !important;
-        margin: 0 0 14px 0 !important;
+        line-height: 1.5 !important;
+        margin: 0 0 6px 0 !important;
+    }
+
+    /* Кнопка "Закрити" — маленькая, справа от окна, поверх листа */
+    div[data-testid="stButton"] button[kind="secondary"]#close_btn_anchor,
+    .close-btn-wrapper button {
+        position: fixed !important;
+        top: 50% !important;
+        left: calc(50% + 190px) !important;
+        transform: translateY(-50%) !important;
+        z-index: 100000 !important;
+        background-color: #333333 !important;
+        color: #ffffff !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        padding: 6px 14px !important;
+        border-radius: 6px !important;
+        border: none !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+        transition: all 0.2s ease !important;
+    }
+    .close-btn-wrapper button:hover {
+        background-color: #000000 !important;
+        transform: translateY(-50%) scale(1.05) !important;
     }
     </style>
     """,
@@ -292,7 +309,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
         elif st.session_state.step == 2:
-            # Заголовок и время
             st.markdown('<div class="slide-title">У ШКОЛІ</div>', unsafe_allow_html=True)
             st.markdown(
                 """
@@ -311,7 +327,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Две колонки: СЛЕВА — Уроки, СПРАВА — Форма
             col_left, col_right = st.columns([1, 1], gap="large")
             
             with col_left:
@@ -344,7 +359,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     unsafe_allow_html=True
                 )
             
-            # Нижний ряд кнопок: Далі + Доп. інфо
             col_btn1, col_btn2, _ = st.columns([1, 1, 4])
             with col_btn1:
                 if st.button("Далі ➔", key="next_btn_2"):
@@ -441,31 +455,31 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-# ===== МОДАЛЬНОЕ ОКНО "Доп. інфо" (поверх всего) =====
+# ===== МОДАЛЬНОЕ ОКНО "Доп. інфо" (поверх всего, компактное) =====
 if st.session_state.show_extra:
+    # Оверлей + окно
     st.markdown(
         """
-        <div class="modal-overlay">
-            <div class="modal-box">
-                <div class="modal-title">📖 Доп. факт</div>
-                <div class="modal-text">
-                    У школах діяла п’ятибальна система оцінювання.
-                </div>
-                <div class="modal-text">
-                    Формально шкала передбачала оцінки від 1 до 5, але на практиці 
-                    одиницю майже не ставили. Вона вважалася надзвичайно низькою 
-                    оцінкою, яка означала не просто помилку, а повну відсутність 
-                    знань або підготовки.
-                </div>
+        <div class="modal-overlay"></div>
+        <div class="modal-box">
+            <div class="modal-title">📖 Доп. факт</div>
+            <div class="modal-text">
+                У школах діяла п’ятибальна система оцінювання.
+            </div>
+            <div class="modal-text">
+                Формально шкала передбачала оцінки від 1 до 5, але на практиці 
+                одиницю майже не ставили. Вона вважалася надзвичайно низькою 
+                оцінкою, яка означала не просто помилку, а повну відсутність 
+                знань або підготовки.
             </div>
         </div>
         """,
         unsafe_allow_html=True
     )
     
-    # Кнопка закрытия (в отдельной колонке по центру, поверх окна)
-    col_close_l, col_close_c, col_close_r = st.columns([2, 1, 2])
-    with col_close_c:
-        if st.button("✖ Закрити", key="close_extra_btn"):
-            st.session_state.show_extra = False
-            st.rerun()
+    # Кнопка "Закрити" — фиксированная справа от окна
+    st.markdown('<div class="close-btn-wrapper">', unsafe_allow_html=True)
+    if st.button("✖ Закрити", key="close_extra_btn"):
+        st.session_state.show_extra = False
+        st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
