@@ -109,32 +109,27 @@ st.markdown(
     .lesson-card {
         background-color: #f8f9fa;
         border-left: 6px solid #333333;
-        padding: 40px 35px;
+        padding: 35px 35px;
         border-radius: 8px;
         width: 100% !important;
-        min-height: 320px !important;
+        min-height: 340px !important;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;   /* ← контент прижат к ВЕРХУ */
     }
     .lesson-card .lesson-title {
         font-size: 24px !important;
         font-weight: 700 !important;
         color: #222 !important;
         margin-bottom: 18px !important;
+        margin-top: 0 !important;
     }
     .lesson-card .lesson-text {
         font-size: 20px !important;
         font-weight: 500 !important;
         color: #333 !important;
         line-height: 1.8 !important;
-    }
-    .lesson-card .lesson-list {
-        font-size: 20px !important;
-        font-weight: 500 !important;
-        color: #333 !important;
-        line-height: 1.8 !important;
-        margin-top: 6px !important;
+        margin: 0 !important;
     }
     </style>
     """,
@@ -274,9 +269,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                         <div class="lesson-title">👔 Обовʼязкова шкільна форма</div>
                         <div class="lesson-text">
                             Для дівчат типовою була сукня коричневого кольору з білим 
-                            або чорним фартухом.
-                        </div>
-                        <div class="lesson-list">
+                            або чорним фартухом.<br><br>
                             Для хлопців — сорочка, брюки та піджак.
                         </div>
                     </div>
