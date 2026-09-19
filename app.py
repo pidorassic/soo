@@ -210,9 +210,49 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
         elif st.session_state.step == 2:
-            st.markdown('<div class="slide-title">Уроки</div>', unsafe_allow_html=True)
-            st.write("У навчальному процесі панувала сувора дисципліна та порядок. Школярі писали справжніми чорнильницами-непроливайками та дерев'яними ручками з металевими пером, що вимагало неабиякої акуратності, адже за помарочку в зошиті могли знизити оцінку. Жодних гаджетів чи калькуляторів — лише таблиця множення, логарифмічні лінійки, живі дискусії на перервах та дружні розмови біля стінгазет у коридорах.")
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+            # Заголовок и время
+            st.markdown('<div class="slide-title">У ШКОЛІ</div>', unsafe_allow_html=True)
+            st.markdown(
+                """
+                <div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">
+                    🔔 08:00. Лунає дзвоник
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                """
+                <div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 25px;">
+                    Попереду — уроки, перерви, відповіді біля дошки й останній дзвоник.
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
+            # Колонки: слева пусто/картинка, справа — окно с текстом
+            col_left, col_right = st.columns([1.4, 1], gap="large")
+            
+            with col_left:
+                st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", use_container_width=True)
+            
+            with col_right:
+                st.markdown(
+                    """
+                    <div style="background-color: #f8f9fa; border-left: 6px solid #333333; 
+                                padding: 18px 22px; border-radius: 8px;">
+                        <div style="font-size: 18px; font-weight: 700; color: #222; margin-bottom: 10px;">
+                            📚 Уроки
+                        </div>
+                        <div style="font-size: 16px; color: #333; line-height: 1.5;">
+                            Вони проходили приблизно так само, як ти можеш уявити звичайний 
+                            урок сьогодні, тривало одне заняття 45 хвилин, були перерви, 
+                            контрольні та домашнє завдання.
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+            
             st.write("")
             if st.button("Далі ➔", key="next_btn_2"):
                 st.session_state.step += 1
