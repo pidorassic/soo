@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import base64
 
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
@@ -515,17 +516,22 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             'margin:60px 0 30px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
             unsafe_allow_html=True
         )
-        c_left, c_center, c_right = st.columns([1, 1.5, 1])
-        with c_center:
-            try:
-                img = Image.open("end.jpg")
-                st.image(img, use_container_width=True)
-            except Exception:
-                st.markdown(
-                    '<div style="text-align:center;font-size:20px;color:#888;'
-                    'margin:40px 0;">Файл end.jpg не знайдено</div>',
-                    unsafe_allow_html=True
-                )
+        try:
+            with open("end.jpg", "rb") as f:
+                img_b64 = base64.b64encode(f.read()).decode()
+            st.markdown(
+                '<div style="width:100%;display:flex;justify-content:center;align-items:center;margin:20px 0;">'
+                '<img src="data:image/jpeg;base64,' + img_b64 + '" '
+                'style="max-width:520px;width:100%;border-radius:12px;display:block;">'
+                '</div>',
+                unsafe_allow_html=True
+            )
+        except Exception:
+            st.markdown(
+                '<div style="text-align:center;font-size:20px;color:#888;'
+                'margin:40px 0;">Файл end.jpg не знайдено</div>',
+                unsafe_allow_html=True
+            )
         st.markdown(
             '<div style="text-align:center;font-size:22px;font-weight:600;color:#333;'
             'margin-top:30px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
