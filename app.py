@@ -141,17 +141,17 @@ st.markdown(
     }
     .hero-cards {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 16px;
-        max-width: 1050px;
+        max-width: 900px;
         width: 100%;
         margin-bottom: 16px;
     }
     .hero-cards-bottom {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 16px;
-        max-width: 1050px;
+        max-width: 900px;
         width: 100%;
     }
     .hero-card-link {
@@ -159,19 +159,18 @@ st.markdown(
         background: rgba(255,255,255,0.07);
         border: 1px solid rgba(212,197,160,0.42);
         border-radius: 14px;
-        padding: 18px 20px;
+        padding: 20px 22px;
         text-decoration: none !important;
         color: inherit !important;
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         opacity: 0;
         cursor: pointer;
-        min-height: 130px;
+        min-height: 140px;
         box-sizing: border-box;
     }
     .hero-card-link:nth-child(1) { animation-delay: 0.4s; }
     .hero-card-link:nth-child(2) { animation-delay: 0.6s; }
-    .hero-card-link:nth-child(3) { animation-delay: 0.8s; }
     .hero-card-link:hover {
         background: rgba(255,255,255,0.16);
         border-color: rgba(212,197,160,0.9);
@@ -180,13 +179,13 @@ st.markdown(
         text-decoration: none !important;
     }
     .hero-card-link .hc-icon {
-        font-size: 28px !important;
-        margin-bottom: 8px !important;
+        font-size: 30px !important;
+        margin-bottom: 10px !important;
         display: block !important;
         line-height: 1 !important;
     }
     .hero-card-link .hc-title {
-        font-size: 16px !important;
+        font-size: 18px !important;
         font-weight: 800 !important;
         color: #ffffff !important;
         margin: 0 0 6px 0 !important;
@@ -194,7 +193,7 @@ st.markdown(
         line-height: 1.25 !important;
     }
     .hero-card-link .hc-desc {
-        font-size: 12.5px !important;
+        font-size: 13px !important;
         font-weight: 400 !important;
         color: #b8ac8f !important;
         line-height: 1.5 !important;
@@ -208,38 +207,6 @@ st.markdown(
         font-size: 11px !important;
         color: #8a8270 !important;
         letter-spacing: 2px !important;
-    }
-    .sources-hero {
-        position: relative; width: 100%; max-width: 1400px; margin: 0 auto;
-        min-height: 82vh; border-radius: 18px; overflow: hidden;
-        background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
-        background-size: cover; background-position: center;
-        box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-    }
-    .sources-overlay {
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(135deg, rgba(10,10,15,0.94) 0%, rgba(20,20,30,0.85) 40%, rgba(30,25,20,0.82) 70%, rgba(10,10,15,0.92) 100%);
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        padding: 50px 40px; box-sizing: border-box;
-    }
-    .sources-title {
-        font-size: 52px !important; font-weight: 900 !important; color: #ffffff !important;
-        letter-spacing: 6px !important; line-height: 1 !important; margin: 0 0 50px 0 !important;
-        text-align: center !important;
-    }
-    .sources-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1180px; width: 100%; }
-    .source-card {
-        background: rgba(255,255,255,0.06); border: 1px solid rgba(212,197,160,0.4);
-        border-radius: 12px; padding: 18px; backdrop-filter: blur(8px);
-    }
-    .source-card .src-icon { font-size: 28px !important; margin-bottom: 10px !important; display: block !important; }
-    .source-card .src-title {
-        font-size: 15px !important; font-weight: 700 !important; color: #ffffff !important;
-        margin: 0 0 6px 0 !important; line-height: 1.3 !important;
-    }
-    .source-card .src-link {
-        font-size: 12px !important; font-weight: 400 !important; color: #d4c5a0 !important;
-        line-height: 1.5 !important; margin: 0 !important; word-break: break-word !important;
     }
     div[data-testid="stDialog"] > div {
         background-color: #ffffff !important; border-radius: 14px !important;
@@ -302,22 +269,12 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div class="hc-title">ДЕНЬ ПІОНЕРА</div>'
             '<div class="hc-desc">Ранок та школа очима піонера</div>'
             '</a>'
-            '<a class="hero-card-link" href="?page=4" target="_self">'
-            '<span class="hc-icon">🎒</span>'
-            '<div class="hc-title">ПОЗАУРОЧНИЙ ЧАС</div>'
-            '<div class="hc-desc">Гуртки, піонери та колектив</div>'
-            '</a>'
             '</div>'
             '<div class="hero-cards-bottom">'
             '<a class="hero-card-link" href="?page=5" target="_self">'
             '<span class="hc-icon">🎯</span>'
             '<div class="hc-title">ІНТЕРАКТИВ</div>'
             '<div class="hc-desc">Спробуй себе у ситуації 60-х років</div>'
-            '</a>'
-            '<a class="hero-card-link" href="?page=6" target="_self">'
-            '<span class="hc-icon">📚</span>'
-            '<div class="hc-title">ДЖЕРЕЛА</div>'
-            '<div class="hc-desc">Матеріали та посилання</div>'
             '</a>'
             '<a class="hero-card-link" href="?page=7" target="_self">'
             '<span class="hc-icon">🏁</span>'
@@ -337,7 +294,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 1
                 st.rerun()
 
-    # ===== STEP 1 — ІСТОРИЧНА ЗГАДКА (1 слайд) =====
+    # ===== STEP 1 — ІСТОРИЧНА ЗГАДКА =====
     elif st.session_state.step == 1:
         st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
         st.markdown(
@@ -483,29 +440,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("📖 Доп. інфо", key="extra_btn_3"):
                 show_extra_dialog()
 
-    # ===== STEP 4 — ПОЗАУРОЧНИЙ ЧАС (1 слайд) =====
-    elif st.session_state.step == 4:
-        st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
-        st.write(
-            "Після завершення уроків життя школярів не зупинялося. Позаурочний час був сповнений "
-            "колективної праці та творчості: піонерські та комсомольські збори, збір макулатури "
-            "та металобрухту цілими класами, активна участь у різноманітних гуртках "
-            "(авіамоделювання, драма, спортивні секції). Підлітки 60-х щиро вірили в майбутнє, "
-            "захоплювалися космосом після польоту Гагаріна та завжди трималися разом."
-        )
-        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
-        st.write("")
-        col_back, col_home, _ = st.columns([1, 1, 4])
-        with col_back:
-            if st.button("⬅ Назад", key="back_btn_4"):
-                st.session_state.step = 0
-                st.rerun()
-        with col_home:
-            if st.button("🏠 На головну", key="home_btn_4"):
-                st.session_state.step = 0
-                st.rerun()
-
-    # ===== STEP 5 — ІНТЕРАКТИВ (1 слайд) =====
+    # ===== STEP 5 — ІНТЕРАКТИВ =====
     elif st.session_state.step == 5:
         st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
         st.markdown('<div class="question-card">До початку першого уроку залишилося зовсім мало часу. Що робитимеш?</div>', unsafe_allow_html=True)
@@ -545,50 +480,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 6 — ДЖЕРЕЛА (1 слайд) =====
-    elif st.session_state.step == 6:
-        st.markdown(
-            '<div class="sources-hero">'
-            '<div class="sources-overlay">'
-            '<div class="sources-title">ДЖЕРЕЛА</div>'
-            '<div class="sources-grid">'
-            '<div class="source-card">'
-            '<span class="src-icon">📖</span>'
-            '<div class="src-title">Історія піонерського руху</div>'
-            '<div class="src-link">Wikipedia — Всесоюзна піонерська організація</div>'
-            '</div>'
-            '<div class="source-card">'
-            '<span class="src-icon">🏫</span>'
-            '<div class="src-title">Радянська школа 1960-х</div>'
-            '<div class="src-link">Матеріали з історії освіти СРСР</div>'
-            '</div>'
-            '<div class="source-card">'
-            '<span class="src-icon">📸</span>'
-            '<div class="src-title">Фото та архіви</div>'
-            '<div class="src-link">Unsplash — сучасні реконструкції</div>'
-            '</div>'
-            '<div class="source-card">'
-            '<span class="src-icon">👨‍🏫</span>'
-            '<div class="src-title">Спогади очевидців</div>'
-            '<div class="src-link">Інтерв\'ю та родинні архіви</div>'
-            '</div>'
-            '</div>'
-            '</div>'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.write("")
-        col_back, col_home, _ = st.columns([1, 1, 4])
-        with col_back:
-            if st.button("⬅ Назад", key="back_btn_6"):
-                st.session_state.step = 0
-                st.rerun()
-        with col_home:
-            if st.button("🏠 На головну", key="home_btn_6"):
-                st.session_state.step = 0
-                st.rerun()
-
-    # ===== STEP 7 — ЗАВЕРШЕННЯ (1 слайд) =====
+    # ===== STEP 7 — ЗАВЕРШЕННЯ =====
     elif st.session_state.step == 7:
         st.markdown(
             '<div style="text-align: center; font-size: 42px; font-weight: 900; color: #111111; '
@@ -616,3 +508,4 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("🏠 На головну", key="home_btn_7", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
+                
