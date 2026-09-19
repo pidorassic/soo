@@ -24,8 +24,8 @@ st.markdown(
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding-top: 5rem !important;
-        padding-bottom: 2rem !important;
+        padding-top: 3rem !important;
+        padding-bottom: 1rem !important;
         padding-left: 4rem !important;
         padding-right: 4rem !important;
     }
@@ -46,10 +46,10 @@ st.markdown(
     }
 
     .slide-title {
-        font-size: 30px !important;
+        font-size: 28px !important;
         font-weight: 700 !important;
         color: #111111 !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 6px !important;
         line-height: 1.2 !important;
         text-align: left !important;
     }
@@ -76,11 +76,11 @@ st.markdown(
     .stButton > button {
         background-color: #e4e6eb !important;
         color: #000000 !important;
-        font-size: 16px !important;
+        font-size: 15px !important;
         font-weight: 600 !important;
         border: 1px solid #ced4da !important;
         border-radius: 6px !important;
-        padding: 0.5rem 1.5rem !important;
+        padding: 0.4rem 1.2rem !important;
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
     
@@ -95,50 +95,44 @@ st.markdown(
         transform: translateY(1px);
     }
 
-    /* Карточки на слайде У ШКОЛІ */
+    /* Карточки на слайде У ШКОЛІ — компактнее */
     .lesson-card {
         background-color: #f8f9fa;
         border-left: 6px solid #333333;
-        padding: 22px 24px;
+        padding: 18px 20px;
         border-radius: 8px;
         width: 100% !important;
-        min-height: 200px !important;
+        min-height: 160px !important;
         display: block;
     }
     .lesson-card .lesson-title {
-        font-size: 20px !important;
+        font-size: 18px !important;
         font-weight: 700 !important;
         color: #222 !important;
-        margin: 0 0 12px 0 !important;
+        margin: 0 0 10px 0 !important;
         padding: 0 !important;
         line-height: 1.3 !important;
         display: block !important;
     }
     .lesson-card .lesson-text {
-        font-size: 17px !important;
+        font-size: 15px !important;
         font-weight: 500 !important;
         color: #333 !important;
-        line-height: 1.6 !important;
+        line-height: 1.55 !important;
         margin: 0 !important;
         padding: 0 !important;
         display: block !important;
     }
 
-    /* Фото на слайде У ШКОЛІ */
-    .school-photo {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-    .school-photo img {
-        max-width: 100% !important;
-        max-height: 420px !important;
+    /* Фото — ограничиваем по высоте, чтобы влезало на экран */
+    div[data-testid="stImage"] img {
+        max-height: 42vh !important;
         width: auto !important;
-        height: auto !important;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-        object-fit: cover;
+        max-width: 100% !important;
+        object-fit: contain !important;
+        border-radius: 12px !important;
+        margin: 0 auto !important;
+        display: block !important;
     }
 
     /* ===== Стилизация нативного st.dialog ===== */
@@ -165,7 +159,6 @@ st.markdown(
         line-height: 1.6 !important;
     }
 
-    /* Скрываем крестик в правом верхнем углу диалога */
     div[data-testid="stDialog"] button[aria-label="Close"],
     div[data-testid="stDialog"] button[aria-label="close"],
     div[data-testid="stDialog"] [data-testid="stDialogCloseButton"],
@@ -174,7 +167,6 @@ st.markdown(
         visibility: hidden !important;
     }
 
-    /* Кнопка "Закрити" внутри диалога */
     div[data-testid="stDialog"] .stButton > button {
         background-color: #ffffff !important;
         color: #333333 !important;
@@ -190,9 +182,6 @@ st.markdown(
         background-color: #333333 !important;
         color: #ffffff !important;
         transform: translateY(-1px) !important;
-    }
-    div[data-testid="stDialog"] .stButton > button:active {
-        transform: translateY(1px) !important;
     }
     </style>
     """,
@@ -328,7 +317,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             st.markdown('<div class="slide-title">У ШКОЛІ</div>', unsafe_allow_html=True)
             st.markdown(
                 """
-                <div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">
+                <div style="font-size: 20px; font-weight: 700; color: #111111; margin-bottom: 8px;">
                     🔔 08:00. Лунає дзвоник
                 </div>
                 """,
@@ -336,7 +325,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             )
             st.markdown(
                 """
-                <div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 25px;">
+                <div style="font-size: 16px; font-weight: 500; color: #1a1a1a; line-height: 1.5; margin-bottom: 15px;">
                     Попереду — уроки, перерви, відповіді біля дошки й останній дзвоник.
                 </div>
                 """,
@@ -375,15 +364,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     unsafe_allow_html=True
                 )
             
-            # Фото по центру под карточками
-            st.write("")
-            col_photo_l, col_photo_c, col_photo_r = st.columns([1, 2, 1])
-            with col_photo_c:
-                st.image(
-                    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop",
-                    use_container_width=True
-                )
-            
+            # КНОПКИ СРАЗУ ПОД КАРТОЧКАМИ (выше фото)
             st.write("")
             col_btn1, col_btn2, _ = st.columns([1, 1, 4])
             with col_btn1:
@@ -393,6 +374,15 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             with col_btn2:
                 if st.button("📖 Доп. інфо", key="extra_btn_2"):
                     show_extra_dialog()
+            
+            # Фото по центру — теперь НИЖЕ кнопок
+            st.write("")
+            col_photo_l, col_photo_c, col_photo_r = st.columns([1, 2, 1])
+            with col_photo_c:
+                st.image(
+                    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop",
+                    use_container_width=True
+                )
 
         elif st.session_state.step == 3:
             st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
