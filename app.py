@@ -24,8 +24,8 @@ st.markdown(
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding-top: 3rem !important;
-        padding-bottom: 1rem !important;
+        padding-top: 5rem !important;
+        padding-bottom: 2rem !important;
         padding-left: 4rem !important;
         padding-right: 4rem !important;
     }
@@ -124,7 +124,7 @@ st.markdown(
         display: block !important;
     }
 
-    /* Фото — ограничиваем по высоте, чтобы влезало на экран */
+    /* Фото — ограничиваем по высоте */
     div[data-testid="stImage"] img {
         max-height: 42vh !important;
         width: auto !important;
@@ -364,7 +364,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     unsafe_allow_html=True
                 )
             
-            # КНОПКИ СРАЗУ ПОД КАРТОЧКАМИ (выше фото)
+            # Фото по центру (посередине)
+            st.write("")
+            col_photo_l, col_photo_c, col_photo_r = st.columns([1, 2, 1])
+            with col_photo_c:
+                st.image(
+                    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop",
+                    use_container_width=True
+                )
+            
+            # КНОПКИ — теперь ПОД фото
             st.write("")
             col_btn1, col_btn2, _ = st.columns([1, 1, 4])
             with col_btn1:
@@ -374,15 +383,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             with col_btn2:
                 if st.button("📖 Доп. інфо", key="extra_btn_2"):
                     show_extra_dialog()
-            
-            # Фото по центру — теперь НИЖЕ кнопок
-            st.write("")
-            col_photo_l, col_photo_c, col_photo_r = st.columns([1, 2, 1])
-            with col_photo_c:
-                st.image(
-                    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop",
-                    use_container_width=True
-                )
 
         elif st.session_state.step == 3:
             st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
