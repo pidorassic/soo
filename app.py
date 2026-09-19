@@ -23,14 +23,6 @@ st.markdown(
         0% { opacity: 0; transform: scale(0.95); filter: blur(4px); }
         100% { opacity: 1; transform: scale(1); filter: blur(0px); }
     }
-    @keyframes slideUpFade {
-        0% { opacity: 0; transform: translateY(40px); }
-        100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes titleFadeIn {
-        0% { opacity: 0; transform: translateY(-20px); letter-spacing: 12px; }
-        100% { opacity: 1; transform: translateY(0); letter-spacing: 4px; }
-    }
     .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
         animation: scaleFadeTransition 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -82,114 +74,58 @@ st.markdown(
     /* ====== ОБЗОР ТЕМ (step 0) ====== */
     .overview-hero {
         position: relative; width: 100%; max-width: 1400px; margin: 0 auto;
-        min-height: 82vh; border-radius: 18px; overflow: hidden;
+        border-radius: 18px; overflow: hidden;
         background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
         background-size: cover; background-position: center;
         box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+        padding: 50px 40px 40px 40px;
+        box-sizing: border-box;
     }
-    .overview-overlay {
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    .overview-inner {
         background: linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(20,20,30,0.78) 40%, rgba(30,25,20,0.75) 70%, rgba(10,10,15,0.9) 100%);
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        padding: 40px 40px; box-sizing: border-box;
+        border-radius: 14px;
+        padding: 40px 30px;
+        display: flex; flex-direction: column; align-items: center;
+        min-height: 70vh;
     }
     .overview-title {
         font-size: 52px !important; font-weight: 900 !important; color: #ffffff !important;
         letter-spacing: 4px !important; line-height: 1.05 !important; margin: 0 0 8px 0 !important;
         text-align: center !important; text-shadow: 0 4px 30px rgba(0,0,0,0.6);
-        animation: titleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .overview-subtitle {
         font-size: 15px !important; font-weight: 400 !important; color: #d4c5a0 !important;
         letter-spacing: 6px !important; text-transform: uppercase !important;
-        margin: 0 0 35px 0 !important; text-align: center !important;
-        animation: titleFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; opacity: 0;
+        margin: 0 0 30px 0 !important; text-align: center !important;
     }
-
-    /* Сетка карточек: 3 сверху + 2 снизу */
-    .ov-grid-top {
-        display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-        max-width: 1100px; width: 100%; margin-bottom: 16px;
-    }
-    .ov-grid-bot {
-        display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-        max-width: 1100px; width: 100%;
-    }
-
-    .ov-card {
-        background: rgba(255,255,255,0.07);
-        border: 1px solid rgba(212,197,160,0.42);
-        border-radius: 14px;
-        padding: 18px 20px;
-        backdrop-filter: blur(8px);
-        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        opacity: 0;
-        text-align: left;
-        cursor: pointer;
-        min-height: 140px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-    .ov-card:hover {
-        background: rgba(255,255,255,0.16);
-        border-color: rgba(212,197,160,0.9);
-        transform: translateY(-5px);
-        box-shadow: 0 18px 40px rgba(0,0,0,0.5);
-    }
-    .ov-card:nth-child(1) { animation-delay: 0.4s; }
-    .ov-card:nth-child(2) { animation-delay: 0.6s; }
-    .ov-card:nth-child(3) { animation-delay: 0.8s; }
-    .ov-card:nth-child(4) { animation-delay: 1.0s; }
-    .ov-card:nth-child(5) { animation-delay: 1.2s; }
-
-    .ov-icon { font-size: 30px !important; margin-bottom: 10px !important; display: block !important; line-height: 1 !important; }
-    .ov-title {
-        font-size: 17px !important; font-weight: 800 !important; color: #ffffff !important;
-        margin: 0 0 6px 0 !important; letter-spacing: 0.5px !important; line-height: 1.25 !important;
-    }
-    .ov-desc {
-        font-size: 12.5px !important; font-weight: 400 !important; color: #b8ac8f !important;
-        line-height: 1.5 !important; margin: 0 !important;
-    }
-
-    /* Кнопки-наложения на карточки */
-    .overlay-btn-wrap {
-        position: relative;
-        z-index: 20;
-        margin-top: -108px;
-        margin-bottom: 20px;
-        pointer-events: none;
-    }
-    .overlay-btn-wrap .stButton > button {
-        background: transparent !important;
-        color: transparent !important;
-        border: none !important;
-        padding: 0 !important;
-        height: 130px !important;
-        width: 100% !important;
-        cursor: pointer !important;
-        pointer-events: auto !important;
-        box-shadow: none !important;
-        outline: none !important;
-    }
-    .overlay-btn-wrap .stButton > button:hover {
-        background: rgba(255,255,255,0.05) !important;
-        transform: none !important;
-        border: none !important;
-    }
-    .overlay-btn-wrap .stButton > button:focus {
-        outline: none !important;
-        box-shadow: none !important;
-    }
-    .overlay-btn-wrap .stButton > button p {
-        display: none !important;
-    }
-
     .overview-footer {
-        position: absolute; bottom: 20px; right: 30px;
+        margin-top: auto; padding-top: 25px;
         font-size: 11px !important; color: #8a8270 !important; letter-spacing: 2px !important;
+    }
+
+    /* Кнопки-карточки в обзоре */
+    .ov-btn-row .stButton > button {
+        background: rgba(255,255,255,0.07) !important;
+        border: 1px solid rgba(212,197,160,0.42) !important;
+        border-radius: 14px !important;
+        padding: 22px 20px !important;
+        height: 155px !important;
+        width: 100% !important;
+        color: #ffffff !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        text-align: left !important;
+        backdrop-filter: blur(8px) !important;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        white-space: pre-wrap !important;
+        line-height: 1.4 !important;
+    }
+    .ov-btn-row .stButton > button:hover {
+        background: rgba(255,255,255,0.16) !important;
+        border-color: rgba(212,197,160,0.9) !important;
+        transform: translateY(-5px) !important;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.5) !important;
+        color: #ffffff !important;
     }
 
     /* ====== ДЖЕРЕЛА (step 6) ====== */
@@ -210,20 +146,12 @@ st.markdown(
         font-size: 52px !important; font-weight: 900 !important; color: #ffffff !important;
         letter-spacing: 6px !important; line-height: 1 !important; margin: 0 0 50px 0 !important;
         text-align: center !important; text-shadow: 0 4px 30px rgba(0,0,0,0.6);
-        animation: titleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .sources-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1180px; width: 100%; }
     .source-card {
         background: rgba(255,255,255,0.06); border: 1px solid rgba(212,197,160,0.4);
         border-radius: 12px; padding: 18px; backdrop-filter: blur(8px);
-        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0;
     }
-    .source-card:hover { background: rgba(255,255,255,0.13); border-color: rgba(212,197,160,0.85); transform: translateY(-5px); }
-    .source-card:nth-child(1) { animation-delay: 0.5s; }
-    .source-card:nth-child(2) { animation-delay: 0.75s; }
-    .source-card:nth-child(3) { animation-delay: 1.0s; }
-    .source-card:nth-child(4) { animation-delay: 1.25s; }
     .source-card .src-icon { font-size: 28px !important; margin-bottom: 10px !important; display: block !important; }
     .source-card .src-title {
         font-size: 15px !important; font-weight: 700 !important; color: #ffffff !important;
@@ -281,83 +209,47 @@ if "step" not in st.session_state:
 
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
+    # ===== STEP 0 — ОБЗОР ТЕМ =====
     if st.session_state.step == 0:
         st.markdown(
             '<div class="overview-hero">'
-            '<div class="overview-overlay">'
+            '<div class="overview-inner">'
             '<div class="overview-title">ДЕНЬ ШКОЛЯРА 60-Х</div>'
             '<div class="overview-subtitle">Подорож у минуле</div>'
-
-            '<div class="ov-grid-top">'
-            '<div class="ov-card">'
-            '<span class="ov-icon">📜</span>'
-            '<div class="ov-title">ІСТОРИЧНА ЗГАДКА</div>'
-            '<div class="ov-desc">Хто такі піонери та чим займались</div>'
-            '</div>'
-            '<div class="ov-card">'
-            '<span class="ov-icon">🌅</span>'
-            '<div class="ov-title">РАНОК</div>'
-            '<div class="ov-desc">Пробудження, сніданок та форма</div>'
-            '</div>'
-            '<div class="ov-card">'
-            '<span class="ov-icon">📚</span>'
-            '<div class="ov-title">УРОКИ</div>'
-            '<div class="ov-desc">Школа, чорнильниці та дисципліна</div>'
-            '</div>'
-            '</div>'
-
-            '<div class="ov-grid-bot">'
-            '<div class="ov-card">'
-            '<span class="ov-icon">🎒</span>'
-            '<div class="ov-title">ПОЗАУРОЧНИЙ ЧАС</div>'
-            '<div class="ov-desc">Гуртки, піонери та колектив</div>'
-            '</div>'
-            '<div class="ov-card">'
-            '<span class="ov-icon">🎯</span>'
-            '<div class="ov-title">ІНТЕРАКТИВ</div>'
-            '<div class="ov-desc">Спробуй себе у ситуації 60-х років</div>'
-            '</div>'
-            '<div class="ov-card" style="visibility: hidden;">'
-            '<span class="ov-icon"> </span>'
-            '<div class="ov-title"> </div>'
-            '<div class="ov-desc"> </div>'
-            '</div>'
-            '</div>'
-
             '<div class="overview-footer">Проект учнів 10-А класу</div>'
             '</div>'
             '</div>',
             unsafe_allow_html=True
         )
 
-        st.markdown('<div class="overlay-btn-wrap">', unsafe_allow_html=True)
+        st.markdown('<div class="ov-btn-row">', unsafe_allow_html=True)
 
         # Верхний ряд — 3 кнопки
-        cols_top = st.columns(3, gap="medium")
-        with cols_top[0]:
-            if st.button("card1", key="card_btn_1", use_container_width=True):
+        row1 = st.columns(3, gap="medium")
+        with row1[0]:
+            if st.button("📜  ІСТОРИЧНА ЗГАДКА\n\nХто такі піонери та чим займались", key="card_1", use_container_width=True):
                 st.session_state.step = 1
                 st.rerun()
-        with cols_top[1]:
-            if st.button("card2", key="card_btn_2", use_container_width=True):
+        with row1[1]:
+            if st.button("🌅  РАНОК\n\nПробудження, сніданок та форма", key="card_2", use_container_width=True):
                 st.session_state.step = 2
                 st.rerun()
-        with cols_top[2]:
-            if st.button("card3", key="card_btn_3", use_container_width=True):
+        with row1[2]:
+            if st.button("📚  УРОКИ\n\nШкола, чорнильниці та дисципліна", key="card_3", use_container_width=True):
                 st.session_state.step = 3
                 st.rerun()
 
-        # Нижний ряд — 2 кнопки + пусто
-        cols_bot = st.columns(3, gap="medium")
-        with cols_bot[0]:
-            if st.button("card4", key="card_btn_4", use_container_width=True):
+        # Нижний ряд — 2 кнопки
+        row2 = st.columns(3, gap="medium")
+        with row2[0]:
+            if st.button("🎒  ПОЗАУРОЧНИЙ ЧАС\n\nГуртки, піонери та колектив", key="card_4", use_container_width=True):
                 st.session_state.step = 4
                 st.rerun()
-        with cols_bot[1]:
-            if st.button("card5", key="card_btn_5", use_container_width=True):
+        with row2[1]:
+            if st.button("🎯  ІНТЕРАКТИВ\n\nСпробуй себе у ситуації 60-х років", key="card_5", use_container_width=True):
                 st.session_state.step = 5
                 st.rerun()
-        with cols_bot[2]:
+        with row2[2]:
             st.write("")
 
         st.markdown('</div>', unsafe_allow_html=True)
@@ -369,6 +261,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 1
                 st.rerun()
 
+    # ===== STEP 1 — ІСТОРИЧНА ЗГАДКА =====
     elif st.session_state.step == 1:
         st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
         st.markdown(
@@ -410,10 +303,17 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             unsafe_allow_html=True
         )
         st.write("")
-        if st.button("Далі ➔", key="next_btn_1"):
-            st.session_state.step = 2
-            st.rerun()
+        col_home, col_next, _ = st.columns([1, 1, 4])
+        with col_home:
+            if st.button("🏠 На головну", key="home_btn_1"):
+                st.session_state.step = 0
+                st.rerun()
+        with col_next:
+            if st.button("Далі ➔", key="next_btn_1"):
+                st.session_state.step = 2
+                st.rerun()
 
+    # ===== STEP 2 — РАНОК =====
     elif st.session_state.step == 2:
         st.markdown('<div class="slide-title">РАНОК — ПОЧАТОК ДНЯ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -446,10 +346,17 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
         st.write("")
-        if st.button("Далі ➔", key="next_btn_2"):
-            st.session_state.step = 3
-            st.rerun()
+        col_home, col_next, _ = st.columns([1, 1, 4])
+        with col_home:
+            if st.button("🏠 На головну", key="home_btn_2"):
+                st.session_state.step = 0
+                st.rerun()
+        with col_next:
+            if st.button("Далі ➔", key="next_btn_2"):
+                st.session_state.step = 3
+                st.rerun()
 
+    # ===== STEP 3 — У ШКОЛІ =====
     elif st.session_state.step == 3:
         st.markdown('<div class="slide-title">У ШКОЛІ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -493,15 +400,20 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 use_container_width=True
             )
         st.write("")
-        col_btn1, col_btn2, _ = st.columns([1, 1, 4])
-        with col_btn1:
+        col_home, col_next, col_extra, _ = st.columns([1, 1, 1, 3])
+        with col_home:
+            if st.button("🏠 На головну", key="home_btn_3"):
+                st.session_state.step = 0
+                st.rerun()
+        with col_next:
             if st.button("Далі ➔", key="next_btn_3"):
                 st.session_state.step = 4
                 st.rerun()
-        with col_btn2:
+        with col_extra:
             if st.button("📖 Доп. інфо", key="extra_btn_3"):
                 show_extra_dialog()
 
+    # ===== STEP 4 — ПОЗАУРОЧНИЙ ЧАС =====
     elif st.session_state.step == 4:
         st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
         st.write(
@@ -513,10 +425,17 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
         st.write("")
-        if st.button("Далі ➔", key="next_btn_4"):
-            st.session_state.step = 5
-            st.rerun()
+        col_home, col_next, _ = st.columns([1, 1, 4])
+        with col_home:
+            if st.button("🏠 На головну", key="home_btn_4"):
+                st.session_state.step = 0
+                st.rerun()
+        with col_next:
+            if st.button("Далі ➔", key="next_btn_4"):
+                st.session_state.step = 5
+                st.rerun()
 
+    # ===== STEP 5 — ІНТЕРАКТИВ =====
     elif st.session_state.step == 5:
         st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
         st.markdown('<div class="question-card">До початку першого уроку залишилося зовсім мало часу. Що робитимеш?</div>', unsafe_allow_html=True)
@@ -546,10 +465,17 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.error("❌ **07:40.** Ти приходиш після дзвінка.")
                 st.warning("⚠️ **Штраф:** Запізнення зафіксували в журналі, вчитель робить зауваження перед класом.")
         st.write("")
-        if st.button("Далі ➔", key="next_btn_5"):
-            st.session_state.step = 6
-            st.rerun()
+        col_home, col_next, _ = st.columns([1, 1, 4])
+        with col_home:
+            if st.button("🏠 На головну", key="home_btn_5"):
+                st.session_state.step = 0
+                st.rerun()
+        with col_next:
+            if st.button("Далі ➔", key="next_btn_5"):
+                st.session_state.step = 6
+                st.rerun()
 
+    # ===== STEP 6 — ДЖЕРЕЛА =====
     elif st.session_state.step == 6:
         st.markdown(
             '<div class="sources-hero">'
@@ -588,6 +514,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 7
                 st.rerun()
 
+    # ===== STEP 7 — ДЯКУЄМО =====
     elif st.session_state.step == 7:
         st.markdown(
             '<div style="text-align: center; font-size: 42px; font-weight: 900; color: #111111; '
