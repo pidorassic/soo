@@ -124,7 +124,7 @@ st.markdown(
         display: block !important;
     }
 
-    /* ===== Стилизация нативного st.dialog — СВЕТЛЫЙ ФОН ===== */
+    /* ===== Стилизация нативного st.dialog ===== */
     div[data-testid="stDialog"] > div {
         background-color: #ffffff !important;
         border-radius: 14px !important;
@@ -149,23 +149,35 @@ st.markdown(
         font-weight: 500 !important;
         line-height: 1.6 !important;
     }
-    /* Кнопка закрытия (внутри диалога) */
-    div[data-testid="stDialog"] button {
+
+    /* ❌ СКРЫВАЕМ крестик в правом верхнем углу диалога */
+    div[data-testid="stDialog"] button[aria-label="Close"],
+    div[data-testid="stDialog"] button[aria-label="close"],
+    div[data-testid="stDialog"] [data-testid="stDialogCloseButton"],
+    div[data-testid="stDialog"] [data-testid="stModalCloseButton"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Кнопка "Закрити" ВНУТРИ диалога — светлая, с рамкой, читаемая */
+    div[data-testid="stDialog"] .stButton > button {
+        background-color: #ffffff !important;
+        color: #333333 !important;
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        border: 2px solid #333333 !important;
+        border-radius: 6px !important;
+        padding: 0.5rem 1.5rem !important;
+        transition: all 0.2s ease !important;
+        width: 100% !important;
+    }
+    div[data-testid="stDialog"] .stButton > button:hover {
         background-color: #333333 !important;
         color: #ffffff !important;
-        font-weight: 600 !important;
-        border: none !important;
-        border-radius: 6px !important;
+        transform: translateY(-1px) !important;
     }
-    div[data-testid="stDialog"] button:hover {
-        background-color: #000000 !important;
-        color: #ffffff !important;
-    }
-    /* Крестик "✖" в правом верхнем углу диалога */
-    div[data-testid="stDialog"] button[aria-label="Close"] svg,
-    div[data-testid="stDialog"] button[aria-label="close"] svg {
-        fill: #333333 !important;
-        color: #333333 !important;
+    div[data-testid="stDialog"] .stButton > button:active {
+        transform: translateY(1px) !important;
     }
     </style>
     """,
