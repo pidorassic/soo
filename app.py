@@ -135,6 +135,26 @@ st.markdown(
         display: block !important;
     }
 
+    /* ===== Растягиваем слайд "ІСТОРИЧНА ЗГАДКА" на всю ширину ===== */
+    .full-width-text {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .full-width-text p,
+    .full-width-text div {
+        width: 100% !important;
+        max-width: 100% !important;
+        font-size: 17px !important;
+        font-weight: 500 !important;
+        color: #333 !important;
+        line-height: 1.7 !important;
+        margin: 0 0 16px 0 !important;
+        text-align: justify !important;
+    }
+
     /* ===== Стилизация нативного st.dialog ===== */
     div[data-testid="stDialog"] > div {
         background-color: #ffffff !important;
@@ -256,43 +276,29 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
     else:
-        # === НОВЫЙ СЛАЙД: ІСТОРИЧНА ЗГАДКА ===
+        # === НОВЫЙ СЛАЙД: ІСТОРИЧНА ЗГАДКА (растянут на всю ширину) ===
         if st.session_state.step == 1:
             st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
             st.markdown(
                 """
-                <div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 18px; line-height: 1.3;">
+                <div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">
                     ХТО ТАКІ ПІОНЕРИ?
                 </div>
                 """,
                 unsafe_allow_html=True
             )
             
+            # Текст растянут на всю ширину, выравнен по ширине
             st.markdown(
                 """
-                <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6; margin-bottom: 14px;">
-                    У СРСР існувала Всесоюзна піонерська організація імені В. І. Леніна — 
-                    дитяча організація для школярів приблизно від 9 до 14 років.
-                </div>
-                
-                <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6; margin-bottom: 14px;">
-                    Піонери об’єднувалися у загони, зазвичай за класами. Вони брали участь 
-                    у походах, змаганнях, концертах, роботі гуртків і громадських заходах. 
-                    Часто це були організовані школою або місцевими установами активності, 
-                    у яких школярі мали брати участь.
-                </div>
-                
-                <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6; margin-bottom: 14px;">
-                    Організація мала власну символіку та ритуали: червоний галстук, 
-                    урочисті лінійки, салют і церемонію вступу з піонерською присягою. 
-                    Для багатьох дітей це було обов’язковою частиною шкільного життя, 
-                    а не особистим вибором.
-                </div>
-                
-                <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6; margin-bottom: 20px;">
-                    Піонерство було частиною радянської системи виховання. Через організацію 
-                    дітям прищеплювали офіційні радянські цінності, знайомили їх із 
-                    державною символікою та героями й залучали до ідеологічних заходів.
+                <div class="full-width-text">
+                    <p>У СРСР існувала Всесоюзна піонерська організація імені В. І. Леніна — дитяча організація для школярів приблизно від 9 до 14 років.</p>
+                    
+                    <p>Піонери об’єднувалися у загони, зазвичай за класами. Вони брали участь у походах, змаганнях, концертах, роботі гуртків і громадських заходах. Часто це були організовані школою або місцевими установами активності, у яких школярі мали брати участь.</p>
+                    
+                    <p>Організація мала власну символіку та ритуали: червоний галстук, урочисті лінійки, салют і церемонію вступу з піонерською присягою. Для багатьох дітей це було обов’язковою частиною шкільного життя, а не особистим вибором.</p>
+                    
+                    <p>Піонерство було частиною радянської системи виховання. Через організацію дітям прищеплювали офіційні радянські цінності, знайомили їх із державною символікою та героями й залучали до ідеологічних заходів.</p>
                 </div>
                 """,
                 unsafe_allow_html=True
