@@ -95,7 +95,7 @@ st.markdown(
         transform: translateY(1px);
     }
 
-    /* Карточки на слайде У ШКОЛІ — компактнее */
+    /* Карточки на слайде У ШКОЛІ */
     .lesson-card {
         background-color: #f8f9fa;
         border-left: 6px solid #333333;
@@ -133,26 +133,6 @@ st.markdown(
         border-radius: 12px !important;
         margin: 0 auto !important;
         display: block !important;
-    }
-
-    /* ===== Растягиваем слайд "ІСТОРИЧНА ЗГАДКА" на всю ширину ===== */
-    .full-width-text {
-        width: 100% !important;
-        max-width: 100% !important;
-        display: block !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    .full-width-text p,
-    .full-width-text div {
-        width: 100% !important;
-        max-width: 100% !important;
-        font-size: 17px !important;
-        font-weight: 500 !important;
-        color: #333 !important;
-        line-height: 1.7 !important;
-        margin: 0 0 16px 0 !important;
-        text-align: justify !important;
     }
 
     /* ===== Стилизация нативного st.dialog ===== */
@@ -276,7 +256,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
     else:
-        # === НОВЫЙ СЛАЙД: ІСТОРИЧНА ЗГАДКА (растянут на всю ширину) ===
+        # === ІСТОРИЧНА ЗГАДКА (обновлённый текст) ===
         if st.session_state.step == 1:
             st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
             st.markdown(
@@ -288,19 +268,54 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Текст растянут на всю ширину, выравнен по ширине
+            # Блок 1: Кто это
             st.markdown(
-                """
-                <div class="full-width-text">
-                    <p>У СРСР існувала Всесоюзна піонерська організація імені В. І. Леніна — дитяча організація для школярів приблизно від 9 до 14 років.</p>
-                    
-                    <p>Піонери об’єднувалися у загони, зазвичай за класами. Вони брали участь у походах, змаганнях, концертах, роботі гуртків і громадських заходах. Часто це були організовані школою або місцевими установами активності, у яких школярі мали брати участь.</p>
-                    
-                    <p>Організація мала власну символіку та ритуали: червоний галстук, урочисті лінійки, салют і церемонію вступу з піонерською присягою. Для багатьох дітей це було обов’язковою частиною шкільного життя, а не особистим вибором.</p>
-                    
-                    <p>Піонерство було частиною радянської системи виховання. Через організацію дітям прищеплювали офіційні радянські цінності, знайомили їх із державною символікою та героями й залучали до ідеологічних заходів.</p>
-                </div>
-                """,
+                '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">'
+                '📌 Хто це такі'
+                '</div>'
+                '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.6; margin-bottom: 22px;">'
+                'Піонери — це радянська дитяча організація для школярів віком від 9 до 14 років. '
+                'Вона мала повну назву — Всесоюзна піонерська організація імені В. І. Леніна.'
+                '</div>',
+                unsafe_allow_html=True
+            )
+            
+            # Блок 2: Чем занимались
+            st.markdown(
+                '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">'
+                '🎒 Чим вони займалися'
+                '</div>'
+                '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.6; margin-bottom: 22px;">'
+                'Піонери об’єднувалися в загони за класами. Вони ходили в походи, брали участь '
+                'у змаганнях і концертах, відвідували гуртки та допомагали в громадських справах. '
+                'Усе це організовувала школа або місцеві установи.'
+                '</div>',
+                unsafe_allow_html=True
+            )
+            
+            # Блок 3: Символика
+            st.markdown(
+                '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">'
+                '🔴 Символіка та ритуали'
+                '</div>'
+                '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.6; margin-bottom: 22px;">'
+                'У піонерів були свої символи: червоний галстук, урочисті лінійки та салют. '
+                'Щоб стати піонером, треба було скласти присягу на церемонії вступу. '
+                'Для більшості дітей це було не власним вибором, а обов’язковою частиною шкільного життя.'
+                '</div>',
+                unsafe_allow_html=True
+            )
+            
+            # Блок 4: Идеология
+            st.markdown(
+                '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">'
+                '📖 Мета організації'
+                '</div>'
+                '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.6; margin-bottom: 22px;">'
+                'Піонерство було частиною радянської системи виховання. Через нього дітям '
+                'передавали офіційні цінності, знайомили з державними символами та героями '
+                'й залучали до ідеологічних заходів.'
+                '</div>',
                 unsafe_allow_html=True
             )
             
