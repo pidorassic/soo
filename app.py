@@ -25,10 +25,10 @@ st.markdown(
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding-top: 2rem !important;
+        padding-top: 3rem !important;
         padding-bottom: 1rem !important;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+        padding-left: 3rem !important;
+        padding-right: 3rem !important;
     }
 
     @keyframes scaleFadeTransition {
@@ -37,13 +37,13 @@ st.markdown(
     }
 
     @keyframes slideUpFade {
-        0% { opacity: 0; transform: translateY(30px); }
+        0% { opacity: 0; transform: translateY(40px); }
         100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes titleFadeIn {
-        0% { opacity: 0; transform: scale(0.9); letter-spacing: 10px; }
-        100% { opacity: 1; transform: scale(1); letter-spacing: 2px; }
+        0% { opacity: 0; transform: translateY(-20px); letter-spacing: 12px; }
+        100% { opacity: 1; transform: translateY(0); letter-spacing: 4px; }
     }
 
     .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
@@ -144,11 +144,138 @@ st.markdown(
         display: block !important;
     }
 
-    /* ============================================================ */
-    /* ===== СТАРТОВЫЙ СЛАЙД — ТЁМНЫЙ КИНЕМАТОГРАФИЧНЫЙ ГЕРОЙ ===== */
-    /* ============================================================ */
+    /* ========================================================= */
+    /* ============ СЛАЙД ОБЗОР ТЕМ (step 0) ==================== */
+    /* ========================================================= */
 
-    .hero-wrapper {
+    .overview-hero {
+        position: relative;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        min-height: 85vh;
+        border-radius: 18px;
+        overflow: hidden;
+        background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    .overview-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            135deg,
+            rgba(10, 10, 15, 0.92) 0%,
+            rgba(20, 20, 30, 0.78) 40%,
+            rgba(30, 25, 20, 0.75) 70%,
+            rgba(10, 10, 15, 0.9) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 40px;
+        box-sizing: border-box;
+    }
+
+    .overview-title {
+        font-size: 56px !important;
+        font-weight: 900 !important;
+        color: #ffffff !important;
+        letter-spacing: 4px !important;
+        line-height: 1.05 !important;
+        margin: 0 0 10px 0 !important;
+        text-align: center !important;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+        animation: titleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .overview-subtitle {
+        font-size: 17px !important;
+        font-weight: 400 !important;
+        color: #d4c5a0 !important;
+        letter-spacing: 6px !important;
+        text-transform: uppercase !important;
+        margin: 0 0 50px 0 !important;
+        text-align: center !important;
+        animation: titleFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        opacity: 0;
+    }
+
+    /* 4 карточки в ряд */
+    .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        max-width: 1180px;
+        width: 100%;
+    }
+
+    .overview-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(212, 197, 160, 0.4);
+        border-radius: 14px;
+        padding: 22px 20px;
+        backdrop-filter: blur(8px);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        opacity: 0;
+        text-align: left;
+    }
+
+    .overview-card:hover {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(212, 197, 160, 0.85);
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .overview-card:nth-child(1) { animation-delay: 0.5s; }
+    .overview-card:nth-child(2) { animation-delay: 0.75s; }
+    .overview-card:nth-child(3) { animation-delay: 1.0s; }
+    .overview-card:nth-child(4) { animation-delay: 1.25s; }
+
+    .overview-card .ov-icon {
+        font-size: 34px !important;
+        margin-bottom: 12px !important;
+        display: block !important;
+    }
+    .overview-card .ov-title {
+        font-size: 19px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        margin: 0 0 8px 0 !important;
+        letter-spacing: 0.5px !important;
+        line-height: 1.25 !important;
+    }
+    .overview-card .ov-desc {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+        color: #b8ac8f !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+    }
+
+    .overview-footer {
+        position: absolute;
+        bottom: 25px;
+        right: 35px;
+        font-size: 12px !important;
+        color: #8a8270 !important;
+        letter-spacing: 2px !important;
+        font-weight: 400 !important;
+    }
+
+    /* ========================================================= */
+    /* ============ СЛАЙД ИСТОЧНИКИ (step 8) ==================== */
+    /* ========================================================= */
+
+    .sources-hero {
         position: relative;
         width: 100%;
         max-width: 1400px;
@@ -159,10 +286,10 @@ st.markdown(
         background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
         background-size: cover;
         background-position: center;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
     }
 
-    .hero-overlay {
+    .sources-overlay {
         position: absolute;
         top: 0;
         left: 0;
@@ -170,100 +297,80 @@ st.markdown(
         height: 100%;
         background: linear-gradient(
             135deg,
-            rgba(10, 10, 15, 0.9) 0%,
-            rgba(20, 20, 30, 0.78) 40%,
-            rgba(30, 25, 20, 0.72) 70%,
-            rgba(10, 10, 15, 0.88) 100%
+            rgba(10, 10, 15, 0.94) 0%,
+            rgba(20, 20, 30, 0.85) 40%,
+            rgba(30, 25, 20, 0.82) 70%,
+            rgba(10, 10, 15, 0.92) 100%
         );
         display: flex;
         flex-direction: column;
-        padding: 50px 60px;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 40px;
         box-sizing: border-box;
     }
 
-    .hero-title {
-        font-size: 58px !important;
+    .sources-title {
+        font-size: 52px !important;
         font-weight: 900 !important;
         color: #ffffff !important;
-        letter-spacing: 2px !important;
-        line-height: 1.05 !important;
-        margin: 0 0 8px 0 !important;
+        letter-spacing: 6px !important;
+        line-height: 1 !important;
+        margin: 0 0 50px 0 !important;
+        text-align: center !important;
         text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
         animation: titleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    .hero-subtitle {
-        font-size: 18px !important;
-        font-weight: 400 !important;
-        color: #d4c5a0 !important;
-        letter-spacing: 6px !important;
-        text-transform: uppercase !important;
-        margin: 0 0 30px 0 !important;
-        animation: titleFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-        opacity: 0;
-    }
-
-    .cards-grid {
+    .sources-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-        max-width: 620px;
-        margin-top: auto;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        max-width: 1180px;
+        width: 100%;
     }
 
-    .hero-card {
+    .source-card {
         background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(212, 197, 160, 0.35);
+        border: 1px solid rgba(212, 197, 160, 0.4);
         border-radius: 12px;
-        padding: 16px 18px;
+        padding: 18px 18px;
         backdrop-filter: blur(8px);
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         opacity: 0;
     }
 
-    .hero-card:hover {
-        background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(212, 197, 160, 0.7);
-        transform: translateY(-4px);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    .source-card:hover {
+        background: rgba(255, 255, 255, 0.13);
+        border-color: rgba(212, 197, 160, 0.85);
+        transform: translateY(-5px);
     }
 
-    .hero-card:nth-child(1) { animation-delay: 0.5s; }
-    .hero-card:nth-child(2) { animation-delay: 0.7s; }
-    .hero-card:nth-child(3) { animation-delay: 0.9s; }
-    .hero-card:nth-child(4) { animation-delay: 1.1s; }
+    .source-card:nth-child(1) { animation-delay: 0.5s; }
+    .source-card:nth-child(2) { animation-delay: 0.75s; }
+    .source-card:nth-child(3) { animation-delay: 1.0s; }
+    .source-card:nth-child(4) { animation-delay: 1.25s; }
 
-    .hero-card .card-icon {
-        font-size: 22px !important;
-        margin-bottom: 4px !important;
+    .source-card .src-icon {
+        font-size: 28px !important;
+        margin-bottom: 10px !important;
         display: block !important;
     }
-
-    .hero-card .card-title {
-        font-size: 17px !important;
+    .source-card .src-title {
+        font-size: 15px !important;
         font-weight: 700 !important;
         color: #ffffff !important;
-        margin: 0 0 3px 0 !important;
-        letter-spacing: 0.5px !important;
+        margin: 0 0 6px 0 !important;
+        line-height: 1.3 !important;
     }
-
-    .hero-card .card-desc {
-        font-size: 12.5px !important;
-        font-weight: 400 !important;
-        color: #b8ac8f !important;
-        line-height: 1.4 !important;
-        margin: 0 !important;
-    }
-
-    .hero-footer {
-        position: absolute;
-        bottom: 25px;
-        right: 35px;
+    .source-card .src-link {
         font-size: 12px !important;
-        color: #8a8270 !important;
-        letter-spacing: 1px !important;
         font-weight: 400 !important;
+        color: #d4c5a0 !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+        word-break: break-word !important;
     }
 
     /* ===== Стилизация нативного st.dialog ===== */
@@ -347,36 +454,40 @@ if "step" not in st.session_state:
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
     if st.session_state.step == 0:
-        # === СТАРТОВЫЙ СЛАЙД — ТЁМНЫЙ ГЕРОЙ ===
-        # ВАЖНО: HTML без отступов слева, иначе Streamlit воспримет как код!
+        # === ОБЗОР ТЕМ (4 карточки в ряд) ===
         st.markdown(
-            '<div class="hero-wrapper">'
-            '<div class="hero-overlay">'
-            '<div class="hero-title">ДЕНЬ<br>ШКОЛЯРА 60-Х</div>'
-            '<div class="hero-subtitle">Подорож у минуле</div>'
-            '<div class="cards-grid">'
-            '<div class="hero-card">'
-            '<span class="card-icon">🌅</span>'
-            '<div class="card-title">Ранок</div>'
-            '<div class="card-desc">Початок дня, сніданок та форма</div>'
+            '<div class="overview-hero">'
+            '<div class="overview-overlay">'
+            '<div class="overview-title">ДЕНЬ ШКОЛЯРА 60-Х</div>'
+            '<div class="overview-subtitle">Подорож у минуле</div>'
+            '<div class="overview-grid">'
+
+            '<div class="overview-card">'
+            '<span class="ov-icon">🌅</span>'
+            '<div class="ov-title">РАНОК</div>'
+            '<div class="ov-desc">Пробудження, сніданок та шкільна форма</div>'
             '</div>'
-            '<div class="hero-card">'
-            '<span class="card-icon">📚</span>'
-            '<div class="card-title">Уроки</div>'
-            '<div class="card-desc">Школа, чорнильниці та дисципліна</div>'
+
+            '<div class="overview-card">'
+            '<span class="ov-icon">📚</span>'
+            '<div class="ov-title">УРОКИ</div>'
+            '<div class="ov-desc">Школа, чорнильниці та дисципліна</div>'
             '</div>'
-            '<div class="hero-card">'
-            '<span class="card-icon">🎒</span>'
-            '<div class="card-title">Позаурочний час</div>'
-            '<div class="card-desc">Гуртки, піонери та колектив</div>'
+
+            '<div class="overview-card">'
+            '<span class="ov-icon">🎒</span>'
+            '<div class="ov-title">ПОЗАУРОЧНИЙ ЧАС</div>'
+            '<div class="ov-desc">Гуртки, піонери та колектив</div>'
             '</div>'
-            '<div class="hero-card">'
-            '<span class="card-icon">🎯</span>'
-            '<div class="card-title">Інтерактив</div>'
-            '<div class="card-desc">Спробуй себе у ситуації 60-х</div>'
+
+            '<div class="overview-card">'
+            '<span class="ov-icon">🎯</span>'
+            '<div class="ov-title">ІНТЕРАКТИВ</div>'
+            '<div class="ov-desc">Спробуй себе у ситуації 60-х років</div>'
             '</div>'
+
             '</div>'
-            '<div class="hero-footer">Проект учнів 10-А класу</div>'
+            '<div class="overview-footer">Проект учнів 10-А класу</div>'
             '</div>'
             '</div>',
             unsafe_allow_html=True
@@ -386,11 +497,11 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         col_btn_l, col_btn_c, col_btn_r = st.columns([1, 1, 1])
         with col_btn_c:
             if st.button("Почати подорож ➔", key="next_btn_0", use_container_width=True):
-                st.session_state.step += 1
+                st.session_state.step = 1
                 st.rerun()
 
     else:
-        # === ІСТОРИЧНА ЗГАДКА ===
+        # === ІСТОРИЧНА ЗГАДКА (step 1) ===
         if st.session_state.step == 1:
             st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
             st.markdown(
@@ -451,7 +562,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             
             st.write("")
             if st.button("Далі ➔", key="next_btn_1"):
-                st.session_state.step += 1
+                st.session_state.step = 2
                 st.rerun()
 
         elif st.session_state.step == 2:
@@ -508,7 +619,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
             st.write("")
             if st.button("Далі ➔", key="next_btn_2"):
-                st.session_state.step += 1
+                st.session_state.step = 3
                 st.rerun()
 
         elif st.session_state.step == 3:
@@ -574,7 +685,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             col_btn1, col_btn2, _ = st.columns([1, 1, 4])
             with col_btn1:
                 if st.button("Далі ➔", key="next_btn_3"):
-                    st.session_state.step += 1
+                    st.session_state.step = 4
                     st.rerun()
             with col_btn2:
                 if st.button("📖 Доп. інфо", key="extra_btn_3"):
@@ -586,7 +697,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
             st.write("")
             if st.button("Далі ➔", key="next_btn_4"):
-                st.session_state.step += 1
+                st.session_state.step = 5
                 st.rerun()
 
         elif st.session_state.step == 5:
@@ -612,56 +723,4 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     st.info("💡 **Наслідок:** Дисципліну дотримано, але через відсутність сніданку на уроках важко зосередитися, а живіт починає бурчати вже на середині математики.")
                 elif choice.startswith("Б"):
                     st.error("❌ **08:20.** Ти приходиш уже на другий урок. Перший урок пропущено, а відсутність потрібно пояснити.")
-                    st.warning("⚠️ **Наслідок (Штраф):** Просто вирішити «сьогодні не піду» у 60-х було неможливо. Класний керівник викликає батьків до школи, а тобі доведеться писати пояснювальну записку та відробляти пропущену тему після уроків.")
-                elif choice.startswith("В"):
-                    st.error("❌ **08:00.** Мама: «Якщо тобі справді погано — підемо до лікаря. А якщо ні — збирайся та йди до школи».")
-                    st.warning("⚠️ **Наслідок (Штраф):** Мама швидко розкрила хитрощі та виміряла температуру (яка виявилася нормальною). Довелося все одно йти до школи, але тепер ще й зі соромом за спробу збрехати та допитом від батьків увечері.")
-                elif choice.startswith("Г"):
-                    st.error("❌ **07:40.** Ти приходиш після дзвінка.")
-                    st.warning("⚠️ **Наслідок (Штраф):** Запізнення вже зафіксували в классному журналі. Вчитель робить публічне зауваження перед усім класом, а староста записує тебе у шкільну стінгазету ганьби («порушники дисципліни»).")
-
-            st.write("")
-            if st.button("Далі ➔", key="next_btn_5"):
-                st.session_state.step += 1
-                st.rerun()
-
-        elif st.session_state.step == 6:
-            st.markdown(
-                """
-                <style>
-                div[data-testid="stVerticalBlock"] {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    width: 100%;
-                }
-                .stImage {
-                    display: flex;
-                    justify-content: center;
-                    width: 100%;
-                }
-                img {
-                    max-height: 60vh !important;
-                    width: auto !important;
-                    display: block !important;
-                    margin: 0 auto !important;
-                    border-radius: 12px;
-                }
-                </style>
-                """,
-                unsafe_allow_html=True
-            )
-            
-            st.markdown('<div style="text-align: center; font-size: 38px; font-weight: 800; color: #111111; margin-bottom: 20px; width: 100%;">Дякуємо за увагу!</div>', unsafe_allow_html=True)
-            
-            try:
-                img = Image.open("end.jpg")
-                st.image(img)
-            except Exception:
-                st.error("Файл 'end.jpg' не знайдено.")
-            
-            st.markdown('<div style="text-align: center; font-size: 24px; font-weight: 700; margin-top: 20px; color: #111111; width: 100%;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>', unsafe_allow_html=True)
-
-            if st.button("На початок ➔", key="restart_btn"):
-                st.session_state.step = 0
-                st.rerun()
+                    st.warning("⚠️ **Наслідок (Штраф):** Просто вирішити «сьогодні не п
