@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import base64
+import streamlit.components.v1 as components
 
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
@@ -220,16 +221,19 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# === ФОНОВАЯ МУЗЫКА + ПЛАВАЮЩАЯ КНОПКА 🔊 (правый нижний угол) ===
+# === ФОНОВАЯ МУЗЫКА + КНОПКА 🔊 (РАБОЧИЙ ВАРИАНТ) ===
 try:
     with open("bg_music.mp3", "rb") as f:
         music_b64 = base64.b64encode(f.read()).decode()
+
+    # Кнопка + аудио в основном документе Streamlit
     st.markdown(
         f'''
-        <audio id="bgMusic" loop preload="auto" style="display:none;">
+        <audio id="bgMusicMain" loop preload="auto" style="display:none;">
             <source src="data:audio/mpeg;base64,{music_b64}" type="audio/mpeg">
         </audio>
-        <button id="musicBtn" onclick="toggleMusic()" style="
+
+        <button id="musicBtnMain" style="
             position: fixed !important;
             bottom: 30px !important;
             right: 30px !important;
@@ -248,33 +252,59 @@ try:
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            transition: all 0.3s ease !important;
+            transition: transform 0.3s ease !important;
             padding: 0 !important;
             line-height: 1 !important;
             margin: 0 !important;
+            font-family: sans-serif !important;
         "
         onmouseover="this.style.transform='scale(1.1)';"
         onmouseout="this.style.transform='scale(1)';">
             🔇
         </button>
-        <script>
-            var audio = document.getElementById("bgMusic");
-            var btn = document.getElementById("musicBtn");
-            function toggleMusic() {{
-                if (audio.paused) {{
-                    audio.play();
-                    btn.innerHTML = "🔊";
-                }} else {{
-                    audio.pause();
-                    btn.innerHTML = "🔇";
-                }}
-            }}
-        </script>
         ''',
         unsafe_allow_html=True
     )
-except Exception:
-    pass
+
+    # JS через components.html - работает поверх родительского документа
+    components.html(
+        '''
+        <script>
+            (function() {
+                function setupMusic() {
+                    try {
+                        var audio = window.parent.document.getElementById("bgMusicMain");
+                        var btn = window.parent.document.getElementById("musicBtnMain");
+                        if (!audio || !btn) {
+                            setTimeout(setupMusic, 300);
+                            return;
+                        }
+                        btn.addEventListener("click", function() {
+                            if (audio.paused) {
+                                audio.play().then(function() {
+                                    btn.innerHTML = "🔊";
+                                }).catch(function(err) {
+                                    console.log("Play error:", err);
+                                });
+                            } else {
+                                audio.pause();
+                                btn.innerHTML = "🔇";
+                            }
+                        });
+                        console.log("Music button ready");
+                    } catch (e) {
+                        setTimeout(setupMusic, 300);
+                    }
+                }
+                setupMusic();
+            })();
+        </script>
+        ''',
+        height=0,
+        width=0
+    )
+except Exception as e:
+    st.warning(f"Файл музики не знайдено або помилка: {e}")
 
 @st.dialog("📖 Доп. факт")
 def show_extra_dialog():
@@ -821,3 +851,4 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("🏠 На головну", key="home_btn_15", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
+                
