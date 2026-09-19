@@ -48,6 +48,13 @@ st.markdown(
         animation: scaleFadeTransition 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
+    /* Отключаем анимацию у карточек с классом .no-anim */
+    .no-anim, .no-anim * {
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+    }
+
     .slide-title {
         font-size: 30px !important;
         font-weight: 700 !important;
@@ -151,7 +158,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         if st.session_state.step == 1:
             st.markdown('<div class="slide-title">РАНОК — ПОЧАТОК ДНЯ</div>', unsafe_allow_html=True)
             
-            # Время и будильник
             st.markdown(
                 """
                 <div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">
@@ -161,7 +167,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Обычный текст (теперь здесь текст про СНІДАНОК)
             st.markdown(
                 """
                 <div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">
@@ -174,7 +179,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Рамка (теперь здесь текст про ПРОБУДЖЕННЯ та ФОРМУ)
             st.markdown(
                 """
                 <div style="background-color: #f8f9fa; border-left: 6px solid #333333; 
@@ -192,7 +196,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Совет-подсказка
             st.markdown(
                 """
                 <div style="font-size: 16px; font-weight: 500; color: #555; line-height: 1.5; margin-bottom: 20px;">
@@ -229,16 +232,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Колонки: слева пусто/картинка, справа — окно с текстом
+            # Пустая колонка слева + карточка справа (без фото)
             col_left, col_right = st.columns([1.4, 1], gap="large")
             
             with col_left:
-                st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", use_container_width=True)
+                st.write("")  # пусто
             
             with col_right:
                 st.markdown(
                     """
-                    <div style="background-color: #f8f9fa; border-left: 6px solid #333333; 
+                    <div class="no-anim" style="background-color: #f8f9fa; border-left: 6px solid #333333; 
                                 padding: 18px 22px; border-radius: 8px;">
                         <div style="font-size: 18px; font-weight: 700; color: #222; margin-bottom: 10px;">
                             📚 Уроки
