@@ -11,20 +11,13 @@ st.markdown(
         height: 100vh !important;
         background-color: #f5efe6 !important;
     }
-    .stApp {
-        background-color: #f5efe6 !important;
-        color: #000000;
-        text-align: left !important;
-    }
+    .stApp { background-color: #f5efe6 !important; color: #000000; text-align: left !important; }
     div.block-container {
         background-color: transparent !important;
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding-top: 3rem !important;
-        padding-bottom: 1rem !important;
-        padding-left: 3rem !important;
-        padding-right: 3rem !important;
+        padding: 3rem 3rem 1rem 3rem !important;
     }
     @keyframes scaleFadeTransition {
         0% { opacity: 0; transform: scale(0.95); filter: blur(4px); }
@@ -41,324 +34,169 @@ st.markdown(
     .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
         animation: scaleFadeTransition 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .no-anim, .no-anim * {
-        animation: none !important;
-        transform: none !important;
-        filter: none !important;
-    }
+    .no-anim, .no-anim * { animation: none !important; transform: none !important; filter: none !important; }
     .slide-title {
-        font-size: 28px !important;
-        font-weight: 700 !important;
-        color: #111111 !important;
-        margin-bottom: 6px !important;
-        line-height: 1.2 !important;
-        text-align: left !important;
+        font-size: 28px !important; font-weight: 700 !important; color: #111111 !important;
+        margin-bottom: 6px !important; line-height: 1.2 !important; text-align: left !important;
     }
     .question-card {
-        background-color: rgba(255, 255, 255, 0.92);
-        border-left: 6px solid #333333;
-        padding: 15px 20px;
-        border-radius: 6px;
-        margin-bottom: 15px;
-        font-size: 20px !important;
-        font-weight: 600 !important;
-        color: #111111 !important;
+        background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333;
+        padding: 15px 20px; border-radius: 6px; margin-bottom: 15px;
+        font-size: 20px !important; font-weight: 600 !important; color: #111111 !important;
     }
     p, label, span, .stMarkdown {
-        font-size: 18px !important;
-        font-weight: 500 !important;
-        line-height: 1.5 !important;
-        text-align: left !important;
-        color: #1a1a1a !important;
+        font-size: 18px !important; font-weight: 500 !important; line-height: 1.5 !important;
+        text-align: left !important; color: #1a1a1a !important;
     }
     .stButton > button {
-        background-color: #e4e6eb !important;
-        color: #000000 !important;
-        font-size: 15px !important;
-        font-weight: 600 !important;
-        border: 1px solid #ced4da !important;
-        border-radius: 6px !important;
+        background-color: #e4e6eb !important; color: #000000 !important;
+        font-size: 15px !important; font-weight: 600 !important;
+        border: 1px solid #ced4da !important; border-radius: 6px !important;
         padding: 0.4rem 1.2rem !important;
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
     .stButton > button:hover {
-        background-color: #d8dadf !important;
-        color: #000000 !important;
-        border-color: #adb5bd !important;
-        transform: translateY(-2px);
+        background-color: #d8dadf !important; color: #000000 !important;
+        border-color: #adb5bd !important; transform: translateY(-2px);
     }
-    .stButton > button:active {
-        transform: translateY(1px);
-    }
+    .stButton > button:active { transform: translateY(1px); }
     .lesson-card {
-        background-color: rgba(255, 255, 255, 0.92);
-        border-left: 6px solid #333333;
-        padding: 18px 20px;
-        border-radius: 8px;
-        width: 100% !important;
-        min-height: 160px !important;
-        display: block;
+        background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333;
+        padding: 18px 20px; border-radius: 8px; width: 100% !important;
+        min-height: 160px !important; display: block;
     }
     .lesson-card .lesson-title {
-        font-size: 18px !important;
-        font-weight: 700 !important;
-        color: #222 !important;
-        margin: 0 0 10px 0 !important;
-        padding: 0 !important;
-        line-height: 1.3 !important;
-        display: block !important;
+        font-size: 18px !important; font-weight: 700 !important; color: #222 !important;
+        margin: 0 0 10px 0 !important; line-height: 1.3 !important; display: block !important;
     }
     .lesson-card .lesson-text {
-        font-size: 15px !important;
-        font-weight: 500 !important;
-        color: #333 !important;
-        line-height: 1.55 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: block !important;
+        font-size: 15px !important; font-weight: 500 !important; color: #333 !important;
+        line-height: 1.55 !important; margin: 0 !important; display: block !important;
     }
     div[data-testid="stImage"] img {
-        max-height: 42vh !important;
-        width: auto !important;
-        max-width: 100% !important;
-        object-fit: contain !important;
-        border-radius: 12px !important;
-        margin: 0 auto !important;
-        display: block !important;
+        max-height: 42vh !important; width: auto !important; max-width: 100% !important;
+        object-fit: contain !important; border-radius: 12px !important;
+        margin: 0 auto !important; display: block !important;
     }
     .overview-hero {
-        position: relative;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        min-height: 85vh;
-        border-radius: 18px;
-        overflow: hidden;
+        position: relative; width: 100%; max-width: 1400px; margin: 0 auto;
+        min-height: 85vh; border-radius: 18px; overflow: hidden;
         background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
-        background-size: cover;
-        background-position: center;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+        background-size: cover; background-position: center;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.35);
     }
     .overview-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(20,20,30,0.78) 40%, rgba(30,25,20,0.75) 70%, rgba(10,10,15,0.9) 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 50px 40px;
-        box-sizing: border-box;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 50px 40px; box-sizing: border-box;
     }
     .overview-title {
-        font-size: 56px !important;
-        font-weight: 900 !important;
-        color: #ffffff !important;
-        letter-spacing: 4px !important;
-        line-height: 1.05 !important;
-        margin: 0 0 10px 0 !important;
-        text-align: center !important;
-        text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+        font-size: 56px !important; font-weight: 900 !important; color: #ffffff !important;
+        letter-spacing: 4px !important; line-height: 1.05 !important; margin: 0 0 10px 0 !important;
+        text-align: center !important; text-shadow: 0 4px 30px rgba(0,0,0,0.6);
         animation: titleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .overview-subtitle {
-        font-size: 17px !important;
-        font-weight: 400 !important;
-        color: #d4c5a0 !important;
-        letter-spacing: 6px !important;
-        text-transform: uppercase !important;
-        margin: 0 0 50px 0 !important;
-        text-align: center !important;
-        animation: titleFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-        opacity: 0;
+        font-size: 17px !important; font-weight: 400 !important; color: #d4c5a0 !important;
+        letter-spacing: 6px !important; text-transform: uppercase !important;
+        margin: 0 0 50px 0 !important; text-align: center !important;
+        animation: titleFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; opacity: 0;
     }
-    .overview-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
-        max-width: 1180px;
-        width: 100%;
-    }
+    .overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1180px; width: 100%; }
     .overview-card {
-        background: rgba(255,255,255,0.06);
-        border: 1px solid rgba(212,197,160,0.4);
-        border-radius: 14px;
-        padding: 22px 20px;
-        backdrop-filter: blur(8px);
+        background: rgba(255,255,255,0.06); border: 1px solid rgba(212,197,160,0.4);
+        border-radius: 14px; padding: 22px 20px; backdrop-filter: blur(8px);
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        opacity: 0;
-        text-align: left;
+        opacity: 0; text-align: left;
     }
     .overview-card:hover {
-        background: rgba(255,255,255,0.14);
-        border-color: rgba(212,197,160,0.85);
-        transform: translateY(-6px);
-        box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+        background: rgba(255,255,255,0.14); border-color: rgba(212,197,160,0.85);
+        transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.5);
     }
     .overview-card:nth-child(1) { animation-delay: 0.5s; }
     .overview-card:nth-child(2) { animation-delay: 0.75s; }
     .overview-card:nth-child(3) { animation-delay: 1.0s; }
     .overview-card:nth-child(4) { animation-delay: 1.25s; }
-    .overview-card .ov-icon {
-        font-size: 34px !important;
-        margin-bottom: 12px !important;
-        display: block !important;
-    }
+    .overview-card .ov-icon { font-size: 34px !important; margin-bottom: 12px !important; display: block !important; }
     .overview-card .ov-title {
-        font-size: 19px !important;
-        font-weight: 800 !important;
-        color: #ffffff !important;
-        margin: 0 0 8px 0 !important;
-        letter-spacing: 0.5px !important;
-        line-height: 1.25 !important;
+        font-size: 19px !important; font-weight: 800 !important; color: #ffffff !important;
+        margin: 0 0 8px 0 !important; letter-spacing: 0.5px !important; line-height: 1.25 !important;
     }
     .overview-card .ov-desc {
-        font-size: 13px !important;
-        font-weight: 400 !important;
-        color: #b8ac8f !important;
-        line-height: 1.5 !important;
-        margin: 0 !important;
+        font-size: 13px !important; font-weight: 400 !important; color: #b8ac8f !important;
+        line-height: 1.5 !important; margin: 0 !important;
     }
     .overview-footer {
-        position: absolute;
-        bottom: 25px;
-        right: 35px;
-        font-size: 12px !important;
-        color: #8a8270 !important;
-        letter-spacing: 2px !important;
-        font-weight: 400 !important;
+        position: absolute; bottom: 25px; right: 35px;
+        font-size: 12px !important; color: #8a8270 !important; letter-spacing: 2px !important;
     }
     .sources-hero {
-        position: relative;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        min-height: 82vh;
-        border-radius: 18px;
-        overflow: hidden;
+        position: relative; width: 100%; max-width: 1400px; margin: 0 auto;
+        min-height: 82vh; border-radius: 18px; overflow: hidden;
         background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
-        background-size: cover;
-        background-position: center;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+        background-size: cover; background-position: center;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.35);
     }
     .sources-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(135deg, rgba(10,10,15,0.94) 0%, rgba(20,20,30,0.85) 40%, rgba(30,25,20,0.82) 70%, rgba(10,10,15,0.92) 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 50px 40px;
-        box-sizing: border-box;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 50px 40px; box-sizing: border-box;
     }
     .sources-title {
-        font-size: 52px !important;
-        font-weight: 900 !important;
-        color: #ffffff !important;
-        letter-spacing: 6px !important;
-        line-height: 1 !important;
-        margin: 0 0 50px 0 !important;
-        text-align: center !important;
-        text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+        font-size: 52px !important; font-weight: 900 !important; color: #ffffff !important;
+        letter-spacing: 6px !important; line-height: 1 !important; margin: 0 0 50px 0 !important;
+        text-align: center !important; text-shadow: 0 4px 30px rgba(0,0,0,0.6);
         animation: titleFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .sources-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-        max-width: 1180px;
-        width: 100%;
-    }
+    .sources-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1180px; width: 100%; }
     .source-card {
-        background: rgba(255,255,255,0.06);
-        border: 1px solid rgba(212,197,160,0.4);
-        border-radius: 12px;
-        padding: 18px 18px;
-        backdrop-filter: blur(8px);
+        background: rgba(255,255,255,0.06); border: 1px solid rgba(212,197,160,0.4);
+        border-radius: 12px; padding: 18px; backdrop-filter: blur(8px);
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        opacity: 0;
+        animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0;
     }
-    .source-card:hover {
-        background: rgba(255,255,255,0.13);
-        border-color: rgba(212,197,160,0.85);
-        transform: translateY(-5px);
-    }
+    .source-card:hover { background: rgba(255,255,255,0.13); border-color: rgba(212,197,160,0.85); transform: translateY(-5px); }
     .source-card:nth-child(1) { animation-delay: 0.5s; }
     .source-card:nth-child(2) { animation-delay: 0.75s; }
     .source-card:nth-child(3) { animation-delay: 1.0s; }
     .source-card:nth-child(4) { animation-delay: 1.25s; }
-    .source-card .src-icon {
-        font-size: 28px !important;
-        margin-bottom: 10px !important;
-        display: block !important;
-    }
+    .source-card .src-icon { font-size: 28px !important; margin-bottom: 10px !important; display: block !important; }
     .source-card .src-title {
-        font-size: 15px !important;
-        font-weight: 700 !important;
-        color: #ffffff !important;
-        margin: 0 0 6px 0 !important;
-        line-height: 1.3 !important;
+        font-size: 15px !important; font-weight: 700 !important; color: #ffffff !important;
+        margin: 0 0 6px 0 !important; line-height: 1.3 !important;
     }
     .source-card .src-link {
-        font-size: 12px !important;
-        font-weight: 400 !important;
-        color: #d4c5a0 !important;
-        line-height: 1.5 !important;
-        margin: 0 !important;
-        word-break: break-word !important;
+        font-size: 12px !important; font-weight: 400 !important; color: #d4c5a0 !important;
+        line-height: 1.5 !important; margin: 0 !important; word-break: break-word !important;
     }
     div[data-testid="stDialog"] > div {
-        background-color: #ffffff !important;
-        border-radius: 14px !important;
-        border-left: 6px solid #333333 !important;
-        padding: 10px 16px !important;
+        background-color: #ffffff !important; border-radius: 14px !important;
+        border-left: 6px solid #333333 !important; padding: 10px 16px !important;
     }
-    div[data-testid="stDialog"] h2 {
-        color: #111111 !important;
-        font-size: 22px !important;
-        font-weight: 800 !important;
-    }
-    div[data-testid="stDialog"] p,
-    div[data-testid="stDialog"] span,
+    div[data-testid="stDialog"] h2 { color: #111111 !important; font-size: 22px !important; font-weight: 800 !important; }
+    div[data-testid="stDialog"] p, div[data-testid="stDialog"] span,
     div[data-testid="stDialog"] div[data-testid="stMarkdownContainer"] {
-        color: #333333 !important;
-        font-size: 16px !important;
-        font-weight: 500 !important;
-        line-height: 1.6 !important;
+        color: #333333 !important; font-size: 16px !important; font-weight: 500 !important; line-height: 1.6 !important;
     }
     div[data-testid="stDialog"] button[aria-label="Close"],
     div[data-testid="stDialog"] [data-testid="stDialogCloseButton"] {
-        display: none !important;
-        visibility: hidden !important;
+        display: none !important; visibility: hidden !important;
     }
     div[data-testid="stDialog"] .stButton > button {
-        background-color: #ffffff !important;
-        color: #333333 !important;
-        font-size: 15px !important;
-        font-weight: 700 !important;
-        border: 2px solid #333333 !important;
-        border-radius: 6px !important;
-        padding: 0.5rem 1.5rem !important;
-        width: 100% !important;
+        background-color: #ffffff !important; color: #333333 !important; font-size: 15px !important;
+        font-weight: 700 !important; border: 2px solid #333333 !important; border-radius: 6px !important;
+        padding: 0.5rem 1.5rem !important; width: 100% !important;
     }
     div[data-testid="stDialog"] .stButton > button:hover {
-        background-color: #333333 !important;
-        color: #ffffff !important;
+        background-color: #333333 !important; color: #ffffff !important;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
-
 @st.dialog("📖 Доп. факт")
 def show_extra_dialog():
     st.markdown(
@@ -414,8 +252,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             unsafe_allow_html=True
         )
         st.write("")
-        col_btn_l, col_btn_c, col_btn_r = st.columns([1, 1, 1])
-        with col_btn_c:
+        col_l, col_c, col_r = st.columns([1, 1, 1])
+        with col_c:
             if st.button("Почати подорож ➔", key="next_btn_0", use_container_width=True):
                 st.session_state.step = 1
                 st.rerun()
@@ -633,4 +471,36 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             unsafe_allow_html=True
         )
         st.write("")
-        col_btn_l, col_btn_c, col_btn_r = st.columns([1
+        col_l, col_c, col_r = st.columns([1, 1, 1])
+        with col_c:
+            if st.button("Завершити ➔", key="next_btn_6", use_container_width=True):
+                st.session_state.step = 7
+                st.rerun()
+
+    elif st.session_state.step == 7:
+        st.markdown(
+            '<div style="text-align: center; font-size: 42px; font-weight: 900; color: #111111; '
+            'margin: 60px 0 20px 0; letter-spacing: 4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
+            unsafe_allow_html=True
+        )
+        try:
+            img = Image.open("end.jpg")
+            st.image(img, use_container_width=True)
+        except Exception:
+            st.markdown(
+                '<div style="text-align: center; font-size: 20px; color: #888; margin: 40px 0;">'
+                'Файл end.jpg не знайдено'
+                '</div>',
+                unsafe_allow_html=True
+            )
+        st.markdown(
+            '<div style="text-align: center; font-size: 22px; font-weight: 600; color: #333; '
+            'margin-top: 30px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
+            unsafe_allow_html=True
+        )
+        st.write("")
+        col_l, col_c, col_r = st.columns([1, 1, 1])
+        with col_c:
+            if st.button("На початок ➔", key="restart_btn", use_container_width=True):
+                st.session_state.step = 0
+                st.rerun()
