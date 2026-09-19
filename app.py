@@ -177,8 +177,8 @@ st.markdown(
 @st.dialog("📖 Доп. факт")
 def show_extra_dialog():
     st.markdown(
-        '<div style="font-size: 16px; font-weight: 500; color: #333333; line-height: 1.6; margin-bottom: 12px;">У школах діяла п’ятибальна система оцінювання.</div>'
-        '<div style="font-size: 16px; font-weight: 500; color: #333333; line-height: 1.6;">Формально шкала передбачала оцінки від 1 до 5, але на практиці одиницю майже не ставили. Вона вважалася надзвичайно низькою оцінкою.</div>',
+        '<div style="font-size:16px;font-weight:500;color:#333;line-height:1.6;margin-bottom:12px;">У школах діяла п’ятибальна система оцінювання.</div>'
+        '<div style="font-size:16px;font-weight:500;color:#333;line-height:1.6;">Формально шкала передбачала оцінки від 1 до 5, але на практиці одиницю майже не ставили.</div>',
         unsafe_allow_html=True
     )
     st.write("")
@@ -218,13 +218,13 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown(
             '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:22px;">ХТО ТАКІ ПІОНЕРИ?</div>'
             '<div style="font-size:19px;font-weight:600;color:#111;margin-bottom:8px;">📌 Хто це такі</div>'
-            '<div style="font-size:19px;font-weight:500;color:#333;line-height:1.6;margin-bottom:22px;">Піонери — це радянська дитяча організація для школярів віком від 9 до 14 років. Вона мала повну назву — Всесоюзна піонерська організація імені В. І. Леніна.</div>'
+            '<div style="font-size:19px;font-weight:500;color:#333;line-height:1.6;margin-bottom:22px;">Піонери — це радянська дитяча організація для школярів віком від 9 до 14 років.</div>'
             '<div style="font-size:19px;font-weight:600;color:#111;margin-bottom:8px;">🎒 Чим вони займалися</div>'
-            '<div style="font-size:19px;font-weight:500;color:#333;line-height:1.6;margin-bottom:22px;">Піонери об’єднувалися в загони за класами. Вони ходили в походи, брали участь у змаганнях і концертах, відвідували гуртки та допомагали в громадських справах.</div>'
+            '<div style="font-size:19px;font-weight:500;color:#333;line-height:1.6;margin-bottom:22px;">Піонери об’єднувалися в загони за класами. Ходили в походи, брали участь у змаганнях і концертах, відвідували гуртки.</div>'
             '<div style="font-size:19px;font-weight:600;color:#111;margin-bottom:8px;">🔴 Символіка та ритуали</div>'
-            '<div style="font-size:19px;font-weight:500;color:#333;line-height:1.6;margin-bottom:22px;">У піонерів були свої символи: червоний галстук, урочисті лінійки та салют. Щоб стати піонером, треба було скласти присягу на церемонії вступу.</div>'
+            '<div style="font-size:19px;font-weight:500;color:#333;line-height:1.6;margin-bottom:22px;">Червоний галстук, урочисті лінійки та салют. Присяга на церемонії вступу.</div>'
             '<div style="font-size:19px;font-weight:600;color:#111;margin-bottom:8px;">📖 Мета організації</div>'
-            '<div style="font-size:19px;font-weight:500;color:#333;line-height:1.6;margin-bottom:22px;">Піонерство було частиною радянської системи виховання. Через нього дітям передавали офіційні цінності та залучали до ідеологічних заходів.</div>',
+            '<div style="font-size:19px;font-weight:500;color:#333;line-height:1.6;margin-bottom:22px;">Піонерство було частиною радянської системи виховання.</div>',
             unsafe_allow_html=True
         )
         st.write("")
@@ -242,10 +242,10 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · РАНОК</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#111;margin-bottom:12px;">⏰ 07:00. Підйом та зарядка</div>'
-            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">У 60-х роках ранок школяра починався о 7-й годині. Спочатку — ранкова гігієна, потім — обов’язкова зарядка під радіо. Радіоточка була майже в кожній оселі, і рівно о 07:10 лунала мелодія, під яку вся родина робила вправи.</div>'
+            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">У 60-х роках ранок школяра починався о 7-й годині. Спочатку — ранкова гігієна, потім — обов’язкова зарядка під радіо.</div>'
             '<div style="background:rgba(255,255,255,0.92);border-left:6px solid #333;padding:16px 22px;border-radius:6px;margin-bottom:20px;">'
             '<div style="font-size:17px;font-weight:700;color:#222;margin-bottom:8px;">📌 Сніданок</div>'
-            '<div style="font-size:16px;color:#333;line-height:1.5;">Зазвичай простій: каша, яйця, сир, хліб із маслом, чай або молоко. Ніяких довгих сніданків — усе швидко, щоб встигнути до школи.</div></div>',
+            '<div style="font-size:16px;color:#333;line-height:1.5;">Каша, яйця, сир, хліб із маслом, чай або молоко. Ніяких довгих сніданків — усе швидко.</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
@@ -264,10 +264,10 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ДОРОГА ДО ШКОЛИ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#111;margin-bottom:12px;">🎒 07:40. Форма та портфель</div>'
-            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">Школяр 60-х виходив з дому приблизно о 07:40. Усі були однаково вдягнені: хлопці — у темних брюках і піджаку, дівчата — у коричневій сукні з білим або чорним фартухом. На плечі — шкіряний портфель, у якому зошити, підручники та пенал із ручкою-пером.</div>'
+            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">Школяр 60-х виходив з дому приблизно о 07:40. Хлопці — темні брюки і піджак, дівчата — коричнева сукня з фартухом.</div>'
             '<div style="background:rgba(255,255,255,0.92);border-left:6px solid #333;padding:16px 22px;border-radius:6px;margin-bottom:20px;">'
             '<div style="font-size:17px;font-weight:700;color:#222;margin-bottom:8px;">🚶 Шлях до школи</div>'
-            '<div style="font-size:16px;color:#333;line-height:1.5;">Більшість дітей ходили до школи пішки — часто по кілька кварталів. Дорогою зустрічалися з друзями, обговорювали новини, готувалися до уроків.</div></div>',
+            '<div style="font-size:16px;color:#333;line-height:1.5;">Більшість дітей ходили до школи пішки. Дорогою зустрічалися з друзями, обговорювали новини.</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
@@ -293,13 +293,13 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         with cl:
             st.markdown(
                 '<div class="no-anim lesson-card"><div class="lesson-title">📚 Уроки</div>'
-                '<div class="lesson-text">Одне заняття тривало 45 хвилин. Писали чорнильницями-непроливайками та ручками з металевим пером. За помарочку в зошиті могли знизити оцінку.</div></div>',
+                '<div class="lesson-text">Одне заняття тривало 45 хвилин. Писали чорнильницями-непроливайками та ручками з металевим пером.</div></div>',
                 unsafe_allow_html=True
             )
         with cr:
             st.markdown(
                 '<div class="no-anim lesson-card"><div class="lesson-title">👔 Шкільна форма</div>'
-                '<div class="lesson-text">Дівчата — коричнева сукня з білим або чорним фартухом. Хлопці — сорочка, брюки та піджак. Форма була обов’язковою.</div></div>',
+                '<div class="lesson-text">Дівчата — коричнева сукня з фартухом. Хлопці — сорочка, брюки та піджак.</div></div>',
                 unsafe_allow_html=True
             )
         st.write("")
@@ -324,14 +324,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ОБІД І ГУРТКИ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#111;margin-bottom:12px;">🍽 14:00. Обід та позаурочні справи</div>'
-            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">Після занять школярі поверталися додому на обід. У 60-х обід був простою, але ситною стравою — борщ, суп, картопля з котлетою або каша. Потім — короткий відпочинок, і знову до справ.</div>',
+            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">Після занять школярі поверталися додому на обід. Потім — короткий відпочинок, і знову до справ.</div>',
             unsafe_allow_html=True
         )
         cl, cr = st.columns([2, 1], gap="large")
         with cl:
             st.markdown(
                 '<div class="no-anim lesson-card"><div class="lesson-title">📌 Піонерські справи після уроків</div>'
-                '<div class="lesson-text">• Збори загону та піонерські лінійки<br>• Збір макулатури та металобрухту<br>• Допомога старшим (суботники)<br>• Спортивні секції — футбол, легка атлетика<br>• Творчі гуртки — драма, музика, малювання</div></div>'
+                '<div class="lesson-text">• Збори загону та піонерські лінійки<br>• Збір макулатури та металобрухту<br>• Допомога старшим (суботники)<br>• Спортивні секції<br>• Творчі гуртки</div></div>'
                 '<div style="font-size:16px;font-weight:500;color:#555;line-height:1.5;margin-top:18px;">💡 У 60-х після школи дитина майже ніколи не сиділа вдома.</div>',
                 unsafe_allow_html=True
             )
@@ -352,10 +352,10 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ВЕЧІР</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#111;margin-bottom:12px;">🌙 19:00. Домашні завдання та відпочинок</div>'
-            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">Увечері після вечері — час на домашнє завдання. Потім читання книжок, радіопередачі або настільні ігри з родиною. Телевізор був не в кожній оселі, тому вечори часто проводили разом.</div>'
+            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">Увечері — час на домашнє завдання. Потім читання книжок або настільні ігри з родиною.</div>'
             '<div style="background:rgba(255,255,255,0.92);border-left:6px solid #333;padding:16px 22px;border-radius:6px;margin-bottom:20px;">'
             '<div style="font-size:17px;font-weight:700;color:#222;margin-bottom:8px;">🌙 Відбій</div>'
-            '<div style="font-size:16px;color:#333;line-height:1.5;">Спати лягали рано — о 21:00–22:00. Наступного дня знову підйом о 7-й, зарядка під радіо.</div></div>',
+            '<div style="font-size:16px;color:#333;line-height:1.5;">Спати лягали рано — о 21:00–22:00.</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
@@ -379,8 +379,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         cl, cr = st.columns([1.3, 1], gap="large")
         with cl:
             st.markdown(
-                '<div style="font-size:18px;font-weight:500;color:#333;line-height:1.7;margin-bottom:20px;">Піонери 60-х та сучасна молодь жили в різних світах. Одні виховувались у колективі, де головним було спільне благо та дисципліна. Інші — у світі, де цінується свобода вибору, самовираження та доступ до будь-якої інформації.</div>'
-                '<div style="font-size:18px;font-weight:500;color:#333;line-height:1.7;">Але в обох поколінь є свої сильні сторони. Давайте порівняємо, що було цінного у піонерів, а що — у сучасної молоді.</div>',
+                '<div style="font-size:18px;font-weight:500;color:#333;line-height:1.7;margin-bottom:20px;">Піонери 60-х та сучасна молодь жили в різних світах. Одні виховувались у колективі, де головним було спільне благо та дисципліна.</div>'
+                '<div style="font-size:18px;font-weight:500;color:#333;line-height:1.7;">Інші — у світі, де цінується свобода вибору. Давайте порівняємо.</div>',
                 unsafe_allow_html=True
             )
         with cr:
@@ -413,13 +413,13 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 '<div class="no-anim lesson-card" style="min-height:auto;padding:26px 30px;">'
                 '<div style="font-size:21px;font-weight:800;color:#222;margin:0 0 14px 0;">📌 Позитивні риси піонерства</div>'
                 '<div style="font-size:18px;font-weight:500;color:#333;line-height:2.0;margin:0;">'
-                '• <b>Дисципліна та відповідальність</b> — змалку привчали до порядку<br>'
+                '• <b>Дисципліна та відповідальність</b><br>'
                 '• <b>Колективізм</b> — учили працювати в команді<br>'
-                '• <b>Повага до старших</b> — шанобливе ставлення до дорослих<br>'
-                '• <b>Фізичний розвиток</b> — спорт, походи, активний відпочинок<br>'
-                '• <b>Участь у житті громади</b> — суботники, допомога<br>'
-                '• <b>Менше залежності від ґаджетів</b> — живе спілкування<br>'
-                '• <b>Безкоштовні гуртки</b> — доступні для всіх дітей'
+                '• <b>Повага до старших</b><br>'
+                '• <b>Фізичний розвиток</b> — спорт, походи<br>'
+                '• <b>Участь у житті громади</b><br>'
+                '• <b>Менше залежності від ґаджетів</b><br>'
+                '• <b>Безкоштовні гуртки</b> — для всіх дітей'
                 '</div></div>',
                 unsafe_allow_html=True
             )
@@ -450,13 +450,13 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 '<div class="no-anim lesson-card" style="min-height:auto;padding:26px 30px;">'
                 '<div style="font-size:21px;font-weight:800;color:#222;margin:0 0 14px 0;">📌 Позитивні риси сучасної молоді</div>'
                 '<div style="font-size:18px;font-weight:500;color:#333;line-height:2.0;margin:0;">'
-                '• <b>Свобода вибору</b> — самостійний шлях, професія, захоплення<br>'
-                '• <b>Доступ до знань</b> — інтернет дає змогу вчитися будь-чому<br>'
-                '• <b>Толерантність</b> — відкритість до різних думок і культур<br>'
-                '• <b>Технологічна грамотність</b> — швидко опановують нове<br>'
-                '• <b>Креативність</b> — створюють контент, проєкти, стартапи<br>'
-                '• <b>Підприємливість</b> — вміння заробляти, реалізовувати ідеї<br>'
-                '• <b>Глобальна співпраця</b> — спілкування з людьми з усього світу'
+                '• <b>Свобода вибору</b><br>'
+                '• <b>Доступ до знань</b> — інтернет<br>'
+                '• <b>Толерантність</b><br>'
+                '• <b>Технологічна грамотність</b><br>'
+                '• <b>Креативність</b> — контент, проєкти<br>'
+                '• <b>Підприємливість</b><br>'
+                '• <b>Глобальна співпраця</b>'
                 '</div></div>',
                 unsafe_allow_html=True
             )
@@ -511,19 +511,24 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     elif st.session_state.step == 11:
         st.markdown(
-            '<div style="text-align:center;font-size:42px;font-weight:900;color:#111;margin:60px 0 20px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
+            '<div style="text-align:center;font-size:42px;font-weight:900;color:#111;'
+            'margin:60px 0 30px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
             unsafe_allow_html=True
         )
-        try:
-            img = Image.open("end.jpg")
-            st.image(img, use_container_width=True)
-        except Exception:
-            st.markdown(
-                '<div style="text-align:center;font-size:20px;color:#888;margin:40px 0;">Файл end.jpg не знайдено</div>',
-                unsafe_allow_html=True
-            )
+        col_l, col_c, col_r = st.columns([1, 2, 1])
+        with col_c:
+            try:
+                img = Image.open("end.jpg")
+                st.image(img, use_container_width=True)
+            except Exception:
+                st.markdown(
+                    '<div style="text-align:center;font-size:20px;color:#888;'
+                    'margin:40px 0;">Файл end.jpg не знайдено</div>',
+                    unsafe_allow_html=True
+                )
         st.markdown(
-            '<div style="text-align:center;font-size:22px;font-weight:600;color:#333;margin-top:30px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
+            '<div style="text-align:center;font-size:22px;font-weight:600;color:#333;'
+            'margin-top:30px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
             unsafe_allow_html=True
         )
         st.write("")
