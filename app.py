@@ -7,7 +7,7 @@ qp = st.query_params
 if "page" in qp:
     try:
         target = int(qp.get("page"))
-        if 0 <= target <= 8:
+        if 0 <= target <= 11:
             st.session_state.step = target
         st.query_params.clear()
     except Exception:
@@ -112,40 +112,41 @@ st.markdown(
     .hero-subtitle {
         font-size: 15px !important; font-weight: 400 !important; color: #d4c5a0 !important;
         letter-spacing: 6px !important; text-transform: uppercase !important;
-        margin: 0 0 40px 0 !important; text-align: center !important;
+        margin: 0 0 30px 0 !important; text-align: center !important;
     }
     .hero-cards {
-        display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
-        max-width: 900px; width: 100%; margin-bottom: 16px;
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+        max-width: 1050px; width: 100%; margin-bottom: 14px;
     }
     .hero-cards-bottom {
-        display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
-        max-width: 900px; width: 100%;
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+        max-width: 1050px; width: 100%;
     }
     .hero-card-link {
         display: block; background: rgba(255,255,255,0.07);
         border: 1px solid rgba(212,197,160,0.42);
-        border-radius: 14px; padding: 20px 22px;
+        border-radius: 14px; padding: 16px 18px;
         text-decoration: none !important; color: inherit !important;
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        opacity: 0; cursor: pointer; min-height: 140px; box-sizing: border-box;
+        opacity: 0; cursor: pointer; min-height: 130px; box-sizing: border-box;
     }
-    .hero-card-link:nth-child(1) { animation-delay: 0.4s; }
-    .hero-card-link:nth-child(2) { animation-delay: 0.6s; }
+    .hero-card-link:nth-child(1) { animation-delay: 0.3s; }
+    .hero-card-link:nth-child(2) { animation-delay: 0.5s; }
+    .hero-card-link:nth-child(3) { animation-delay: 0.7s; }
     .hero-card-link:hover {
         background: rgba(255,255,255,0.16); border-color: rgba(212,197,160,0.9);
         transform: translateY(-5px); box-shadow: 0 18px 40px rgba(0,0,0,0.5);
         text-decoration: none !important;
     }
-    .hero-card-link .hc-icon { font-size: 30px !important; margin-bottom: 10px !important; display: block !important; line-height: 1 !important; }
+    .hero-card-link .hc-icon { font-size: 26px !important; margin-bottom: 8px !important; display: block !important; line-height: 1 !important; }
     .hero-card-link .hc-title {
-        font-size: 18px !important; font-weight: 800 !important; color: #ffffff !important;
-        margin: 0 0 6px 0 !important; letter-spacing: 0.5px !important; line-height: 1.25 !important;
+        font-size: 15px !important; font-weight: 800 !important; color: #ffffff !important;
+        margin: 0 0 5px 0 !important; letter-spacing: 0.5px !important; line-height: 1.25 !important;
     }
     .hero-card-link .hc-desc {
-        font-size: 13px !important; font-weight: 400 !important; color: #b8ac8f !important;
-        line-height: 1.5 !important; margin: 0 !important;
+        font-size: 12px !important; font-weight: 400 !important; color: #b8ac8f !important;
+        line-height: 1.45 !important; margin: 0 !important;
     }
     .hero-footer {
         position: absolute; bottom: 20px; right: 30px; z-index: 2;
@@ -212,18 +213,24 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div class="hc-title">ДЕНЬ ПІОНЕРА</div>'
             '<div class="hc-desc">Повний день від ранку до вечора</div>'
             '</a>'
+            '<a class="hero-card-link" href="?page=7" target="_self">'
+            '<span class="hc-icon">⚖️</span>'
+            '<div class="hc-title">ПОРІВНЯННЯ</div>'
+            '<div class="hc-desc">Піонери та сучасна молодь</div>'
+            '</a>'
             '</div>'
             '<div class="hero-cards-bottom">'
-            '<a class="hero-card-link" href="?page=7" target="_self">'
+            '<a class="hero-card-link" href="?page=10" target="_self">'
             '<span class="hc-icon">🎯</span>'
             '<div class="hc-title">ІНТЕРАКТИВ</div>'
             '<div class="hc-desc">Спробуй себе у ситуації 60-х років</div>'
             '</a>'
-            '<a class="hero-card-link" href="?page=8" target="_self">'
+            '<a class="hero-card-link" href="?page=11" target="_self">'
             '<span class="hc-icon">🏁</span>'
             '<div class="hc-title">ЗАВЕРШЕННЯ</div>'
             '<div class="hc-desc">Подяка та фінальне слово</div>'
             '</a>'
+            '<div style="visibility: hidden;"></div>'
             '</div>'
             '</div>'
             '<div class="hero-footer">Проект учнів 10-А класу</div>'
@@ -436,9 +443,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '</div>',
             unsafe_allow_html=True
         )
-
         col_left, col_right = st.columns([2, 1], gap="large")
-
         with col_left:
             st.markdown(
                 '<div class="no-anim lesson-card">'
@@ -460,13 +465,11 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 '</div>',
                 unsafe_allow_html=True
             )
-
         with col_right:
             st.image(
                 "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop",
                 use_container_width=True
             )
-
         st.write("")
         col_back, col_next, _ = st.columns([1, 1, 4])
         with col_back:
@@ -515,8 +518,126 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 7 — ІНТЕРАКТИВ =====
+    # ===== STEP 7 — ПОРІВНЯННЯ (введение) =====
     elif st.session_state.step == 7:
+        st.markdown('<div class="slide-title">ПОРІВНЯННЯ</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">'
+            'ПІОНЕРИ ТА СУЧАСНА МОЛОДЬ'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.7; margin-bottom: 22px;">'
+            'Піонери 60-х та сучасна молодь жили в різних світах. Одні виховувались у колективі, '
+            'де головним було спільне благо та дисципліна. Інші — у світі, де цінується свобода '
+            'вибору, самовираження та доступ до будь-якої інформації.'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.7; margin-bottom: 22px;">'
+            'Але в обох поколінь є свої сильні сторони. Давайте порівняємо, що було цінного '
+            'у піонерів, а що — у сучасної молоді. Це не про те, хто кращий, а про те, '
+            'що кожна епоха формує свої унікальні риси.'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
+            '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">📌 Про що поговоримо</div>'
+            '<div style="font-size: 16px; color: #333; line-height: 1.6;">'
+            '• Що хорошого було у піонерів<br>'
+            '• Що хорошого є у сучасної молоді<br>'
+            '• Чому вчитися одне в одного'
+            '</div>'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+        st.write("")
+        col_back, col_next, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_7"):
+                st.session_state.step = 0
+                st.rerun()
+        with col_next:
+            if st.button("Далі ➔", key="next_btn_7"):
+                st.session_state.step = 8
+                st.rerun()
+
+    # ===== STEP 8 — ЩО ХОРОШОГО У ПІОНЕРІВ =====
+    elif st.session_state.step == 8:
+        st.markdown('<div class="slide-title">ПОРІВНЯННЯ · ПІОНЕРИ</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">'
+            '✅ ЩО ХОРОШОГО БУЛО У ПІОНЕРІВ'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div class="no-anim lesson-card">'
+            '<div class="lesson-title">📌 Позитивні риси піонерства</div>'
+            '<div class="lesson-text">'
+            '• <b>Дисципліна та відповідальність</b> — змалку привчали до порядку та обов’язків<br>'
+            '• <b>Колективізм</b> — учили працювати в команді, допомагати одне одному<br>'
+            '• <b>Повага до старших</b> — шанобливе ставлення до батьків, учителів, ветеранів<br>'
+            '• <b>Фізичний розвиток</b> — спорт, походи, активний відпочинок на природі<br>'
+            '• <b>Участь у житті громади</b> — суботники, допомога, збір макулатури<br>'
+            '• <b>Менше залежності від ґаджетів</b> — більше живого спілкування та ігор у дворі<br>'
+            '• <b>Безкоштовні гуртки</b> — доступні для всіх дітей незалежно від достатку'
+            '</div>'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.write("")
+        col_back, col_next, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_8"):
+                st.session_state.step = 7
+                st.rerun()
+        with col_next:
+            if st.button("Далі ➔", key="next_btn_8"):
+                st.session_state.step = 9
+                st.rerun()
+
+    # ===== STEP 9 — ЩО ХОРОШОГО У СУЧАСНОЇ МОЛОДІ =====
+    elif st.session_state.step == 9:
+        st.markdown('<div class="slide-title">ПОРІВНЯННЯ · СУЧАСНА МОЛОДЬ</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">'
+            '🌟 ЩО ХОРОШОГО Є У СУЧАСНОЇ МОЛОДІ'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            '<div class="no-anim lesson-card">'
+            '<div class="lesson-title">📌 Позитивні риси сучасної молоді</div>'
+            '<div class="lesson-text">'
+            '• <b>Свобода вибору</b> — можливість самостійно обирати шлях, професію, захоплення<br>'
+            '• <b>Доступ до знань</b> — інтернет дає змогу вчитися будь-чому у будь-який час<br>'
+            '• <b>Толерантність</b> — відкритість до різних думок, культур, людей<br>'
+            '• <b>Технологічна грамотність</b> — швидко опановують нові технології та гаджети<br>'
+            '• <b>Креативність</b> — здатність створювати нове: контент, проєкти, стартапи<br>'
+            '• <b>Підприємливість</b> — вміння заробляти, реалізовувати ідеї<br>'
+            '• <b>Глобальна співпраця</b> — спілкування та робота з людьми з усього світу'
+            '</div>'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        st.write("")
+        col_back, col_home, _ = st.columns([1, 1, 4])
+        with col_back:
+            if st.button("⬅ Назад", key="back_btn_9"):
+                st.session_state.step = 8
+                st.rerun()
+        with col_home:
+            if st.button("🏠 На головну", key="home_btn_9"):
+                st.session_state.step = 0
+                st.rerun()
+
+    # ===== STEP 10 — ІНТЕРАКТИВ =====
+    elif st.session_state.step == 10:
         st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
         st.markdown('<div class="question-card">До початку першого уроку залишилося зовсім мало часу. Що робитимеш?</div>', unsafe_allow_html=True)
         choice = st.radio(
@@ -547,39 +668,5 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.write("")
         col_back, col_home, _ = st.columns([1, 1, 4])
         with col_back:
-            if st.button("⬅ Назад", key="back_btn_7"):
-                st.session_state.step = 0
-                st.rerun()
-        with col_home:
-            if st.button("🏠 На головну", key="home_btn_7"):
-                st.session_state.step = 0
-                st.rerun()
-
-    # ===== STEP 8 — ЗАВЕРШЕННЯ =====
-    elif st.session_state.step == 8:
-        st.markdown(
-            '<div style="text-align: center; font-size: 42px; font-weight: 900; color: #111111; '
-            'margin: 60px 0 20px 0; letter-spacing: 4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
-            unsafe_allow_html=True
-        )
-        try:
-            img = Image.open("end.jpg")
-            st.image(img, use_container_width=True)
-        except Exception:
-            st.markdown(
-                '<div style="text-align: center; font-size: 20px; color: #888; margin: 40px 0;">'
-                'Файл end.jpg не знайдено'
-                '</div>',
-                unsafe_allow_html=True
-            )
-        st.markdown(
-            '<div style="text-align: center; font-size: 22px; font-weight: 600; color: #333; '
-            'margin-top: 30px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
-            unsafe_allow_html=True
-        )
-        st.write("")
-        col_l, col_c, col_r = st.columns([1, 1, 1])
-        with col_c:
-            if st.button("🏠 На головну", key="home_btn_8", use_container_width=True):
-                st.session_state.step = 0
-                st.rerun()
+            if st.button("⬅ Назад",
+                         
