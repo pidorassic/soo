@@ -513,16 +513,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
     elif st.session_state.step == 11:
         st.markdown(
             '<div style="text-align:center;font-size:42px;font-weight:900;color:#111;'
-            'margin:60px 0 30px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
+            'margin:30px 0 20px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
             unsafe_allow_html=True
         )
         try:
             with open("end.jpg", "rb") as f:
                 img_b64 = base64.b64encode(f.read()).decode()
             st.markdown(
-                '<div style="width:100%;display:flex;justify-content:center;align-items:center;margin:20px 0;">'
+                '<div style="width:100%;display:flex;justify-content:center;align-items:center;margin:10px 0 20px 0;">'
                 '<img src="data:image/jpeg;base64,' + img_b64 + '" '
-                'style="max-width:520px;width:100%;border-radius:12px;display:block;">'
+                'style="max-height:50vh;max-width:100%;width:auto;border-radius:12px;display:block;">'
                 '</div>',
                 unsafe_allow_html=True
             )
@@ -533,8 +533,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
         st.markdown(
-            '<div style="text-align:center;font-size:22px;font-weight:600;color:#333;'
-            'margin-top:30px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
+            '<div style="text-align:center;font-size:20px;font-weight:600;color:#333;'
+            'margin-top:10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
             unsafe_allow_html=True
         )
         st.write("")
