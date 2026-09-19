@@ -11,16 +11,17 @@ st.markdown(
     html, body, [data-testid="stAppViewContainer"] {
         overflow-x: hidden !important;
         height: 100vh !important;
+        background-color: #f5efe6 !important;
     }
 
     .stApp {
-        background-color: #ffffff;
+        background-color: #f5efe6 !important;
         color: #000000;
         text-align: left !important;
     }
     
     div.block-container {
-        background-color: #ffffff;
+        background-color: #f5efe6 !important;
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
@@ -55,7 +56,7 @@ st.markdown(
     }
 
     .question-card {
-        background-color: #f8f9fa;
+        background-color: #ffffff;
         border-left: 6px solid #333333;
         padding: 15px 20px;
         border-radius: 6px;
@@ -95,9 +96,9 @@ st.markdown(
         transform: translateY(1px);
     }
 
-    /* Карточки на слайде У ШКОЛІ */
+    /* Карточки на слайде У ШКОЛІ — компактнее */
     .lesson-card {
-        background-color: #f8f9fa;
+        background-color: #ffffff;
         border-left: 6px solid #333333;
         padding: 18px 20px;
         border-radius: 8px;
@@ -235,7 +236,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             
             st.markdown(
                 """
-                <div style="margin-top: 15px; padding: 12px 18px; background-color: #f8f9fa; border-left: 5px solid #555; border-radius: 4px;">
+                <div style="margin-top: 15px; padding: 12px 18px; background-color: #ffffff; border-left: 5px solid #555; border-radius: 4px;">
                     <div style="font-size: 16px; font-weight: 700; color: #222; margin-bottom: 4px;">📌 Що на вас чекає у цій подорожі:</div>
                     <div style="font-size: 15px; color: #555; line-height: 1.3;">
                         • Ранкові звички та шкільна форма<br>
@@ -256,7 +257,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
     else:
-        # === ІСТОРИЧНА ЗГАДКА (обновлённый текст) ===
+        # === ІСТОРИЧНА ЗГАДКА ===
         if st.session_state.step == 1:
             st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
             st.markdown(
@@ -268,7 +269,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Блок 1: Кто это
             st.markdown(
                 '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">'
                 '📌 Хто це такі'
@@ -280,7 +280,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Блок 2: Чем занимались
             st.markdown(
                 '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">'
                 '🎒 Чим вони займалися'
@@ -293,7 +292,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Блок 3: Символика
             st.markdown(
                 '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">'
                 '🔴 Символіка та ритуали'
@@ -306,7 +304,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Блок 4: Идеология
             st.markdown(
                 '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">'
                 '📖 Мета організації'
@@ -350,7 +347,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             
             st.markdown(
                 """
-                <div style="background-color: #f8f9fa; border-left: 6px solid #333333; 
+                <div style="background-color: #ffffff; border-left: 6px solid #333333; 
                             padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">
                     <div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">
                         📌 Ранкова рутина та шкільна форма
