@@ -3,7 +3,6 @@ from PIL import Image
 
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# Ловим URL-параметр ?page=N (клик по карточке)
 qp = st.query_params
 if "page" in qp:
     try:
@@ -31,7 +30,7 @@ st.markdown(
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding: 2rem 2rem 1rem 2rem !important;
+        padding: 5rem 3rem 2rem 3rem !important;
     }
     @keyframes scaleFadeTransition {
         0% { opacity: 0; transform: scale(0.95); filter: blur(4px); }
@@ -88,8 +87,6 @@ st.markdown(
         object-fit: contain !important; border-radius: 12px !important;
         margin: 0 auto !important; display: block !important;
     }
-
-    /* ===== ОБЗОР — один большой блок с картинкой ===== */
     .hero-full {
         position: relative;
         width: 100%;
@@ -142,8 +139,6 @@ st.markdown(
         margin: 0 0 40px 0 !important;
         text-align: center !important;
     }
-
-    /* Карточки-ссылки */
     .hero-cards {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -205,7 +200,6 @@ st.markdown(
         line-height: 1.5 !important;
         margin: 0 !important;
     }
-
     .hero-footer {
         position: absolute;
         bottom: 20px;
@@ -215,8 +209,6 @@ st.markdown(
         color: #8a8270 !important;
         letter-spacing: 2px !important;
     }
-
-    /* ===== ДЖЕРЕЛА ===== */
     .sources-hero {
         position: relative; width: 100%; max-width: 1400px; margin: 0 auto;
         min-height: 82vh; border-radius: 18px; overflow: hidden;
@@ -249,8 +241,6 @@ st.markdown(
         font-size: 12px !important; font-weight: 400 !important; color: #d4c5a0 !important;
         line-height: 1.5 !important; margin: 0 !important; word-break: break-word !important;
     }
-
-    /* ===== ДИАЛОГ ===== */
     div[data-testid="stDialog"] > div {
         background-color: #ffffff !important; border-radius: 14px !important;
         border-left: 6px solid #333333 !important; padding: 10px 16px !important;
@@ -294,15 +284,12 @@ def show_extra_dialog():
 
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # ===== STEP 0 — ОБЗОР =====
     if st.session_state.step == 0:
         st.markdown(
             '<div class="hero-full">'
             '<div class="hero-content">'
-
             '<div class="hero-title">ДЕНЬ ШКОЛЯРА 60-Х</div>'
             '<div class="hero-subtitle">Подорож у минуле</div>'
-
             '<div class="hero-cards">'
             '<a class="hero-card-link" href="?page=1" target="_self">'
             '<span class="hc-icon">📜</span>'
@@ -320,7 +307,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div class="hc-desc">Школа, чорнильниці та дисципліна</div>'
             '</a>'
             '</div>'
-
             '<div class="hero-cards-bottom">'
             '<a class="hero-card-link" href="?page=4" target="_self">'
             '<span class="hc-icon">🎒</span>'
@@ -334,13 +320,11 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '</a>'
             '<div style="visibility: hidden;"></div>'
             '</div>'
-
             '</div>'
             '<div class="hero-footer">Проект учнів 10-А класу</div>'
             '</div>',
             unsafe_allow_html=True
         )
-
         st.write("")
         col_l, col_c, col_r = st.columns([1, 1, 1])
         with col_c:
@@ -348,7 +332,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 1
                 st.rerun()
 
-    # ===== STEP 1 — ІСТОРИЧНА ЗГАДКА =====
     elif st.session_state.step == 1:
         st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
         st.markdown(
@@ -400,7 +383,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 2
                 st.rerun()
 
-    # ===== STEP 2 — РАНОК =====
     elif st.session_state.step == 2:
         st.markdown('<div class="slide-title">РАНОК — ПОЧАТОК ДНЯ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -443,7 +425,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 3
                 st.rerun()
 
-    # ===== STEP 3 — У ШКОЛІ =====
     elif st.session_state.step == 3:
         st.markdown('<div class="slide-title">У ШКОЛІ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -500,7 +481,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("📖 Доп. інфо", key="extra_btn_3"):
                 show_extra_dialog()
 
-    # ===== STEP 4 — ПОЗАУРОЧНИЙ ЧАС =====
     elif st.session_state.step == 4:
         st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
         st.write(
@@ -522,7 +502,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 5
                 st.rerun()
 
-    # ===== STEP 5 — ІНТЕРАКТИВ =====
     elif st.session_state.step == 5:
         st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
         st.markdown('<div class="question-card">До початку першого уроку залишилося зовсім мало часу. Що робитимеш?</div>', unsafe_allow_html=True)
@@ -562,7 +541,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 6
                 st.rerun()
 
-    # ===== STEP 6 — ДЖЕРЕЛА =====
     elif st.session_state.step == 6:
         st.markdown(
             '<div class="sources-hero">'
@@ -601,7 +579,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 7
                 st.rerun()
 
-    # ===== STEP 7 — ДЯКУЄМО =====
     elif st.session_state.step == 7:
         st.markdown(
             '<div style="text-align: center; font-size: 42px; font-weight: 900; color: #111111; '
@@ -629,4 +606,3 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("На початок ➔", key="restart_btn", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
-                
