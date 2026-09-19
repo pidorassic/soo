@@ -8,7 +8,7 @@ qp = st.query_params
 if "page" in qp:
     try:
         target = int(qp.get("page"))
-        if 0 <= target <= 13:
+        if 0 <= target <= 15:
             st.session_state.step = target
         st.query_params.clear()
     except Exception:
@@ -17,7 +17,7 @@ if "page" in qp:
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-total_steps = 13
+total_steps = 15
 progress_pct = int((st.session_state.step / total_steps) * 100)
 
 st.markdown(
@@ -65,7 +65,8 @@ st.markdown(
     .question-card {
         background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333;
         padding: 15px 20px; border-radius: 6px; margin-bottom: 15px;
-        font-size: 20px !important; font-weight: 600 !important; color: #111111 !important;
+        font-size: 18px !important; font-weight: 500 !important; color: #111111 !important;
+        line-height: 1.6 !important;
     }
     p, label, span, .stMarkdown {
         font-size: 18px !important; font-weight: 500 !important; line-height: 1.5 !important;
@@ -244,8 +245,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '</div>'
             '<div class="hero-cards-bottom">'
             '<a class="hero-card-link" href="?page=10" target="_self"><span class="hc-icon">🎵</span><div class="hc-title">МОДА ТА КУЛЬТУРА</div><div class="hc-desc">Музика, кіно, ігри та стиль 60-х</div></a>'
-            '<a class="hero-card-link" href="?page=12" target="_self"><span class="hc-icon">🎯</span><div class="hc-title">ІНТЕРАКТИВ</div><div class="hc-desc">Спробуй себе у ситуації 60-х</div></a>'
-            '<a class="hero-card-link" href="?page=13" target="_self"><span class="hc-icon">🏁</span><div class="hc-title">ЗАВЕРШЕННЯ</div><div class="hc-desc">Подяка та фінальне слово</div></a>'
+            '<a class="hero-card-link" href="?page=12" target="_self"><span class="hc-icon">🎯</span><div class="hc-title">ІНТЕРАКТИВ</div><div class="hc-desc">Три тести про життя піонера</div></a>'
+            '<a class="hero-card-link" href="?page=15" target="_self"><span class="hc-icon">🏁</span><div class="hc-title">ЗАВЕРШЕННЯ</div><div class="hc-desc">Подяка та фінальне слово</div></a>'
             '</div></div>'
             '<div class="hero-footer">Проект учнів 10-А класу</div>'
             '</div>',
@@ -413,6 +414,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("🏠 На головну", key="home_btn_6"):
                 st.session_state.step = 0
                 st.rerun()
+
     elif st.session_state.step == 7:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -513,7 +515,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("🏠 На головну", key="home_btn_9"):
                 st.session_state.step = 0
                 st.rerun()
-
     elif st.session_state.step == 10:
         st.markdown('<div class="slide-title">МОДА ТА КУЛЬТУРА · МУЗИКА, КІНО, ІГРИ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -605,33 +606,38 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
+    # ===== STEP 12 — ТЕСТ 1: РАНОК ПІОНЕРА =====
     elif st.session_state.step == 12:
-        st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
-        st.markdown('<div class="question-card">До початку першого уроку залишилося зовсім мало часу. Що робитимеш?</div>', unsafe_allow_html=True)
+        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 1 З 3</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:18px;">🌅 РАНОК ПІОНЕРА</div>'
+            '<div class="question-card">'
+            '<b>Ситуація:</b> Дзвенить будильник о 07:00. Мама вже на кухні, по радіо грає мелодія для зарядки.<br><br>'
+            '<b>Питання:</b> Що робитимеш?'
+            '</div>',
+            unsafe_allow_html=True
+        )
         choice = st.radio(
-            "Оберіть варіант дії:",
+            "Оберіть варіант:",
             [
-                "А) Швидко збираюся і біжу до школи, навіть без нормального сніданку.",
-                "Б) Вирішую пропустити перший урок і прийти пізніше.",
-                "В) Кажу батькам, що погано почуваюся, щоб залишитися вдома.",
-                "Г) Спокійно йду до школи, навіть якщо трохи запізнюся."
+                "А) Зроблю зарядку під радіо разом з родиною, потім — сніданок",
+                "Б) Посплю ще 15 хвилин, потім швидко зберусь",
+                "В) Відразу побіжу до школи без сніданку",
+                "Г) Полежу в ліжку з телефоном"
             ],
-            key="choice_60s",
+            key="test1_choice",
             label_visibility="collapsed"
         )
         st.write("")
-        if st.button("Зробити вибір"):
+        if st.button("Зробити вибір", key="test1_btn"):
             if choice.startswith("А"):
-                st.success("✅ **07:35.** Ти влітаєш до школи майже перед дзвінком. Урок не пропущено.")
+                st.success("✅ **07:15.** Ти бадьорий, зробив зарядку, поснідав кашею. На уроці уважний і активний. **Ідеальний ранок піонера!**")
             elif choice.startswith("Б"):
-                st.error("❌ **08:20.** Ти приходиш уже на другий урок. Перший пропущено.")
-                st.warning("⚠️ **Штраф:** Класний керівник викликає батьків до школи.")
+                st.warning("⚠️ **07:15.** Ти схопився з ліжка, одягнувся нашвидкоруч, не встиг поснідати. На уроці думаєш про їжу, а не про математику.")
             elif choice.startswith("В"):
-                st.error("❌ **08:00.** Мама виміряла температуру — нормальна.")
-                st.warning("⚠️ **Штраф:** Довелося все одно йти до школи.")
+                st.error("❌ **07:05.** Ти вибіг з дому голодним. На третій годині живіт бурчить так, що чує весь клас. Вчителька робить зауваження.")
             elif choice.startswith("Г"):
-                st.error("❌ **07:40.** Ти приходиш після дзвінка.")
-                st.warning("⚠️ **Штраф:** Запізнення зафіксували в журналі.")
+                st.error("❌ **08:30.** Ти спізнився на перший урок! У 60-х телефону не було, але навіть якби був — урок пропущено. Класний керівник викликає батьків до школи.")
         st.write("")
         c1, c2, _ = st.columns([1, 1, 4])
         with c1:
@@ -639,11 +645,98 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
         with c2:
-            if st.button("🏠 На головну", key="home_btn_12"):
-                st.session_state.step = 0
+            if st.button("Далі ➔", key="next_btn_12"):
+                st.session_state.step = 13
                 st.rerun()
 
+    # ===== STEP 13 — ТЕСТ 2: У ШКОЛІ =====
     elif st.session_state.step == 13:
+        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 2 З 3</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:18px;">📚 У ШКОЛІ</div>'
+            '<div class="question-card">'
+            '<b>Ситуація:</b> Учитель дав контрольну роботу. Треба написати твір на пів сторінки.<br><br>'
+            '<b>Питання:</b> Чим будеш писати?'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        choice = st.radio(
+            "Оберіть варіант:",
+            [
+                "А) Кульковою ручкою",
+                "Б) Олівцем",
+                "В) Чорнильницею та ручкою з пером",
+                "Г) Друкарською машинкою"
+            ],
+            key="test2_choice",
+            label_visibility="collapsed"
+        )
+        st.write("")
+        if st.button("Зробити вибір", key="test2_btn"):
+            if choice.startswith("А"):
+                st.error("❌ **Двійка.** У 60-х кулькові ручки були рідкістю, вчителька каже: «Це несерйозно, треба писати пером». Твір не зараховують.")
+            elif choice.startswith("Б"):
+                st.warning("⚠️ **Трійка.** Олівцевий текст виглядає блідо, а вчителька вимагає чорнило. Оцінку знижують за неохайність.")
+            elif choice.startswith("В"):
+                st.success("✅ **П'ятірка!** Ти акуратно вмочаєш перо в чорнильницю-непроливайку, пишеш рівні літери. За охайність — окрема похвала.")
+            elif choice.startswith("Г"):
+                st.error("❌ **Неможливо.** У школі 60-х друкарських машинок не було. Тебе висміють, а контрольну доведеться переписувати пером.")
+        st.write("")
+        c1, c2, _ = st.columns([1, 1, 4])
+        with c1:
+            if st.button("⬅ Назад", key="back_btn_13"):
+                st.session_state.step = 12
+                st.rerun()
+        with c2:
+            if st.button("Далі ➔", key="next_btn_13"):
+                st.session_state.step = 14
+                st.rerun()
+
+    # ===== STEP 14 — ТЕСТ 3: ПІСЛЯ УРОКІВ =====
+    elif st.session_state.step == 14:
+        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 3 З 3</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:18px;">🎒 ПІСЛЯ УРОКІВ</div>'
+            '<div class="question-card">'
+            '<b>Ситуація:</b> Уроки закінчились о 14:00. Ти вдома, пообідав. Попереду — вільний час до вечері.<br><br>'
+            '<b>Питання:</b> Що робитимеш?'
+            '</div>',
+            unsafe_allow_html=True
+        )
+        choice = st.radio(
+            "Оберіть варіант:",
+            [
+                "А) Піду на збори загону, потім збір макулатури",
+                "Б) Сидітиму вдома, гратиму в комп'ютерні ігри",
+                "В) Піду на футбольне поле з друзями",
+                "Г) Дивитимусь телевізор цілий вечір"
+            ],
+            key="test3_choice",
+            label_visibility="collapsed"
+        )
+        st.write("")
+        if st.button("Зробити вибір", key="test3_btn"):
+            if choice.startswith("А"):
+                st.success("✅ **Молодець!** Ти отримуєш подяку від класного керівника, а твій загін — перше місце за зібраний папір. Ти справжній піонер!")
+            elif choice.startswith("Б"):
+                st.error("❌ **Хибний шлях.** У 1960-х комп'ютерів вдома не було! А якби були — піонери не сиділи б за ними, а займалися суспільно корисними справами.")
+            elif choice.startswith("В"):
+                st.success("✅ **Добре!** Спортивна секція — це теж піонерська справа. Ти тренуєшся, а ввечері — весела гра у дворі.")
+            elif choice.startswith("Г"):
+                st.warning("⚠️ **Так собі.** Телевізор у 60-х був рідкістю, і дивитися його годинами вважалось неробством. Батьки кажуть: «Краще б книжку почитав!»")
+        st.write("")
+        c1, c2, _ = st.columns([1, 1, 4])
+        with c1:
+            if st.button("⬅ Назад", key="back_btn_14"):
+                st.session_state.step = 13
+                st.rerun()
+        with c2:
+            if st.button("Далі ➔", key="next_btn_14"):
+                st.session_state.step = 15
+                st.rerun()
+
+    # ===== STEP 15 — ЗАВЕРШЕННЯ =====
+    elif st.session_state.step == 15:
         st.markdown(
             '<div style="text-align:center;font-size:42px;font-weight:900;color:#111;'
             'margin:30px 0 20px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
@@ -673,6 +766,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.write("")
         c1, c2, c3 = st.columns([1, 1, 1])
         with c2:
-            if st.button("🏠 На головну", key="home_btn_13", use_container_width=True):
+            if st.button("🏠 На головну", key="home_btn_15", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
