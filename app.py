@@ -27,8 +27,7 @@ st.markdown(
     .stApp { background-color: #f5efe6 !important; color: #000000; text-align: left !important; }
     div.block-container {
         background-color: transparent !important;
-        max-width: 100% !important;
-        width: 100% !important;
+        max-width: 100% !important; width: 100% !important;
         margin: 0 auto !important;
         padding: 5rem 3rem 2rem 3rem !important;
     }
@@ -68,7 +67,6 @@ st.markdown(
         background-color: #d8dadf !important; color: #000000 !important;
         border-color: #adb5bd !important; transform: translateY(-2px);
     }
-    .stButton > button:active { transform: translateY(1px); }
     .lesson-card {
         background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333;
         padding: 18px 20px; border-radius: 8px; width: 100% !important;
@@ -161,8 +159,7 @@ st.markdown(
     div[data-testid="stDialog"] div[data-testid="stMarkdownContainer"] {
         color: #333333 !important; font-size: 16px !important; font-weight: 500 !important; line-height: 1.6 !important;
     }
-    div[data-testid="stDialog"] button[aria-label="Close"],
-    div[data-testid="stDialog"] [data-testid="stDialogCloseButton"] {
+    div[data-testid="stDialog"] button[aria-label="Close"] {
         display: none !important; visibility: hidden !important;
     }
     div[data-testid="stDialog"] .stButton > button {
@@ -195,7 +192,6 @@ def show_extra_dialog():
 
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # ===== STEP 0 — ГЛАВНАЯ =====
     if st.session_state.step == 0:
         st.markdown(
             '<div class="hero-full">'
@@ -244,45 +240,26 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 1
                 st.rerun()
 
-    # ===== STEP 1 — ІСТОРИЧНА ЗГАДКА =====
     elif st.session_state.step == 1:
         st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">'
-            'ХТО ТАКІ ПІОНЕРИ?'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">ХТО ТАКІ ПІОНЕРИ?</div>'
             '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">📌 Хто це такі</div>'
             '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.6; margin-bottom: 22px;">'
             'Піонери — це радянська дитяча організація для школярів віком від 9 до 14 років. '
-            'Вона мала повну назву — Всесоюзна піонерська організація імені В. І. Леніна.'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            'Вона мала повну назву — Всесоюзна піонерська організація імені В. І. Леніна.</div>'
             '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">🎒 Чим вони займалися</div>'
             '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.6; margin-bottom: 22px;">'
             'Піонери об’єднувалися в загони за класами. Вони ходили в походи, брали участь '
-            'у змаганнях і концертах, відвідували гуртки та допомагали в громадських справах.'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            'у змаганнях і концертах, відвідували гуртки та допомагали в громадських справах.</div>'
             '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">🔴 Символіка та ритуали</div>'
             '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.6; margin-bottom: 22px;">'
             'У піонерів були свої символи: червоний галстук, урочисті лінійки та салют. '
-            'Щоб стати піонером, треба було скласти присягу на церемонії вступу.'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            'Щоб стати піонером, треба було скласти присягу на церемонії вступу.</div>'
             '<div style="font-size: 19px; font-weight: 600; color: #111111; margin-bottom: 8px;">📖 Мета організації</div>'
             '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.6; margin-bottom: 22px;">'
             'Піонерство було частиною радянської системи виховання. Через нього дітям '
-            'передавали офіційні цінності та залучали до ідеологічних заходів.'
-            '</div>',
+            'передавали офіційні цінності та залучали до ідеологічних заходів.</div>',
             unsafe_allow_html=True
         )
         st.write("")
@@ -296,29 +273,19 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 2 — РАНОК =====
     elif st.session_state.step == 2:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · РАНОК</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">⏰ 07:00. Підйом та зарядка</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">⏰ 07:00. Підйом та зарядка</div>'
             '<div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">'
             'У 60-х роках ранок школяра починався о 7-й годині. Спочатку — ранкова гігієна, '
             'потім — обов’язкова зарядка під радіо. Радіоточка була майже в кожній оселі, '
-            'і рівно о 07:10 лунала мелодія, під яку вся родина робила вправи.'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            'і рівно о 07:10 лунала мелодія, під яку вся родина робила вправи.</div>'
             '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
             '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">📌 Сніданок</div>'
             '<div style="font-size: 16px; color: #333; line-height: 1.5;">'
             'Зазвичай простій: каша, яйця, сир, хліб із маслом, чай або молоко. '
-            'Ніяких довгих сніданків — усе швидко, щоб встигнути до школи.'
-            '</div>'
-            '</div>',
+            'Ніяких довгих сніданків — усе швидко, щоб встигнути до школи.</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
@@ -333,30 +300,20 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 3
                 st.rerun()
 
-    # ===== STEP 3 — ДОРОГА ДО ШКОЛИ =====
     elif st.session_state.step == 3:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ДОРОГА ДО ШКОЛИ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">🎒 07:40. Форма та портфель</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">🎒 07:40. Форма та портфель</div>'
             '<div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">'
             'Школяр 60-х виходив з дому приблизно о 07:40. Усі були однаково вдягнені: '
             'хлопці — у темних брюках і піджаку, дівчата — у коричневій сукні з білим або '
             'чорним фартухом. На плечі — шкіряний портфель, у якому зошити, підручники '
-            'та пенал із ручкою-пером.'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            'та пенал із ручкою-пером.</div>'
             '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
             '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">🚶 Шлях до школи</div>'
             '<div style="font-size: 16px; color: #333; line-height: 1.5;">'
             'Більшість дітей ходили до школи пішки — часто по кілька кварталів. '
-            'Дорогою зустрічалися з друзями, обговорювали новини, готувалися до уроків.'
-            '</div>'
-            '</div>',
+            'Дорогою зустрічалися з друзями, обговорювали новини, готувалися до уроків.</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
@@ -371,17 +328,12 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 4
                 st.rerun()
 
-    # ===== STEP 4 — У ШКОЛІ =====
     elif st.session_state.step == 4:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · У ШКОЛІ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 20px; font-weight: 700; color: #111111; margin-bottom: 8px;">🔔 08:00. Уроки почалися</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            '<div style="font-size: 20px; font-weight: 700; color: #111111; margin-bottom: 8px;">🔔 08:00. Уроки почалися</div>'
             '<div style="font-size: 16px; font-weight: 500; color: #1a1a1a; line-height: 1.5; margin-bottom: 15px;">'
-            'Попереду — уроки, перерви, відповіді біля дошки й останній дзвоник.'
-            '</div>',
+            'Попереду — уроки, перерви, відповіді біля дошки й останній дзвоник.</div>',
             unsafe_allow_html=True
         )
         col_left, col_right = st.columns([1, 1], gap="large")
@@ -389,10 +341,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             st.markdown(
                 '<div class="no-anim lesson-card">'
                 '<div class="lesson-title">📚 Уроки</div>'
-                '<div class="lesson-text">'
-                'Одне заняття тривало 45 хвилин. Писали чорнильницями-непроливайками та '
-                'ручками з металевим пером. За помарочку в зошиті могли знизити оцінку.'
-                '</div>'
+                '<div class="lesson-text">Одне заняття тривало 45 хвилин. Писали чорнильницями-непроливайками та ручками з металевим пером. За помарочку в зошиті могли знизити оцінку.</div>'
                 '</div>',
                 unsafe_allow_html=True
             )
@@ -400,20 +349,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             st.markdown(
                 '<div class="no-anim lesson-card">'
                 '<div class="lesson-title">👔 Шкільна форма</div>'
-                '<div class="lesson-text">'
-                'Дівчата — коричнева сукня з білим або чорним фартухом. '
-                'Хлопці — сорочка, брюки та піджак. Форма була обов’язковою.'
-                '</div>'
+                '<div class="lesson-text">Дівчата — коричнева сукня з білим або чорним фартухом. Хлопці — сорочка, брюки та піджак. Форма була обов’язковою.</div>'
                 '</div>',
                 unsafe_allow_html=True
             )
         st.write("")
         col_photo_l, col_photo_c, col_photo_r = st.columns([1, 2, 1])
         with col_photo_c:
-            st.image(
-                "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop",
-                use_container_width=True
-            )
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop", use_container_width=True)
         st.write("")
         col_back, col_next, col_extra, _ = st.columns([1, 1, 1, 3])
         with col_back:
@@ -428,19 +371,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("📖 Доп. інфо", key="extra_btn_4"):
                 show_extra_dialog()
 
-    # ===== STEP 5 — ОБІД І ГУРТКИ =====
     elif st.session_state.step == 5:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ОБІД І ГУРТКИ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">🍽 14:00. Обід та позаурочні справи</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">🍽 14:00. Обід та позаурочні справи</div>'
             '<div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">'
             'Після занять школярі поверталися додому на обід. У 60-х обід був простою, '
             'але ситною стравою — борщ, суп, картопля з котлетою або каша. Потім — '
-            'короткий відпочинок, і знову до справ.'
-            '</div>',
+            'короткий відпочинок, і знову до справ.</div>',
             unsafe_allow_html=True
         )
         col_left, col_right = st.columns([2, 1], gap="large")
@@ -454,22 +392,13 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 '• Допомога старшим (суботники, шефство над молодшими)<br>'
                 '• Спортивні секції — футбол, легка атлетика<br>'
                 '• Творчі гуртки — драма, музика, малювання'
-                '</div>'
-                '</div>',
-                unsafe_allow_html=True
-            )
-            st.markdown(
+                '</div></div>'
                 '<div style="font-size: 16px; font-weight: 500; color: #555; line-height: 1.5; margin-top: 18px;">'
-                '💡 У 60-х після школи дитина майже ніколи не сиділа вдома. '
-                'Гуртки, збори, секції — усе це було безкоштовним і доступним у школі або при будинку піонерів.'
-                '</div>',
+                '💡 У 60-х після школи дитина майже ніколи не сиділа вдома.</div>',
                 unsafe_allow_html=True
             )
         with col_right:
-            st.image(
-                "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop",
-                use_container_width=True
-            )
+            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", use_container_width=True)
         st.write("")
         col_back, col_next, _ = st.columns([1, 1, 4])
         with col_back:
@@ -481,29 +410,18 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 6
                 st.rerun()
 
-    # ===== STEP 6 — ВЕЧІР =====
     elif st.session_state.step == 6:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ВЕЧІР</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">🌙 19:00. Домашні завдання та відпочинок</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            '<div style="font-size: 22px; font-weight: 700; color: #111111; margin-bottom: 12px;">🌙 19:00. Домашні завдання та відпочинок</div>'
             '<div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">'
             'Увечері після вечері — час на домашнє завдання. Потім читання книжок, '
             'радіопередачі або настільні ігри з родиною. Телевізор був не в кожній оселі, '
-            'тому вечори часто проводили разом — слухали радіо, читали вголос, обговорювали новини.'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            'тому вечори часто проводили разом.</div>'
             '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
             '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">🌙 Відбій</div>'
             '<div style="font-size: 16px; color: #333; line-height: 1.5;">'
-            'Спати лягали рано — о 21:00–22:00. Наступного дня знову підйом о 7-й, '
-            'зарядка під радіо, і все по колу.'
-            '</div>'
-            '</div>',
+            'Спати лягали рано — о 21:00–22:00. Наступного дня знову підйом о 7-й, зарядка під радіо.</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
@@ -518,40 +436,22 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 7 — ПОРІВНЯННЯ (введение) =====
     elif st.session_state.step == 7:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">'
-            'ПІОНЕРИ ТА СУЧАСНА МОЛОДЬ'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">ПІОНЕРИ ТА СУЧАСНА МОЛОДЬ</div>'
             '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.7; margin-bottom: 22px;">'
             'Піонери 60-х та сучасна молодь жили в різних світах. Одні виховувались у колективі, '
             'де головним було спільне благо та дисципліна. Інші — у світі, де цінується свобода '
-            'вибору, самовираження та доступ до будь-якої інформації.'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            'вибору, самовираження та доступ до будь-якої інформації.</div>'
             '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.7; margin-bottom: 22px;">'
             'Але в обох поколінь є свої сильні сторони. Давайте порівняємо, що було цінного '
-            'у піонерів, а що — у сучасної молоді. Це не про те, хто кращий, а про те, '
-            'що кожна епоха формує свої унікальні риси.'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
+            'у піонерів, а що — у сучасної молоді.</div>'
             '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
             '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">📌 Про що поговоримо</div>'
             '<div style="font-size: 16px; color: #333; line-height: 1.6;">'
             '• Що хорошого було у піонерів<br>'
-            '• Що хорошого є у сучасної молоді<br>'
-            '• Чому вчитися одне в одного'
-            '</div>'
-            '</div>',
+            '• Що хорошого є у сучасної молоді</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
@@ -566,28 +466,21 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 8
                 st.rerun()
 
-    # ===== STEP 8 — ЩО ХОРОШОГО У ПІОНЕРІВ =====
     elif st.session_state.step == 8:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · ПІОНЕРИ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">'
-            '✅ ЩО ХОРОШОГО БУЛО У ПІОНЕРІВ'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            '<div class="no-anim lesson-card">'
+            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">✅ ЩО ХОРОШОГО БУЛО У ПІОНЕРІВ</div>'
+            '<div class="no-anim lesson-card" style="min-height: auto;">'
             '<div class="lesson-title">📌 Позитивні риси піонерства</div>'
-            '<div class="lesson-text">'
+            '<div class="lesson-text" style="font-size: 16px; line-height: 1.8;">'
             '• <b>Дисципліна та відповідальність</b> — змалку привчали до порядку та обов’язків<br>'
             '• <b>Колективізм</b> — учили працювати в команді, допомагати одне одному<br>'
             '• <b>Повага до старших</b> — шанобливе ставлення до батьків, учителів, ветеранів<br>'
             '• <b>Фізичний розвиток</b> — спорт, походи, активний відпочинок на природі<br>'
             '• <b>Участь у житті громади</b> — суботники, допомога, збір макулатури<br>'
-            '• <b>Менше залежності від ґаджетів</b> — більше живого спілкування та ігор у дворі<br>'
-            '• <b>Безкоштовні гуртки</b> — доступні для всіх дітей незалежно від достатку'
-            '</div>'
-            '</div>',
+            '• <b>Менше залежності від ґаджетів</b> — більше живого спілкування<br>'
+            '• <b>Безкоштовні гуртки</b> — доступні для всіх дітей'
+            '</div></div>',
             unsafe_allow_html=True
         )
         st.write("")
@@ -601,28 +494,21 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 9
                 st.rerun()
 
-    # ===== STEP 9 — ЩО ХОРОШОГО У СУЧАСНОЇ МОЛОДІ =====
     elif st.session_state.step == 9:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · СУЧАСНА МОЛОДЬ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">'
-            '🌟 ЩО ХОРОШОГО Є У СУЧАСНОЇ МОЛОДІ'
-            '</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            '<div class="no-anim lesson-card">'
+            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">🌟 ЩО ХОРОШОГО Є У СУЧАСНОЇ МОЛОДІ</div>'
+            '<div class="no-anim lesson-card" style="min-height: auto;">'
             '<div class="lesson-title">📌 Позитивні риси сучасної молоді</div>'
-            '<div class="lesson-text">'
+            '<div class="lesson-text" style="font-size: 16px; line-height: 1.8;">'
             '• <b>Свобода вибору</b> — можливість самостійно обирати шлях, професію, захоплення<br>'
             '• <b>Доступ до знань</b> — інтернет дає змогу вчитися будь-чому у будь-який час<br>'
             '• <b>Толерантність</b> — відкритість до різних думок, культур, людей<br>'
-            '• <b>Технологічна грамотність</b> — швидко опановують нові технології та гаджети<br>'
+            '• <b>Технологічна грамотність</b> — швидко опановують нові технології<br>'
             '• <b>Креативність</b> — здатність створювати нове: контент, проєкти, стартапи<br>'
             '• <b>Підприємливість</b> — вміння заробляти, реалізовувати ідеї<br>'
-            '• <b>Глобальна співпраця</b> — спілкування та робота з людьми з усього світу'
-            '</div>'
-            '</div>',
+            '• <b>Глобальна співпраця</b> — спілкування з людьми з усього світу'
+            '</div></div>',
             unsafe_allow_html=True
         )
         st.write("")
@@ -636,7 +522,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ===== STEP 10 — ІНТЕРАКТИВ =====
     elif st.session_state.step == 10:
         st.markdown('<div class="slide-title">Інтерактивна ситуація</div>', unsafe_allow_html=True)
         st.markdown('<div class="question-card">До початку першого уроку залишилося зовсім мало часу. Що робитимеш?</div>', unsafe_allow_html=True)
@@ -655,18 +540,49 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         if st.button("Зробити вибір"):
             if choice.startswith("А"):
                 st.success("✅ **07:35.** Ти влітаєш до школи майже перед дзвінком. Урок не пропущено.")
-                st.info("💡 **Наслідок:** Дисципліну дотримано, але через відсутність сніданку важко зосередитися.")
             elif choice.startswith("Б"):
                 st.error("❌ **08:20.** Ти приходиш уже на другий урок. Перший пропущено.")
-                st.warning("⚠️ **Штраф:** Класний керівник викликає батьків до школи, доведеться писати пояснювальну.")
+                st.warning("⚠️ **Штраф:** Класний керівник викликає батьків до школи.")
             elif choice.startswith("В"):
                 st.error("❌ **08:00.** Мама виміряла температуру — нормальна.")
-                st.warning("⚠️ **Штраф:** Довелося все одно йти до школи, але зі соромом за спробу збрехати.")
+                st.warning("⚠️ **Штраф:** Довелося все одно йти до школи.")
             elif choice.startswith("Г"):
                 st.error("❌ **07:40.** Ти приходиш після дзвінка.")
-                st.warning("⚠️ **Штраф:** Запізнення зафіксували в журналі, вчитель робить зауваження перед класом.")
+                st.warning("⚠️ **Штраф:** Запізнення зафіксували в журналі.")
         st.write("")
         col_back, col_home, _ = st.columns([1, 1, 4])
         with col_back:
-            if st.button("⬅ Назад",
-                         
+            if st.button("⬅ Назад", key="back_btn_10"):
+                st.session_state.step = 0
+                st.rerun()
+        with col_home:
+            if st.button("🏠 На головну", key="home_btn_10"):
+                st.session_state.step = 0
+                st.rerun()
+
+    elif st.session_state.step == 11:
+        st.markdown(
+            '<div style="text-align: center; font-size: 42px; font-weight: 900; color: #111111; '
+            'margin: 60px 0 20px 0; letter-spacing: 4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
+            unsafe_allow_html=True
+        )
+        try:
+            img = Image.open("end.jpg")
+            st.image(img, use_container_width=True)
+        except Exception:
+            st.markdown(
+                '<div style="text-align: center; font-size: 20px; color: #888; margin: 40px 0;">'
+                'Файл end.jpg не знайдено</div>',
+                unsafe_allow_html=True
+            )
+        st.markdown(
+            '<div style="text-align: center; font-size: 22px; font-weight: 600; color: #333; '
+            'margin-top: 30px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
+            unsafe_allow_html=True
+        )
+        st.write("")
+        col_l, col_c, col_r = st.columns([1, 1, 1])
+        with col_c:
+            if st.button("🏠 На головну", key="home_btn_11", use_container_width=True):
+                st.session_state.step = 0
+                st.rerun()
