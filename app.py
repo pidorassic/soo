@@ -161,19 +161,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Основной текст
-            st.markdown(
-                """
-                <div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">
-                    Після пробудження — вмитися, одягнутися, поснідати й зібратися на уроки. 
-                    Багато школярів носили шкільну форму: хлопці — брюки та піджак, 
-                    дівчата — сукню з фартухом.
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-            
-            # Отдельный факт про сніданок
+            # Отдельный факт про сніданок (теперь ВЫШЕ)
             st.markdown(
                 """
                 <div style="background-color: #f8f9fa; border-left: 6px solid #333333; 
@@ -190,6 +178,18 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                         На столі могли бути: каша, яйця, сир, хліб із маслом, бутерброди, 
                         чай, молоко або какао.
                     </div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
+            # Основной текст (теперь НИЖЕ)
+            st.markdown(
+                """
+                <div style="font-size: 18px; font-weight: 500; color: #1a1a1a; line-height: 1.6; margin-bottom: 20px;">
+                    Після пробудження — вмитися, одягнутися, поснідати й зібратися на уроки. 
+                    Багато школярів носили шкільну форму: хлопці — брюки та піджак, 
+                    дівчата — сукню з фартухом.
                 </div>
                 """,
                 unsafe_allow_html=True
