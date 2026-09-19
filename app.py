@@ -124,37 +124,63 @@ st.markdown(
         display: block !important;
     }
 
-    /* ===== Стилизация нативного st.dialog ===== */
+    /* ===== Стилизация нативного st.dialog — СВЕТЛЫЙ ФОН ===== */
     div[data-testid="stDialog"] > div {
-        border-radius: 12px !important;
+        background-color: #ffffff !important;
+        border-radius: 14px !important;
         border-left: 6px solid #333333 !important;
-        padding: 8px 12px !important;
+        padding: 10px 16px !important;
     }
-    div[data-testid="stDialog"] h2 {
+    /* Заголовок диалога */
+    div[data-testid="stDialog"] h2,
+    div[data-testid="stDialog"] [data-testid="stMarkdownContainer"] h2 {
+        color: #111111 !important;
         font-size: 22px !important;
         font-weight: 800 !important;
-        color: #111 !important;
     }
-    div[data-testid="stDialog"] p {
+    /* Текст в диалоге */
+    div[data-testid="stDialog"] p,
+    div[data-testid="stDialog"] span,
+    div[data-testid="stDialog"] div[data-testid="stMarkdownContainer"],
+    div[data-testid="stDialog"] div[data-testid="stMarkdownContainer"] p,
+    div[data-testid="stDialog"] div[data-testid="stMarkdownContainer"] span {
+        color: #333333 !important;
         font-size: 16px !important;
         font-weight: 500 !important;
-        color: #333 !important;
         line-height: 1.6 !important;
+    }
+    /* Кнопка закрытия (внутри диалога) */
+    div[data-testid="stDialog"] button {
+        background-color: #333333 !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        border: none !important;
+        border-radius: 6px !important;
+    }
+    div[data-testid="stDialog"] button:hover {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+    }
+    /* Крестик "✖" в правом верхнем углу диалога */
+    div[data-testid="stDialog"] button[aria-label="Close"] svg,
+    div[data-testid="stDialog"] button[aria-label="close"] svg {
+        fill: #333333 !important;
+        color: #333333 !important;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# ===== ДИАЛОГОВОЕ ОКНО (нативное, не сбрасывает слайд) =====
+# ===== ДИАЛОГОВОЕ ОКНО =====
 @st.dialog("📖 Доп. факт")
 def show_extra_dialog():
     st.markdown(
         """
-        <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6; margin-bottom: 12px;">
+        <div style="font-size: 16px; font-weight: 500; color: #333333; line-height: 1.6; margin-bottom: 12px;">
             У школах діяла п’ятибальна система оцінювання.
         </div>
-        <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6;">
+        <div style="font-size: 16px; font-weight: 500; color: #333333; line-height: 1.6;">
             Формально шкала передбачала оцінки від 1 до 5, але на практиці 
             одиницю майже не ставили. Вона вважалася надзвичайно низькою 
             оцінкою, яка означала не просто помилку, а повну відсутність 
@@ -170,8 +196,6 @@ def show_extra_dialog():
 # Инициализация состояния
 if "step" not in st.session_state:
     st.session_state.step = 0
-if "show_extra" not in st.session_state:
-    st.session_state.show_extra = False
 
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
