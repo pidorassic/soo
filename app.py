@@ -488,9 +488,9 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         col_left, col_right = st.columns([1.3, 1], gap="large")
         with col_left:
             st.markdown(
-                '<div class="no-anim lesson-card" style="min-height: auto; padding: 20px 24px;">'
-                '<div class="lesson-title">📌 Позитивні риси піонерства</div>'
-                '<div class="lesson-text" style="font-size: 15.5px; line-height: 1.85;">'
+                '<div class="no-anim lesson-card" style="min-height: auto; padding: 26px 30px;">'
+                '<div style="font-size: 21px; font-weight: 800; color: #222; margin: 0 0 14px 0;">📌 Позитивні риси піонерства</div>'
+                '<div style="font-size: 18px; font-weight: 500; color: #333; line-height: 2.0; margin: 0;">'
                 '• <b>Дисципліна та відповідальність</b> — змалку привчали до порядку<br>'
                 '• <b>Колективізм</b> — учили працювати в команді<br>'
                 '• <b>Повага до старших</b> — шанобливе ставлення до дорослих<br>'
@@ -546,9 +546,9 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             )
         with col_right:
             st.markdown(
-                '<div class="no-anim lesson-card" style="min-height: auto; padding: 20px 24px;">'
-                '<div class="lesson-title">📌 Позитивні риси сучасної молоді</div>'
-                '<div class="lesson-text" style="font-size: 15.5px; line-height: 1.85;">'
+                '<div class="no-anim lesson-card" style="min-height: auto; padding: 26px 30px;">'
+                '<div style="font-size: 21px; font-weight: 800; color: #222; margin: 0 0 14px 0;">📌 Позитивні риси сучасної молоді</div>'
+                '<div style="font-size: 18px; font-weight: 500; color: #333; line-height: 2.0; margin: 0;">'
                 '• <b>Свобода вибору</b> — самостійний шлях, професія, захоплення<br>'
                 '• <b>Доступ до знань</b> — інтернет дає змогу вчитися будь-чому<br>'
                 '• <b>Толерантність</b> — відкритість до різних думок і культур<br>'
@@ -631,6 +631,5 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.write("")
         col_l, col_c, col_r = st.columns([1, 1, 1])
         with col_c:
-            if st.button("🏠 На головну", key="home_btn_11", use_container_width=True):
-                st.session_state.step = 0
-                st.rerun()
+            if st.button("🏠 На головну", key="home_btn_11", use_container_width=True
+                         
