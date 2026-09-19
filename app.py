@@ -124,6 +124,23 @@ st.markdown(
         display: block !important;
     }
 
+    /* Фото на слайде У ШКОЛІ */
+    .school-photo {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .school-photo img {
+        max-width: 100% !important;
+        max-height: 420px !important;
+        width: auto !important;
+        height: auto !important;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        object-fit: cover;
+    }
+
     /* ===== Стилизация нативного st.dialog ===== */
     div[data-testid="stDialog"] > div {
         background-color: #ffffff !important;
@@ -131,14 +148,12 @@ st.markdown(
         border-left: 6px solid #333333 !important;
         padding: 10px 16px !important;
     }
-    /* Заголовок диалога */
     div[data-testid="stDialog"] h2,
     div[data-testid="stDialog"] [data-testid="stMarkdownContainer"] h2 {
         color: #111111 !important;
         font-size: 22px !important;
         font-weight: 800 !important;
     }
-    /* Текст в диалоге */
     div[data-testid="stDialog"] p,
     div[data-testid="stDialog"] span,
     div[data-testid="stDialog"] div[data-testid="stMarkdownContainer"],
@@ -150,7 +165,7 @@ st.markdown(
         line-height: 1.6 !important;
     }
 
-    /* ❌ СКРЫВАЕМ крестик в правом верхнем углу диалога */
+    /* Скрываем крестик в правом верхнем углу диалога */
     div[data-testid="stDialog"] button[aria-label="Close"],
     div[data-testid="stDialog"] button[aria-label="close"],
     div[data-testid="stDialog"] [data-testid="stDialogCloseButton"],
@@ -159,7 +174,7 @@ st.markdown(
         visibility: hidden !important;
     }
 
-    /* Кнопка "Закрити" ВНУТРИ диалога — светлая, с рамкой, читаемая */
+    /* Кнопка "Закрити" внутри диалога */
     div[data-testid="stDialog"] .stButton > button {
         background-color: #ffffff !important;
         color: #333333 !important;
@@ -360,6 +375,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     unsafe_allow_html=True
                 )
             
+            # Фото по центру под карточками
+            st.write("")
+            col_photo_l, col_photo_c, col_photo_r = st.columns([1, 2, 1])
+            with col_photo_c:
+                st.image(
+                    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop",
+                    use_container_width=True
+                )
+            
+            st.write("")
             col_btn1, col_btn2, _ = st.columns([1, 1, 4])
             with col_btn1:
                 if st.button("Далі ➔", key="next_btn_2"):
