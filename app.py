@@ -439,22 +439,34 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
     elif st.session_state.step == 7:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">ПІОНЕРИ ТА СУЧАСНА МОЛОДЬ</div>'
-            '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.7; margin-bottom: 22px;">'
-            'Піонери 60-х та сучасна молодь жили в різних світах. Одні виховувались у колективі, '
-            'де головним було спільне благо та дисципліна. Інші — у світі, де цінується свобода '
-            'вибору, самовираження та доступ до будь-якої інформації.</div>'
-            '<div style="font-size: 19px; font-weight: 500; color: #333333; line-height: 1.7; margin-bottom: 22px;">'
-            'Але в обох поколінь є свої сильні сторони. Давайте порівняємо, що було цінного '
-            'у піонерів, а що — у сучасної молоді.</div>'
-            '<div style="background-color: rgba(255,255,255,0.92); border-left: 6px solid #333333; padding: 16px 22px; border-radius: 6px; margin-bottom: 20px;">'
-            '<div style="font-size: 17px; font-weight: 700; color: #222; margin-bottom: 8px;">📌 Про що поговоримо</div>'
-            '<div style="font-size: 16px; color: #333; line-height: 1.6;">'
-            '• Що хорошого було у піонерів<br>'
-            '• Що хорошого є у сучасної молоді</div></div>',
+            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">'
+            'ПІОНЕРИ ТА СУЧАСНА МОЛОДЬ</div>',
             unsafe_allow_html=True
         )
-        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+        col_left, col_right = st.columns([1.3, 1], gap="large")
+        with col_left:
+            st.markdown(
+                '<div style="font-size: 18px; font-weight: 500; color: #333333; line-height: 1.7; margin-bottom: 20px;">'
+                'Піонери 60-х та сучасна молодь жили в різних світах. Одні виховувались '
+                'у колективі, де головним було спільне благо та дисципліна. Інші — у світі, '
+                'де цінується свобода вибору, самовираження та доступ до будь-якої інформації.'
+                '</div>'
+                '<div style="font-size: 18px; font-weight: 500; color: #333333; line-height: 1.7;">'
+                'Але в обох поколінь є свої сильні сторони. Давайте порівняємо, що було цінного '
+                'у піонерів, а що — у сучасної молоді.'
+                '</div>',
+                unsafe_allow_html=True
+            )
+        with col_right:
+            st.markdown(
+                '<div class="no-anim lesson-card" style="min-height: auto; padding: 24px 26px;">'
+                '<div class="lesson-title" style="font-size: 19px;">📌 Про що поговоримо</div>'
+                '<div class="lesson-text" style="font-size: 16px; line-height: 1.9;">'
+                '✅ Що хорошого було у піонерів<br><br>'
+                '🌟 Що хорошого є у сучасної молоді'
+                '</div></div>',
+                unsafe_allow_html=True
+            )
         st.write("")
         col_back, col_next, _ = st.columns([1, 1, 4])
         with col_back:
@@ -469,20 +481,38 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
     elif st.session_state.step == 8:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · ПІОНЕРИ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">✅ ЩО ХОРОШОГО БУЛО У ПІОНЕРІВ</div>'
-            '<div class="no-anim lesson-card" style="min-height: auto;">'
-            '<div class="lesson-title">📌 Позитивні риси піонерства</div>'
-            '<div class="lesson-text" style="font-size: 16px; line-height: 1.8;">'
-            '• <b>Дисципліна та відповідальність</b> — змалку привчали до порядку та обов’язків<br>'
-            '• <b>Колективізм</b> — учили працювати в команді, допомагати одне одному<br>'
-            '• <b>Повага до старших</b> — шанобливе ставлення до батьків, учителів, ветеранів<br>'
-            '• <b>Фізичний розвиток</b> — спорт, походи, активний відпочинок на природі<br>'
-            '• <b>Участь у житті громади</b> — суботники, допомога, збір макулатури<br>'
-            '• <b>Менше залежності від ґаджетів</b> — більше живого спілкування<br>'
-            '• <b>Безкоштовні гуртки</b> — доступні для всіх дітей'
-            '</div></div>',
+            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">'
+            '✅ ЩО ХОРОШОГО БУЛО У ПІОНЕРІВ</div>',
             unsafe_allow_html=True
         )
+        col_left, col_right = st.columns([1.3, 1], gap="large")
+        with col_left:
+            st.markdown(
+                '<div class="no-anim lesson-card" style="min-height: auto; padding: 20px 24px;">'
+                '<div class="lesson-title">📌 Позитивні риси піонерства</div>'
+                '<div class="lesson-text" style="font-size: 15.5px; line-height: 1.85;">'
+                '• <b>Дисципліна та відповідальність</b> — змалку привчали до порядку<br>'
+                '• <b>Колективізм</b> — учили працювати в команді<br>'
+                '• <b>Повага до старших</b> — шанобливе ставлення до дорослих<br>'
+                '• <b>Фізичний розвиток</b> — спорт, походи, активний відпочинок<br>'
+                '• <b>Участь у житті громади</b> — суботники, допомога<br>'
+                '• <b>Менше залежності від ґаджетів</b> — живе спілкування<br>'
+                '• <b>Безкоштовні гуртки</b> — доступні для всіх дітей'
+                '</div></div>',
+                unsafe_allow_html=True
+            )
+        with col_right:
+            st.image(
+                "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop",
+                use_container_width=True
+            )
+            st.markdown(
+                '<div style="font-size: 14px; font-weight: 500; color: #666; line-height: 1.5; '
+                'margin-top: 14px; text-align: center;">'
+                'Піонери — це покоління дисципліни та колективізму'
+                '</div>',
+                unsafe_allow_html=True
+            )
         st.write("")
         col_back, col_next, _ = st.columns([1, 1, 4])
         with col_back:
@@ -497,20 +527,38 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
     elif st.session_state.step == 9:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · СУЧАСНА МОЛОДЬ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">🌟 ЩО ХОРОШОГО Є У СУЧАСНОЇ МОЛОДІ</div>'
-            '<div class="no-anim lesson-card" style="min-height: auto;">'
-            '<div class="lesson-title">📌 Позитивні риси сучасної молоді</div>'
-            '<div class="lesson-text" style="font-size: 16px; line-height: 1.8;">'
-            '• <b>Свобода вибору</b> — можливість самостійно обирати шлях, професію, захоплення<br>'
-            '• <b>Доступ до знань</b> — інтернет дає змогу вчитися будь-чому у будь-який час<br>'
-            '• <b>Толерантність</b> — відкритість до різних думок, культур, людей<br>'
-            '• <b>Технологічна грамотність</b> — швидко опановують нові технології<br>'
-            '• <b>Креативність</b> — здатність створювати нове: контент, проєкти, стартапи<br>'
-            '• <b>Підприємливість</b> — вміння заробляти, реалізовувати ідеї<br>'
-            '• <b>Глобальна співпраця</b> — спілкування з людьми з усього світу'
-            '</div></div>',
+            '<div style="font-size: 22px; font-weight: 800; color: #111111; margin-bottom: 22px; line-height: 1.3;">'
+            '🌟 ЩО ХОРОШОГО Є У СУЧАСНОЇ МОЛОДІ</div>',
             unsafe_allow_html=True
         )
+        col_left, col_right = st.columns([1, 1.3], gap="large")
+        with col_left:
+            st.image(
+                "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop",
+                use_container_width=True
+            )
+            st.markdown(
+                '<div style="font-size: 14px; font-weight: 500; color: #666; line-height: 1.5; '
+                'margin-top: 14px; text-align: center;">'
+                'Сучасна молодь — це покоління свободи та технологій'
+                '</div>',
+                unsafe_allow_html=True
+            )
+        with col_right:
+            st.markdown(
+                '<div class="no-anim lesson-card" style="min-height: auto; padding: 20px 24px;">'
+                '<div class="lesson-title">📌 Позитивні риси сучасної молоді</div>'
+                '<div class="lesson-text" style="font-size: 15.5px; line-height: 1.85;">'
+                '• <b>Свобода вибору</b> — самостійний шлях, професія, захоплення<br>'
+                '• <b>Доступ до знань</b> — інтернет дає змогу вчитися будь-чому<br>'
+                '• <b>Толерантність</b> — відкритість до різних думок і культур<br>'
+                '• <b>Технологічна грамотність</b> — швидко опановують нове<br>'
+                '• <b>Креативність</b> — створюють контент, проєкти, стартапи<br>'
+                '• <b>Підприємливість</b> — вміння заробляти, реалізовувати ідеї<br>'
+                '• <b>Глобальна співпраця</b> — спілкування з людьми з усього світу'
+                '</div></div>',
+                unsafe_allow_html=True
+            )
         st.write("")
         col_back, col_home, _ = st.columns([1, 1, 4])
         with col_back:
