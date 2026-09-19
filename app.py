@@ -104,6 +104,27 @@ st.markdown(
     .stButton > button:active {
         transform: translateY(1px);
     }
+
+    /* Карточка "Уроки" на слайде У ШКОЛІ */
+    .lesson-card {
+        background-color: #f8f9fa;
+        border-left: 6px solid #333333;
+        padding: 24px 30px;
+        border-radius: 8px;
+        width: 100% !important;
+    }
+    .lesson-card .lesson-title {
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        color: #222 !important;
+        margin-bottom: 14px !important;
+    }
+    .lesson-card .lesson-text {
+        font-size: 19px !important;
+        font-weight: 500 !important;
+        color: #333 !important;
+        line-height: 1.6 !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -232,8 +253,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Пустая колонка слева + карточка справа (без фото)
-            col_left, col_right = st.columns([1.4, 1], gap="large")
+            # Две колонки: слева пусто, справа — карточка на всю ширину колонки
+            col_left, col_right = st.columns([1, 2], gap="large")
             
             with col_left:
                 st.write("")  # пусто
@@ -241,12 +262,9 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             with col_right:
                 st.markdown(
                     """
-                    <div class="no-anim" style="background-color: #f8f9fa; border-left: 6px solid #333333; 
-                                padding: 18px 22px; border-radius: 8px;">
-                        <div style="font-size: 18px; font-weight: 700; color: #222; margin-bottom: 10px;">
-                            📚 Уроки
-                        </div>
-                        <div style="font-size: 16px; color: #333; line-height: 1.5;">
+                    <div class="no-anim lesson-card">
+                        <div class="lesson-title">📚 Уроки</div>
+                        <div class="lesson-text">
                             Вони проходили приблизно так само, як ти можеш уявити звичайний 
                             урок сьогодні, тривало одне заняття 45 хвилин, були перерви, 
                             контрольні та домашнє завдання.
