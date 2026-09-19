@@ -264,11 +264,15 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
     elif st.session_state.step == 3:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ДОРОГА ДО ШКОЛИ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size:22px;font-weight:700;color:#111;margin-bottom:12px;">🎒 07:40. Форма та портфель</div>'
-            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">Школяр 60-х виходив з дому приблизно о 07:40. Хлопці — темні брюки і піджак, дівчата — коричнева сукня з фартухом.</div>'
+            '<div style="font-size:22px;font-weight:700;color:#111;margin-bottom:12px;">🎒 07:40. Вихід з дому</div>'
+            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">'
+            'Школяр 60-х виходив з дому приблизно о 07:40. Усі поспішали — попереду був день, '
+            'сповнений уроків, гуртків та піонерських справ.</div>'
             '<div style="background:rgba(255,255,255,0.92);border-left:6px solid #333;padding:16px 22px;border-radius:6px;margin-bottom:20px;">'
             '<div style="font-size:17px;font-weight:700;color:#222;margin-bottom:8px;">🚶 Шлях до школи</div>'
-            '<div style="font-size:16px;color:#333;line-height:1.5;">Більшість дітей ходили до школи пішки. Дорогою зустрічалися з друзями, обговорювали новини.</div></div>',
+            '<div style="font-size:16px;color:#333;line-height:1.5;">'
+            'Більшість дітей ходили до школи пішки — часто по кілька кварталів. '
+            'Дорогою зустрічалися з друзями, обговорювали новини, готувалися до уроків.</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
