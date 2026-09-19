@@ -3,6 +3,20 @@ from PIL import Image
 
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
+# Ловим URL-параметр ?page=N (клик по карточке)
+qp = st.query_params
+if "page" in qp:
+    try:
+        target = int(qp.get("page"))
+        if 0 <= target <= 7:
+            st.session_state.step = target
+        st.query_params.clear()
+    except Exception:
+        pass
+
+if "step" not in st.session_state:
+    st.session_state.step = 0
+
 st.markdown(
     """
     <style>
@@ -17,11 +31,15 @@ st.markdown(
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 auto !important;
-        padding: 3rem 3rem 1rem 3rem !important;
+        padding: 2rem 2rem 1rem 2rem !important;
     }
     @keyframes scaleFadeTransition {
         0% { opacity: 0; transform: scale(0.95); filter: blur(4px); }
         100% { opacity: 1; transform: scale(1); filter: blur(0px); }
+    }
+    @keyframes slideUpFade {
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
     }
     .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
         animation: scaleFadeTransition 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -71,64 +89,134 @@ st.markdown(
         margin: 0 auto !important; display: block !important;
     }
 
-    /* ====== ОБЗОР ТЕМ (step 0) ====== */
-    .overview-hero {
-        position: relative; width: 100%; max-width: 1400px; margin: 0 auto;
-        border-radius: 18px; overflow: hidden;
+    /* ===== ОБЗОР — один большой блок с картинкой ===== */
+    .hero-full {
+        position: relative;
+        width: 100%;
+        min-height: 82vh;
+        border-radius: 20px;
+        overflow: hidden;
         background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
-        background-size: cover; background-position: center;
+        background-size: cover;
+        background-position: center;
         box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-        padding: 50px 40px 40px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .hero-full::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(20,20,30,0.78) 40%, rgba(30,25,20,0.75) 70%, rgba(10,10,15,0.9) 100%);
+        z-index: 1;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        padding: 40px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 82vh;
         box-sizing: border-box;
     }
-    .overview-inner {
-        background: linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(20,20,30,0.78) 40%, rgba(30,25,20,0.75) 70%, rgba(10,10,15,0.9) 100%);
+    .hero-title {
+        font-size: 54px !important;
+        font-weight: 900 !important;
+        color: #ffffff !important;
+        letter-spacing: 4px !important;
+        line-height: 1.05 !important;
+        margin: 0 0 8px 0 !important;
+        text-align: center !important;
+        text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+    }
+    .hero-subtitle {
+        font-size: 15px !important;
+        font-weight: 400 !important;
+        color: #d4c5a0 !important;
+        letter-spacing: 6px !important;
+        text-transform: uppercase !important;
+        margin: 0 0 40px 0 !important;
+        text-align: center !important;
+    }
+
+    /* Карточки-ссылки */
+    .hero-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        max-width: 1050px;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+    .hero-cards-bottom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        max-width: 1050px;
+        width: 100%;
+    }
+    .hero-card-link {
+        display: block;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(212,197,160,0.42);
         border-radius: 14px;
-        padding: 40px 30px;
-        display: flex; flex-direction: column; align-items: center;
-        min-height: 70vh;
+        padding: 18px 20px;
+        text-decoration: none !important;
+        color: inherit !important;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        opacity: 0;
+        cursor: pointer;
+        min-height: 130px;
+        box-sizing: border-box;
     }
-    .overview-title {
-        font-size: 52px !important; font-weight: 900 !important; color: #ffffff !important;
-        letter-spacing: 4px !important; line-height: 1.05 !important; margin: 0 0 8px 0 !important;
-        text-align: center !important; text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+    .hero-card-link:nth-child(1) { animation-delay: 0.4s; }
+    .hero-card-link:nth-child(2) { animation-delay: 0.6s; }
+    .hero-card-link:nth-child(3) { animation-delay: 0.8s; }
+    .hero-card-link:hover {
+        background: rgba(255,255,255,0.16);
+        border-color: rgba(212,197,160,0.9);
+        transform: translateY(-5px);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+        text-decoration: none !important;
     }
-    .overview-subtitle {
-        font-size: 15px !important; font-weight: 400 !important; color: #d4c5a0 !important;
-        letter-spacing: 6px !important; text-transform: uppercase !important;
-        margin: 0 0 30px 0 !important; text-align: center !important;
+    .hero-card-link .hc-icon {
+        font-size: 28px !important;
+        margin-bottom: 8px !important;
+        display: block !important;
+        line-height: 1 !important;
     }
-    .overview-footer {
-        margin-top: auto; padding-top: 25px;
-        font-size: 11px !important; color: #8a8270 !important; letter-spacing: 2px !important;
-    }
-
-    /* Кнопки-карточки в обзоре */
-    .ov-btn-row .stButton > button {
-        background: rgba(255,255,255,0.07) !important;
-        border: 1px solid rgba(212,197,160,0.42) !important;
-        border-radius: 14px !important;
-        padding: 22px 20px !important;
-        height: 155px !important;
-        width: 100% !important;
-        color: #ffffff !important;
+    .hero-card-link .hc-title {
         font-size: 16px !important;
-        font-weight: 700 !important;
-        text-align: left !important;
-        backdrop-filter: blur(8px) !important;
-        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        white-space: pre-wrap !important;
-        line-height: 1.4 !important;
-    }
-    .ov-btn-row .stButton > button:hover {
-        background: rgba(255,255,255,0.16) !important;
-        border-color: rgba(212,197,160,0.9) !important;
-        transform: translateY(-5px) !important;
-        box-shadow: 0 18px 40px rgba(0,0,0,0.5) !important;
+        font-weight: 800 !important;
         color: #ffffff !important;
+        margin: 0 0 6px 0 !important;
+        letter-spacing: 0.5px !important;
+        line-height: 1.25 !important;
+    }
+    .hero-card-link .hc-desc {
+        font-size: 12.5px !important;
+        font-weight: 400 !important;
+        color: #b8ac8f !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
     }
 
-    /* ====== ДЖЕРЕЛА (step 6) ====== */
+    .hero-footer {
+        position: absolute;
+        bottom: 20px;
+        right: 30px;
+        z-index: 2;
+        font-size: 11px !important;
+        color: #8a8270 !important;
+        letter-spacing: 2px !important;
+    }
+
+    /* ===== ДЖЕРЕЛА ===== */
     .sources-hero {
         position: relative; width: 100%; max-width: 1400px; margin: 0 auto;
         min-height: 82vh; border-radius: 18px; overflow: hidden;
@@ -145,7 +233,7 @@ st.markdown(
     .sources-title {
         font-size: 52px !important; font-weight: 900 !important; color: #ffffff !important;
         letter-spacing: 6px !important; line-height: 1 !important; margin: 0 0 50px 0 !important;
-        text-align: center !important; text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+        text-align: center !important;
     }
     .sources-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1180px; width: 100%; }
     .source-card {
@@ -162,7 +250,7 @@ st.markdown(
         line-height: 1.5 !important; margin: 0 !important; word-break: break-word !important;
     }
 
-    /* ====== ДИАЛОГ ====== */
+    /* ===== ДИАЛОГ ===== */
     div[data-testid="stDialog"] > div {
         background-color: #ffffff !important; border-radius: 14px !important;
         border-left: 6px solid #333333 !important; padding: 10px 16px !important;
@@ -204,55 +292,54 @@ def show_extra_dialog():
     if st.button("✖ Закрити", key="close_dialog_btn", use_container_width=True):
         st.rerun()
 
-if "step" not in st.session_state:
-    st.session_state.step = 0
-
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # ===== STEP 0 — ОБЗОР ТЕМ =====
+    # ===== STEP 0 — ОБЗОР =====
     if st.session_state.step == 0:
         st.markdown(
-            '<div class="overview-hero">'
-            '<div class="overview-inner">'
-            '<div class="overview-title">ДЕНЬ ШКОЛЯРА 60-Х</div>'
-            '<div class="overview-subtitle">Подорож у минуле</div>'
-            '<div class="overview-footer">Проект учнів 10-А класу</div>'
+            '<div class="hero-full">'
+            '<div class="hero-content">'
+
+            '<div class="hero-title">ДЕНЬ ШКОЛЯРА 60-Х</div>'
+            '<div class="hero-subtitle">Подорож у минуле</div>'
+
+            '<div class="hero-cards">'
+            '<a class="hero-card-link" href="?page=1" target="_self">'
+            '<span class="hc-icon">📜</span>'
+            '<div class="hc-title">ІСТОРИЧНА ЗГАДКА</div>'
+            '<div class="hc-desc">Хто такі піонери та чим займались</div>'
+            '</a>'
+            '<a class="hero-card-link" href="?page=2" target="_self">'
+            '<span class="hc-icon">🌅</span>'
+            '<div class="hc-title">РАНОК</div>'
+            '<div class="hc-desc">Пробудження, сніданок та форма</div>'
+            '</a>'
+            '<a class="hero-card-link" href="?page=3" target="_self">'
+            '<span class="hc-icon">📚</span>'
+            '<div class="hc-title">УРОКИ</div>'
+            '<div class="hc-desc">Школа, чорнильниці та дисципліна</div>'
+            '</a>'
             '</div>'
+
+            '<div class="hero-cards-bottom">'
+            '<a class="hero-card-link" href="?page=4" target="_self">'
+            '<span class="hc-icon">🎒</span>'
+            '<div class="hc-title">ПОЗАУРОЧНИЙ ЧАС</div>'
+            '<div class="hc-desc">Гуртки, піонери та колектив</div>'
+            '</a>'
+            '<a class="hero-card-link" href="?page=5" target="_self">'
+            '<span class="hc-icon">🎯</span>'
+            '<div class="hc-title">ІНТЕРАКТИВ</div>'
+            '<div class="hc-desc">Спробуй себе у ситуації 60-х років</div>'
+            '</a>'
+            '<div style="visibility: hidden;"></div>'
+            '</div>'
+
+            '</div>'
+            '<div class="hero-footer">Проект учнів 10-А класу</div>'
             '</div>',
             unsafe_allow_html=True
         )
-
-        st.markdown('<div class="ov-btn-row">', unsafe_allow_html=True)
-
-        # Верхний ряд — 3 кнопки
-        row1 = st.columns(3, gap="medium")
-        with row1[0]:
-            if st.button("📜  ІСТОРИЧНА ЗГАДКА\n\nХто такі піонери та чим займались", key="card_1", use_container_width=True):
-                st.session_state.step = 1
-                st.rerun()
-        with row1[1]:
-            if st.button("🌅  РАНОК\n\nПробудження, сніданок та форма", key="card_2", use_container_width=True):
-                st.session_state.step = 2
-                st.rerun()
-        with row1[2]:
-            if st.button("📚  УРОКИ\n\nШкола, чорнильниці та дисципліна", key="card_3", use_container_width=True):
-                st.session_state.step = 3
-                st.rerun()
-
-        # Нижний ряд — 2 кнопки
-        row2 = st.columns(3, gap="medium")
-        with row2[0]:
-            if st.button("🎒  ПОЗАУРОЧНИЙ ЧАС\n\nГуртки, піонери та колектив", key="card_4", use_container_width=True):
-                st.session_state.step = 4
-                st.rerun()
-        with row2[1]:
-            if st.button("🎯  ІНТЕРАКТИВ\n\nСпробуй себе у ситуації 60-х років", key="card_5", use_container_width=True):
-                st.session_state.step = 5
-                st.rerun()
-        with row2[2]:
-            st.write("")
-
-        st.markdown('</div>', unsafe_allow_html=True)
 
         st.write("")
         col_l, col_c, col_r = st.columns([1, 1, 1])
