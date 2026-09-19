@@ -1,7 +1,6 @@
 import streamlit as st
 from PIL import Image
 import base64
-import streamlit.components.v1 as components
 
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
@@ -220,91 +219,6 @@ st.markdown(
     f'<div class="progress-bar-fixed"><div class="progress-bar-fill" style="width:{progress_pct}%;"></div></div>',
     unsafe_allow_html=True
 )
-
-# === ФОНОВАЯ МУЗЫКА + КНОПКА 🔊 (РАБОЧИЙ ВАРИАНТ) ===
-try:
-    with open("bg_music.mp3", "rb") as f:
-        music_b64 = base64.b64encode(f.read()).decode()
-
-    # Кнопка + аудио в основном документе Streamlit
-    st.markdown(
-        f'''
-        <audio id="bgMusicMain" loop preload="auto" style="display:none;">
-            <source src="data:audio/mpeg;base64,{music_b64}" type="audio/mpeg">
-        </audio>
-
-        <button id="musicBtnMain" style="
-            position: fixed !important;
-            bottom: 30px !important;
-            right: 30px !important;
-            top: auto !important;
-            left: auto !important;
-            z-index: 2147483647 !important;
-            width: 60px !important;
-            height: 60px !important;
-            border-radius: 50% !important;
-            background: linear-gradient(135deg, #d4af6a 0%, #b8935a 100%) !important;
-            border: 3px solid #ffffff !important;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 25px rgba(212,175,106,0.6) !important;
-            color: #ffffff !important;
-            font-size: 26px !important;
-            cursor: pointer !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            transition: transform 0.3s ease !important;
-            padding: 0 !important;
-            line-height: 1 !important;
-            margin: 0 !important;
-            font-family: sans-serif !important;
-        "
-        onmouseover="this.style.transform='scale(1.1)';"
-        onmouseout="this.style.transform='scale(1)';">
-            🔇
-        </button>
-        ''',
-        unsafe_allow_html=True
-    )
-
-    # JS через components.html - работает поверх родительского документа
-    components.html(
-        '''
-        <script>
-            (function() {
-                function setupMusic() {
-                    try {
-                        var audio = window.parent.document.getElementById("bgMusicMain");
-                        var btn = window.parent.document.getElementById("musicBtnMain");
-                        if (!audio || !btn) {
-                            setTimeout(setupMusic, 300);
-                            return;
-                        }
-                        btn.addEventListener("click", function() {
-                            if (audio.paused) {
-                                audio.play().then(function() {
-                                    btn.innerHTML = "🔊";
-                                }).catch(function(err) {
-                                    console.log("Play error:", err);
-                                });
-                            } else {
-                                audio.pause();
-                                btn.innerHTML = "🔇";
-                            }
-                        });
-                        console.log("Music button ready");
-                    } catch (e) {
-                        setTimeout(setupMusic, 300);
-                    }
-                }
-                setupMusic();
-            })();
-        </script>
-        ''',
-        height=0,
-        width=0
-    )
-except Exception as e:
-    st.warning(f"Файл музики не знайдено або помилка: {e}")
 
 @st.dialog("📖 Доп. факт")
 def show_extra_dialog():
@@ -851,4 +765,3 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("🏠 На головну", key="home_btn_15", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
-                
