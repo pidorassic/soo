@@ -105,7 +105,7 @@ st.markdown(
         transform: translateY(1px);
     }
 
-    /* Карточка "Уроки" на слайде У ШКОЛІ */
+    /* Карточки на слайде У ШКОЛІ */
     .lesson-card {
         background-color: #f8f9fa;
         border-left: 6px solid #333333;
@@ -128,6 +128,13 @@ st.markdown(
         font-weight: 500 !important;
         color: #333 !important;
         line-height: 1.8 !important;
+    }
+    .lesson-card .lesson-list {
+        font-size: 20px !important;
+        font-weight: 500 !important;
+        color: #333 !important;
+        line-height: 1.8 !important;
+        margin-top: 6px !important;
     }
     </style>
     """,
@@ -257,11 +264,25 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
             
-            # Колонки: слева пусто (широкая), справа — карточка (узкая, но высокая)
-            col_left, col_right = st.columns([1.5, 1], gap="large")
+            # Две колонки: слева — форма, справа — уроки
+            col_left, col_right = st.columns([1, 1], gap="large")
             
             with col_left:
-                st.write("")  # пусто
+                st.markdown(
+                    """
+                    <div class="no-anim lesson-card">
+                        <div class="lesson-title">👔 Обовʼязкова шкільна форма</div>
+                        <div class="lesson-text">
+                            Для дівчат типовою була сукня коричневого кольору з білим 
+                            або чорним фартухом.
+                        </div>
+                        <div class="lesson-list">
+                            Для хлопців — сорочка, брюки та піджак.
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
             
             with col_right:
                 st.markdown(
