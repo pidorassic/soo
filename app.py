@@ -608,7 +608,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     # ===== STEP 12 — ТЕСТ 1: РАНОК ПІОНЕРА =====
     elif st.session_state.step == 12:
-        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 1 З 3</div>', unsafe_allow_html=True)
+        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 1</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:18px;">🌅 РАНОК ПІОНЕРА</div>'
             '<div class="question-card">'
@@ -651,7 +651,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     # ===== STEP 13 — ТЕСТ 2: У ШКОЛІ =====
     elif st.session_state.step == 13:
-        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 2 З 3</div>', unsafe_allow_html=True)
+        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 2</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:18px;">📚 У ШКОЛІ</div>'
             '<div class="question-card">'
@@ -694,7 +694,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     # ===== STEP 14 — ТЕСТ 3: ПІСЛЯ УРОКІВ =====
     elif st.session_state.step == 14:
-        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 3 З 3</div>', unsafe_allow_html=True)
+        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 3</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:18px;">🎒 ПІСЛЯ УРОКІВ</div>'
             '<div class="question-card">'
@@ -731,8 +731,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 13
                 st.rerun()
         with c2:
-            if st.button("Далі ➔", key="next_btn_14"):
-                st.session_state.step = 15
+            if st.button("🏠 На головну", key="home_btn_14"):
+                st.session_state.step = 0
                 st.rerun()
 
     # ===== STEP 15 — ЗАВЕРШЕННЯ =====
