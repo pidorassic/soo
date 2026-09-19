@@ -109,20 +109,20 @@ st.markdown(
     .lesson-card {
         background-color: #f8f9fa;
         border-left: 6px solid #333333;
-        padding: 35px 35px;
+        padding: 30px 35px;
         border-radius: 8px;
         width: 100% !important;
         min-height: 340px !important;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;   /* ← контент прижат к ВЕРХУ */
+        display: block;
     }
     .lesson-card .lesson-title {
         font-size: 24px !important;
         font-weight: 700 !important;
         color: #222 !important;
-        margin-bottom: 18px !important;
-        margin-top: 0 !important;
+        margin: 0 0 18px 0 !important;
+        padding: 0 !important;
+        line-height: 1.3 !important;
+        display: block !important;
     }
     .lesson-card .lesson-text {
         font-size: 20px !important;
@@ -130,6 +130,8 @@ st.markdown(
         color: #333 !important;
         line-height: 1.8 !important;
         margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
     }
     </style>
     """,
