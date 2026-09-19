@@ -124,96 +124,52 @@ st.markdown(
         display: block !important;
     }
 
-    /* ===== МОДАЛЬНОЕ ОКНО "Доп. інфо" ===== */
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 99998;
-        animation: modalFadeIn 0.3s ease-out forwards;
+    /* ===== Стилизация нативного st.dialog ===== */
+    div[data-testid="stDialog"] > div {
+        border-radius: 12px !important;
+        border-left: 6px solid #333333 !important;
+        padding: 8px 12px !important;
     }
-    @keyframes modalFadeIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
-    }
-
-    /* Само окно — чуть больше чем в прошлый раз */
-    .modal-box {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #ffffff;
-        border-radius: 12px;
-        padding: 28px 32px 24px 32px;
-        max-width: 520px;
-        width: 88%;
-        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-        border-left: 6px solid #333333;
-        z-index: 99999;
-        animation: modalPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    @keyframes modalPopIn {
-        from { opacity: 0; transform: translate(-50%, -50%) scale(0.92); }
-        to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-    .modal-box .modal-title {
+    div[data-testid="stDialog"] h2 {
         font-size: 22px !important;
         font-weight: 800 !important;
         color: #111 !important;
-        margin: 0 0 14px 0 !important;
-        line-height: 1.3 !important;
     }
-    .modal-box .modal-text {
+    div[data-testid="stDialog"] p {
         font-size: 16px !important;
         font-weight: 500 !important;
         color: #333 !important;
         line-height: 1.6 !important;
-        margin: 0 0 12px 0 !important;
-    }
-
-    /* Кнопка "Закрити" ВНУТРИ окна (ссылка-кнопка) */
-    .modal-close-btn {
-        display: inline-block;
-        margin-top: 8px;
-        background-color: #333333;
-        color: #ffffff !important;
-        font-size: 15px !important;
-        font-weight: 600 !important;
-        padding: 9px 24px;
-        border-radius: 6px;
-        text-decoration: none !important;
-        border: none;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-    .modal-close-btn:hover {
-        background-color: #000000;
-        color: #ffffff !important;
-        transform: translateY(-1px);
-    }
-    .modal-close-btn:active {
-        transform: translateY(1px);
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
+# ===== ДИАЛОГОВОЕ ОКНО (нативное, не сбрасывает слайд) =====
+@st.dialog("📖 Доп. факт")
+def show_extra_dialog():
+    st.markdown(
+        """
+        <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6; margin-bottom: 12px;">
+            У школах діяла п’ятибальна система оцінювання.
+        </div>
+        <div style="font-size: 16px; font-weight: 500; color: #333; line-height: 1.6;">
+            Формально шкала передбачала оцінки від 1 до 5, але на практиці 
+            одиницю майже не ставили. Вона вважалася надзвичайно низькою 
+            оцінкою, яка означала не просто помилку, а повну відсутність 
+            знань або підготовки.
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    st.write("")
+    if st.button("✖ Закрити", key="close_dialog_btn", use_container_width=True):
+        st.rerun()
+
 # Инициализация состояния
 if "step" not in st.session_state:
     st.session_state.step = 0
-
-# Обработка URL-параметра закрытия
-query_params = st.query_params
-if query_params.get("close") == "1":
-    query_params.clear()
-    st.session_state.show_extra = False
-    st.rerun()
-
 if "show_extra" not in st.session_state:
     st.session_state.show_extra = False
 
@@ -375,8 +331,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     st.rerun()
             with col_btn2:
                 if st.button("📖 Доп. інфо", key="extra_btn_2"):
-                    st.session_state.show_extra = True
-                    st.rerun()
+                    show_extra_dialog()
 
         elif st.session_state.step == 3:
             st.markdown('<div class="slide-title">Позаурочний час</div>', unsafe_allow_html=True)
@@ -463,25 +418,3 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("На початок ➔", key="restart_btn"):
                 st.session_state.step = 0
                 st.rerun()
-
-# ===== МОДАЛЬНОЕ ОКНО "Доп. інфо" (поверх всего, кнопка ВНУТРИ) =====
-if st.session_state.show_extra:
-    st.markdown(
-        """
-        <div class="modal-overlay"></div>
-        <div class="modal-box">
-            <div class="modal-title">📖 Доп. факт</div>
-            <div class="modal-text">
-                У школах діяла п’ятибальна система оцінювання.
-            </div>
-            <div class="modal-text">
-                Формально шкала передбачала оцінки від 1 до 5, але на практиці 
-                одиницю майже не ставили. Вона вважалася надзвичайно низькою 
-                оцінкою, яка означала не просто помилку, а повну відсутність 
-                знань або підготовки.
-            </div>
-            <a class="modal-close-btn" href="?close=1" target="_self">✖ Закрити</a>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
