@@ -288,16 +288,20 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · РАНОК</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#111;margin-bottom:12px;">⏰ 07:00. Підйом та зарядка</div>'
-            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">У 60-х роках ранок школяра починався о 7-й годині. Спочатку — ранкова гігієна, потім — обов’язкова зарядка під радіо.</div>'
-            '<div style="background:rgba(255,255,255,0.92);border-left:6px solid #333;padding:16px 22px;border-radius:6px;margin-bottom:20px;">'
-            '<div style="font-size:17px;font-weight:700;color:#222;margin-bottom:8px;">📌 Сніданок</div>'
-            '<div style="font-size:16px;color:#333;line-height:1.5;">Каша, яйця, сир, хліб із маслом, чай або молоко.</div></div>',
+            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">У 60-х роках ранок школяра починався о 7-й годині. Спочатку — ранкова гігієна, потім — обов’язкова зарядка під радіо.</div>',
             unsafe_allow_html=True
         )
         cl, cr = st.columns([1, 1], gap="large")
         with cl:
             st.markdown(
-                '<div class="no-anim lesson-card" style="min-height:auto;"><div class="lesson-title">🌅 Ранок у 60-х</div>'
+                '<div class="no-anim lesson-card" style="margin-bottom:14px;min-height:auto;">'
+                '<div class="lesson-title">📌 Сніданок</div>'
+                '<div class="lesson-text">Каша, яйця, сир, хліб із маслом, чай або молоко.</div></div>',
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                '<div class="no-anim lesson-card" style="min-height:auto;">'
+                '<div class="lesson-title">🌅 Ранок у 60-х</div>'
                 '<div class="lesson-text">Зарядка під радіо, сніданок, збори до школи — усе за розкладом.</div></div>',
                 unsafe_allow_html=True
             )
