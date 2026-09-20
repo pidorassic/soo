@@ -316,7 +316,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         with c2:
             if st.button("Далі ➔", key="next_btn_2"):
                 st.session_state.step = 3
-                st.rerun()    elif st.session_state.step == 3:
+                st.rerun()
+    elif st.session_state.step == 3:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ДОРОГА ДО ШКОЛИ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#111;margin-bottom:12px;">🎒 07:40. Вихід з дому</div>'
@@ -484,7 +485,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         with c2:
             if st.button("Далі ➔", key="next_btn_7"):
                 st.session_state.step = 8
-                st.rerun()    elif st.session_state.step == 8:
+                st.rerun()
+    elif st.session_state.step == 8:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · ПІОНЕРИ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:22px;">✅ ЩО ХОРОШОГО БУЛО У ПІОНЕРІВ</div>'
