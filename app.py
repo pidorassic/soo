@@ -454,6 +454,3 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("Далі ➔", key="next_btn_7"):
                 st.session_state.step = 8
                 st.rerun()
-
-    elif st.session_state.step == 8:
-        st.markdown('<div class="slide-title">ПОРІВНЯН
