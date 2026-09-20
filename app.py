@@ -98,8 +98,8 @@ st.markdown(
         line-height: 1.55 !important; margin: 0 !important; display: block !important;
     }
     div[data-testid="stImage"] img {
-        max-height: 42vh !important; width: auto !important; max-width: 100% !important;
-        object-fit: contain !important; border-radius: 12px !important;
+        max-height: 70vh !important; width: 100% !important; max-width: 100% !important;
+        object-fit: cover !important; border-radius: 12px !important;
         margin: 0 auto !important; display: block !important;
     }
     .hero-full {
