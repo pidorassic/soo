@@ -339,7 +339,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:22px;">👗 Як одягалися у 60-х</div>'
             '<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">👔 Шкільна форма</div><div class="lesson-text">• Дівчата — коричнева сукня з білим або чорним фартухом<br>• Хлопці — сорочка, брюки та піджак<br>• Білі комірці та манжети пришивали окремо</div></div>'
-            '<div class="lesson-card"><div class="lesson-title">👖 Повсякденний одяг</div><div class="lesson-text">• Прості сукні та спідниці для дівчат<br>• Сорочки, светри, штани для хлопців<br>• Одяг шили або перешивали вдома</div></div>',
+            '<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">👖 Повсякденний одяг</div><div class="lesson-text">• Прості сукні та спідниці для дівчат<br>• Сорочки, светри, штани для хлопців<br>• Одяг шили або перешивали вдома</div></div>'
+            '<div class="lesson-card"><div class="lesson-title">🎨 Колекція марок</div><div class="lesson-text">У 60-х колекціонування марок було улюбленим хобі школярів. Діти збирали марки з різних країн, обмінювалися з друзями, вклеювали в альбоми. Марки присвячувалися космосу, тваринам, містам, спорту.</div></div>',
             unsafe_allow_html=True
         )
         st.write("")
