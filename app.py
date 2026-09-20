@@ -527,7 +527,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div class="no-anim lesson-card" style="min-height:auto;padding:20px 24px;margin-bottom:14px;">'
             '<div class="lesson-title" style="font-size:18px;">🎬 Кіно</div>'
             '<div class="lesson-text" style="font-size:15px;line-height:1.7;">'
-            '• «Я шагаю по Москве», «Операция Ы»<br>'
+            '• «Людина-амфібія», «Гусарська балада»<br>'
             '• «Кавказька полонянка», «Діамантова рука»<br>'
             '• Кінотеатри та літні майданчики'
             '</div></div>'
