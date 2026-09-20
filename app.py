@@ -294,7 +294,15 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div style="font-size:16px;color:#333;line-height:1.5;">Каша, яйця, сир, хліб із маслом, чай або молоко.</div></div>',
             unsafe_allow_html=True
         )
-        st.image("piner_morning.jpg", width=500)
+        cl, cr = st.columns([1, 1], gap="large")
+        with cl:
+            st.markdown(
+                '<div class="no-anim lesson-card" style="min-height:auto;"><div class="lesson-title">🌅 Ранок у 60-х</div>'
+                '<div class="lesson-text">Зарядка під радіо, сніданок, збори до школи — усе за розкладом.</div></div>',
+                unsafe_allow_html=True
+            )
+        with cr:
+            st.image("piner_morning.jpg", use_container_width=True)
         st.write("")
         c1, c2, _ = st.columns([1, 1, 4])
         with c1:
