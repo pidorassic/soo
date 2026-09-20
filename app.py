@@ -402,26 +402,30 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("Далі ➔", key="next_btn_5"):
                 st.session_state.step = 6
                 st.rerun()
-                
+
     elif st.session_state.step == 6:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ВЕЧІР</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#111;margin-bottom:12px;">🌙 19:00. Домашні завдання та відпочинок</div>'
-            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">Увечері — час на домашнє завдання. Потім читання книжок або настільні ігри з родиною.</div>'
-            '<div style="background:rgba(255,255,255,0.92);border-left:6px solid #333;padding:16px 22px;border-radius:6px;margin-bottom:20px;">'
-            '<div style="font-size:17px;font-weight:700;color:#222;margin-bottom:8px;">🌙 Відбій</div>'
-            '<div style="font-size:16px;color:#333;line-height:1.5;">Спати лягали рано — о 21:00–22:00.</div></div>'
-            '<div class="no-anim lesson-card" style="min-height:auto;padding:18px 24px;margin-bottom:14px;">'
-            '<div class="lesson-title">📖 Домашнє завдання</div>'
-            '<div class="lesson-text">Уроки готували за підручниками та зошитами. Писали пером — тому акуратність була дуже важливою. Іноді допомагали старші брати чи сестри.</div></div>'
-            '<div class="no-anim lesson-card" style="min-height:auto;padding:18px 24px;margin-bottom:14px;">'
-            '<div class="lesson-title">📚 Читання книжок</div>'
-            '<div class="lesson-text">У 60-х не було інтернету, а телевізор — не в кожній родині. Книжки були головним джерелом знань і розваг. Читали вголос, обговорювали прочитане.</div></div>'
-            '<div class="no-anim lesson-card" style="min-height:auto;padding:18px 24px;">'
-            '<div class="lesson-title">📻 Радіо та настільні ігри</div>'
-            '<div class="lesson-text">Ввечері по радіо транслювали концерти та радіовистави. А ще грали в шахи, шашки, доміно — всією родиною.</div></div>',
+            '<div style="font-size:18px;font-weight:500;color:#1a1a1a;line-height:1.6;margin-bottom:20px;">Увечері — час на домашнє завдання. Потім читання книжок або настільні ігри з родиною.</div>',
             unsafe_allow_html=True
         )
+        cl, cr = st.columns([1, 1], gap="large")
+        with cl:
+            st.markdown(
+                '<div class="no-anim lesson-card" style="margin-bottom:14px;min-height:auto;">'
+                '<div class="lesson-title">📖 Домашнє завдання</div>'
+                '<div class="lesson-text">Уроки готували за підручниками та зошитами. Писали пером — тому акуратність була дуже важливою.</div></div>',
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                '<div class="no-anim lesson-card" style="min-height:auto;">'
+                '<div class="lesson-title">📚 Читання та ігри</div>'
+                '<div class="lesson-text">Книжки були головним джерелом знань і розваг. А ще грали в шахи, шашки, доміно — всією родиною.</div></div>',
+                unsafe_allow_html=True
+            )
+        with cr:
+            st.image("piner_morning.jpg", use_container_width=True)
         st.write("")
         c1, c2, _ = st.columns([1, 1, 4])
         with c1:
@@ -451,7 +455,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("Далі ➔", key="next_btn_7"):
                 st.session_state.step = 8
                 st.rerun()
-
+                
     elif st.session_state.step == 8:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · ПІОНЕРИ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -575,7 +579,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("🏠 На головну", key="home_btn_11"):
                 st.session_state.step = 0
                 st.rerun()
-                
+
     elif st.session_state.step == 12:
         st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 1</div>', unsafe_allow_html=True)
         st.markdown(
