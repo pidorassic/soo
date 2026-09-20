@@ -740,28 +740,37 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 'margin:40px 0;">Файл end.jpg не знайдено</div>',
                 unsafe_allow_html=True
             )
-        st.markdown(
-            '<div style="text-align:center;font-size:20px;font-weight:600;color:#fff;'
-            'margin-top:10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            '<div style="text-align:center;margin-top:35px;font-size:17px;color:#d4c5a0;letter-spacing:3px;">'
-            'НАД ПРОЄКТОМ СТАРАННО ПРАЦЮВАЛИ:</div>'
-            '<div style="text-align:center;margin-top:20px;font-size:22px;font-weight:600;color:#fff;line-height:2.2;">'
-            '<div class="author-line" style="animation-delay:0.2s;">Іваннікова Софія</div>'
-            '<div class="author-line" style="animation-delay:0.6s;">Гук Вадим</div>'
-            '<div class="author-line" style="animation-delay:1.0s;">Тищенко Софія</div>'
-            '<div class="author-line" style="animation-delay:1.4s;">Овсієнко Роман</div>'
-            '</div>'
-            '<div style="text-align:center;margin-top:30px;font-size:15px;color:#aaa;letter-spacing:1px;">'
-            'Дякуємо за перегляд! Пишаємося нашою роботою.</div>',
-            unsafe_allow_html=True
-        )
+
+        col_left, col_right = st.columns([1, 1], gap="large")
+
+        with col_left:
+            st.markdown(
+                '<div style="text-align:left;font-size:18px;font-weight:500;color:#ddd;'
+                'line-height:1.7;margin-top:20px;">'
+                'Дякуємо, що пройшли цей шлях разом з нами!<br><br>'
+                'Ми сподіваємося, що вам було цікаво зазирнути в минуле та дізнатися більше про життя школярів 60-х.<br><br>'
+                'Нехай ці спогади нагадують нам, як важливо цінувати історію та один одного.'
+                '</div>',
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                '<div style="text-align:left;margin-top:35px;font-size:16px;color:#d4c5a0;letter-spacing:3px;">'
+                'НАД ПРОЄКТОМ СТАРАННО ПРАЦЮВАЛИ:</div>'
+                '<div style="text-align:left;margin-top:15px;font-size:20px;font-weight:600;color:#fff;line-height:2.0;">'
+                '<div class="author-line" style="animation-delay:0.2s;">Іваннікова Софія</div>'
+                '<div class="author-line" style="animation-delay:0.6s;">Гук Вадим</div>'
+                '<div class="author-line" style="animation-delay:1.0s;">Тищенко Софія</div>'
+                '<div class="author-line" style="animation-delay:1.4s;">Овсієнко Роман</div>'
+                '</div>',
+                unsafe_allow_html=True
+            )
+
+        with col_right:
+            st.write("")
+
         st.write("")
         c1, c2, c3 = st.columns([1, 1, 1])
         with c2:
             if st.button("🏠 На головну", key="home_btn_15", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
-                
