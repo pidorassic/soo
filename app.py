@@ -46,10 +46,6 @@ st.markdown(
         transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         border-radius: 0 3px 3px 0;
     }
-    @keyframes scaleFadeTransition {
-        0% { opacity: 0; transform: scale(0.95); filter: blur(4px); }
-        100% { opacity: 1; transform: scale(1); filter: blur(0px); }
-    }
     @keyframes slideUpFade {
         0% { opacity: 0; transform: translateY(30px); }
         100% { opacity: 1; transform: translateY(0); }
@@ -258,7 +254,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '</div>'
             '<div class="hero-cards-bottom">'
             '<a class="hero-card-link" href="?page=10" target="_self"><span class="hc-icon">🎵</span><div class="hc-title">МОДА ТА КУЛЬТУРА</div><div class="hc-desc">Музика, кіно, ігри та стиль 60-х</div></a>'
-            '<a class="hero-card-link" href="?page=12" target="_self"><span class="hc-icon">🎯</span><div class="hc-title">ІНТЕРАКТИВ</div><div class="hc-desc">Три тести про життя піонера</div></a>'
+            '<a class="hero-card-link" href="?page=12" target="_self"><span class="hc-icon">🎯</span><div class="hc-title">ІНТЕРАКТИВ</div><div class="hc-desc">Тести та завдання про піонерів</div></a>'
             '<a class="hero-card-link" href="?page=16" target="_self"><span class="hc-icon">🏁</span><div class="hc-title">ЗАВЕРШЕННЯ</div><div class="hc-desc">Подяка та фінальне слово</div></a>'
             '</div></div>'
             '<div class="hero-footer">Проект учнів 10-А класу</div>'
@@ -472,7 +468,9 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
     elif st.session_state.step == 8:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · ПІОНЕРИ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:22px;">✅
+            '<div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:22px;">✅ ЩО ХОРОШОГО БУЛО У ПІОНЕРІВ</div>'
+            '<div class="no-anim lesson-card" style="min-height:auto;padding:26px 30px;">'
+            '<div style="font
         
     elif st.session_state.step == 8:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · ПІОНЕРИ</div>', unsafe_allow_html=True)
@@ -733,7 +731,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '</div>',
             unsafe_allow_html=True
         )
-
         items = [
             ("Перо та чорнильниця", True),
             ("Зошит у клітинку", True),
@@ -744,28 +741,23 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             ("Мобільний телефон", False),
             ("Портфель шкіряний", True),
         ]
-
         if "pioneer_bag" not in st.session_state:
             st.session_state.pioneer_bag = {}
         if "bag_checked" not in st.session_state:
             st.session_state.bag_checked = False
-
         st.markdown('<div style="font-size:16px;color:#d4c5a0;margin-bottom:10px;">Обери предмети:</div>', unsafe_allow_html=True)
-
         cols = st.columns(2)
         for idx, (name, _) in enumerate(items):
             with cols[idx % 2]:
                 checked = st.checkbox(name, key=f"bag_item_{idx}",
                                       value=st.session_state.pioneer_bag.get(idx, False))
                 st.session_state.pioneer_bag[idx] = checked
-
         st.write("")
         c1, c2, _ = st.columns([1, 1, 4])
         with c1:
             if st.button("Перевірити", key="bag_check_btn"):
                 st.session_state.bag_checked = True
                 st.rerun()
-
         if st.session_state.bag_checked:
             correct = 0
             wrong_items = []
@@ -780,10 +772,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                         wrong_items.append(name)
                     if not user_choice and should_be:
                         missed_items.append(name)
-
             total_needed = sum(1 for _, s in items if s)
             st.markdown('<div style="margin-top:20px;"></div>', unsafe_allow_html=True)
-
             if correct == total_needed and not wrong_items:
                 st.success(f"✅ **Молодець!** Ти правильно склав торбу піонера — {correct} з {total_needed} предметів.")
             else:
@@ -792,7 +782,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                     st.error("❌ Зайві предмети (не з 60-х): " + ", ".join(wrong_items))
                 if missed_items:
                     st.info("🔍 Ти забув покласти: " + ", ".join(missed_items))
-
         st.write("")
         c1, c2, _ = st.columns([1, 1, 4])
         with c1:
