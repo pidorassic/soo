@@ -338,19 +338,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         cl, cr = st.columns([1, 1], gap="large")
         with cl:
             st.markdown(
-                '<div class="no-anim lesson-card"><div class="lesson-title">📚 Уроки</div>'
+                '<div class="no-anim lesson-card" style="margin-bottom:14px;"><div class="lesson-title">📚 Уроки</div>'
                 '<div class="lesson-text">Одне заняття тривало 45 хвилин. Писали чорнильницями-непроливайками та ручками з металевим пером.</div></div>',
                 unsafe_allow_html=True
             )
-        with cr:
             st.markdown(
                 '<div class="no-anim lesson-card"><div class="lesson-title">👔 Шкільна форма</div>'
                 '<div class="lesson-text">Дівчата — коричнева сукня з фартухом. Хлопці — сорочка, брюки та піджак.</div></div>',
                 unsafe_allow_html=True
             )
-        st.write("")
-        _, cc, _ = st.columns([1, 2, 1])
-        with cc:
+        with cr:
             st.image("school_desk.jpg", use_container_width=True)
         st.write("")
         c1, c2, c3, _ = st.columns([1, 1, 1, 3])
