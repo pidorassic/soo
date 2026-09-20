@@ -413,7 +413,39 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div style="font-size:16px;color:#333;line-height:1.5;">Спати лягали рано — о 21:00–22:00.</div></div>',
             unsafe_allow_html=True
         )
-        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+        cl, cr = st.columns([1, 1], gap="large")
+        with cl:
+            st.markdown(
+                '<div class="no-anim lesson-card" style="margin-bottom:14px;min-height:auto;">'
+                '<div class="lesson-title">📖 Домашнє завдання</div>'
+                '<div class="lesson-text">Уроки готували за підручниками та зошитами. Писати доводилося пером — тому акуратність була дуже важливою.</div></div>',
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                '<div class="no-anim lesson-card" style="margin-bottom:14px;min-height:auto;">'
+                '<div class="lesson-title">📚 Читання книжок</div>'
+                '<div class="lesson-text">У 60-х не було інтернету, а телебачення — не в кожній родині. Тому книжки були головним джерелом знань і розваг.</div></div>',
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                '<div class="no-anim lesson-card" style="min-height:auto;">'
+                '<div class="lesson-title">🎲 Настільні ігри</div>'
+                '<div class="lesson-text">Шахи, шашки, доміно. Грали всією родиною — це був справжній вечірній ритуал.</div></div>',
+                unsafe_allow_html=True
+            )
+        with cr:
+            st.markdown(
+                '<div class="no-anim lesson-card" style="margin-bottom:14px;min-height:auto;">'
+                '<div class="lesson-title">📻 Радіо та музика</div>'
+                '<div class="lesson-text">Ввечері по радіо часто транслювали концерти, радіовистави та новини. Слухали всі разом.</div></div>',
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                '<div class="no-anim lesson-card" style="min-height:auto;">'
+                '<div class="lesson-title">🛏 Підготовка до сну</div>'
+                '<div class="lesson-text">Форма на завтра, портфель зібраний, одяг складений. Усе — за розпорядком, як привчали в піонерському загоні.</div></div>',
+                unsafe_allow_html=True
+            )
         st.write("")
         c1, c2, _ = st.columns([1, 1, 4])
         with c1:
@@ -428,30 +460,4 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
     elif st.session_state.step == 7:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:22px;">ПІОНЕРИ ТА СУЧАСНА МОЛОДЬ</div>',
-            unsafe_allow_html=True
-        )
-        cl, cr = st.columns([1.3, 1], gap="large")
-        with cl:
-            st.markdown(
-                '<div style="font-size:18px;font-weight:500;color:#333;line-height:1.7;margin-bottom:20px;">Піонери 60-х та сучасна молодь жили в різних світах. Одні виховувались у колективі, де головним було спільне благо та дисципліна.</div>'
-                '<div style="font-size:18px;font-weight:500;color:#333;line-height:1.7;">Інші — у світі, де цінується свобода вибору. Давайте порівняємо.</div>',
-                unsafe_allow_html=True
-            )
-        with cr:
-            st.markdown(
-                '<div class="no-anim lesson-card" style="min-height:auto;padding:24px 26px;">'
-                '<div class="lesson-title" style="font-size:19px;">📌 Про що поговоримо</div>'
-                '<div class="lesson-text" style="font-size:16px;line-height:1.9;">✅ Що хорошого було у піонерів<br><br>🌟 Що хорошого є у сучасної молоді</div></div>',
-                unsafe_allow_html=True
-            )
-        st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
-        with c1:
-            if st.button("⬅ Назад", key="back_btn_7"):
-                st.session_state.step = 0
-                st.rerun()
-        with c2:
-            if st.button("Далі ➔", key="next_btn_7"):
-                st.session_state.step = 8
-                st.rerun()
+            '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:22
