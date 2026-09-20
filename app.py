@@ -48,9 +48,6 @@ div[data-testid="stImage"] img { max-height: 38vh !important; width: auto !impor
 .hero-footer { position: absolute; bottom: 20px; right: 30px; font-size: 11px; color: #ccc; letter-spacing: 2px; }
 .stRadio label { color: #fff !important; }
 .stCheckbox label { color: #fff !important; }
-@keyframes letterFadeIn { 0% { opacity: 0; letter-spacing: 20px; } 100% { opacity: 1; letter-spacing: 4px; } }
-@keyframes lineAppear { 0% { opacity: 0; transform: translateX(-30px); } 100% { opacity: 1; transform: translateX(0); } }
-.author-line { opacity: 0; animation: lineAppear .9s ease-out forwards; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -94,10 +91,15 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
     elif st.session_state.step == 1:
         st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div class="lesson-card"><div class="lesson-title">📌 Хто такі піонери</div>'
-            '<div class="lesson-text">Піонери — радянська дитяча організація для школярів 9–14 років. Об’єднувались у загони, ходили в походи, брали участь у змаганнях, концертах, гуртках.</div></div>'
-            '<div class="lesson-card" style="margin-top:14px;"><div class="lesson-title">🔴 Символіка</div>'
-            '<div class="lesson-text">Червоний галстук, урочисті лінійки, салют. Присяга на церемонії вступу.</div></div>',
+            '<div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:22px;">ХТО ТАКІ ПІОНЕРИ?</div>'
+            '<div style="font-size:19px;font-weight:600;color:#fff;margin-bottom:8px;">📌 Хто це такі</div>'
+            '<div style="font-size:19px;color:#ddd;line-height:1.6;margin-bottom:22px;">Піонери — це радянська дитяча організація для школярів віком від 9 до 14 років.</div>'
+            '<div style="font-size:19px;font-weight:600;color:#fff;margin-bottom:8px;">🎒 Чим вони займалися</div>'
+            '<div style="font-size:19px;color:#ddd;line-height:1.6;margin-bottom:22px;">Піонери об’єднувалися в загони за класами. Ходили в походи, брали участь у змаганнях і концертах, відвідували гуртки.</div>'
+            '<div style="font-size:19px;font-weight:600;color:#fff;margin-bottom:8px;">🔴 Символіка та ритуали</div>'
+            '<div style="font-size:19px;color:#ddd;line-height:1.6;margin-bottom:22px;">Червоний галстук, урочисті лінійки та салют. Присяга на церемонії вступу.</div>'
+            '<div style="font-size:19px;font-weight:600;color:#fff;margin-bottom:8px;">📖 Мета організації</div>'
+            '<div style="font-size:19px;color:#ddd;line-height:1.6;margin-bottom:22px;">Піонерство було частиною радянської системи виховання.</div>',
             unsafe_allow_html=True
         )
         st.write("")
@@ -107,17 +109,21 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
         with c2:
-            if st.button("Далі ➔", key="next_btn_1"):
-                st.session_state.step = 2
+            if st.button("🏠 На головну", key="home_btn_1"):
+                st.session_state.step = 0
                 st.rerun()
 
     elif st.session_state.step == 2:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · РАНОК</div>', unsafe_allow_html=True)
-        st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">⏰ 07:00. Підйом та зарядка під радіо. Сніданок — каша, яйця, сир, хліб, чай.</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:12px;">⏰ 07:00. Підйом та зарядка</div>'
+            '<div style="font-size:18px;color:#ddd;line-height:1.6;margin-bottom:20px;">У 60-х роках ранок школяра починався о 7-й годині. Спочатку — ранкова гігієна, потім — обов’язкова зарядка під радіо.</div>',
+            unsafe_allow_html=True
+        )
         cl, cr = st.columns([1,1], gap="large")
         with cl:
-            st.markdown('<div class="lesson-card"><div class="lesson-title">📌 Сніданок</div><div class="lesson-text">Каша, яйця, сир, хліб, чай.</div></div>', unsafe_allow_html=True)
-            st.markdown('<div class="lesson-card" style="margin-top:14px;"><div class="lesson-title">🌅 Ранок</div><div class="lesson-text">Зарядка під радіо, збори до школи.</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">📌 Сніданок</div><div class="lesson-text">Каша, яйця, сир, хліб із маслом, чай або молоко.</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="lesson-card"><div class="lesson-title">🌅 Ранок у 60-х</div><div class="lesson-text">Зарядка під радіо, сніданок, збори до школи — усе за розкладом.</div></div>', unsafe_allow_html=True)
         with cr:
             st.image("piner_morning.jpg", use_container_width=True)
         st.write("")
@@ -132,9 +138,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
     elif st.session_state.step == 3:
-        st.markdown('<div class="slide-title">ДОРОГА ДО ШКОЛИ</div>', unsafe_allow_html=True)
-        st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">🎒 07:40. Більшість дітей ходили до школи пішки.</div>', unsafe_allow_html=True)
-        st.image("village_morning.jpg", width=500)
+        st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ДОРОГА ДО ШКОЛИ</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:12px;">🎒 07:40. Вихід з дому</div>'
+            '<div style="font-size:18px;color:#ddd;line-height:1.6;margin-bottom:20px;">Школяр 60-х виходив з дому приблизно о 07:40. Усі поспішали — попереду був день, сповнений уроків, гуртків та піонерських справ.</div>'
+            '<div class="lesson-card" style="margin-bottom:20px;"><div class="lesson-title">🚶 Шлях до школи</div><div class="lesson-text">Більшість дітей ходили до школи пішки — часто по кілька кварталів. Дорогою зустрічалися з друзями.</div></div>',
+            unsafe_allow_html=True
+        )
+        st.image("village_morning.jpg", use_container_width=True)
         st.write("")
         c1, c2, _ = st.columns([1,1,4])
         with c1:
@@ -145,7 +156,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("Далі ➔", key="next_btn_3"):
                 st.session_state.step = 4
                 st.rerun()
-                
+
     elif st.session_state.step == 4:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · У ШКОЛІ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -153,22 +164,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div style="font-size:16px;color:#ddd;line-height:1.5;margin-bottom:15px;">Попереду — уроки, перерви, відповіді біля дошки й останній дзвоник.</div>',
             unsafe_allow_html=True
         )
-        cl, cr = st.columns([1, 1], gap="large")
+        cl, cr = st.columns([1,1], gap="large")
         with cl:
-            st.markdown(
-                '<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">📚 Уроки</div>'
-                '<div class="lesson-text">Одне заняття тривало 45 хвилин. Писали чорнильницями-непроливайками та ручками з металевим пером.</div></div>',
-                unsafe_allow_html=True
-            )
-            st.markdown(
-                '<div class="lesson-card"><div class="lesson-title">👔 Шкільна форма</div>'
-                '<div class="lesson-text">Дівчата — коричнева сукня з фартухом. Хлопці — сорочка, брюки та піджак.</div></div>',
-                unsafe_allow_html=True
-            )
+            st.markdown('<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">📚 Уроки</div><div class="lesson-text">Одне заняття тривало 45 хвилин. Писали чорнильницями-непроливайками та ручками з металевим пером.</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="lesson-card"><div class="lesson-title">👔 Шкільна форма</div><div class="lesson-text">Дівчата — коричнева сукня з фартухом. Хлопці — сорочка, брюки та піджак.</div></div>', unsafe_allow_html=True)
         with cr:
             st.image("school_desk.jpg", use_container_width=True)
         st.write("")
-        c1, c2, c3, _ = st.columns([1, 1, 1, 3])
+        c1, c2, c3, _ = st.columns([1,1,1,3])
         with c1:
             if st.button("⬅ Назад", key="back_btn_4"):
                 st.session_state.step = 3
@@ -180,7 +183,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         with c3:
             if st.button("📖 Доп. інфо", key="extra_btn_4"):
                 show_extra_dialog()
-
+                
     elif st.session_state.step == 5:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ОБІД І ГУРТКИ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -188,18 +191,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div style="font-size:18px;color:#ddd;line-height:1.6;margin-bottom:20px;">Після занять школярі поверталися додому на обід. Потім — короткий відпочинок, і знову до справ.</div>',
             unsafe_allow_html=True
         )
-        cl, cr = st.columns([2, 1], gap="large")
+        cl, cr = st.columns([2,1], gap="large")
         with cl:
-            st.markdown(
-                '<div class="lesson-card"><div class="lesson-title">📌 Піонерські справи після уроків</div>'
-                '<div class="lesson-text">• Збори загону та піонерські лінійки<br>• Збір макулатури та металобрухту<br>• Допомога старшим<br>• Спортивні секції<br>• Творчі гуртки</div></div>'
-                '<div style="font-size:16px;color:#bbb;line-height:1.5;margin-top:18px;">💡 У 60-х після школи дитина майже ніколи не сиділа вдома.</div>',
-                unsafe_allow_html=True
-            )
+            st.markdown('<div class="lesson-card"><div class="lesson-title">📌 Піонерські справи після уроків</div><div class="lesson-text">• Збори загону та піонерські лінійки<br>• Збір макулатури та металобрухту<br>• Допомога старшим<br>• Спортивні секції<br>• Творчі гуртки</div></div>', unsafe_allow_html=True)
+            st.markdown('<div style="font-size:16px;color:#bbb;line-height:1.5;margin-top:18px;">💡 У 60-х після школи дитина майже ніколи не сиділа вдома.</div>', unsafe_allow_html=True)
         with cr:
             st.image("morning_kitchen.jpg", use_container_width=True)
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_5"):
                 st.session_state.step = 4
@@ -216,22 +215,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div style="font-size:18px;color:#ddd;line-height:1.6;margin-bottom:20px;">Увечері — час на домашнє завдання. Потім читання книжок або настільні ігри з родиною.</div>',
             unsafe_allow_html=True
         )
-        cl, cr = st.columns([1, 1], gap="large")
+        cl, cr = st.columns([1,1], gap="large")
         with cl:
-            st.markdown(
-                '<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">📖 Домашнє завдання</div>'
-                '<div class="lesson-text">Уроки готували за підручниками та зошитами. Писали пером — тому акуратність була дуже важливою.</div></div>',
-                unsafe_allow_html=True
-            )
-            st.markdown(
-                '<div class="lesson-card"><div class="lesson-title">📚 Читання та ігри</div>'
-                '<div class="lesson-text">Книжки були головним джерелом знань і розваг. А ще грали в шахи, шашки, доміно — всією родиною.</div></div>',
-                unsafe_allow_html=True
-            )
+            st.markdown('<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">📖 Домашнє завдання</div><div class="lesson-text">Уроки готували за підручниками та зошитами. Писали пером — тому акуратність була дуже важливою.</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="lesson-card"><div class="lesson-title">📚 Читання та ігри</div><div class="lesson-text">Книжки були головним джерелом знань і розваг. А ще грали в шахи, шашки, доміно — всією родиною.</div></div>', unsafe_allow_html=True)
         with cr:
             st.image("soviet_home.jpg", use_container_width=True)
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_6"):
                 st.session_state.step = 5
@@ -250,7 +241,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             unsafe_allow_html=True
         )
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_7"):
                 st.session_state.step = 0
@@ -264,8 +255,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · ПІОНЕРИ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:22px;">✅ ЩО ХОРОШОГО БУЛО У ПІОНЕРІВ</div>'
-            '<div class="lesson-card" style="min-height:auto;padding:26px 30px;">'
-            '<div style="font-size:18px;color:#ddd;line-height:2.0;margin:0;">'
+            '<div class="lesson-card" style="padding:26px 30px;"><div style="font-size:18px;color:#ddd;line-height:2.0;">'
             '• <b>Дисципліна та відповідальність</b><br>'
             '• <b>Колективізм</b> — учили працювати в команді<br>'
             '• <b>Повага до старших</b><br>'
@@ -277,7 +267,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             unsafe_allow_html=True
         )
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_8"):
                 st.session_state.step = 7
@@ -291,8 +281,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · СУЧАСНА МОЛОДЬ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:22px;">🌟 ЩО ХОРОШОГО Є У СУЧАСНОЇ МОЛОДІ</div>'
-            '<div class="lesson-card" style="min-height:auto;padding:26px 30px;">'
-            '<div style="font-size:18px;color:#ddd;line-height:2.0;margin:0;">'
+            '<div class="lesson-card" style="padding:26px 30px;"><div style="font-size:18px;color:#ddd;line-height:2.0;">'
             '• <b>Свобода вибору</b><br>'
             '• <b>Доступ до знань</b> — інтернет<br>'
             '• <b>Толерантність</b><br>'
@@ -304,7 +293,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             unsafe_allow_html=True
         )
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_9"):
                 st.session_state.step = 8
@@ -313,24 +302,18 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("🏠 На головну", key="home_btn_9"):
                 st.session_state.step = 0
                 st.rerun()
-                
+
     elif st.session_state.step == 10:
         st.markdown('<div class="slide-title">МОДА ТА КУЛЬТУРА · МУЗИКА, КІНО, ІГРИ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:22px;">🎵 Що слухали, дивилися та в що грали</div>'
-            '<div class="lesson-card" style="margin-bottom:14px;">'
-            '<div class="lesson-title">🎸 Музика</div>'
-            '<div class="lesson-text">• The Beatles, The Rolling Stones — світові хіти<br>• Радянська естрада — Муслим Магомаєв, Едіта П\'єха<br>• Пісні під гітару у дворі<br>• Радіо та вінілові платівки</div></div>'
-            '<div class="lesson-card" style="margin-bottom:14px;">'
-            '<div class="lesson-title">🎬 Кіно</div>'
-            '<div class="lesson-text">• «Людина-амфібія», «Гусарська балада»<br>• «Кавказька полонянка», «Діамантова рука»<br>• Кінотеатри та літні майданчики</div></div>'
-            '<div class="lesson-card">'
-            '<div class="lesson-title">🎲 Ігри</div>'
-            '<div class="lesson-text">• Класики, гумовий стрибок, піжмурки<br>• Футбол у дворі, велосипеди<br>• Шахи, шашки, настільні ігри</div></div>',
+            '<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">🎸 Музика</div><div class="lesson-text">• The Beatles, The Rolling Stones — світові хіти<br>• Радянська естрада — Муслим Магомаєв, Едіта П\'єха<br>• Пісні під гітару у дворі<br>• Радіо та вінілові платівки</div></div>'
+            '<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">🎬 Кіно</div><div class="lesson-text">• «Людина-амфібія», «Гусарська балада»<br>• «Кавказька полонянка», «Діамантова рука»<br>• Кінотеатри та літні майданчики</div></div>'
+            '<div class="lesson-card"><div class="lesson-title">🎲 Ігри</div><div class="lesson-text">• Класики, гумовий стрибок, піжмурки<br>• Футбол у дворі, велосипеди<br>• Шахи, шашки, настільні ігри</div></div>',
             unsafe_allow_html=True
         )
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_10"):
                 st.session_state.step = 9
@@ -344,16 +327,12 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown('<div class="slide-title">МОДА ТА КУЛЬТУРА · ОДЯГ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:22px;">👗 Як одягалися у 60-х</div>'
-            '<div class="lesson-card" style="margin-bottom:14px;">'
-            '<div class="lesson-title">👔 Шкільна форма</div>'
-            '<div class="lesson-text">• Дівчата — коричнева сукня з білим або чорним фартухом<br>• Хлопці — сорочка, брюки та піджак<br>• Білі комірці та манжети пришивали окремо</div></div>'
-            '<div class="lesson-card">'
-            '<div class="lesson-title">👖 Повсякденний одяг</div>'
-            '<div class="lesson-text">• Прості сукні та спідниці для дівчат<br>• Сорочки, светри, штани для хлопців<br>• Одяг шили або перешивали вдома</div></div>',
+            '<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">👔 Шкільна форма</div><div class="lesson-text">• Дівчата — коричнева сукня з білим або чорним фартухом<br>• Хлопці — сорочка, брюки та піджак<br>• Білі комірці та манжети пришивали окремо</div></div>'
+            '<div class="lesson-card"><div class="lesson-title">👖 Повсякденний одяг</div><div class="lesson-text">• Прості сукні та спідниці для дівчат<br>• Сорочки, светри, штани для хлопців<br>• Одяг шили або перешивали вдома</div></div>',
             unsafe_allow_html=True
         )
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_11"):
                 st.session_state.step = 10
@@ -362,7 +341,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("🏠 На головну", key="home_btn_11"):
                 st.session_state.step = 0
                 st.rerun()
-
+                
     elif st.session_state.step == 12:
         st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ТЕСТ 1</div>', unsafe_allow_html=True)
         st.markdown(
@@ -387,7 +366,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             elif choice.startswith("Г"):
                 st.error("❌ **08:30.** Спізнився! Класний керівник викликає батьків.")
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_12"):
                 st.session_state.step = 11
@@ -421,7 +400,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             elif choice.startswith("Г"):
                 st.error("❌ У школі 60-х друкарських машинок не було.")
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_13"):
                 st.session_state.step = 12
@@ -455,7 +434,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             elif choice.startswith("Г"):
                 st.warning("⚠️ Телевізор у 60-х був рідкістю.")
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_14"):
                 st.session_state.step = 13
@@ -488,7 +467,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 checked = st.checkbox(name, key=f"bag_item_{idx}", value=st.session_state.pioneer_bag.get(idx, False))
                 st.session_state.pioneer_bag[idx] = checked
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("Перевірити", key="bag_check_btn"):
                 st.session_state.bag_checked = True
@@ -517,7 +496,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 if missed_items:
                     st.info("🔍 Забув: " + ", ".join(missed_items))
         st.write("")
-        c1, c2, _ = st.columns([1, 1, 4])
+        c1, c2, _ = st.columns([1,1,4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_15_bag"):
                 st.session_state.bag_checked = False
