@@ -427,7 +427,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
         with cr:
-            st.image("piner_morning.jpg", use_container_width=True)
+            st.image("soviet_home.jpg", use_container_width=True)
         st.write("")
         c1, c2, _ = st.columns([1, 1, 4])
         with c1:
