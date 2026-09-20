@@ -724,22 +724,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             'animation: letterFadeIn 0.8s ease-out forwards;">ДЯКУЄМО ЗА УВАГУ!</div>',
             unsafe_allow_html=True
         )
-        try:
-            with open("end.jpg", "rb") as f:
-                img_b64 = base64.b64encode(f.read()).decode()
-            st.markdown(
-                '<div style="width:100%;display:flex;justify-content:center;align-items:center;margin:10px 0 20px 0;">'
-                '<img src="data:image/jpeg;base64,' + img_b64 + '" '
-                'style="max-height:50vh;max-width:100%;width:auto;border-radius:12px;display:block;">'
-                '</div>',
-                unsafe_allow_html=True
-            )
-        except Exception:
-            st.markdown(
-                '<div style="text-align:center;font-size:20px;color:#888;'
-                'margin:40px 0;">Файл end.jpg не знайдено</div>',
-                unsafe_allow_html=True
-            )
 
         col_left, col_right = st.columns([1, 1], gap="large")
 
@@ -766,7 +750,22 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             )
 
         with col_right:
-            st.write("")
+            try:
+                with open("end.jpg", "rb") as f:
+                    img_b64 = base64.b64encode(f.read()).decode()
+                st.markdown(
+                    '<div style="display:flex;justify-content:center;align-items:center;margin-top:20px;">'
+                    '<img src="data:image/jpeg;base64,' + img_b64 + '" '
+                    'style="max-height:55vh;max-width:100%;width:auto;border-radius:12px;display:block;">'
+                    '</div>',
+                    unsafe_allow_html=True
+                )
+            except Exception:
+                st.markdown(
+                    '<div style="text-align:center;font-size:20px;color:#888;'
+                    'margin:40px 0;">Файл end.jpg не знайдено</div>',
+                    unsafe_allow_html=True
+                )
 
         st.write("")
         c1, c2, c3 = st.columns([1, 1, 1])
@@ -774,3 +773,4 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("🏠 На головну", key="home_btn_15", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
+                
