@@ -63,9 +63,9 @@ st.markdown(
         margin-bottom: 6px !important; line-height: 1.2 !important; text-align: left !important;
     }
     .question-card {
-        background-color: rgba(255,255,255,0.92); border-left: 6px solid #d4af6a;
+        background-color: #3a3a3a; border-left: 6px solid #d4af6a;
         padding: 15px 20px; border-radius: 6px; margin-bottom: 15px;
-        font-size: 18px !important; font-weight: 500 !important; color: #111111 !important;
+        font-size: 18px !important; font-weight: 500 !important; color: #ffffff !important;
         line-height: 1.6 !important;
     }
     p, label, span, .stMarkdown {
@@ -85,16 +85,16 @@ st.markdown(
     }
     .stButton > button:active { transform: translateY(2px) scale(0.97) !important; }
     .lesson-card {
-        background-color: rgba(255,255,255,0.92); border-left: 6px solid #d4af6a;
+        background-color: #3a3a3a; border-left: 6px solid #d4af6a;
         padding: 18px 20px; border-radius: 8px; width: 100% !important;
         min-height: 160px !important; display: block;
     }
     .lesson-card .lesson-title {
-        font-size: 18px !important; font-weight: 700 !important; color: #111 !important;
+        font-size: 18px !important; font-weight: 700 !important; color: #ffffff !important;
         margin: 0 0 10px 0 !important; line-height: 1.3 !important; display: block !important;
     }
     .lesson-card .lesson-text {
-        font-size: 15px !important; font-weight: 500 !important; color: #333 !important;
+        font-size: 15px !important; font-weight: 500 !important; color: #dddddd !important;
         line-height: 1.55 !important; margin: 0 !important; display: block !important;
     }
     div[data-testid="stImage"] img {
@@ -138,7 +138,7 @@ st.markdown(
         max-width: 1050px; width: 100%;
     }
     .hero-card-link {
-        display: block; background: rgba(255,255,255,0.07);
+        display: block; background: rgba(58,58,58,0.85);
         border: 1px solid rgba(212,197,160,0.42);
         border-radius: 14px; padding: 16px 18px;
         text-decoration: none !important; color: inherit !important;
@@ -166,7 +166,7 @@ st.markdown(
     .hero-card-link:nth-child(4) { animation-delay: 0.75s; }
     .hero-card-link:nth-child(5) { animation-delay: 0.9s; }
     .hero-card-link:hover {
-        background: rgba(255,255,255,0.18);
+        background: rgba(90,90,90,0.95);
         border-color: rgba(212,197,160,0.95);
         transform: translateY(-6px) scale(1.02);
         box-shadow: 0 20px 45px rgba(0,0,0,0.55), 0 0 30px var(--glow, transparent);
@@ -183,12 +183,12 @@ st.markdown(
         margin: 0 0 5px 0 !important; letter-spacing: 0.5px !important; line-height: 1.25 !important;
     }
     .hero-card-link .hc-desc {
-        font-size: 12px !important; font-weight: 400 !important; color: #b8ac8f !important;
+        font-size: 12px !important; font-weight: 400 !important; color: #cccccc !important;
         line-height: 1.45 !important; margin: 0 !important;
     }
     .hero-footer {
         position: absolute; bottom: 20px; right: 30px; z-index: 2;
-        font-size: 11px !important; color: #8a8270 !important; letter-spacing: 2px !important;
+        font-size: 11px !important; color: #cccccc !important; letter-spacing: 2px !important;
     }
     div[data-testid="stDialog"] > div {
         background-color: #ffffff !important; border-radius: 14px !important;
@@ -325,9 +325,9 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown(
             '<div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:12px;">🎒 07:40. Вихід з дому</div>'
             '<div style="font-size:18px;font-weight:500;color:#ddd;line-height:1.6;margin-bottom:20px;">Школяр 60-х виходив з дому приблизно о 07:40. Усі поспішали — попереду був день, сповнений уроків, гуртків та піонерських справ.</div>'
-            '<div style="background:rgba(255,255,255,0.92);border-left:6px solid #d4af6a;padding:16px 22px;border-radius:6px;margin-bottom:20px;">'
-            '<div style="font-size:17px;font-weight:700;color:#111;margin-bottom:8px;">🚶 Шлях до школи</div>'
-            '<div style="font-size:16px;color:#333;line-height:1.5;">Більшість дітей ходили до школи пішки — часто по кілька кварталів. Дорогою зустрічалися з друзями.</div></div>',
+            '<div style="background:#3a3a3a;border-left:6px solid #d4af6a;padding:16px 22px;border-radius:6px;margin-bottom:20px;">'
+            '<div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;">🚶 Шлях до школи</div>'
+            '<div style="font-size:16px;color:#ddd;line-height:1.5;">Більшість дітей ходили до школи пішки — часто по кілька кварталів. Дорогою зустрічалися з друзями.</div></div>',
             unsafe_allow_html=True
         )
         st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
@@ -389,7 +389,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             st.markdown(
                 '<div class="no-anim lesson-card"><div class="lesson-title">📌 Піонерські справи після уроків</div>'
                 '<div class="lesson-text">• Збори загону та піонерські лінійки<br>• Збір макулатури та металобрухту<br>• Допомога старшим<br>• Спортивні секції<br>• Творчі гуртки</div></div>'
-                '<div style="font-size:16px;font-weight:500;color:#aaa;line-height:1.5;margin-top:18px;">💡 У 60-х після школи дитина майже ніколи не сиділа вдома.</div>',
+                '<div style="font-size:16px;font-weight:500;color:#bbb;line-height:1.5;margin-top:18px;">💡 У 60-х після школи дитина майже ніколи не сиділа вдома.</div>',
                 unsafe_allow_html=True
             )
         with cr:
@@ -463,7 +463,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown(
             '<div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:22px;">✅ ЩО ХОРОШОГО БУЛО У ПІОНЕРІВ</div>'
             '<div class="no-anim lesson-card" style="min-height:auto;padding:26px 30px;">'
-            '<div style="font-size:18px;font-weight:500;color:#333;line-height:2.0;margin:0;">'
+            '<div style="font-size:18px;font-weight:500;color:#ddd;line-height:2.0;margin:0;">'
             '• <b>Дисципліна та відповідальність</b><br>'
             '• <b>Колективізм</b> — учили працювати в команді<br>'
             '• <b>Повага до старших</b><br>'
@@ -490,7 +490,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown(
             '<div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:22px;">🌟 ЩО ХОРОШОГО Є У СУЧАСНОЇ МОЛОДІ</div>'
             '<div class="no-anim lesson-card" style="min-height:auto;padding:26px 30px;">'
-            '<div style="font-size:18px;font-weight:500;color:#333;line-height:2.0;margin:0;">'
+            '<div style="font-size:18px;font-weight:500;color:#ddd;line-height:2.0;margin:0;">'
             '• <b>Свобода вибору</b><br>'
             '• <b>Доступ до знань</b> — інтернет<br>'
             '• <b>Толерантність</b><br>'
