@@ -55,7 +55,7 @@ st.markdown(
         100% { opacity: 1; transform: translateY(0); }
     }
     .element-container, .stMarkdown, .stRadio, .stImage, .stButton {
-        animation: scaleFadeTransition 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .no-anim, .no-anim * { animation: none !important; transform: none !important; filter: none !important; }
     .slide-title {
@@ -212,6 +212,15 @@ st.markdown(
     }
     .stRadio label { color: #ffffff !important; }
     .stRadio div[role="radiogroup"] label span { color: #ffffff !important; }
+    @keyframes letterFadeIn {
+        0% { opacity: 0; letter-spacing: 20px; }
+        100% { opacity: 1; letter-spacing: 4px; }
+    }
+    @keyframes lineAppear {
+        0% { opacity: 0; transform: translateX(-30px); }
+        100% { opacity: 1; transform: translateX(0); }
+    }
+    .author-line { opacity: 0; animation: lineAppear 0.9s ease-out forwards; }
     </style>
     """,
     unsafe_allow_html=True
@@ -711,7 +720,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
     elif st.session_state.step == 15:
         st.markdown(
             '<div style="text-align:center;font-size:42px;font-weight:900;color:#fff;'
-            'margin:30px 0 20px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
+            'margin:30px 0 20px 0;letter-spacing:4px;'
+            'animation: letterFadeIn 0.8s ease-out forwards;">ДЯКУЄМО ЗА УВАГУ!</div>',
             unsafe_allow_html=True
         )
         try:
@@ -736,13 +746,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             unsafe_allow_html=True
         )
         st.markdown(
-            '<div style="text-align:center;margin-top:30px;font-size:18px;color:#d4c5a0;letter-spacing:2px;">НАД ПРОЄКТОМ ПРАЦЮВАЛИ:</div>'
-            '<div style="text-align:center;margin-top:12px;font-size:20px;font-weight:600;color:#fff;line-height:1.9;">'
-            'Іваннікова Софія<br>'
-            'Гук Вадим<br>'
-            'Тищенко Софія<br>'
-            'Овсієнко Роман'
-            '</div>',
+            '<div style="text-align:center;margin-top:35px;font-size:17px;color:#d4c5a0;letter-spacing:3px;">'
+            'НАД ПРОЄКТОМ СТАРАННО ПРАЦЮВАЛИ:</div>'
+            '<div style="text-align:center;margin-top:20px;font-size:22px;font-weight:600;color:#fff;line-height:2.2;">'
+            '<div class="author-line" style="animation-delay:0.2s;">Іваннікова Софія</div>'
+            '<div class="author-line" style="animation-delay:0.6s;">Гук Вадим</div>'
+            '<div class="author-line" style="animation-delay:1.0s;">Тищенко Софія</div>'
+            '<div class="author-line" style="animation-delay:1.4s;">Овсієнко Роман</div>'
+            '</div>'
+            '<div style="text-align:center;margin-top:30px;font-size:15px;color:#aaa;letter-spacing:1px;">'
+            'Дякуємо за перегляд! Пишаємося нашою роботою.</div>',
             unsafe_allow_html=True
         )
         st.write("")
