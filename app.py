@@ -735,6 +735,16 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             'margin-top:10px;">Сподіваємося, вам сподобалася ця подорож у минуле!</div>',
             unsafe_allow_html=True
         )
+        st.markdown(
+            '<div style="text-align:center;margin-top:30px;font-size:18px;color:#d4c5a0;letter-spacing:2px;">НАД ПРОЄКТОМ ПРАЦЮВАЛИ:</div>'
+            '<div style="text-align:center;margin-top:12px;font-size:20px;font-weight:600;color:#fff;line-height:1.9;">'
+            'Іваннікова Софія<br>'
+            'Гук Вадим<br>'
+            'Тищенко Софія<br>'
+            'Овсієнко Роман'
+            '</div>',
+            unsafe_allow_html=True
+        )
         st.write("")
         c1, c2, c3 = st.columns([1, 1, 1])
         with c2:
