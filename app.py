@@ -455,12 +455,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         with c2:
             if st.button("🏠 На головну", key="home_btn_6"):
                 st.session_state.step = 0
-                st.rerun()
-
-    elif st.session_state.step == 7:
-        st.markdown('<div class="slide-title">ПОРІВНЯННЯ</div>', unsafe_allow_html=True)
-        st.markdown(
-            '<div style="font-size:22px;font-weight:800    elif st.session_state.step == 7:
+                st.rerun()    elif st.session_state.step == 7:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:22px;">ПІОНЕРИ ТА СУЧАСНА МОЛОДЬ</div>',
