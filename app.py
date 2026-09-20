@@ -4,7 +4,6 @@ import base64
 
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-# --- Загрузка локального фона для первого листа ---
 def _load_bg(path):
     try:
         with open(path, "rb") as f:
@@ -120,7 +119,7 @@ st.markdown(
     }
     .hero-full::before {
         content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(135deg, rgba(10,10,15,0.85) 0%, rgba(20,20,30,0.65) 40%, rgba(30,25,20,0.65) 70%, rgba(10,10,15,0.85) 100%);
+        background: linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(20,20,30,0.78) 40%, rgba(30,25,20,0.75) 70%, rgba(10,10,15,0.9) 100%);
         z-index: 1;
     }
     .hero-content {
@@ -242,13 +241,9 @@ def show_extra_dialog():
 
 with st.container(key=f"scale_box_{st.session_state.step}"):
 
-    # ============================================================
-    # STEP 0 — ГОЛОВНА (з фотографією piner_morning.jpg)
-    # ============================================================
     if st.session_state.step == 0:
         st.markdown(
-            f'<div class="hero-full" style="background-image: url(\'{_piner_bg}\');">'
-            '<div class="hero-content">'
+            f'<div class="hero-full" style="background-image: url(\'{_piner_bg}\');"><div class="hero-content">'
             '<div class="hero-title">ДЕНЬ ШКОЛЯРА 60-Х</div>'
             '<div class="hero-subtitle">Подорож у минуле</div>'
             '<div class="hero-cards">'
@@ -271,10 +266,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("Почати подорож ➔", key="next_btn_0", use_container_width=True):
                 st.session_state.step = 1
                 st.rerun()
-
-    # ============================================================
-    # STEP 1 — ІСТОРИЧНА ЗГАДКА
-    # ============================================================
     elif st.session_state.step == 1:
         st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
         st.markdown(
@@ -300,9 +291,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ============================================================
-    # STEP 2 — РАНОК
-    # ============================================================
     elif st.session_state.step == 2:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · РАНОК</div>', unsafe_allow_html=True)
         st.markdown(
@@ -318,16 +306,13 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         c1, c2, _ = st.columns([1, 1, 4])
         with c1:
             if st.button("⬅ Назад", key="back_btn_2"):
-                st.session_state.step = 1
+                st.session_state.step = 0
                 st.rerun()
         with c2:
             if st.button("Далі ➔", key="next_btn_2"):
                 st.session_state.step = 3
                 st.rerun()
 
-    # ============================================================
-    # STEP 3 — ДОРОГА ДО ШКОЛИ
-    # ============================================================
     elif st.session_state.step == 3:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ДОРОГА ДО ШКОЛИ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -350,9 +335,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 4
                 st.rerun()
 
-    # ============================================================
-    # STEP 4 — У ШКОЛІ
-    # ============================================================
     elif st.session_state.step == 4:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · У ШКОЛІ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -391,9 +373,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("📖 Доп. інфо", key="extra_btn_4"):
                 show_extra_dialog()
 
-    # ============================================================
-    # STEP 5 — ОБІД І ГУРТКИ
-    # ============================================================
     elif st.session_state.step == 5:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ОБІД І ГУРТКИ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -422,9 +401,6 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 6
                 st.rerun()
 
-    # ============================================================
-    # STEP 6 — ВЕЧІР
-    # ============================================================
     elif st.session_state.step == 6:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ВЕЧІР</div>', unsafe_allow_html=True)
         st.markdown(
@@ -447,12 +423,36 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.session_state.step = 0
                 st.rerun()
 
-    # ============================================================
-    # STEP 7 — ПОРІВНЯННЯ (з кнопкою Далі ➔)
-    # ============================================================
     elif st.session_state.step == 7:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ</div>', unsafe_allow_html=True)
         st.markdown(
-            '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:22px;">ПІОНЕРИ ТА СУЧАСНА МОЛОДЬ</div>'
-            '<div style="font-size:18px;font-weight:500;color:#333;line-height:1.7;margin-bottom:20px;">Піонери 60-х та сучасна молодь жили в різних світах. Одні виховувались у колективі, де головним було спільне благо та дисципліна.</div>'
-            '<div style="font-size:18px;font-weight:500;color:#333;line-height:1.7;">Інші — у світі, де ціну
+            '<div style="font-size:22px;font-weight:800;color:#111;margin-bottom:22px;">ПІОНЕРИ ТА СУЧАСНА МОЛОДЬ</div>',
+            unsafe_allow_html=True
+        )
+        cl, cr = st.columns([1.3, 1], gap="large")
+        with cl:
+            st.markdown(
+                '<div style="font-size:18px;font-weight:500;color:#333;line-height:1.7;margin-bottom:20px;">Піонери 60-х та сучасна молодь жили в різних світах. Одні виховувались у колективі, де головним було спільне благо та дисципліна.</div>'
+                '<div style="font-size:18px;font-weight:500;color:#333;line-height:1.7;">Інші — у світі, де цінується свобода вибору. Давайте порівняємо.</div>',
+                unsafe_allow_html=True
+            )
+        with cr:
+            st.markdown(
+                '<div class="no-anim lesson-card" style="min-height:auto;padding:24px 26px;">'
+                '<div class="lesson-title" style="font-size:19px;">📌 Про що поговоримо</div>'
+                '<div class="lesson-text" style="font-size:16px;line-height:1.9;">✅ Що хорошого було у піонерів<br><br>🌟 Що хорошого є у сучасної молоді</div></div>',
+                unsafe_allow_html=True
+            )
+        st.write("")
+        c1, c2, _ = st.columns([1, 1, 4])
+        with c1:
+            if st.button("⬅ Назад", key="back_btn_7"):
+                st.session_state.step = 0
+                st.rerun()
+        with c2:
+            if st.button("Далі ➔", key="next_btn_7"):
+                st.session_state.step = 8
+                st.rerun()
+
+    elif st.session_state.step == 8:
+        st
