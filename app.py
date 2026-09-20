@@ -4,15 +4,6 @@ import base64
 
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
-def _load_bg(path):
-    try:
-        with open(path, "rb") as f:
-            return "data:image/jpeg;base64," + base64.b64encode(f.read()).decode()
-    except Exception:
-        return ""
-
-_piner_bg = _load_bg("piner_morning.jpg")
-
 qp = st.query_params
 if "page" in qp:
     try:
@@ -113,6 +104,7 @@ st.markdown(
     }
     .hero-full {
         position: relative; width: 100%; min-height: 82vh; border-radius: 20px; overflow: hidden;
+        background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000&auto=format&fit=crop');
         background-size: cover; background-position: center;
         box-shadow: 0 30px 80px rgba(0,0,0,0.35);
         display: flex; align-items: center; justify-content: center;
@@ -243,7 +235,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     if st.session_state.step == 0:
         st.markdown(
-            f'<div class="hero-full" style="background-image: url(\'{_piner_bg}\');"><div class="hero-content">'
+            '<div class="hero-full"><div class="hero-content">'
             '<div class="hero-title">ДЕНЬ ШКОЛЯРА 60-Х</div>'
             '<div class="hero-subtitle">Подорож у минуле</div>'
             '<div class="hero-cards">'
@@ -359,7 +351,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.write("")
         _, cc, _ = st.columns([1, 2, 1])
         with cc:
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1200&auto=format&fit=crop", use_container_width=True)
+            st.image("school_desk.jpg", use_container_width=True)
         st.write("")
         c1, c2, c3, _ = st.columns([1, 1, 1, 3])
         with c1:
