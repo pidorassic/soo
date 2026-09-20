@@ -266,6 +266,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("Почати подорож ➔", key="next_btn_0", use_container_width=True):
                 st.session_state.step = 1
                 st.rerun()
+
     elif st.session_state.step == 1:
         st.markdown('<div class="slide-title">ІСТОРИЧНА ЗГАДКА</div>', unsafe_allow_html=True)
         st.markdown(
@@ -301,7 +302,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div style="font-size:16px;color:#333;line-height:1.5;">Каша, яйця, сир, хліб із маслом, чай або молоко.</div></div>',
             unsafe_allow_html=True
         )
-        st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop", width=500)
+        st.image("piner_morning.jpg", width=500)
         st.write("")
         c1, c2, _ = st.columns([1, 1, 4])
         with c1:
@@ -455,4 +456,4 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
     elif st.session_state.step == 8:
-        st
+        st.markdown('<div class="slide-title">ПОРІВНЯН
