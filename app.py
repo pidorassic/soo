@@ -33,7 +33,7 @@ p, label, span { color: #ffffff !important; }
 .lesson-title { font-size: 18px !important; font-weight: 700 !important; color: #fff !important; margin-bottom: 8px !important; display: block; }
 .lesson-text { font-size: 15px !important; color: #ddd !important; line-height: 1.55; display: block; }
 .question-card { background-color: #3a3a3a; border-left: 6px solid #d4af6a; padding: 15px 20px; border-radius: 6px; margin-bottom: 15px; color: #fff; }
-div[data-testid="stImage"] img { max-height: 48vh !important; width: auto !important; max-width: 100% !important; object-fit: contain !important; border-radius: 12px !important; margin: 0 auto !important; display: block !important; }
+div[data-testid="stImage"] img { max-height: 55vh !important; width: auto !important; max-width: 100% !important; object-fit: contain !important; border-radius: 12px !important; margin: 0 auto !important; display: block !important; }
 .hero-full { position: relative; width: 100%; min-height: 85vh; border-radius: 20px; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
 .hero-full::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,15,.92), rgba(20,20,30,.78), rgba(30,25,20,.75), rgba(10,10,15,.9)); }
 .hero-content { position: relative; z-index: 2; padding: 40px 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 85vh; }
@@ -145,7 +145,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div class="lesson-card" style="margin-bottom:20px;"><div class="lesson-title">🚶 Шлях до школи</div><div class="lesson-text">Більшість дітей ходили до школи пішки — часто по кілька кварталів. Дорогою зустрічалися з друзями.</div></div>',
             unsafe_allow_html=True
         )
-        c1, c2 = st.columns([2, 3])
+        c1, c2, c3 = st.columns([2, 1, 3])
         with c1:
             st.image("village_morning.jpg", use_container_width=True)
         st.write("")
