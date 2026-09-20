@@ -73,15 +73,15 @@ st.markdown(
         text-align: left !important; color: #ffffff !important;
     }
     .stButton > button {
-        background-color: #e4e6eb !important; color: #000000 !important;
+        background-color: #3a3a3a !important; color: #ffffff !important;
         font-size: 15px !important; font-weight: 600 !important;
-        border: 1px solid #ced4da !important; border-radius: 6px !important;
+        border: 1px solid #555555 !important; border-radius: 6px !important;
         padding: 0.4rem 1.2rem !important;
         transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
     .stButton > button:hover {
-        background-color: #d8dadf !important; color: #000000 !important;
-        border-color: #adb5bd !important; transform: translateY(-2px);
+        background-color: #505050 !important; color: #ffffff !important;
+        border-color: #d4af6a !important; transform: translateY(-2px);
     }
     .stButton > button:active { transform: translateY(2px) scale(0.97) !important; }
     .lesson-card {
