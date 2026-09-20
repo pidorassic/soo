@@ -8,7 +8,7 @@ qp = st.query_params
 if "page" in qp:
     try:
         target = int(qp.get("page"))
-        if 0 <= target <= 16:
+        if 0 <= target <= 18:
             st.session_state.step = target
         st.query_params.clear()
     except Exception:
@@ -17,7 +17,7 @@ if "page" in qp:
 if "step" not in st.session_state:
     st.session_state.step = 0
 
-progress_pct = int((st.session_state.step / 16) * 100)
+progress_pct = int((st.session_state.step / 18) * 100)
 
 st.markdown("""
 <style>
@@ -33,18 +33,18 @@ p, label, span { color: #ffffff !important; }
 .lesson-title { font-size: 18px !important; font-weight: 700 !important; color: #fff !important; margin-bottom: 8px !important; display: block; }
 .lesson-text { font-size: 15px !important; color: #ddd !important; line-height: 1.55; display: block; }
 .question-card { background-color: #3a3a3a; border-left: 6px solid #d4af6a; padding: 15px 20px; border-radius: 6px; margin-bottom: 15px; color: #fff; }
-div[data-testid="stImage"] img { max-height: 58vh !important; width: auto !important; max-width: 100% !important; object-fit: contain !important; border-radius: 12px !important; margin: 0 auto !important; display: block !important; }
-.hero-full { position: relative; width: 100%; min-height: 82vh; border-radius: 20px; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
+div[data-testid="stImage"] img { max-height: 42vh !important; width: auto !important; max-width: 100% !important; object-fit: contain !important; border-radius: 12px !important; margin: 0 auto !important; display: block !important; }
+.hero-full { position: relative; width: 100%; min-height: 85vh; border-radius: 20px; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
 .hero-full::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,15,.92), rgba(20,20,30,.78), rgba(30,25,20,.75), rgba(10,10,15,.9)); }
-.hero-content { position: relative; z-index: 2; padding: 40px 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 82vh; }
-.hero-title { font-size: 54px !important; font-weight: 900 !important; color: #fff !important; letter-spacing: 4px !important; text-align: center; margin-bottom: 8px; }
-.hero-subtitle { font-size: 15px !important; color: #d4c5a0 !important; letter-spacing: 6px !important; text-transform: uppercase; margin-bottom: 30px; text-align: center; }
-.hero-cards, .hero-cards-bottom { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; max-width: 1050px; width: 100%; margin-bottom: 14px; }
-.hero-card-link { display: block; background: rgba(58,58,58,.85); border: 1px solid rgba(212,197,160,.42); border-radius: 14px; padding: 16px 18px; text-decoration: none !important; color: inherit !important; transition: all .4s; min-height: 130px; }
-.hero-card-link:hover { background: rgba(90,90,90,.95); border-color: rgba(212,197,160,.95); transform: translateY(-6px); }
-.hc-icon { font-size: 26px; margin-bottom: 8px; display: block; }
-.hc-title { font-size: 15px !important; font-weight: 800 !important; color: #fff !important; margin-bottom: 5px; }
-.hc-desc { font-size: 12px !important; color: #ccc !important; }
+.hero-content { position: relative; z-index: 2; padding: 40px 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 85vh; }
+.hero-title { font-size: 64px !important; font-weight: 900 !important; color: #fff !important; letter-spacing: 6px !important; text-align: center; margin-bottom: 12px; text-shadow: 0 4px 30px rgba(0,0,0,.7); }
+.hero-subtitle { font-size: 16px !important; color: #d4c5a0 !important; letter-spacing: 8px !important; text-transform: uppercase; margin-bottom: 40px; text-align: center; }
+.hero-cards, .hero-cards-bottom { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; max-width: 1100px; width: 100%; margin-bottom: 18px; }
+.hero-card-link { display: block; background: rgba(58,58,58,.85); border: 1px solid rgba(212,197,160,.42); border-radius: 16px; padding: 22px 24px; text-decoration: none !important; color: inherit !important; transition: all .4s; min-height: 155px; }
+.hero-card-link:hover { background: rgba(90,90,90,.95); border-color: rgba(212,197,160,.95); transform: translateY(-6px); box-shadow: 0 20px 45px rgba(0,0,0,.55); }
+.hc-icon { font-size: 30px; margin-bottom: 12px; display: block; }
+.hc-title { font-size: 17px !important; font-weight: 800 !important; color: #fff !important; margin-bottom: 6px; letter-spacing: 0.5px; }
+.hc-desc { font-size: 13px !important; color: #ccc !important; }
 .hero-footer { position: absolute; bottom: 20px; right: 30px; font-size: 11px; color: #ccc; letter-spacing: 2px; }
 .stRadio label { color: #fff !important; }
 .stCheckbox label { color: #fff !important; }
@@ -68,14 +68,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             '<div class="hero-title">ДЕНЬ ШКОЛЯРА 60-Х</div>'
             '<div class="hero-subtitle">Подорож у минуле</div>'
             '<div class="hero-cards">'
-            '<a class="hero-card-link" href="?page=1" target="_self"><span class="hc-icon">📜</span><div class="hc-title">ІСТОРИЧНА ЗГАДКА</div><div class="hc-desc">Хто такі піонери</div></a>'
-            '<a class="hero-card-link" href="?page=2" target="_self"><span class="hc-icon">🌅</span><div class="hc-title">ДЕНЬ ПІОНЕРА</div><div class="hc-desc">Ранок до вечора</div></a>'
-            '<a class="hero-card-link" href="?page=7" target="_self"><span class="hc-icon">⚖️</span><div class="hc-title">ПОРІВНЯННЯ</div><div class="hc-desc">Піонери та молодь</div></a>'
+            '<a class="hero-card-link" href="?page=1" target="_self"><span class="hc-icon">📜</span><div class="hc-title">ІСТОРИЧНА ЗГАДКА</div><div class="hc-desc">Хто такі піонери та чим займались</div></a>'
+            '<a class="hero-card-link" href="?page=2" target="_self"><span class="hc-icon">🌅</span><div class="hc-title">ДЕНЬ ПІОНЕРА</div><div class="hc-desc">Повний день від ранку до вечора</div></a>'
+            '<a class="hero-card-link" href="?page=7" target="_self"><span class="hc-icon">⚖️</span><div class="hc-title">ПОРІВНЯННЯ</div><div class="hc-desc">Піонери та сучасна молодь</div></a>'
             '</div>'
             '<div class="hero-cards-bottom">'
-            '<a class="hero-card-link" href="?page=10" target="_self"><span class="hc-icon">🎵</span><div class="hc-title">МОДА ТА КУЛЬТУРА</div><div class="hc-desc">Музика, кіно, ігри</div></a>'
-            '<a class="hero-card-link" href="?page=12" target="_self"><span class="hc-icon">🎯</span><div class="hc-title">ІНТЕРАКТИВ</div><div class="hc-desc">Тести та завдання</div></a>'
-            '<a class="hero-card-link" href="?page=16" target="_self"><span class="hc-icon">🏁</span><div class="hc-title">ЗАВЕРШЕННЯ</div><div class="hc-desc">Подяка</div></a>'
+            '<a class="hero-card-link" href="?page=10" target="_self"><span class="hc-icon">🎵</span><div class="hc-title">МОДА ТА КУЛЬТУРА</div><div class="hc-desc">Музика, кіно, ігри та стиль 60-х</div></a>'
+            '<a class="hero-card-link" href="?page=12" target="_self"><span class="hc-icon">🎯</span><div class="hc-title">ІНТЕРАКТИВ</div><div class="hc-desc">Тести та завдання про піонерів</div></a>'
+            '<a class="hero-card-link" href="?page=18" target="_self"><span class="hc-icon">🏁</span><div class="hc-title">ЗАВЕРШЕННЯ</div><div class="hc-desc">Подяка та фінальне слово</div></a>'
             '</div></div>'
             '<div class="hero-footer">Проект учнів 10-А класу</div>'
             '</div>',
@@ -136,7 +136,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("Далі ➔", key="next_btn_2"):
                 st.session_state.step = 3
                 st.rerun()
-
+                
     elif st.session_state.step == 3:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ДОРОГА ДО ШКОЛИ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -185,7 +185,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         with c3:
             if st.button("📖 Доп. інфо", key="extra_btn_4"):
                 show_extra_dialog()
-                
+
     elif st.session_state.step == 5:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · ОБІД І ГУРТКИ</div>', unsafe_allow_html=True)
         st.markdown(
@@ -447,8 +447,8 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 st.rerun()
 
     elif st.session_state.step == 15:
-        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ЩО В ТОРБІ ПІОНЕРА?</div>', unsafe_allow_html=True)
-        st.markdown('<div style="font-size:16px;color:#ddd;margin-bottom:20px;">Познач предмети, які піонер 60-х носив із собою. Потім натисни «Перевірити».</div>', unsafe_allow_html=True)
+        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ЩО В ТОРБІ ПІОНЕРА? · ШКОЛА</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:16px;color:#ddd;margin-bottom:20px;">Познач предмети, які піонер 60-х носив до школи.</div>', unsafe_allow_html=True)
         items = [
             ("Перо та чорнильниця", True),
             ("Зошит у клітинку", True),
@@ -459,60 +459,156 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             ("Мобільний телефон", False),
             ("Портфель шкіряний", True),
         ]
-        if "pioneer_bag" not in st.session_state:
-            st.session_state.pioneer_bag = {}
-        if "bag_checked" not in st.session_state:
-            st.session_state.bag_checked = False
+        if "bag1" not in st.session_state:
+            st.session_state.bag1 = {}
+        if "bag1_checked" not in st.session_state:
+            st.session_state.bag1_checked = False
         cols = st.columns(2)
         for idx, (name, _) in enumerate(items):
             with cols[idx % 2]:
-                checked = st.checkbox(name, key=f"bag_item_{idx}", value=st.session_state.pioneer_bag.get(idx, False))
-                st.session_state.pioneer_bag[idx] = checked
+                checked = st.checkbox(name, key=f"bag1_item_{idx}", value=st.session_state.bag1.get(idx, False))
+                st.session_state.bag1[idx] = checked
         st.write("")
         c1, c2, _ = st.columns([1,1,4])
         with c1:
-            if st.button("Перевірити", key="bag_check_btn"):
-                st.session_state.bag_checked = True
+            if st.button("Перевірити", key="bag1_check_btn"):
+                st.session_state.bag1_checked = True
                 st.rerun()
-        if st.session_state.bag_checked:
-            correct = 0
-            wrong_items = []
-            missed_items = []
-            for idx, (name, should_be) in enumerate(items):
-                user_choice = st.session_state.pioneer_bag.get(idx, False)
-                if user_choice == should_be:
-                    if should_be:
-                        correct += 1
-                else:
-                    if user_choice and not should_be:
-                        wrong_items.append(name)
-                    if not user_choice and should_be:
-                        missed_items.append(name)
-            total_needed = sum(1 for _, s in items if s)
-            if correct == total_needed and not wrong_items:
-                st.success(f"✅ **Молодець!** {correct} з {total_needed} правильних предметів.")
+        if st.session_state.bag1_checked:
+            correct = sum(1 for idx,(n,s) in enumerate(items) if s and st.session_state.bag1.get(idx, False))
+            total = sum(1 for _,s in items if s)
+            wrong = [n for idx,(n,s) in enumerate(items) if not s and st.session_state.bag1.get(idx, False)]
+            missed = [n for idx,(n,s) in enumerate(items) if s and not st.session_state.bag1.get(idx, False)]
+            if correct == total and not wrong:
+                st.success(f"✅ **Молодець!** {correct} з {total} правильних.")
             else:
-                st.warning(f"📦 {correct} з {total_needed} правильних предметів.")
-                if wrong_items:
-                    st.error("❌ Зайві: " + ", ".join(wrong_items))
-                if missed_items:
-                    st.info("🔍 Забув: " + ", ".join(missed_items))
+                st.warning(f"📦 {correct} з {total} правильних.")
+                if wrong: st.error("❌ Зайві: " + ", ".join(wrong))
+                if missed: st.info("🔍 Забув: " + ", ".join(missed))
         st.write("")
         c1, c2, _ = st.columns([1,1,4])
         with c1:
-            if st.button("⬅ Назад", key="back_btn_15_bag"):
-                st.session_state.bag_checked = False
-                st.session_state.pioneer_bag = {}
+            if st.button("⬅ Назад", key="back_btn_15"):
+                st.session_state.bag1_checked = False
+                st.session_state.bag1 = {}
                 st.session_state.step = 14
                 st.rerun()
         with c2:
-            if st.button("Завершити ➔", key="next_btn_15_bag"):
-                st.session_state.bag_checked = False
-                st.session_state.pioneer_bag = {}
+            if st.button("Далі ➔", key="next_btn_15"):
+                st.session_state.bag1_checked = False
+                st.session_state.bag1 = {}
                 st.session_state.step = 16
                 st.rerun()
 
     elif st.session_state.step == 16:
+        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ЩО В ТОРБІ ПІОНЕРА? · ПОБУТ</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:16px;color:#ddd;margin-bottom:20px;">Познач речі, які були у побуті піонера 60-х.</div>', unsafe_allow_html=True)
+        items = [
+            ("Керосинова лампа", True),
+            ("Пральна машина-автомат", False),
+            ("Радіоприймач", True),
+            ("Кольоровий телевізор", False),
+            ("Самовар або чайник", True),
+            ("Мікрохвильовка", False),
+            ("Годинник з маятником", True),
+            ("Пилосос-робот", False),
+        ]
+        if "bag2" not in st.session_state:
+            st.session_state.bag2 = {}
+        if "bag2_checked" not in st.session_state:
+            st.session_state.bag2_checked = False
+        cols = st.columns(2)
+        for idx, (name, _) in enumerate(items):
+            with cols[idx % 2]:
+                checked = st.checkbox(name, key=f"bag2_item_{idx}", value=st.session_state.bag2.get(idx, False))
+                st.session_state.bag2[idx] = checked
+        st.write("")
+        c1, c2, _ = st.columns([1,1,4])
+        with c1:
+            if st.button("Перевірити", key="bag2_check_btn"):
+                st.session_state.bag2_checked = True
+                st.rerun()
+        if st.session_state.bag2_checked:
+            correct = sum(1 for idx,(n,s) in enumerate(items) if s and st.session_state.bag2.get(idx, False))
+            total = sum(1 for _,s in items if s)
+            wrong = [n for idx,(n,s) in enumerate(items) if not s and st.session_state.bag2.get(idx, False)]
+            missed = [n for idx,(n,s) in enumerate(items) if s and not st.session_state.bag2.get(idx, False)]
+            if correct == total and not wrong:
+                st.success(f"✅ **Молодець!** {correct} з {total} правильних.")
+            else:
+                st.warning(f"📦 {correct} з {total} правильних.")
+                if wrong: st.error("❌ Зайві: " + ", ".join(wrong))
+                if missed: st.info("🔍 Забув: " + ", ".join(missed))
+        st.write("")
+        c1, c2, _ = st.columns([1,1,4])
+        with c1:
+            if st.button("⬅ Назад", key="back_btn_16"):
+                st.session_state.bag2_checked = False
+                st.session_state.bag2 = {}
+                st.session_state.step = 15
+                st.rerun()
+        with c2:
+            if st.button("Далі ➔", key="next_btn_16"):
+                st.session_state.bag2_checked = False
+                st.session_state.bag2 = {}
+                st.session_state.step = 17
+                st.rerun()
+
+    elif st.session_state.step == 17:
+        st.markdown('<div class="slide-title">ІНТЕРАКТИВ · ЩО В ТОРБІ ПІОНЕРА? · ДОЗВІЛЛЯ</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:16px;color:#ddd;margin-bottom:20px;">Познач, у що грав піонер 60-х.</div>', unsafe_allow_html=True)
+        items = [
+            ("Класики", True),
+            ("PlayStation", False),
+            ("Гумовий стрибок", True),
+            ("Шахи та шашки", True),
+            ("Мобільна гра", False),
+            ("Футбол у дворі", True),
+            ("Велосипед", True),
+            ("Настільний теніс", False),
+        ]
+        if "bag3" not in st.session_state:
+            st.session_state.bag3 = {}
+        if "bag3_checked" not in st.session_state:
+            st.session_state.bag3_checked = False
+        cols = st.columns(2)
+        for idx, (name, _) in enumerate(items):
+            with cols[idx % 2]:
+                checked = st.checkbox(name, key=f"bag3_item_{idx}", value=st.session_state.bag3.get(idx, False))
+                st.session_state.bag3[idx] = checked
+        st.write("")
+        c1, c2, _ = st.columns([1,1,4])
+        with c1:
+            if st.button("Перевірити", key="bag3_check_btn"):
+                st.session_state.bag3_checked = True
+                st.rerun()
+        if st.session_state.bag3_checked:
+            correct = sum(1 for idx,(n,s) in enumerate(items) if s and st.session_state.bag3.get(idx, False))
+            total = sum(1 for _,s in items if s)
+            wrong = [n for idx,(n,s) in enumerate(items) if not s and st.session_state.bag3.get(idx, False)]
+            missed = [n for idx,(n,s) in enumerate(items) if s and not st.session_state.bag3.get(idx, False)]
+            if correct == total and not wrong:
+                st.success(f"✅ **Молодець!** {correct} з {total} правильних.")
+            else:
+                st.warning(f"📦 {correct} з {total} правильних.")
+                if wrong: st.error("❌ Зайві: " + ", ".join(wrong))
+                if missed: st.info("🔍 Забув: " + ", ".join(missed))
+        st.write("")
+        c1, c2, _ = st.columns([1,1,4])
+        with c1:
+            if st.button("⬅ Назад", key="back_btn_17"):
+                st.session_state.bag3_checked = False
+                st.session_state.bag3 = {}
+                st.session_state.step = 16
+                st.rerun()
+        with c2:
+            if st.button("Завершити ➔", key="next_btn_17"):
+                st.session_state.bag3_checked = False
+                st.session_state.bag3 = {}
+                st.session_state.step = 18
+                st.rerun()
+
+    elif st.session_state.step == 18:
         st.markdown(
             '<div style="text-align:center;font-size:42px;font-weight:900;color:#fff;'
             'margin:30px 0 20px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
@@ -555,7 +651,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.write("")
         c1, c2, c3 = st.columns([1, 1, 1])
         with c2:
-            if st.button("🏠 На головну", key="home_btn_16", use_container_width=True):
+            if st.button("🏠 На головну", key="home_btn_18", use_container_width=True):
                 st.session_state.step = 0
                 st.rerun()
                 
