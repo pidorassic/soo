@@ -4,6 +4,15 @@ import base64
 
 st.set_page_config(page_title="День школяра 60-х", layout="wide")
 
+def _load_bg(path):
+    try:
+        with open(path, "rb") as f:
+            return "data:image/jpeg;base64," + base64.b64encode(f.read()).decode()
+    except Exception:
+        return ""
+
+_sunset_bg = _load_bg("sunset_park.jpg")
+
 qp = st.query_params
 if "page" in qp:
     try:
@@ -34,7 +43,7 @@ p, label, span { color: #ffffff !important; }
 .lesson-text { font-size: 15px !important; color: #ddd !important; line-height: 1.55; display: block; }
 .question-card { background-color: #3a3a3a; border-left: 6px solid #d4af6a; padding: 15px 20px; border-radius: 6px; margin-bottom: 15px; color: #fff; }
 div[data-testid="stImage"] img { max-height: 55vh !important; width: auto !important; max-width: 100% !important; object-fit: contain !important; border-radius: 12px !important; margin: 0 auto !important; display: block !important; }
-.hero-full { position: relative; width: 100%; min-height: 85vh; border-radius: 20px; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
+.hero-full { position: relative; width: 100%; min-height: 85vh; border-radius: 20px; overflow: hidden; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
 .hero-full::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,15,.92), rgba(20,20,30,.78), rgba(30,25,20,.75), rgba(10,10,15,.9)); }
 .hero-content { position: relative; z-index: 2; padding: 40px 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 85vh; }
 .hero-title { font-size: 64px !important; font-weight: 900 !important; color: #fff !important; letter-spacing: 6px !important; text-align: center; margin-bottom: 12px; text-shadow: 0 4px 30px rgba(0,0,0,.7); }
@@ -64,7 +73,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     if st.session_state.step == 0:
         st.markdown(
-            '<div class="hero-full"><div class="hero-content">'
+            f'<div class="hero-full" style="background-image: url(\'{_sunset_bg}\');"><div class="hero-content">'
             '<div class="hero-title">ДЕНЬ ШКОЛЯРА 60-Х</div>'
             '<div class="hero-subtitle">Подорож у минуле</div>'
             '<div class="hero-cards">'
