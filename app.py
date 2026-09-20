@@ -24,7 +24,7 @@ st.markdown("""
 .stApp { background-color: #000000 !important; color: #fff !important; }
 div.block-container { padding: 3rem 3rem 2rem 3rem !important; max-width: 100% !important; }
 .progress-bar-fixed { position: fixed; top: 0; left: 0; width: 100%; height: 5px; background: rgba(255,255,255,0.15); z-index: 999999; }
-.progress-bar-fill { height: 100%; background: linear-gradient(90deg,#d4af6a,#e8c88a,#d4af6a); box-shadow: 0 0 12px rgba(212,175,106,0.8); transition: width .5s; border-radius: 0 3px 3px 0; }
+.progress-bar-fill { height: 100%; background: linear-gradient(90deg,#d4af6a,#e8c88a,#d4af6a); border-radius: 0 3px 3px 0; }
 .slide-title { font-size: 28px !important; font-weight: 700 !important; color: #fff !important; margin-bottom: 10px !important; }
 p, label, span { color: #fff !important; }
 .stButton > button { background-color: #3a3a3a !important; color: #fff !important; font-weight: 600 !important; border: 1px solid #555 !important; border-radius: 6px !important; padding: .4rem 1.2rem !important; }
@@ -33,23 +33,20 @@ p, label, span { color: #fff !important; }
 .lesson-title { font-size: 18px !important; font-weight: 700 !important; color: #fff !important; margin-bottom: 8px !important; display: block; }
 .lesson-text { font-size: 15px !important; color: #ddd !important; line-height: 1.55; display: block; }
 .question-card { background-color: #3a3a3a; border-left: 6px solid #d4af6a; padding: 15px 20px; border-radius: 6px; margin-bottom: 15px; color: #fff; }
-.hero-full { position: relative; width: 100%; min-height: 82vh; border-radius: 20px; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+.hero-full { position: relative; width: 100%; min-height: 82vh; border-radius: 20px; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2000'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
 .hero-full::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,15,.92), rgba(20,20,30,.78), rgba(30,25,20,.75), rgba(10,10,15,.9)); }
 .hero-content { position: relative; z-index: 2; padding: 40px 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 82vh; }
-.hero-title { font-size: 54px !important; font-weight: 900 !important; color: #fff !important; letter-spacing: 4px !important; text-align: center; margin-bottom: 8px; text-shadow: 0 4px 30px rgba(0,0,0,.6); }
+.hero-title { font-size: 54px !important; font-weight: 900 !important; color: #fff !important; letter-spacing: 4px !important; text-align: center; margin-bottom: 8px; }
 .hero-subtitle { font-size: 15px !important; color: #d4c5a0 !important; letter-spacing: 6px !important; text-transform: uppercase; margin-bottom: 30px; text-align: center; }
 .hero-cards, .hero-cards-bottom { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; max-width: 1050px; width: 100%; margin-bottom: 14px; }
 .hero-card-link { display: block; background: rgba(58,58,58,.85); border: 1px solid rgba(212,197,160,.42); border-radius: 14px; padding: 16px 18px; text-decoration: none !important; color: inherit !important; transition: all .4s; min-height: 130px; }
-.hero-card-link:hover { background: rgba(90,90,90,.95); border-color: rgba(212,197,160,.95); transform: translateY(-6px); box-shadow: 0 20px 45px rgba(0,0,0,.55); }
+.hero-card-link:hover { background: rgba(90,90,90,.95); border-color: rgba(212,197,160,.95); transform: translateY(-6px); }
 .hc-icon { font-size: 26px; margin-bottom: 8px; display: block; }
 .hc-title { font-size: 15px !important; font-weight: 800 !important; color: #fff !important; margin-bottom: 5px; }
 .hc-desc { font-size: 12px !important; color: #ccc !important; }
 .hero-footer { position: absolute; bottom: 20px; right: 30px; font-size: 11px; color: #ccc; letter-spacing: 2px; }
 .stRadio label { color: #fff !important; }
 .stCheckbox label { color: #fff !important; }
-@keyframes letterFadeIn { 0% { opacity: 0; letter-spacing: 20px; } 100% { opacity: 1; letter-spacing: 4px; } }
-@keyframes lineAppear { 0% { opacity: 0; transform: translateX(-30px); } 100% { opacity: 1; transform: translateX(0); } }
-.author-line { opacity: 0; animation: lineAppear .9s ease-out forwards; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -57,7 +54,7 @@ st.markdown(f'<div class="progress-bar-fixed"><div class="progress-bar-fill" sty
 
 @st.dialog("📖 Доп. факт")
 def show_extra_dialog():
-    st.markdown('<div style="font-size:16px;color:#333;">У школах діяла п’ятибальна система оцінювання. Формально шкала передбачала оцінки від 1 до 5, але на практиці одиницю майже не ставили.</div>')
+    st.markdown('<div style="font-size:16px;color:#333;">У школах діяла п’ятибальна система оцінювання. Одиницю майже не ставили.</div>')
     st.write("")
     if st.button("✖ Закрити", key="close_dialog_btn", use_container_width=True):
         st.rerun()
@@ -112,7 +109,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     elif st.session_state.step == 2:
         st.markdown('<div class="slide-title">ДЕНЬ ПІОНЕРА · РАНОК</div>', unsafe_allow_html=True)
-        st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">⏰ 07:00. Підйом та зарядка під радіо. Сніданок — каша, яйця, сир, хліб із маслом, чай або молоко.</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">⏰ 07:00. Підйом та зарядка під радіо. Сніданок — каша, яйця, сир, хліб, чай.</div>', unsafe_allow_html=True)
         cl, cr = st.columns([1,1], gap="large")
         with cl:
             st.markdown('<div class="lesson-card"><div class="lesson-title">📌 Сніданок</div><div class="lesson-text">Каша, яйця, сир, хліб, чай.</div></div>', unsafe_allow_html=True)
@@ -132,7 +129,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     elif st.session_state.step == 3:
         st.markdown('<div class="slide-title">ДОРОГА ДО ШКОЛИ</div>', unsafe_allow_html=True)
-        st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">🎒 07:40. Більшість дітей ходили до школи пішки — часто по кілька кварталів.</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">🎒 07:40. Більшість дітей ходили до школи пішки.</div>', unsafe_allow_html=True)
         st.image("village_morning.jpg", width=500)
         st.write("")
         c1, c2, _ = st.columns([1,1,4])
@@ -150,7 +147,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">🔔 08:00. Уроки тривали 45 хвилин. Писали чорнильницями та пером.</div>', unsafe_allow_html=True)
         cl, cr = st.columns([1,1], gap="large")
         with cl:
-            st.markdown('<div class="lesson-card"><div class="lesson-title">📚 Уроки</div><div class="lesson-text">Чорнильниці-непроливайки, перо.</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="lesson-card"><div class="lesson-title">📚 Уроки</div><div class="lesson-text">Чорнильниці, перо, зошити.</div></div>', unsafe_allow_html=True)
             st.markdown('<div class="lesson-card" style="margin-top:14px;"><div class="lesson-title">👔 Форма</div><div class="lesson-text">Дівчата — коричнева сукня з фартухом. Хлопці — сорочка, брюки, піджак.</div></div>', unsafe_allow_html=True)
         with cr:
             st.image("school_desk.jpg", use_container_width=True)
@@ -189,10 +186,10 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     elif st.session_state.step == 6:
         st.markdown('<div class="slide-title">ВЕЧІР</div>', unsafe_allow_html=True)
-        st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">🌙 19:00. Домашнє завдання, читання книжок, настільні ігри.</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">🌙 19:00. Домашнє завдання, читання, настільні ігри.</div>', unsafe_allow_html=True)
         cl, cr = st.columns([1,1], gap="large")
         with cl:
-            st.markdown('<div class="lesson-card"><div class="lesson-title">📖 Домашнє завдання</div><div class="lesson-text">Писали пером — акуратність була важливою.</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="lesson-card"><div class="lesson-title">📖 Домашнє завдання</div><div class="lesson-text">Писали пером — акуратність важлива.</div></div>', unsafe_allow_html=True)
             st.markdown('<div class="lesson-card" style="margin-top:14px;"><div class="lesson-title">📚 Читання та ігри</div><div class="lesson-text">Шахи, шашки, доміно — всією родиною.</div></div>', unsafe_allow_html=True)
         with cr:
             st.image("soviet_home.jpg", use_container_width=True)
@@ -209,7 +206,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     elif st.session_state.step == 7:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ</div>', unsafe_allow_html=True)
-        st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">Піонери 60-х та сучасна молодь жили в різних світах. Давайте порівняємо.</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:18px;color:#ddd;margin-bottom:20px;">Піонери 60-х та сучасна молодь жили в різних світах.</div>', unsafe_allow_html=True)
         st.write("")
         c1, c2, _ = st.columns([1,1,4])
         with c1:
@@ -220,7 +217,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if st.button("Далі ➔", key="next_btn_7"):
                 st.session_state.step = 8
                 st.rerun()
-
+                
     elif st.session_state.step == 8:
         st.markdown('<div class="slide-title">ПОРІВНЯННЯ · ПІОНЕРИ</div>', unsafe_allow_html=True)
         st.markdown('<div class="lesson-card"><div class="lesson-title">✅ Що хорошого було у піонерів</div><div class="lesson-text">• Дисципліна<br>• Колективізм<br>• Повага до старших<br>• Спорт, походи<br>• Участь у житті громади<br>• Менше ґаджетів<br>• Безкоштовні гуртки</div></div>', unsafe_allow_html=True)
@@ -272,7 +269,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
         st.markdown('<div class="slide-title">МОДА ТА КУЛЬТУРА · ОДЯГ</div>', unsafe_allow_html=True)
         st.markdown(
             '<div class="lesson-card" style="margin-bottom:14px;"><div class="lesson-title">👔 Шкільна форма</div><div class="lesson-text">Дівчата — коричнева сукня з фартухом. Хлопці — сорочка, брюки, піджак.</div></div>'
-            '<div class="lesson-card"><div class="lesson-title">👖 Повсякденний одяг</div><div class="lesson-text">Прості сукні, спідниці, сорочки, светри, штани. Одяг шили або перешивали вдома.</div></div>',
+            '<div class="lesson-card"><div class="lesson-title">👖 Повсякденний одяг</div><div class="lesson-text">Прості сукні, спідниці, сорочки, светри, штани. Одяг шили вдома.</div></div>',
             unsafe_allow_html=True
         )
         st.write("")
@@ -288,7 +285,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     elif st.session_state.step == 12:
         st.markdown('<div class="slide-title">ТЕСТ 1 · РАНОК ПІОНЕРА</div>', unsafe_allow_html=True)
-        st.markdown('<div class="question-card"><b>Ситуація:</b> Дзвенить будильник о 07:00. Мама на кухні, по радіо — мелодія для зарядки.<br><br><b>Що робитимеш?</b></div>', unsafe_allow_html=True)
+        st.markdown('<div class="question-card"><b>Ситуація:</b> Дзвенить будильник о 07:00.<br><br><b>Що робитимеш?</b></div>', unsafe_allow_html=True)
         choice = st.radio("Оберіть:", [
             "А) Зроблю зарядку, потім сніданок",
             "Б) Посплю ще 15 хвилин",
@@ -318,7 +315,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     elif st.session_state.step == 13:
         st.markdown('<div class="slide-title">ТЕСТ 2 · У ШКОЛІ</div>', unsafe_allow_html=True)
-        st.markdown('<div class="question-card"><b>Ситуація:</b> Контрольна робота, треба написати твір.<br><br><b>Чим будеш писати?</b></div>', unsafe_allow_html=True)
+        st.markdown('<div class="question-card"><b>Ситуація:</b> Контрольна робота.<br><br><b>Чим будеш писати?</b></div>', unsafe_allow_html=True)
         choice = st.radio("Оберіть:", [
             "А) Кульковою ручкою",
             "Б) Олівцем",
@@ -330,7 +327,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
             if choice.startswith("А"):
                 st.error("❌ Кулькові ручки були рідкістю.")
             elif choice.startswith("Б"):
-                st.warning("⚠️ Олівцевий текст блідий, оцінку знижують.")
+                st.warning("⚠️ Олівцевий текст блідий.")
             elif choice.startswith("В"):
                 st.success("✅ **П'ятірка!** Акуратно, рівні літери.")
             elif choice.startswith("Г"):
@@ -348,7 +345,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     elif st.session_state.step == 14:
         st.markdown('<div class="slide-title">ТЕСТ 3 · ПІСЛЯ УРОКІВ</div>', unsafe_allow_html=True)
-        st.markdown('<div class="question-card"><b>Ситуація:</b> Уроки закінчились. Вільний час до вечері.<br><br><b>Що робитимеш?</b></div>', unsafe_allow_html=True)
+        st.markdown('<div class="question-card"><b>Ситуація:</b> Уроки закінчились.<br><br><b>Що робитимеш?</b></div>', unsafe_allow_html=True)
         choice = st.radio("Оберіть:", [
             "А) Піду на збори загону, збір макулатури",
             "Б) Гратиму в комп'ютерні ігри",
@@ -444,20 +441,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
 
     elif st.session_state.step == 16:
         st.markdown(
-            '<div style="text-align:center;font-size:42px;font-weight:900;color:#fff;margin:30px 0 20px 0;letter-spacing:4px;animation: letterFadeIn 0.8s ease-out forwards;">ДЯ
-            
-    elif st.session_state.step == 16:
-        st.markdown(
             '<div style="text-align:center;font-size:42px;font-weight:900;color:#fff;'
-            'margin:30px 0 20px 0;letter-spacing:4px;'
-            'animation: letterFadeIn 0.8s ease-out forwards;">ДЯКУЄМО ЗА УВАГУ!</div>',
+            'margin:30px 0 20px 0;letter-spacing:4px;">ДЯКУЄМО ЗА УВАГУ!</div>',
             unsafe_allow_html=True
         )
         col_left, col_right = st.columns([1, 1], gap="large")
         with col_left:
             st.markdown(
-                '<div style="text-align:left;font-size:18px;font-weight:500;color:#ddd;'
-                'line-height:1.7;margin-top:20px;">'
+                '<div style="text-align:left;font-size:18px;color:#ddd;line-height:1.7;">'
                 'Дякуємо, що пройшли цей шлях разом з нами!<br><br>'
                 'Ми сподіваємося, що вам було цікаво зазирнути в минуле та дізнатися більше про життя школярів 60-х.<br><br>'
                 'Нехай ці спогади нагадують нам, як важливо цінувати історію та один одного.'
@@ -468,37 +459,10 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 '<div style="text-align:left;margin-top:35px;font-size:16px;color:#d4c5a0;letter-spacing:3px;">'
                 'НАД ПРОЄКТОМ СТАРАННО ПРАЦЮВАЛИ:</div>'
                 '<div style="text-align:left;margin-top:15px;font-size:20px;font-weight:600;color:#fff;line-height:2.0;">'
-                '<div class="author-line" style="animation-delay:0.2s;">Іваннікова Софія</div>'
-                '<div class="author-line" style="animation-delay:0.6s;">Гук Вадим</div>'
-
-    elif st.session_state.step == 8:
-        st.markdown('<div class="slide-title">ПОРІВНЯННЯ · ПІОНЕРИ</div>', unsafe_allow_html=True)
-        st.markdown('<div class="lesson-card"><div class="lesson-title">✅ Що хорошого було у піонерів</div><div class="lesson-text">• Дисципліна<br>• Колективізм<br>• Повага до старших<br>• Спорт, походи<br>• Участь у житті громади<br>• Менше ґаджетів<br>• Безкоштовні гуртки</div></div>', unsafe_allow_html=True)
-        st.write("")
-        c1, c2, _ = st.columns([1,1,4])
-        with c1:
-            if st.button("⬅ Назад", key="back_btn_8"):
-                st.session_state.step = 7
-                st.rerun()
-        with c2:
-            if st.button("Далі ➔", key="next_btn_8"):
-                st.session_state.step = 9
-                st.rerun()
-
-    elif st.session_state.step == 9:
-        st.markdown('<div class="slide-title">ПОРІВНЯННЯ · СУЧАСНА МОЛОДЬ</div>', unsafe_allow_html=True)
-        st.markdown('<div class="lesson-card"><div class="lesson-title">🌟 Що хорошого у сучасної молоді</div><div class="lesson-text">• Свобода вибору<br>• Доступ до знань<br>• Толерантність<br>• Технологічна грамотність<br>• Креативність<br>• Підприємливість<br>• Глобальна співпраця</div></div>', unsafe_allow_html=True)
-        st.write("")
-        c1, c2, _ = st.columns([1,1,4])
-        with c1:
-            if st.button("⬅ Назад", key="back_btn_9"):
-                st.session_state.step = 8
-                st.rerun()
-        with c2:
-            if st.button("Далі ➔", key="next_btn_9"):
-                st.session_state.step = 10
-                st.rerun()
-                '<div class="author-line" style="animation-delay:1.4s;">Овсієнко Роман</div>'
+                'Іваннікова Софія<br>'
+                'Гук Вадим<br>'
+                'Тищенко Софія<br>'
+                'Овсієнко Роман'
                 '</div>',
                 unsafe_allow_html=True
             )
@@ -507,18 +471,14 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 with open("end.jpg", "rb") as f:
                     img_b64 = base64.b64encode(f.read()).decode()
                 st.markdown(
-                    '<div style="display:flex;justify-content:center;align-items:center;margin-top:20px;">'
+                    '<div style="display:flex;justify-content:center;margin-top:20px;">'
                     '<img src="data:image/jpeg;base64,' + img_b64 + '" '
-                    'style="max-height:55vh;max-width:100%;width:auto;border-radius:12px;display:block;">'
+                    'style="max-height:55vh;max-width:100%;border-radius:12px;">'
                     '</div>',
                     unsafe_allow_html=True
                 )
             except Exception:
-                st.markdown(
-                    '<div style="text-align:center;font-size:20px;color:#888;'
-                    'margin:40px 0;">Файл end.jpg не знайдено</div>',
-                    unsafe_allow_html=True
-                )
+                st.markdown('<div style="text-align:center;color:#888;">Файл end.jpg не знайдено</div>', unsafe_allow_html=True)
         st.write("")
         c1, c2, c3 = st.columns([1, 1, 1])
         with c2:
