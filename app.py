@@ -393,7 +393,7 @@ with st.container(key=f"scale_box_{st.session_state.step}"):
                 unsafe_allow_html=True
             )
         with cr:
-            st.image("https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop", use_container_width=True)
+            st.image("morning_kitchen.jpg", use_container_width=True)
         st.write("")
         c1, c2, _ = st.columns([1, 1, 4])
         with c1:
